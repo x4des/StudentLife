@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{pifont}
+\usepackage{graphicx}
+\usepackage{url}
+
+\usepackage[left=2cm,right=2cm,bottom=2cm,top=2cm]{geometry}
+\parindent=0cm
+\parskip=2mm
+
+
+\title{{\bf Rapport de conception du projet de POO}\\[3mm]
+{\large titre du projet}}
+\author{Aida AMERKHANOVA, Maty DIOP 
+Aymen EL OUAGOUTI, Enzo MANTZOUTSOS}
+\date{27}
+
+\newcommand{\com}[1]{{\textcolor{blue}{\it #1}}}
+
+\begin{document}\thispagestyle{empty}
+
+{\Large\bf Rapport de conception du projet de\\[1mm]
+  programmation orientée objet}
+
+\vspace*{20mm}
+
+{\large Licence d'informatique -- 2ème année\\[1mm]
+  Faculté des sciences et techniques de Nantes}
+
+\vspace*{20mm}
+
+{\Large\bf \com{Study Week Simulator}}
+
+\vspace*{20mm}
+
+{\large présenté par\\[1mm]
+  \com{Aida AMERKHANOVA, Maty DIOP\\[1mm] 
+  Aymen EL OUAGOUTI, Enzo MANTZOUTSOS}\\[1mm]
+  le \com{27-10-2022}}
+
+\vspace*{20mm}
+
+{\large encadré par\\[1mm]
+  \com{Laurent Granvilliers et Anastasia Volkova}}
+
+\vspace*{25mm}
+\includegraphics[width=.03\textwidth]{gitlab_logo.png}
+:
+\url{https://gitlab.univ-nantes.fr/E204135L/poo22_384j_c}\\[1mm]
+
+\vfill
+\includegraphics[width=.3\textwidth]{logo_nu.png}
+
+\newpage
+\section{Compétences de l'équipe}
+\setlength\parindent{24pt}
+\par{\vspace*{.5mm} Pour la programmation ainsi que la conception d’un algorithme, nos niveaux sont variées en fonction de différents critères. Ce qu’on doit retravailler le plus, est la vérification de l’efficacité des algorithmes. Sinon pour le reste le groupe semble être à l’aise.}
+
+\par{\vspace*{.5mm} La gestion du projet logiciel avec Gitlab est moyennement maîtrisé par les membres du groupe, de même pour la répartition ainsi que l’organisation du travail. Il est aussi montré que nous devons nous entraîner et nous informer sur la manière de créer des codes de qualités.}
+
+\par{\vspace*{.5mm}Dans la gestion de notre équipe, on est hétérogène dans nos compétences à l’oral. Pour certains, il faudra travailler son élocution, ainsi qu’apprendre a partager ses idées.}
+
+\par{\vspace*{.5mm} Pour finir, dans tous ce qui concerne les bases de données et tout ce qu’on a appris jusqu’à aujourd’hui, nous sommes tous assez compétent. Cependant, il nous manque des connaissances sur l’identification de l’architecture d’un serveur, d’une application et d’une base de données.}
+
+\section{Resumé du projet}
+Pour le projet de POO on souhaite réaliser un petit jeu-simulateur d’une vie étudiante. 
+Dans notre jeu, l’utilisateur sera dans une simulation de la vie étudiante sur une semaine. Il sera amené a participer aux cours magistraux, travaux dirigés et travaux pratiques dans un monde inspiré de la faculté des sciences et techniques de Nantes.Il aura donc ses caractéristiques et statistiques propres qui évolueront en fonction de ses choix au cours du jeu. L’utilisateur pourra assister (ou non) à des cours, avoir des petits quiz sur des matières... Les caractéristiques représenteront l’état physique et moral de l’étudiant. Les statistiques porteront sur ses relations avec les professeurs et son investissement dans différentes matières. Un bilan de la semaine universitaire pourra être disponible à la fin du jeu.
+\section{Positionnement du sujet par rapport aux principes}
+\subsection{Motivation}
+\par{\vspace*{.5mm} Pour le choix de ce projet, nous avons été inspirés par nos vies étudiantes. Notre principale motivation cette année est de la valider, pour cela, nous devons faire les bons choix et être investis dans notre travail. Nous avons donc eu l’idée de représenter l’importance de nos décisions au cours de notre année universitaire à travers notre projet.}
+
+\subsection{Originalité}
+\par{\vspace*{.5mm} Les jeux-simulateurs existent depuis longtemps. Ce qui fait l’originalité de notre projet est le fait qu’il soit vraiment personnel, inspiré de faits réels et de nos vies quotidiennes... 
+On avait aussi pensé à d’autres sujets comme Doodle Jump, mais on s’est aperçu qu’il manque d’originalité, vu que le code de ce type de jeu est facilement accessible sur internet.}
+
+\subsection{Fonctionnalités principales}
+\par{\vspace*{.5mm} Les fonctionnalités principales seront de pouvoir se rendre en cours, en CM le niveau d’attention sera important pour que l’étudiant suive correctement le cours. En TD ou en TP l’utilisateur pourra être confronté à un petit quiz par exemple ce qui influerait sur ses statistiques.}
+
+\par{\vspace*{.5mm} Son absence ou sa présence va affecter ses statistiques de la matière et peut-être ses relations avec les professeurs concernés.}
+
+\subsection{Fonctionnalités secondaires}
+\par{\vspace*{.5mm} On a envisagé de fournir un budget pour la semaine que l’utilisateur devrait gérer. Ce budget pourrait aussi être relié à des activités. Ce qui implique aussi d’avoir plus d’activités disponibles. Il pourrait aussi lui être utile d’acheter des polycopiés de cours ou encore aller manger au RU.}
+
+\subsection{Premiers éléments de conception}
+\par{\vspace*{.5mm} Nous aurons donc une classe abstraite pour les personnes, et des sous-classe pour les étudiants et les professeurs. Pareil pour les cours, nous aurons une classe matière. }
+
+\subsection{Répartition du travail envisagé}
+\par{\vspace*{.5mm} Aida et Aymen vont prendre une majeure partie de la conception « graphique » de notre jeu tout en participant à la conception des classes avec Maty et Enzo.}
+
+\end{document}
