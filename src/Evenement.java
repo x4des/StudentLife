@@ -2,4 +2,7 @@
 public interface Evenement {
     //TODO: Methodes a rajouter
     String getNom();
+    public boolean goPause();
+    public boolean goCours();
+    public boolean goRevision();
 }
