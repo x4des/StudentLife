@@ -18,24 +18,24 @@ public class Etudiant extends Personne {
         return statsPerso;
     }
 
-    public void setStatsPerso(int pourcentage, int i) {
-        this.statsPerso.get(i).valeur = this.statsPerso.get(i).valeur + (this.statsPerso.get(i).valeur * pourcentage);
+    public void setStatsPerso(float prctg, int i) {
+        this.statsPerso.get(i).valeur = this.statsPerso.get(i).valeur + (this.statsPerso.get(i).valeur * prctg);
     }
 
     public ArrayList<Stats> getStatsProfs() {
         return statsProfs;
     }
 
-    public void setStatsProfs(ArrayList<Stats> statsProfs) {
-        this.statsProfs = statsProfs;
+    public void setStatsProfs(float prctg, int i) {
+        this.statsProfs.get(i).valeur = this.statsProfs.get(i).valeur + (this.statsProfs.get(i).valeur * prctg);
     }
 
     public ArrayList<Stats> getStatsMatiere() {
         return statsMatiere;
     }
 
-    public void setStatsMatiere(ArrayList<Stats> statsMatiere) {
-        this.statsMatiere = statsMatiere;
+    public void setStatsMatiere(float prctg, int i) {
+        this.statsMatiere.get(i).valeur = this.statsMatiere.get(i).valeur + (this.statsMatiere.get(i).valeur * prctg);
     }
 
     public ArrayList<Stats> getListEvenement() {
