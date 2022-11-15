@@ -28,15 +28,7 @@ public class Cours implements Evenement{
     }
 
     @Override
-    public boolean goPause(){
-        return false;
-    }
-
-    public boolean goCours(){
-        return true;
-    }
-
-    public boolean goRevision(){
-        return false;
+    public String getNom(){
+        return this.typeCours.toString();
     }
 }
