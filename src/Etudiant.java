@@ -18,7 +18,8 @@ public class Etudiant extends Personne {
     }
 
     public void setStatsPerso(float prctg, int i) {
-        this.statsPerso.get(i).valeur = this.statsPerso.get(i).valeur + (this.statsPerso.get(i).valeur * prctg);
+
+        //this.statsPerso.get(i).valeur = this.statsPerso.get(i).valeur + (this.statsPerso.get(i).valeur * prctg);
     }
 
     public ArrayList<Stats> getStatsProfs() {
@@ -26,7 +27,8 @@ public class Etudiant extends Personne {
     }
 
     public void setStatsProfs(float prctg, int i) {
-        this.statsProfs.get(i).valeur = this.statsProfs.get(i).valeur + (this.statsProfs.get(i).valeur * prctg);
+        this.statsProfs
+        //this.statsProfs.get(i).valeur = this.statsProfs.get(i).valeur + (this.statsProfs.get(i).valeur * prctg);
     }
 
     public ArrayList<Stats> getStatsMatiere() {

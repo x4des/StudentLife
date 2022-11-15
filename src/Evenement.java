@@ -2,5 +2,6 @@
 public interface Evenement {
     //TODO: Methodes a rajouter
     public String getNom();
+    //method "finaliser" param: etudiant, choix pour changer ses stats
 
 }
