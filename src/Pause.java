@@ -1,14 +1,7 @@
-public class Pause implements  Evenement{
-    @Override
-    public boolean goPause() {
-        return true;
-    }
+public abstract class Pause implements  Evenement{
+    public String nom;
 
-    public boolean goCours() {
-        return true;
-    }
 
-    public boolean goRevision() {
-        return false;
-    }
+
+
 }

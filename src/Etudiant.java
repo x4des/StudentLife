@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Etudiant extends Personne {
     private ArrayList<Stats> statsPerso;
+    //indice 1 - Attention, 2- Fatigue, 3 - Faim
     private ArrayList<Stats> statsProfs;
     private ArrayList<Stats> statsMatiere;
 
