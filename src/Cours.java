@@ -31,4 +31,7 @@ public class Cours implements Evenement{
     public String getNom(){
         return this.typeCours.toString();
     }
+
+    @Override
+    public void finaliserEvenement(Etudiant utilisateur, boolean valid){}
 }
