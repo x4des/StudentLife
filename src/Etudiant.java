@@ -37,6 +37,6 @@ public class Etudiant extends Personne {
     }
 
     public void setStatsMatiere(float prctg, int i) {
-        this.statsMatiere.get(i).valeur = this.statsMatiere.get(i).valeur + (this.statsMatiere.get(i).valeur * prctg);
+        //this.statsMatiere.get(i).valeur = this.statsMatiere.get(i).valeur + (this.statsMatiere.get(i).valeur * prctg);
     }
 }
