@@ -1,17 +1,17 @@
-import java.lang.Enum;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Cours implements Evenement{
     private Matiere matiere;
     private Professeur professeur;
     private Type typeCours;
     private ArrayList<Action> listAction;
+    private ArrayList<Quiz> listeQuiz;
 
     public Cours(Professeur professeur, Matiere matiere) {
         this.matiere = matiere;
         this.professeur = professeur;
         this.listAction = new ArrayList<Action>();
+        this.listeQuiz = new ArrayList<Quiz>();
     }
 
     public Type getTypeCours (){
@@ -28,6 +28,14 @@ public class Cours implements Evenement{
 
     public void addListAction(Action act) {
         this.listAction.add(act);
+    }
+
+    public void addListeQuiz(Quiz quiz) {
+        this.listeQuiz.add(quiz);
+    }
+
+    public ArrayList<Quiz> getListeQuiz(){
+        return this.listeQuiz;
     }
 
     @Override
