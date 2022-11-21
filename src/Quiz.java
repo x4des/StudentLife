@@ -5,11 +5,13 @@ public class Quiz {
     private String question;
     private ArrayList<String> reponses;
     private String reponseCorrecte;
+    private String reponseUser;
 
     public Quiz(String question, String reponseCorrecte){
         this.question = question;
         this.reponses = new ArrayList<String>();
         this.reponseCorrecte = reponseCorrecte;
+        this.reponseUser = "";
     }
 
     public String getQuestion() {
@@ -27,7 +29,7 @@ public class Quiz {
         };
     }
     
-    //retourne les reponses correctes ou incorrectes
+    //retourne les reponses correctes et incorrectes
     public ArrayList<String> getReponses() {
 
         try {
@@ -46,5 +48,13 @@ public class Quiz {
         }
 
         return this.reponses;
+    }
+
+    public void setReponseUser(String reponseUser) {
+        this.reponseUser = reponseUser;
+    }
+
+    public String getReponseUser() {
+        return reponseUser;
     }
 }
