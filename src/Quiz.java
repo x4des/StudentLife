@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class Quiz {
-    private String question;
-    private ArrayList<String> reponses;
-    private String reponseCorrecte;
+    private final String question;
+    private final ArrayList<String> reponses;
+    private final String reponseCorrecte;
     private String reponseUser;
 
     public Quiz(String question, String reponseCorrecte){
