@@ -9,8 +9,8 @@ public class PauseRepos extends Pause {
         return nom;
     }
 
-    @override
+    @Override
     public void finaliserEvenement(Etudiant utilisateur, boolean valid){}
-    @override
+    @Override
     public void evenementActuel(String evenChoice){}
 }
