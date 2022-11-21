@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Quiz {
     private String question;
@@ -56,5 +55,37 @@ public class Quiz {
 
     public String getReponseUser() {
         return reponseUser;
+    }
+
+    public void realiserQuiz(Matiere matiere){
+
+        ArrayList<String> lRep = this.getReponses();
+
+        //affichage: qst et reponses possibles
+        System.out.println(this.question + System.lineSeparator());
+        for(String rep: lRep){
+            System.out.println(rep + System.lineSeparator());
+        }
+
+        //entree utilisateur
+        Scanner scanner = new Scanner(System.in);
+        do{
+            try {
+
+                this.reponseUser = scanner.nextLine();
+                System.out.println("Votre reponse: " + this.reponseUser);
+
+                if(this.reponseUser.equals(this.reponseCorrecte)){
+                    System.out.println(" est correcte");
+                    //TODO: Modifier les stats dans cette matiere
+                }else{
+                    System.out.println(" est fausse");
+                }
+
+            }catch (InputMismatchException e){
+                System.out.println("Merci d'entrer une chaine de caracteres");
+            }
+        }while (!(lRep.contains(this.reponseUser)));
+
     }
 }
