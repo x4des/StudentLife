@@ -28,7 +28,7 @@ public class Etudiant extends Personne {
     }
 
     public void setStatsProfs(float prctg, int i) {
-        this.statsProfs
+        //this.statsProfs
         //this.statsProfs.get(i).valeur = this.statsProfs.get(i).valeur + (this.statsProfs.get(i).valeur * prctg);
     }
 

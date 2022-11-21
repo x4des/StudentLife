@@ -9,6 +9,14 @@ public class Revision implements Evenement{
         return name;
     }
 
-    @Override void evenementActuel(String evenChoice){};
+    @Override
+    public void finaliserEvenement(Etudiant utilisateur, boolean valid) {
+
+    }
+
+    @Override
+    public void evenementActuel(String evenChoice){
+        
+    };
 
 }
