@@ -1,6 +1,6 @@
 public class Stats {
     String nom;
-    double valeur;
+    int valeur;
 
     public Stats(String nom, int valeur) {
         this.nom = nom;
@@ -24,11 +24,6 @@ public class Stats {
     }
 
     // Procedure qui augmente et de diminution de la valeure de fatigue à partir d'un réel donné (pourcentage de diminution)
-    public void upFatigue(double prct, double valActuel){}
-    public void downFatigu(double prct, double valActuel){}
-    public void upFaim(double prct, double valActuel){}
-    public void downFaim(double prct, double valActuel){}
-    public void upAttention(double prct, double valActuel){}
-    public void downAttention(double prct, double valActuel){}
+    public void modifStats(double prct){}
 
 }
