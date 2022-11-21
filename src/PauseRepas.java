@@ -10,9 +10,10 @@ public class PauseRepas extends Pause{
         return this.nom;
     }
 
+    @override
+    public void finaliserEvenement(Etudiant utilisateur, boolean valid){}
 
-    public void finaliserEvenement(Etudiant utilisateur, boolean valid){
-
-    }
+    @override
+    public void evenementActuel(String evenChoice){}
 
 }
