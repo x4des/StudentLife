@@ -77,9 +77,11 @@ public class Quiz {
 
                 if(this.reponseUser.equals(this.reponseCorrecte)){
                     System.out.println(" est correcte");
-                    //TODO: Modifier les stats dans cette matiere
+                    //FIXME: Matiere a besoin de updateNiveau au niveau de la dev branch
+                    //matiere.updateNiveau(10);
                 }else{
-                    System.out.println(" est fausse");
+                    System.out.println(" est fausse" + System.lineSeparator());
+                    //matiere.updateNiveau(-10);
                 }
 
             }catch (InputMismatchException e){
