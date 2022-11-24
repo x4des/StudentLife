@@ -8,17 +8,16 @@ import java.io.IOException;
 public class EDT {
     private ArrayList<ArrayList<Creneaux>> emploisDuTemps;
 
-    public EDT(ArrayList<Jour> jours) {
+    public EDT() {
         this.emploisDuTemps = new ArrayList<ArrayList<Creneaux>>();
         for (int i = 0; i < 6; i++)  {
             this.emploisDuTemps.add(new ArrayList<>());
         }
     }
 
-    public ArrayList<Jour> getJours() {
-        return jours;
+    public ArrayList<ArrayList<Creneaux>> getEmploisDuTemps(){
+        return this.emploisDuTemps;
     }
-
     public void lireDoc(){
         String csvFile = "/home/enzo/Bureau/test/edt.csv";
         String line = "";
