@@ -4,13 +4,13 @@ public class Quiz {
     private final String question;
     private final ArrayList<String> reponses;
     private final String reponseCorrecte;
-    private String reponseUser;
+    private int reponseUser;
 
     public Quiz(String question, String reponseCorrecte){
         this.question = question;
         this.reponses = new ArrayList<String>();
         this.reponseCorrecte = reponseCorrecte;
-        this.reponseUser = "";
+        this.reponseUser = 0;
     }
 
     public String getQuestion() {
@@ -49,11 +49,11 @@ public class Quiz {
         return this.reponses;
     }
 
-    public void setReponseUser(String reponseUser) {
+    public void setReponseUser(int reponseUser) {
         this.reponseUser = reponseUser;
     }
 
-    public String getReponseUser() {
+    public int getReponseUser() {
         return reponseUser;
     }
 
@@ -63,8 +63,10 @@ public class Quiz {
 
         //affichage: qst et reponses possibles
         System.out.println(this.question + System.lineSeparator());
+        int i = 0;
         for(String rep: lRep){
-            System.out.println(rep + System.lineSeparator());
+            i++;
+            System.out.println(i + ") " + rep + System.lineSeparator());
         }
 
         //entree utilisateur
@@ -72,22 +74,30 @@ public class Quiz {
         do{
             try {
 
-                this.reponseUser = scanner.nextLine();
+                this.reponseUser = scanner.nextInt(); //input : 1
                 System.out.println("Votre reponse: " + this.reponseUser);
 
-                if(this.reponseUser.equals(this.reponseCorrecte)){
+                //verifie l'input, recommence si input invalide
+                if(this.reponseUser < 1 || this.reponseUser > 4){
+                    System.out.println("Veuillez entrer: 1, 2, 3 ou 4");
+                    continue;
+                }
+
+                if((this.reponseUser-1) == lRep.indexOf(reponseCorrecte)){
                     System.out.println(" est correcte");
-                    //FIXME: Matiere a besoin de updateNiveau au niveau de la dev branch
+                    //TODO: Modifier les stats dans cette matiere
                     //matiere.updateNiveau(10);
                 }else{
                     System.out.println(" est fausse" + System.lineSeparator());
                     //matiere.updateNiveau(-10);
                 }
+                lRep.add("Quiz DONE");
 
             }catch (InputMismatchException e){
-                System.out.println("Merci d'entrer une chaine de caracteres");
+                System.out.println("Merci d'entrer un entier [1..4]");
+                scanner.next();
             }
-        }while (!(lRep.contains(this.reponseUser)));
+        }while (lRep.size() == 4);
 
     }
 }
