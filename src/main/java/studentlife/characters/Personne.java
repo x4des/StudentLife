@@ -1,7 +1,9 @@
+package studentlife.characters;
+
 //Une personne peut être un élève(utilisateur) ou un professeur
-public abstract class Personne {
-    private String nom;
-    private String prenom;
+public class Personne {
+    private final String nom;
+    private final String prenom;
 
     public Personne(String nom, String prenom){
         this.nom = nom;
@@ -12,15 +14,7 @@ public abstract class Personne {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public String getPrenom() {
         return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
     }
 }

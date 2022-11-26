@@ -1,16 +1,18 @@
-public class PauseRepos extends Pause {
+package studentlife.events;
 
+import studentlife.characters.Etudiant;
 
-    public PauseRepos(){
-        super.nom = "Pause Repos";
-    }
+public class PauseRepos implements Pause {
+
+    public PauseRepos(){}
 
     public String getNom() {
-        return nom;
+        return "Pause Repos";
     }
 
     @Override
     public void finaliserEvenement(Etudiant utilisateur, boolean valid){}
+
     @Override
     public void evenementActuel(String evenChoice){}
 }

@@ -1,13 +1,13 @@
-public class PauseRepas extends Pause{
+package studentlife.events;
 
+import studentlife.characters.Etudiant;
 
-    public PauseRepas(){
-        super.nom = "Pause Repas";
-    }
+public class PauseRepas implements Pause {
 
+    public PauseRepas(){}
 
     public String getNom(){
-        return this.nom;
+        return "Pause Repas";
     }
 
     @Override

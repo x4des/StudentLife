@@ -1,8 +1,11 @@
+package studentlife.timeline;
+
+import studentlife.timeline.Creneaux;
+
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
 
 //Un EDT est une représentaition sur une semaine, donc composé de plusieurs Jour
 public class EDT {

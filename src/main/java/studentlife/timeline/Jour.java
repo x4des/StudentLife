@@ -1,3 +1,7 @@
+package studentlife.timeline;
+
+import studentlife.events.Evenement;
+
 import java.util.ArrayList;
 
 //Un jour sera composé d'evenements mais ne sera représenté pour l'instant que comme: Jour 1, Jour 2...

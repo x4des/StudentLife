@@ -1,3 +1,8 @@
+package studentlife;
+
+import studentlife.characters.Professeur;
+import studentlife.events.Cours;
+
 import java.util.ArrayList;
 
 public class Matiere {

@@ -1,9 +1,17 @@
+package studentlife.events;
+
+import studentlife.actions.Action;
+import studentlife.Matiere;
+import studentlife.actions.Quiz;
+import studentlife.characters.Etudiant;
+import studentlife.characters.Professeur;
+
 import java.util.ArrayList;
 
-public class Cours implements Evenement{
+public class Cours implements Evenement {
     private Matiere matiere;
     private Professeur professeur;
-    private Type typeCours;
+    private CoursType typeCours;
     private ArrayList<Action> listAction;
     private ArrayList<Quiz> listeQuiz;
 
@@ -14,10 +22,10 @@ public class Cours implements Evenement{
         this.listeQuiz = new ArrayList<Quiz>();
     }
 
-    public Type getTypeCours (){
+    public CoursType getTypeCours (){
         return this.typeCours;
     }
-    public void setTypeCours (Type type){
+    public void setTypeCours (CoursType type){
         this.typeCours = type;
     }
 
@@ -38,14 +46,20 @@ public class Cours implements Evenement{
         return this.listeQuiz;
     }
 
-    @Override
     public String getNom(){
-        return this.typeCours.toString();
+
+        switch (typeCours) {
+            case CM: return "Cours Magistral";
+            case TD: return "Travaux Dirigés";
+            case TP: return "Travaux Pratiques";
+            default: return "Cours Inconnu";
+        }
+
     }
 
     @Override
     public void finaliserEvenement(Etudiant user, boolean valid){
-        int i = 1;
+        /*int i = 1;
         int j = 1;
         if(valid) {
             while(this.matiere.getNomMatiere().equals(user.getStatsMatiere().get(i).getNom())) {
@@ -77,6 +91,11 @@ public class Cours implements Evenement{
                 j++;
             }
             user.getStatsProfs().get(i).setValeur(10);
-        }
+        }*/
+    }
+
+    @Override
+    public void evenementActuel(String evenChoice) {
+        // TO DO
     }
 }

@@ -1,3 +1,5 @@
+package studentlife.timeline;
+
 public class Creneaux {
     private String name;
     private String type;

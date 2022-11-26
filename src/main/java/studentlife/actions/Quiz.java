@@ -1,3 +1,7 @@
+package studentlife.actions;
+
+import studentlife.Matiere;
+
 import java.util.*;
 
 public class Quiz {

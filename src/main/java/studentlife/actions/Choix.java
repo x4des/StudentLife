@@ -1,3 +1,5 @@
+package studentlife.actions;
+
 public class Choix {
     private String reponse;
 
