@@ -32,7 +32,7 @@ public class Game {
         schedule.addDay(monday);
         schedule.addDay(tuesday);
 
-        // 1 - Create a student
-        Etudiant student = new Etudiant("Theo", "Dupont", schedule);
+        // Create a student
+        Etudiant student = new Etudiant("Theo", "Dupont");
     }
 }
