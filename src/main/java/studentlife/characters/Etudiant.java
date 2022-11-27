@@ -14,6 +14,12 @@ public class Etudiant extends Personne {
 
     public StatsManager getStats() { return stats; }
 
+    @Override
+    public String toString() {
+
+        return "FullName: " + this.getNom() + " " + this.getPrenom() + "\nStats: " + this.getStats();
+    }
+
     private void initStats() {
 
         stats = new StatsManager();
@@ -21,9 +27,4 @@ public class Etudiant extends Personne {
         stats.setStat(STAT_FATIGUE, 25);
     }
 
-    @Override
-    public String toString() {
-
-        return "FullName: " + this.getNom() + " " + this.getPrenom() + "\nStats: " + this.stats.toString();
-    }
 }

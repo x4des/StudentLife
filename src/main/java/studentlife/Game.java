@@ -12,6 +12,9 @@ public class Game {
 
     public static void main(String[] args) {
 
+        // Quizz --- Un scénario
+        // ...........
+
         // Create some matiere
         Matiere anglais = new Matiere("Anglais");
         Matiere poo = new Matiere("POO");

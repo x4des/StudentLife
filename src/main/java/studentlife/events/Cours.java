@@ -12,13 +12,11 @@ public class Cours implements Evenement {
     private Matiere matiere;
     private Professeur professeur;
     private CoursType typeCours;
-    private ArrayList<Action> listAction;
     private ArrayList<Quiz> listeQuiz;
 
     public Cours(Professeur professeur, Matiere matiere) {
         this.matiere = matiere;
         this.professeur = professeur;
-        this.listAction = new ArrayList<Action>();
         this.listeQuiz = new ArrayList<Quiz>();
     }
 
@@ -32,10 +30,6 @@ public class Cours implements Evenement {
     public Professeur getProfesseur(){ return this.professeur; }
     public void setProfesseur(Professeur prof){
         this.professeur = prof;
-    }
-
-    public void addListAction(Action act) {
-        this.listAction.add(act);
     }
 
     public void addListeQuiz(Quiz quiz) {
@@ -54,7 +48,6 @@ public class Cours implements Evenement {
             case TP: return "Travaux Pratiques";
             default: return "Cours Inconnu";
         }
-
     }
 
     @Override

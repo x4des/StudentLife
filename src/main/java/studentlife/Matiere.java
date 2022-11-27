@@ -1,10 +1,17 @@
 package studentlife;
 
+import studentlife.characters.Stat;
+
+import static studentlife.Config.STAT_MASTERY;
+
 public class Matiere {
     private String nomMatiere;
 
+    private Stat mastery;
+
     public Matiere(String nomMatiere) {
         this.nomMatiere = nomMatiere;
+        this.mastery = new Stat(STAT_MASTERY, 0);
     }
 
     public String getNomMatiere(){
@@ -15,7 +22,5 @@ public class Matiere {
         this.nomMatiere = nomMatiere;
     }
 
-    public double moyenneStats(){
-        return 0.0;
-    }
+    public Stat getMastery() { return mastery; }
 }
