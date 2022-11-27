@@ -1,47 +1,14 @@
-package studentlife.ui;
+package studentlife;
 
-import studentlife.core.characters.Etudiant;
-import studentlife.core.characters.Professeur;
-import studentlife.core.Day;
-import studentlife.core.Matiere;
-import studentlife.core.Schedule;
-import studentlife.core.events.Cours;
-import studentlife.core.events.Evenement;
-import studentlife.core.events.PauseRepas;
 
-//un jeu est composé d'une Personne et d'un EDT
-//Faut-il mettre Jeu extedns Application pour mettre tout le bazar de javafx ici ?
-public class Game {
+import studentlife.controller.Game;
 
+public class Main {
     public static void main(String[] args) {
+        Game game = new Game();
+        game.initGame();
 
-        // Quizz --- Un scénario
-        // ...........
 
-        // Create some matiere
-        Matiere anglais = new Matiere("Anglais");
-        Matiere poo = new Matiere("POO");
-
-        // Create a day and give it some events
-        Day monday = new Day();
-        Day tuesday = new Day();
-
-        Evenement coursAnglais = new Cours(new Professeur("Prof", "Anglais"), anglais);
-        Evenement coursPOO = new Cours(new Professeur("Prof", "POO"), poo);
-        Evenement pauseMidi = new PauseRepas();
-
-        monday.addEvenement(coursAnglais);
-        monday.addEvenement(pauseMidi);
-        tuesday.addEvenement(coursPOO);
-
-        Schedule schedule = new Schedule();
-        schedule.addDay(monday);
-        schedule.addDay(tuesday);
-
-        // Create a student
-        Etudiant student = new Etudiant("Theo", "Dupont");
-
-        System.out.println(student);
 
          /*
          Etudiant etudiant = new Etudiant("Gosling", "Ryan");

@@ -2,10 +2,10 @@ package studentlife.core;
 
 import studentlife.core.characters.Stat;
 
-import static studentlife.core.Config.STAT_MASTERY;
+import static studentlife.Config.STAT_MASTERY;
 
 public class Matiere {
-    private String nomMatiere;
+    private final String nomMatiere;
 
     private Stat mastery;
 
@@ -14,13 +14,11 @@ public class Matiere {
         this.mastery = new Stat(STAT_MASTERY, 0);
     }
 
-    public String getNomMatiere(){
+    public String getNom(){
         return nomMatiere;
     }
 
-    public void setNomMatiere(String nomMatiere) {
-        this.nomMatiere = nomMatiere;
-    }
+
 
     public Stat getMastery() { return mastery; }
 }

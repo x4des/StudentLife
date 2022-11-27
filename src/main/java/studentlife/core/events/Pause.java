@@ -1,5 +1,5 @@
 package studentlife.core.events;
 
-public interface Pause extends Evenement {
+public class Pause extends Evenement {
     String getNom();
 }
