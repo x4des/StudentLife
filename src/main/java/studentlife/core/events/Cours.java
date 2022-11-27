@@ -8,22 +8,24 @@ import studentlife.core.characters.Professeur;
 import java.util.ArrayList;
 
 public class Cours implements Evenement {
+    private final CoursType typeCours;
     private Matiere matiere;
     private Professeur professeur;
-    private CoursType typeCours;
     private ArrayList<Quiz> listeQuiz;
 
-    public Cours(Professeur professeur, Matiere matiere) {
+    public Cours(CoursType coursType, Professeur professeur, Matiere matiere) {
+        this.typeCours = coursType;
         this.matiere = matiere;
         this.professeur = professeur;
         this.listeQuiz = new ArrayList<Quiz>();
     }
 
+    public Matiere getMatiere() {
+        return matiere;
+    }
+
     public CoursType getTypeCours (){
         return this.typeCours;
-    }
-    public void setTypeCours (CoursType type){
-        this.typeCours = type;
     }
 
     public Professeur getProfesseur(){ return this.professeur; }
@@ -84,10 +86,5 @@ public class Cours implements Evenement {
             }
             user.getStatsProfs().get(i).setValeur(10);
         }*/
-    }
-
-    @Override
-    public void evenementActuel(String evenChoice) {
-        // TO DO
     }
 }

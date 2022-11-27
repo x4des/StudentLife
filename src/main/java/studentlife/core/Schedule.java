@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Schedule {
 
     private static final int MAX_DAYS = 7;
+
     private ArrayList<Day> week;
 
     public Schedule() {
@@ -23,6 +24,11 @@ public class Schedule {
             return;
 
         week.add(day);
+    }
+
+
+    public ArrayList<Day> getWeek() {
+        return week;
     }
 
     private void loadEDT(String path) {
