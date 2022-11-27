@@ -30,6 +30,7 @@ public class Game {
         gameController.initGame(lastName, firstName);
 
         System.out.println("Welcome " + gameController.getUser().getNom() + " " + gameController.getUser().getPrenom());
+        System.out.println(gameController.getUser().getStats().toString());
     }
 
     public void run() {

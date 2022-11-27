@@ -8,7 +8,6 @@ public class Etudiant extends Personne {
 
     public Etudiant(String nom, String prenom) {
         super(nom, prenom);
-
         initStats();
     }
 
@@ -21,10 +20,10 @@ public class Etudiant extends Personne {
     }
 
     private void initStats() {
-
         stats = new StatsManager();
         stats.setStat(STAT_CONCENTRATION, 100);
-        stats.setStat(STAT_FATIGUE, 25);
+        stats.setStat(STAT_FATIGUE, 0);
+        stats.setStat(STAT_FAIM, 0);
     }
 
 }

@@ -13,7 +13,8 @@ public class Stat {
         setValue(value);
     }
 
-    public void setValue(int value) {
+
+    public void setValue(int value) { //sets the value
 
         if(value < MIN_STAT) {
             this.value = MIN_STAT;
@@ -26,6 +27,18 @@ public class Stat {
         }
 
         this.value = value;
+    }
+
+    public void updateValue(int value){ //increases or decreases the value
+        if (this.value + value < MIN_STAT){
+            this.value = MIN_STAT;
+        }
+
+        if (this.value + value > MAX_STAT){
+            this.value = MAX_STAT;
+        }
+
+        this.value += value;
     }
 
     public int getValue() {

@@ -37,6 +37,7 @@ public class GameController {
     public Schedule getSchedule() {
         return schedule;
     }
+
     private void createDay1() {
         Day monday = new Day();
 
@@ -55,23 +56,23 @@ public class GameController {
 
     private void createSubjects(){
 
-        subjectList.add(new Matiere("Introduction aux systemes d'information"));
-        subjectList.add(new Matiere("Connaissance de l'entreprise"));
-        subjectList.add(new Matiere("Programmation orientée objet"));
-        subjectList.add(new Matiere("Informatique fondamentale"));
-        subjectList.add(new Matiere("Mathématiques pour l'informatique"));
-        subjectList.add(new Matiere("Algorithmique et structure de données"));
-        subjectList.add(new Matiere("Anglais scientifique général"));
+        subjectList.add(new Matiere("Introduction aux systemes d'information")); //0
+        subjectList.add(new Matiere("Connaissance de l'entreprise")); //1
+        subjectList.add(new Matiere("Programmation orientée objet")); //2
+        subjectList.add(new Matiere("Informatique fondamentale")); //3
+        subjectList.add(new Matiere("Mathématiques pour l'informatique")); //4
+        subjectList.add(new Matiere("Algorithmique et structure de données")); //5
+        subjectList.add(new Matiere("Anglais scientifique général")); //6
     }
 
     private void createProfs(){
-        profList.add(new Professeur("Rooney", "Wayne"));
-        profList.add(new Professeur("Darko", "Donnie"));
-        profList.add(new Professeur("Snow", "Jon"));
-        profList.add(new Professeur("Austen", "Jane"));
-        profList.add(new Professeur("Lovelace", "Ada"));
-        profList.add(new Professeur("Corleone", "Vito"));
-        profList.add(new Professeur("Ventura", "Ace"));
+        profList.add(new Professeur("Rooney", "Wayne")); //0
+        profList.add(new Professeur("Darko", "Donnie")); //1
+        profList.add(new Professeur("Snow", "Jon")); //2
+        profList.add(new Professeur("Austen", "Jane")); //3
+        profList.add(new Professeur("Lovelace", "Ada")); //4
+        profList.add(new Professeur("Corleone", "Vito")); //5
+        profList.add(new Professeur("Ventura", "Ace")); //6
     }
 
 

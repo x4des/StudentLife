@@ -10,14 +10,16 @@ public class StatsManager {
 
     public StatsManager() {}
 
+
     public boolean updateStat(String statName, int value) {
 
         if(!statsMap.containsKey(statName))
             return false;
 
-        statsMap.get(statName).setValue(value);
+        statsMap.get(statName).updateValue(value);
         return true;
     }
+
 
     public Stat getStat(String statName) throws IllegalArgumentException {
 
@@ -27,9 +29,12 @@ public class StatsManager {
         return statsMap.get(statName);
     }
 
+
+
     public void setStat(String statName, int value) {
         statsMap.put(statName, new Stat(statName, value));
     }
+    //adds a new stat
 
     @Override
     public String toString() {
