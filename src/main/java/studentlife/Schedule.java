@@ -1,26 +1,35 @@
-package studentlife.timeline;
-
-import studentlife.timeline.Creneaux;
+package studentlife;
 
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
-//Un EDT est une représentaition sur une semaine, donc composé de plusieurs Jour
-public class EDT {
-    private ArrayList<ArrayList<Creneaux>> emploisDuTemps;
+public class Schedule {
 
-    public EDT() {
-        this.emploisDuTemps = new ArrayList<ArrayList<Creneaux>>();
-        for (int i = 0; i < 6; i++)  {
-            this.emploisDuTemps.add(new ArrayList<>());
-        }
+    private static final int MAX_DAYS = 7;
+    private ArrayList<Day> week;
+
+    public Schedule() {
+        this.week = new ArrayList<>();
     }
 
-    public ArrayList<ArrayList<Creneaux>> getEmploisDuTemps(){
-        return this.emploisDuTemps;
+    public Schedule(String csvPath) {
+        this.loadEDT(csvPath);
     }
+
+    public void addDay(Day day) {
+
+        if(week.size() >= MAX_DAYS)
+            return;
+
+        week.add(day);
+    }
+
+    private void loadEDT(String path) {
+
+        this.week = new ArrayList<>();
+        // TO DO
+    }
+
+    /*
     public void lireDoc(){
         String csvFile = "/home/enzo/Bureau/test/edt.csv";
         String line = "";
@@ -52,4 +61,5 @@ public class EDT {
                 this.emploisDuTemps.get(i).get(j).writte();
         }
     }
+    */
 }
