@@ -1,6 +1,6 @@
-package studentlife.events;
+package studentlife.core.events;
 
-import studentlife.characters.Etudiant;
+import studentlife.core.characters.Etudiant;
 
 public class PauseRepos implements Pause {
 

@@ -1,6 +1,6 @@
-package studentlife.characters;
+package studentlife.core.characters;
 
-import static studentlife.Config.STAT_APPRECIATION;
+import static studentlife.core.Config.STAT_APPRECIATION;
 
 public class Professeur extends Personne {
 

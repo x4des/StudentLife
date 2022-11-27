@@ -1,7 +1,7 @@
-package studentlife.events;
+package studentlife.core.events;
 
-import studentlife.Matiere;
-import studentlife.characters.Etudiant;
+import studentlife.core.Matiere;
+import studentlife.core.characters.Etudiant;
 
 public class Revision implements Evenement {
 

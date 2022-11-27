@@ -1,4 +1,4 @@
-package studentlife;
+package studentlife.core;
 
 public class Config {
 

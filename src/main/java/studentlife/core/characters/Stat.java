@@ -1,4 +1,4 @@
-package studentlife.characters;
+package studentlife.core.characters;
 
 public class Stat {
 

@@ -1,6 +1,6 @@
-package studentlife;
+package studentlife.core;
 
-import studentlife.events.Evenement;
+import studentlife.core.events.Evenement;
 
 import java.util.ArrayList;
 

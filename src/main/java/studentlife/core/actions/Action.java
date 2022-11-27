@@ -1,4 +1,4 @@
-package studentlife.actions;
+package studentlife.core.actions;
 
 import java.util.ArrayList;
 public class Action {

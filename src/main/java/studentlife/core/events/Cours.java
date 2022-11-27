@@ -1,10 +1,9 @@
-package studentlife.events;
+package studentlife.core.events;
 
-import studentlife.actions.Action;
-import studentlife.Matiere;
-import studentlife.actions.Quiz;
-import studentlife.characters.Etudiant;
-import studentlife.characters.Professeur;
+import studentlife.core.Matiere;
+import studentlife.core.actions.Quiz;
+import studentlife.core.characters.Etudiant;
+import studentlife.core.characters.Professeur;
 
 import java.util.ArrayList;
 

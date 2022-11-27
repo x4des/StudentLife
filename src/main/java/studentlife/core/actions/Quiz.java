@@ -1,6 +1,6 @@
-package studentlife.actions;
+package studentlife.core.actions;
 
-import studentlife.Matiere;
+import studentlife.core.Matiere;
 
 import java.util.*;
 

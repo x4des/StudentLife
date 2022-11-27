@@ -1,4 +1,6 @@
-package studentlife;
+package studentlife.core;
+
+import studentlife.core.Day;
 
 import java.util.ArrayList;
 

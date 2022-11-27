@@ -1,4 +1,4 @@
-package studentlife.characters;
+package studentlife.core.characters;
 
 //Une personne peut être un élève(utilisateur) ou un professeur
 public class Personne {

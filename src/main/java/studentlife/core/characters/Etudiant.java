@@ -1,6 +1,6 @@
-package studentlife.characters;
+package studentlife.core.characters;
 
-import static studentlife.Config.*;
+import static studentlife.core.Config.*;
 
 public class Etudiant extends Personne {
 

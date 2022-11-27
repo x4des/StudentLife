@@ -1,4 +1,4 @@
-package studentlife.characters;
+package studentlife.core.characters;
 
 import java.util.HashMap;
 import java.util.Map;

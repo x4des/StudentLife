@@ -1,8 +1,8 @@
-package studentlife;
+package studentlife.core;
 
-import studentlife.characters.Stat;
+import studentlife.core.characters.Stat;
 
-import static studentlife.Config.STAT_MASTERY;
+import static studentlife.core.Config.STAT_MASTERY;
 
 public class Matiere {
     private String nomMatiere;

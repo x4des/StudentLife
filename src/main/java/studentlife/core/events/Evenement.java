@@ -1,6 +1,6 @@
-package studentlife.events;
+package studentlife.core.events;
 
-import studentlife.characters.Etudiant;
+import studentlife.core.characters.Etudiant;
 
 //Un Evenement correspond au differentes "taches" de la journée de l'étudiant
 public interface Evenement {
