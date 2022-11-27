@@ -34,5 +34,7 @@ public class Game {
 
         // Create a student
         Etudiant student = new Etudiant("Theo", "Dupont");
+
+        System.out.println(student);
     }
 }

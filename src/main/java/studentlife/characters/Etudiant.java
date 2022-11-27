@@ -1,6 +1,6 @@
 package studentlife.characters;
 
-import studentlife.Schedule;
+import static studentlife.Config.*;
 
 public class Etudiant extends Personne {
 
@@ -9,6 +9,21 @@ public class Etudiant extends Personne {
     public Etudiant(String nom, String prenom) {
         super(nom, prenom);
 
-        this.stats = new StatsManager();
+        initStats();
+    }
+
+    public StatsManager getStats() { return stats; }
+
+    private void initStats() {
+
+        stats = new StatsManager();
+        stats.setStat(STAT_CONCENTRATION, 100);
+        stats.setStat(STAT_FATIGUE, 25);
+    }
+
+    @Override
+    public String toString() {
+
+        return "FullName: " + this.getNom() + " " + this.getPrenom() + "\nStats: " + this.stats.toString();
     }
 }

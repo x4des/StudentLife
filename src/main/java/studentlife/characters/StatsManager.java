@@ -1,6 +1,7 @@
 package studentlife.characters;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class StatsManager {
 
@@ -28,5 +29,20 @@ public class StatsManager {
 
     public void setStat(String statName, int value) {
         statsMap.put(statName, new Stat(statName, value));
+    }
+
+    @Override
+    public String toString() {
+
+        StringBuilder temp = new StringBuilder();
+
+        for(Map.Entry<String, Stat> entry : statsMap.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue().getValue();
+
+            temp.append(key).append("=").append(value).append(" ");
+        }
+
+        return temp.toString();
     }
 }
