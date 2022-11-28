@@ -5,6 +5,7 @@ import studentlife.core.Day;
 import studentlife.core.Schedule;
 import studentlife.core.events.*;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Game {
@@ -30,6 +31,8 @@ public class Game {
         System.out.println(gameController.getUser().getStats().toString());
     }
 
+
+
     public void run() {
         // LANCER LE JEU :)
         initGameView();
@@ -37,6 +40,12 @@ public class Game {
         for (Day day : gameController.getSchedule().getWeek()) {
             for (Evenement event : day.getEvenements()) {
                 manageEvent(event);
+                System.out.println("entrez");
+                Scanner scanner = new Scanner(System.in);
+                String rep = scanner.nextLine();
+
+
+
             }
         }
     }

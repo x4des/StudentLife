@@ -52,6 +52,8 @@ public class GameController {
         schedule.addDay(monday);
     }
 
+
+    
     private void createSchedule(){
         createDay1();
     }
@@ -65,7 +67,11 @@ public class GameController {
         subjectList.add(new Matiere("Mathématiques pour l'informatique")); //4
         subjectList.add(new Matiere("Algorithmique et structure de données")); //5
         subjectList.add(new Matiere("Anglais scientifique général")); //6
+
+
     }
+
+
 
     private void createProfs(){
         profList.add(new Professeur("Rooney", "Wayne")); //0
