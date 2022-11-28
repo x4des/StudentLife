@@ -7,7 +7,7 @@ public class Stat {
     public static final int MAX_STAT = 100;
     public static final int MIN_STAT = 0;
 
-    public static final double PRCNT = 0.25;
+    public static final double PRCNT = 0.45; //pourcentage de modif de la valeur des stats
 
     private final String name;
     private int value;
@@ -33,7 +33,7 @@ public class Stat {
         this.value = value;
     }
 
-    public void updateValue(int value){ //increases or decreases the value
+    public void updateValue(int value){ //increases the value
         if (this.value + value < MIN_STAT){
             this.value = MIN_STAT;
         }else if (this.value + value > MAX_STAT){
@@ -41,7 +41,6 @@ public class Stat {
         }else {
             this.value += value;
         }
-    }
 
     public void updateValue(@NotNull Stat stat, char operation){ //augmente ou diminue la valeur d'une stat en fonction d'une autre stat
         int newval = (int)(stat.value*PRCNT);
