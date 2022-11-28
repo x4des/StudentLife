@@ -23,14 +23,22 @@ public class StatsManager {
         return true;
     }
 
-    public boolean updateFatigue() {
+    public boolean updateStat(Stat stat, String operator) {
+
+        if(!statsMap.containsKey(statName))
+            return false;
+
+        statsMap.get(statName).updateValue(stats, operator);
+        return true;
+    }
+    public boolean updateFatigue(char operator) {
 
 
         if(!statsMap.containsKey(STAT_FATIGUE)) {
             return false;
         }
 
-        statsMap.get(STAT_FATIGUE).updateValue(statsMap.get(STAT_FAIM),);
+        statsMap.get(STAT_FATIGUE).updateValue(statsMap.get(STAT_FAIM),operator); // operator = '+' ou '-' selon les modifi a faire
         return true;
     }
 
