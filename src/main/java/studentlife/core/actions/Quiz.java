@@ -1,5 +1,4 @@
 package studentlife.core.actions;
-
 import studentlife.core.Matiere;
 
 import java.util.*;
@@ -9,12 +8,14 @@ public class Quiz {
     private final ArrayList<String> reponses;
     private final String reponseCorrecte;
     private int reponseUser;
+    private Matiere matiere;
 
-    public Quiz(String question, String reponseCorrecte){
+    public Quiz(String question, String reponseCorrecte, Matiere matiere){
         this.question = question;
         this.reponses = new ArrayList<String>();
         this.reponseCorrecte = reponseCorrecte;
         this.reponseUser = 0;
+        this.matiere = matiere;
     }
 
     public String getQuestion() {
@@ -31,7 +32,7 @@ public class Quiz {
             this.reponses.add(reponse);
         };
     }
-    
+
     //retourne les reponses correctes et incorrectes
     public ArrayList<String> getReponses() {
 
@@ -61,7 +62,11 @@ public class Quiz {
         return reponseUser;
     }
 
-    public void realiserQuiz(Matiere matiere){
+    public Matiere getMatiere(){
+        return this.matiere;
+    }
+
+    public void realiserQuiz(){
 
         ArrayList<String> lRep = this.getReponses();
 

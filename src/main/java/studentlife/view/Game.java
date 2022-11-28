@@ -3,11 +3,9 @@ package studentlife.view;
 import studentlife.controller.GameController;
 import studentlife.core.Day;
 import studentlife.core.Schedule;
-import studentlife.core.events.Cours;
-import studentlife.core.events.Evenement;
-import studentlife.core.events.Pause;
-import studentlife.core.events.PauseType;
+import studentlife.core.events.*;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Game {
@@ -33,6 +31,8 @@ public class Game {
         System.out.println(gameController.getUser().getStats().toString());
     }
 
+
+
     public void run() {
         // LANCER LE JEU :)
         initGameView();
@@ -40,6 +40,12 @@ public class Game {
         for (Day day : gameController.getSchedule().getWeek()) {
             for (Evenement event : day.getEvenements()) {
                 manageEvent(event);
+                System.out.println("entrez");
+                Scanner scanner = new Scanner(System.in);
+                String rep = scanner.nextLine();
+
+
+
             }
         }
     }
@@ -53,6 +59,10 @@ public class Game {
 
     public void manageCours(Cours cours) {
         System.out.println("Cours de " + cours.getMatiere().getNom());
+        System.out.println("Quiz dans " + cours.getNom() + " " + cours.getMatiere().getNom());
+        if(cours.getTypeCours().equals(CoursType.TD)){
+            cours.getMatiere().getListeQuiz().get(0).realiserQuiz();
+        }
     }
 
     public void managePause(Pause pause) {

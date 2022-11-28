@@ -3,6 +3,9 @@ package studentlife.core.characters;
 import java.util.HashMap;
 import java.util.Map;
 
+import static studentlife.Config.STAT_FAIM;
+import static studentlife.Config.STAT_FATIGUE;
+
 public class StatsManager {
 
     // Stat Name -- Val
@@ -17,6 +20,17 @@ public class StatsManager {
             return false;
 
         statsMap.get(statName).updateValue(value);
+        return true;
+    }
+
+    public boolean updateFatigue() {
+
+
+        if(!statsMap.containsKey(STAT_FATIGUE)) {
+            return false;
+        }
+
+        statsMap.get(STAT_FATIGUE).updateValue(statsMap.get(STAT_FAIM),);
         return true;
     }
 

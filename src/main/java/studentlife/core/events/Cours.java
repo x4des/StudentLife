@@ -11,13 +11,11 @@ public class Cours implements Evenement {
     private final CoursType typeCours;
     private Matiere matiere;
     private Professeur professeur;
-    private ArrayList<Quiz> listeQuiz;
 
     public Cours(CoursType coursType, Professeur professeur, Matiere matiere) {
         this.typeCours = coursType;
         this.matiere = matiere;
         this.professeur = professeur;
-        this.listeQuiz = new ArrayList<Quiz>();
     }
 
     public Matiere getMatiere() {
@@ -33,13 +31,7 @@ public class Cours implements Evenement {
         this.professeur = prof;
     }
 
-    public void addListeQuiz(Quiz quiz) {
-        this.listeQuiz.add(quiz);
-    }
 
-    public ArrayList<Quiz> getListeQuiz(){
-        return this.listeQuiz;
-    }
 
     public String getNom(){
 
