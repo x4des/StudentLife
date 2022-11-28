@@ -90,11 +90,11 @@ public class Quiz {
 
                 if((this.reponseUser-1) == lRep.indexOf(reponseCorrecte)){
                     System.out.println(" est correcte");
-                    //TODO: Modifier les stats dans cette matiere
-                    //matiere.updateNiveau(10);
+
+                    matiere.getMastery().updateValue(10);
                 }else{
                     System.out.println(" est fausse" + System.lineSeparator());
-                    //matiere.updateNiveau(-10);
+                    matiere.getMastery().updateValue(-10);
                 }
                 lRep.add("Quiz DONE");
 
@@ -103,6 +103,8 @@ public class Quiz {
                 scanner.next();
             }
         }while (lRep.size() == 4);
+
+
 
     }
 }

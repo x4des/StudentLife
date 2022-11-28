@@ -71,6 +71,13 @@ public class GameController {
 
     }
 
+    public void subjectsMastery(){
+        System.out.println("Les stats dans les matières:");
+        for (Matiere subject : subjectList){
+            System.out.println(subject.toString());
+        }
+    }
+
 
 
     private void createProfs(){
@@ -86,11 +93,11 @@ public class GameController {
     private void addNewQuiz(){
         //ISI
         subjectList.get(0).addQuiz(new Quiz("un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet","un etat initial unique","un etat final unique"));
-        subjectList.get(0).addQuiz(new Quiz("le cardinal (?,?) sur E1 signifie ", "que E1 depend d'une autre entite, ", subjectList.get(0), "qu'il s'agit d'une entité dominante","qu'il y a plusieurs cadinaux possibles","que la cle E1 est absorbee par une autre entite"));
+        subjectList.get(0).addQuiz(new Quiz("Une transition \"puits\" : ", " ne produit rien, se contente de consommer", subjectList.get(0), "ne consomme rien, se contente de produire", "est toujours déclenchable", "possède absolument un arc inhibiteur"));
         subjectList.get(0).addQuiz(new Quiz("un automate est deterministe si", "Il possède un unique état initial", subjectList.get(0), "Il possède des epsilon-transitions","Il possède une seule epsilon-transition","Il est complet"));
-        subjectList.get(0).addQuiz(new Quiz("un automate est standard si ", "Il est unitaire et possede un unique etat initial", subjectList.get(0), "Il est complet et deterministe","Il est fini","Il n'y pas de transition sur vers son etat initial"));
+        subjectList.get(0).addQuiz(new Quiz("un automate est standard si ", "Il est unitaire et possede un unique état initial", subjectList.get(0), "Il est complet et deterministe","Il est fini","Il n'y pas de transition sur vers son etat initial"));
         //CE
-        subjectList.get(1).addQuiz(new Quiz("Une societe anonyme SA cotee sur la bourse doit avoir un minimum de:", "7 associes", subjectList.get(1), "2 associes","Pas de minimum","8 associes"));
+        subjectList.get(1).addQuiz(new Quiz("Une societe anonyme SA cotée sur la bourse doit avoir un minimum de:", "7 associes", subjectList.get(1), "2 associes","Pas de minimum","8 associes"));
         subjectList.get(1).addQuiz(new Quiz("Quel organisme calcule et diffuse l'indice des prix","INSEE", subjectList.get(1), "FISC","INTERPOL","CNOUS"));
         subjectList.get(1).addQuiz(new Quiz("Lequel des suivants est correct", "les SCOP et SCIC sont des CAE", subjectList.get(1), "Une SARL est une SA a responsabiite limitee","Une association est une societe a but non lucratif","Une µEntreprise possede au plus 20 employes"));
         //POO
@@ -107,13 +114,14 @@ public class GameController {
         subjectList.get(4).addQuiz(new Quiz("La limite de Ln(x) en -infini: ", "n'existe pas", subjectList.get(4), "0","-ifnini","1"));
         //ASD
         subjectList.get(5).addQuiz(new Quiz("le stack est:", "LIFO", subjectList.get(5), "FIFO","accessible dynamiquement","plus lent en acces que le heap"));
-        subjectList.get(5).addQuiz(new Quiz("Choisir l'affirmation correcte:", "les elements de la liste chainee sont de meme type", subjectList.get(5), "Il faut allouer de la memoire dynamique dans le stack pour les tableaux dynamique","l'operateur-> equivaut a &ptr","La taille d'un int depend uniquement de la machine"));
+        subjectList.get(5).addQuiz(new Quiz("Choisir l'affirmation correcte:", "les elements d'une liste chainée sont de même type", subjectList.get(5), "Il faut allouer de la memoire dynamique dans le stack pour les tableaux dynamiques","l'operateur \"->\" equivaut à &ptr","La taille d'un int depend uniquement de la machine"));
         //ANG
         subjectList.get(6).addQuiz(new Quiz("The Earth is ...(hold) by the gravity of the Sun and orbits around it", "held", subjectList.get(6), "being held","holded","being holded"));
         
 
     }
 
+    /*
     private void loadSchedule(){
         String tiret = "";
         String pause = "Pause";
@@ -159,6 +167,6 @@ public class GameController {
             e.printStackTrace();
         }
     }
-
+*/
 
 }

@@ -1,20 +1,23 @@
 package studentlife.core;
 
-import studentlife.core.Day;
-
 import java.util.ArrayList;
 
 public class Schedule {
 
-    private static final int MAX_DAYS = 7;
+    private static final int MAX_DAYS = 5;
+    private final String[] weekDays;
 
     private ArrayList<Day> week;
 
+
+
     public Schedule() {
         this.week = new ArrayList<>();
+        this.weekDays = new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"};
     }
 
     public Schedule(String csvPath) {
+        this.weekDays =new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"};
         this.loadEDT(csvPath);
     }
 
@@ -26,6 +29,9 @@ public class Schedule {
         week.add(day);
     }
 
+    public String getWeekday(int i){
+        return weekDays[i];
+    }
 
     public ArrayList<Day> getWeek() {
         return week;

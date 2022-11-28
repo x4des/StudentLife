@@ -16,7 +16,7 @@ public class Matiere {
 
     public Matiere(String nomMatiere) {
         this.nomMatiere = nomMatiere;
-        this.mastery = new Stat(STAT_MASTERY, 0);
+        this.mastery = new Stat(STAT_MASTERY, 50);
         this.listeQuiz = new ArrayList<Quiz>();
     }
 
@@ -30,7 +30,16 @@ public class Matiere {
     public void addQuiz(Quiz quiz) {
         this.listeQuiz.add(quiz);
     }
+
+    public void deleteQuiz(int i){
+        listeQuiz.remove(i);
+    }
     public ArrayList<Quiz> getListeQuiz(){
         return this.listeQuiz;
+    }
+
+    @Override
+    public String toString(){
+        return (this.nomMatiere + ": " + this.mastery.getValue() + "/100");
     }
 }
