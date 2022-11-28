@@ -45,39 +45,31 @@ public class Cours implements Evenement {
 
     @Override
     public void finaliserEvenement(Etudiant user, boolean valid){
-        /*int i = 1;
-        int j = 1;
-        if(valid) {
-            while(this.matiere.getNomMatiere().equals(user.getStatsMatiere().get(i).getNom())) {
-                i++;
-            }
-            user.getStatsMatiere().get(i).setValeur(10);                                        // Augmentation de la stats de la matière de 10.
-            while(this.professeur.getNom().equals(user.getStatsProfs().get(j).getNom())){
-                j++;
-            }
-            user.getStatsProfs().get(i).setValeur(10);                                          // Augmentation de la stats de la relation avec le prof de 10.
-            for (i = 0; i <= 3; i++) {
-                if (user.getStatsPerso().get(i).getNom() == "attention") {
-                    user.getStatsPerso().get(i).setValeur(-10);
-                }
-                if (user.getStatsPerso().get(i).getNom() == "fatigue") {
-                    user.getStatsPerso().get(i).setValeur(10);
-                }
-                if (user.getStatsPerso().get(i).getNom() == "faim") {
-                    user.getStatsPerso().get(i).setValeur(10);
-                }
-            }
-        }
-        if(!valid){
-            while (this.matiere.getNomMatiere().equals(user.getStatsMatiere().get(i).getNom())) {
-                i++;
-            }
-            user.getStatsMatiere().get(i).setValeur(-10);
-            while(this.professeur.getNom().equals(user.getStatsProfs().get(j).getNom())){
-                j++;
-            }
-            user.getStatsProfs().get(i).setValeur(10);
-        }*/
+       Stat faim = user.stats.statsMap.get(STAT_FAIM);
+       faim.updateStat(STAT_FAIM,20); //faim augmente de 20 apres chaque cours
 
+       //modification de la stat fatigue par rapport a la stat faim
+        Stat fatigue =user.stats.statsMap.get(STAT_FATIGUE);
+
+        if (faim.value >= 0 && faim.value <= 20 && fatigue.val >= 0 &&fatigue.val < 9 ) {
+            fatigue.updateStats(faim, '+');
+        }
+        if (faim.value > 20 && faim.value <= 40 && fatigue.val >= 9 &&fatigue.val < 27 ){
+            fatigue.updateStats(faim,'+');
+        }
+        if (faim.value > 40 && faim.value <= 60 && fatigue.val >= 27 &&fatigue.val < 54){
+            fatigue.updateStats(faim,'+');
+        }
+        if (faim.value >= 60 && faim.value <= 80 && fatigue.val >= 54 &&fatigue.val < 90){
+            fatigue.updateStats(faim,'+');
+        }
+        if (faim.value >= 80 && faim.value <= 100 && && fatigue.val >= 90 && fatigue.val < 100 ){
+            fatigue.updateStats(faim,'+');
+        }
+
+        //modif de la stats attention qui est complementaire a la stats fatigue
+        Stat attention =user.stats.statsMap.get(STAT_ATTENTION);
+        int minusAttention = (attention.MAX_STAT )- fatigue.value;
+        attention.setValue(minusAttention);
     }
 }
