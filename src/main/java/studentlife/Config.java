@@ -3,7 +3,7 @@ package studentlife;
 public class Config {
 
     public static final String STAT_FATIGUE = "fatigue";
-    public static final String STAT_CONCENTRATION = "attention";
+    public static final String STAT_ATTENTION = "attention";
 
     public static final String STAT_FAIM = "faim";
 
