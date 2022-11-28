@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-//Un EDT est une représentaition sur une semaine, donc composé de plusieurs Jour
+//Un EDT est une représentation sur une semaine, donc composé de plusieurs Jour
 public class EDT {
     private ArrayList<ArrayList<Creneaux>> emploisDuTemps;
 
@@ -23,17 +23,17 @@ public class EDT {
         String line = "";
         String csvSplitBy = ",";
         Creneaux creneaux;
-        int i = 0, j = 1;
+        int i = 0, j = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
             while ((line = br.readLine()) != null) {
                 String[] cours = line.split(csvSplitBy);
-                creneaux = new Creneaux(cours[0], cours[1]);
+                creneaux = new Creneaux(cours[0], cours[1], cours[2]);
                 emploisDuTemps.get(i).add(creneaux);
                 j++;
-                if(j == 8){
-                    j = 1;
+                if(j == 7){
+                    j = 0;
                     i++;
                 }
             }
@@ -42,7 +42,6 @@ public class EDT {
             e.printStackTrace();
         }
     }
-
     public void afficherDoc(){
         for(int i = 0; i < this.emploisDuTemps.size(); i++){
             for(int j = 0; j < this.emploisDuTemps.get(i).size(); j++)
