@@ -86,5 +86,6 @@ public class Cours implements Evenement {
             }
             user.getStatsProfs().get(i).setValeur(10);
         }*/
+
     }
 }
