@@ -84,7 +84,12 @@ public class GameController {
     }
 
     private void addNewQuiz(){
+        subjectList.get(0).addQuiz(new Quiz("Un Automate Fini est composé de: ", "Arcs, ", subjectList.get(1), "3","4","811"));
+        subjectList.get(1).addQuiz(new Quiz("Une Société Anonyme (SA) cotee en bourse à un minimum de: ", "7 actionnaires", subjectList.get(1), "2 Actionnaires","1 Actionnaire","5 Actionnaires"));
+        subjectList.get(1).addQuiz(new Quiz("Une interface peut posseder", "des methodes abstraites", subjectList.get(1), "des attributs","des methodes implementees","des attributs abstraits"));
         subjectList.get(1).addQuiz(new Quiz("1+1 = ? ", "2", subjectList.get(1), "3","4","811"));
+        subjectList.get(1).addQuiz(new Quiz("1+1 = ? ", "2", subjectList.get(1), "3","4","811"));
+
     }
 
 }
