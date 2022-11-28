@@ -3,6 +3,7 @@ package studentlife.controller;
 import studentlife.core.Day;
 import studentlife.core.Matiere;
 import studentlife.core.Schedule;
+import studentlife.core.actions.Quiz;
 import studentlife.core.characters.Etudiant;
 import studentlife.core.characters.Professeur;
 import studentlife.core.events.Cours;
@@ -28,6 +29,7 @@ public class GameController {
         createProfs();
         createSubjects();
         createSchedule();
+        addNewQuiz();
     }
 
     public Etudiant getUser() {
@@ -75,5 +77,11 @@ public class GameController {
         profList.add(new Professeur("Ventura", "Ace")); //6
     }
 
+    private void addNewQuiz(){
+        subjectList.get(1).addQuiz(new Quiz("1+1 = ? ", "2", subjectList.get(1)));
+        subjectList.get(1).getListeQuiz().get(0).setUneReponse("3");
+        subjectList.get(1).getListeQuiz().get(0).setUneReponse("4");
+        subjectList.get(1).getListeQuiz().get(0).setUneReponse("811");
+    }
 
 }

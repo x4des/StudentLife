@@ -3,10 +3,7 @@ package studentlife.view;
 import studentlife.controller.GameController;
 import studentlife.core.Day;
 import studentlife.core.Schedule;
-import studentlife.core.events.Cours;
-import studentlife.core.events.Evenement;
-import studentlife.core.events.Pause;
-import studentlife.core.events.PauseType;
+import studentlife.core.events.*;
 
 import java.util.Scanner;
 
@@ -53,6 +50,10 @@ public class Game {
 
     public void manageCours(Cours cours) {
         System.out.println("Cours de " + cours.getMatiere().getNom());
+        System.out.println("Quiz dans " + cours.getNom() + " " + cours.getMatiere().getNom());
+        if(cours.getTypeCours().equals(CoursType.TD)){
+            cours.getMatiere().getListeQuiz().get(0).realiserQuiz();
+        }
     }
 
     public void managePause(Pause pause) {
