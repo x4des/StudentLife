@@ -30,7 +30,7 @@ public class StatsManager {
             return false;
         }
 
-        statsMap.get(STAT_FATIGUE).updateValue(statsMap.get(STAT_FAIM),);
+        //statsMap.get(STAT_FATIGUE).updateValue(statsMap.get(STAT_FAIM),);
         return true;
     }
 

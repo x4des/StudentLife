@@ -84,10 +84,7 @@ public class GameController {
     }
 
     private void addNewQuiz(){
-        subjectList.get(1).addQuiz(new Quiz("1+1 = ? ", "2", subjectList.get(1)));
-        subjectList.get(1).getListeQuiz().get(0).setUneReponse("3");
-        subjectList.get(1).getListeQuiz().get(0).setUneReponse("4");
-        subjectList.get(1).getListeQuiz().get(0).setUneReponse("811");
+        subjectList.get(1).addQuiz(new Quiz("1+1 = ? ", "2", subjectList.get(1), "3","4","811"));
     }
 
 }
