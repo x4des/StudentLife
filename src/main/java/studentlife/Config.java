@@ -12,6 +12,7 @@ public class Config {
 
 
     public static final String STAT_MASTERY = "";
+    
     // ... etc
 
 
