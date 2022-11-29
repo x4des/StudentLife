@@ -121,7 +121,7 @@ public class GameController {
 
     }
 
-    /*
+
     private void loadSchedule(){
         String tiret = "";
         String pause = "Pause";
@@ -135,10 +135,11 @@ public class GameController {
 
             this.schedule = new Schedule;
             while ((line = br.readLine()) != null) {
-                String[] cours = line.split(csvSplitBy);
+
                 Day jour = new Day;
                 Schedule.add(jour);
-                while (cours[0].equals(tiret)){
+                while (line = br.readLine() != null && cours[0].equals(tiret)){
+                        String[] cours = line.split(csvSplitBy);
                     if(!(cours[0].equals(pause))){
                         while(this.profList.get(i).getNom().equals(cours[2]) && i<=profList.size()){
                             i++;
@@ -167,6 +168,6 @@ public class GameController {
             e.printStackTrace();
         }
     }
-*/
+
 
 }
