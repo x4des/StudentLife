@@ -33,15 +33,15 @@ public class Stat {
         this.value = value;
     }
 
-    public void updateValue(int value){ //increases the value
-        if (this.value + value < MIN_STAT){
+    public void updateValue(int value) { //increases the value
+        if (this.value + value < MIN_STAT) {
             this.value = MIN_STAT;
-        }else if (this.value + value > MAX_STAT){
+        } else if (this.value + value > MAX_STAT) {
             this.value = MAX_STAT;
-        }else {
+        } else {
             this.value += value;
         }
-
+    }
     /*public void updateValue(@NotNull Stat stat, char operation){ //augmente ou diminue la valeur d'une stat en fonction d'une autre stat
         int newval = (int)(stat.value*PRCNT);
 

@@ -25,12 +25,14 @@ public class StatsManager {
 
     public boolean updateStat(Stat stat, String operator) {
 
-        if(!statsMap.containsKey(statName))
+        if(!statsMap.containsKey(stat))
             return false;
 
-        statsMap.get(statName).updateValue(stats, operator);
+        //statsMap.get(stat).updateValue(stat, operator);
         return true;
     }
+
+
     public boolean updateFatigue(char operator) {
 
 
@@ -38,7 +40,7 @@ public class StatsManager {
             return false;
         }
 
-        statsMap.get(STAT_FATIGUE).updateValue(statsMap.get(STAT_FAIM),operator); // operator = '+' ou '-' selon les modifi a faire
+        //statsMap.get(STAT_FATIGUE).updateValue(statsMap.get(STAT_FAIM),operator); // operator = '+' ou '-' selon les modifi a faire
         return true;
     }
 

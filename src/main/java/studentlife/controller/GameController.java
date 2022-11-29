@@ -20,11 +20,11 @@ public class GameController {
     private final ArrayList<Professeur> profList = new ArrayList<>();
     private final Schedule schedule;
 
-    public GameController(){
+    public GameController() {
         this.schedule = new Schedule();
     }
 
-    public void initGame(String userLastName, String userFirstName){
+    public void initGame(String userLastName, String userFirstName) {
         user = new Etudiant(userLastName, userFirstName);
         createProfs();
         createSubjects();
@@ -53,12 +53,11 @@ public class GameController {
     }
 
 
-    
-    private void createSchedule(){
+    private void createSchedule() {
         createDay1();
     }
 
-    private void createSubjects(){
+    private void createSubjects() {
 
         subjectList.add(new Matiere("Introduction aux systemes d'information")); //0
         subjectList.add(new Matiere("Connaissance de l'entreprise")); //1
@@ -71,14 +70,14 @@ public class GameController {
 
     }
 
-    public void subjectsMastery(){
+    public void subjectsMastery() {
         System.out.println("Les stats dans les matières:");
-        for (Matiere subject : subjectList){
+        for (Matiere subject : subjectList) {
             System.out.println(subject.toString());
         }
     }
 
-    private void createProfs(){
+    private void createProfs() {
         profList.add(new Professeur("Rooney", "Wayne")); //0
         profList.add(new Professeur("Darko", "Donnie")); //1
         profList.add(new Professeur("Snow", "Jon")); //2
@@ -88,44 +87,42 @@ public class GameController {
         profList.add(new Professeur("Ventura", "Ace")); //6
     }
 
-    private void addNewQuiz(){
+    private void addNewQuiz() {
         //ISI
-        subjectList.get(0).addQuiz(new Quiz("Un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet","un etat initial unique","un etat final unique"));
+        subjectList.get(0).addQuiz(new Quiz("Un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet", "un etat initial unique", "un etat final unique"));
         subjectList.get(0).addQuiz(new Quiz("Une transition \"puits\" : ", " ne produit rien, se contente de consommer", subjectList.get(0), "ne consomme rien, se contente de produire", "est toujours déclenchable", "possède absolument un arc inhibiteur"));
-        subjectList.get(0).addQuiz(new Quiz("Un automate est deterministe si", "Il possède un unique état initial", subjectList.get(0), "Il possède des epsilon-transitions","Il possède une seule epsilon-transition","Il est complet"));
-        subjectList.get(0).addQuiz(new Quiz("Un automate est standard si ", "Il est unitaire et possede un unique état initial", subjectList.get(0), "Il est complet et deterministe","Il est fini","Il n'y pas de transition sur vers son etat initial"));
+        subjectList.get(0).addQuiz(new Quiz("Un automate est deterministe si", "Il possède un unique état initial", subjectList.get(0), "Il possède des epsilon-transitions", "Il possède une seule epsilon-transition", "Il est complet"));
+        subjectList.get(0).addQuiz(new Quiz("Un automate est standard si ", "Il est unitaire et possede un unique état initial", subjectList.get(0), "Il est complet et deterministe", "Il est fini", "Il n'y pas de transition sur vers son etat initial"));
         //CE
-        subjectList.get(1).addQuiz(new Quiz("Une societe anonyme SA cotée sur la bourse doit avoir un minimum de:", "7 associes", subjectList.get(1), "2 associes","Pas de minimum","8 associes"));
-        subjectList.get(1).addQuiz(new Quiz("Quel organisme calcule et diffuse l'indice des prix","INSEE", subjectList.get(1), "FISC","INTERPOL","CNOUS"));
-        subjectList.get(1).addQuiz(new Quiz("Lequel des suivants est correct", "les SCOP et SCIC sont des CAE", subjectList.get(1), "Une SARL est une SA a responsabiite limitee","Une association est une societe a but non lucratif","Une µEntreprise possede au plus 20 employes"));
+        subjectList.get(1).addQuiz(new Quiz("Une societe anonyme SA cotée sur la bourse doit avoir un minimum de:", "7 associes", subjectList.get(1), "2 associes", "Pas de minimum", "8 associes"));
+        subjectList.get(1).addQuiz(new Quiz("Quel organisme calcule et diffuse l'indice des prix", "INSEE", subjectList.get(1), "FISC", "INTERPOL", "CNOUS"));
+        subjectList.get(1).addQuiz(new Quiz("Lequel des suivants est correct", "les SCOP et SCIC sont des CAE", subjectList.get(1), "Une SARL est une SA a responsabiite limitee", "Une association est une societe a but non lucratif", "Une µEntreprise possede au plus 20 employes"));
         //POO
-        subjectList.get(2).addQuiz(new Quiz("Une classe est:", "Du code source ", subjectList.get(2), "Un objet avec des attributs et des methodes","une interface avec des methodes non abstraites","abstraite quand elle possede un constructeur abstrait"));
-        subjectList.get(2).addQuiz(new Quiz("L'agregation:", "est plus forte que l'association", subjectList.get(2), "est moins forte que l'association","est synonyme de l'association","depend de l'association"));
-        subjectList.get(2).addQuiz(new Quiz("en UML, quel signe caractere represente un package", "~", subjectList.get(2), "+","$","#"));
-        subjectList.get(2).addQuiz(new Quiz("Une interface ne fait pas partie du framework collection en Java", "Group", subjectList.get(2), "Collection","List","Set"));
+        subjectList.get(2).addQuiz(new Quiz("Une classe est:", "Du code source ", subjectList.get(2), "Un objet avec des attributs et des methodes", "une interface avec des methodes non abstraites", "abstraite quand elle possede un constructeur abstrait"));
+        subjectList.get(2).addQuiz(new Quiz("L'agregation:", "est plus forte que l'association", subjectList.get(2), "est moins forte que l'association", "est synonyme de l'association", "depend de l'association"));
+        subjectList.get(2).addQuiz(new Quiz("en UML, quel signe caractere represente un package", "~", subjectList.get(2), "+", "$", "#"));
+        subjectList.get(2).addQuiz(new Quiz("Une interface ne fait pas partie du framework collection en Java", "Group", subjectList.get(2), "Collection", "List", "Set"));
         //IF
-        subjectList.get(3).addQuiz(new Quiz("Lequel n'est pas vrai:", "Un ordre est noetherien s'il est bien fonde", subjectList.get(3), "Un ordre est bien fonde si et seulement s'il est noetherien","Un ordre est bien fonde si tout partie non vide admet au moins un element minimal","Un ordre est noetherien s'il ne possede pas de chaine infinie strictement decroissante"));
-        subjectList.get(3).addQuiz(new Quiz("Lequel est vrai", "Une fonction continue n'est pas necessairement derivable", subjectList.get(3), "Un isomorphisme d'ordre est un morphisme non bijectif","La double implication n'implique pas toujours qu'il y a l'egalite","Un ordre est strict s'il est reflexif"));
-        subjectList.get(3).addQuiz(new Quiz("Un ensemble ordonne est dit inductif si", "toute chaine admet un majorant", subjectList.get(3), "Tout ensemble ordonne inductif possede un majorant","son application est bijective","son application n'est pas surjective"));
+        subjectList.get(3).addQuiz(new Quiz("Lequel n'est pas vrai:", "Un ordre est noetherien s'il est bien fonde", subjectList.get(3), "Un ordre est bien fonde si et seulement s'il est noetherien", "Un ordre est bien fonde si tout partie non vide admet au moins un element minimal", "Un ordre est noetherien s'il ne possede pas de chaine infinie strictement decroissante"));
+        subjectList.get(3).addQuiz(new Quiz("Lequel est vrai", "Une fonction continue n'est pas necessairement derivable", subjectList.get(3), "Un isomorphisme d'ordre est un morphisme non bijectif", "La double implication n'implique pas toujours qu'il y a l'egalite", "Un ordre est strict s'il est reflexif"));
+        subjectList.get(3).addQuiz(new Quiz("Un ensemble ordonne est dit inductif si", "toute chaine admet un majorant", subjectList.get(3), "Tout ensemble ordonne inductif possede un majorant", "son application est bijective", "son application n'est pas surjective"));
         //MI
-        subjectList.get(4).addQuiz(new Quiz("Une relation est binaire si elle est:", "Reflexive, antisymmetrique, transitive", subjectList.get(4), "Reflexive, symmetrique, transitive","Reflexive, asymmetrique, transitive","Antireflexive, antisymmetrique, transitive"));
-        subjectList.get(4).addQuiz(new Quiz("La limite de Ln(x) en -infini: ", "n'existe pas", subjectList.get(4), "0","-ifnini","1"));
+        subjectList.get(4).addQuiz(new Quiz("Une relation est binaire si elle est:", "Reflexive, antisymmetrique, transitive", subjectList.get(4), "Reflexive, symmetrique, transitive", "Reflexive, asymmetrique, transitive", "Antireflexive, antisymmetrique, transitive"));
+        subjectList.get(4).addQuiz(new Quiz("La limite de Ln(x) en -infini: ", "n'existe pas", subjectList.get(4), "0", "-ifnini", "1"));
         //ASD
-        subjectList.get(5).addQuiz(new Quiz("le stack est:", "LIFO", subjectList.get(5), "FIFO","accessible dynamiquement","plus lent en acces que le heap"));
-        subjectList.get(5).addQuiz(new Quiz("Choisir l'affirmation correcte:", "les elements d'une liste chainée sont de même type", subjectList.get(5), "Il faut allouer de la memoire dynamique dans le stack pour les tableaux dynamiques","l'operateur \"->\" equivaut à &ptr","La taille d'un int depend uniquement de la machine"));
+        subjectList.get(5).addQuiz(new Quiz("le stack est:", "LIFO", subjectList.get(5), "FIFO", "accessible dynamiquement", "plus lent en acces que le heap"));
+        subjectList.get(5).addQuiz(new Quiz("Choisir l'affirmation correcte:", "les elements d'une liste chainée sont de même type", subjectList.get(5), "Il faut allouer de la memoire dynamique dans le stack pour les tableaux dynamiques", "l'operateur \"->\" equivaut à &ptr", "La taille d'un int depend uniquement de la machine"));
         //ANG
-        subjectList.get(6).addQuiz(new Quiz("The Earth is ...(hold) by the gravity of the Sun and orbits around it", "held", subjectList.get(6), "being held","holded","being holded"));
-        
+        subjectList.get(6).addQuiz(new Quiz("The Earth is ...(hold) by the gravity of the Sun and orbits around it", "held", subjectList.get(6), "being held", "holded", "being holded"));
+
 
     }
 
-<<<<<<< Updated upstream
 
-=======
     public ArrayList<Matiere> getSubjectList() {
         return subjectList;
     }
-
+}
     /*
 >>>>>>> Stashed changes
     private void loadSchedule(){
@@ -176,4 +173,4 @@ public class GameController {
     }
 
 
-}
+*/

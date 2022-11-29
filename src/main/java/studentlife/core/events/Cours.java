@@ -43,6 +43,10 @@ public class Cours implements Evenement {
         }
     }
 
+    public void finaliserEvenement(Etudiant user, boolean valid) {
+    }
+
+    /*
     @Override
     public void finaliserEvenement(Etudiant user, boolean valid){
        Stat faim = user.stats.statsMap.get(STAT_FAIM);
@@ -67,12 +71,13 @@ public class Cours implements Evenement {
         if (faim.value >= 80 && faim.value <= 100 && && fatigue.val >= 90 && fatigue.val < 100 ){
             fatigue.updateStats(faim,'+');
         }
-        */
-         */
+
+
 
         //modif de la stats attention qui est complementaire a la stats fatigue
         Stat attention =user.stats.statsMap.get(STAT_ATTENTION);
         int minusAttention = (attention.MAX_STAT )- fatigue.value;
         attention.setValue(minusAttention);
     }
+    */
 }
