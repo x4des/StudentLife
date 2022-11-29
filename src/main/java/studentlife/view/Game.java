@@ -40,9 +40,6 @@ public class Game {
         for (Day day : gameController.getSchedule().getWeek()) {
             for (Evenement event : day.getEvenements()) {
                 manageEvent(event);
-                System.out.println("entrez");
-                Scanner scanner = new Scanner(System.in);
-                String rep = scanner.nextLine();
 
 
 

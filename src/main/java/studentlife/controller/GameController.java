@@ -84,10 +84,81 @@ public class GameController {
     }
 
     private void addNewQuiz(){
-        subjectList.get(1).addQuiz(new Quiz("1+1 = ? ", "2", subjectList.get(1)));
-        subjectList.get(1).getListeQuiz().get(0).setUneReponse("3");
-        subjectList.get(1).getListeQuiz().get(0).setUneReponse("4");
-        subjectList.get(1).getListeQuiz().get(0).setUneReponse("811");
+        //ISI
+        subjectList.get(0).addQuiz(new Quiz("un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet","un etat initial unique","un etat final unique"));
+        subjectList.get(0).addQuiz(new Quiz("le cardinal (?,?) sur E1 signifie ", "que E1 depend d'une autre entite, ", subjectList.get(0), "qu'il s'agit d'une entité dominante","qu'il y a plusieurs cadinaux possibles","que la cle E1 est absorbee par une autre entite"));
+        subjectList.get(0).addQuiz(new Quiz("un automate est deterministe si", "Il possède un unique état initial", subjectList.get(0), "Il possède des epsilon-transitions","Il possède une seule epsilon-transition","Il est complet"));
+        subjectList.get(0).addQuiz(new Quiz("un automate est standard si ", "Il est unitaire et possede un unique etat initial", subjectList.get(0), "Il est complet et deterministe","Il est fini","Il n'y pas de transition sur vers son etat initial"));
+        //CE
+        subjectList.get(1).addQuiz(new Quiz("Une societe anonyme SA cotee sur la bourse doit avoir un minimum de:", "7 associes", subjectList.get(1), "2 associes","Pas de minimum","8 associes"));
+        subjectList.get(1).addQuiz(new Quiz("Quel organisme calcule et diffuse l'indice des prix","INSEE", subjectList.get(1), "FISC","INTERPOL","CNOUS"));
+        subjectList.get(1).addQuiz(new Quiz("Lequel des suivants est correct", "les SCOP et SCIC sont des CAE", subjectList.get(1), "Une SARL est une SA a responsabiite limitee","Une association est une societe a but non lucratif","Une µEntreprise possede au plus 20 employes"));
+        //POO
+        subjectList.get(2).addQuiz(new Quiz("Une classe est:", "Du code source ", subjectList.get(2), "Un objet avec des attributs et des methodes","une interface avec des methodes non abstraites","abstraite quand elle possede un constructeur abstrait"));
+        subjectList.get(2).addQuiz(new Quiz("L'agregation:", "est plus forte que l'association", subjectList.get(2), "est moins forte que l'association","est synonyme de l'association","depend de l'association"));
+        subjectList.get(2).addQuiz(new Quiz("en UML, quel signe caractere represente un package", "~", subjectList.get(2), "+","$","#"));
+        subjectList.get(2).addQuiz(new Quiz("Une interface ne fait pas partie du framework collection en Java", "Group", subjectList.get(2), "Collection","List","Set"));
+        //IF
+        subjectList.get(3).addQuiz(new Quiz("Lequel n'est pas vrai:", "Un ordre est noetherien s'il est bien fonde", subjectList.get(3), "Un ordre est bien fonde si et seulement s'il est noetherien","Un ordre est bien fonde si tout partie non vide admet au moins un element minimal","Un ordre est noetherien s'il ne possede pas de chaine infinie strictement decroissante"));
+        subjectList.get(3).addQuiz(new Quiz("Lequel est vrai", "Une fonction continue n'est pas necessairement derivable", subjectList.get(3), "Un isomorphisme d'ordre est un morphisme non bijectif","La double implication n'implique pas toujours qu'il y a l'egalite","Un ordre est strict s'il est reflexif"));
+        subjectList.get(3).addQuiz(new Quiz("Un ensemble ordonne est dit inductif si", "toute chaine admet un majorant", subjectList.get(3), "Tout ensemble ordonne inductif possede un majorant","son application est bijective","son application n'est pas surjective"));
+        //MI
+        subjectList.get(4).addQuiz(new Quiz("Une relation est binaire si elle est:", "Reflexive, antisymmetrique, transitive", subjectList.get(4), "Reflexive, symmetrique, transitive","Reflexive, asymmetrique, transitive","Antireflexive, antisymmetrique, transitive"));
+        subjectList.get(4).addQuiz(new Quiz("La limite de Ln(x) en -infini: ", "n'existe pas", subjectList.get(4), "0","-ifnini","1"));
+        //ASD
+        subjectList.get(5).addQuiz(new Quiz("le stack est:", "LIFO", subjectList.get(5), "FIFO","accessible dynamiquement","plus lent en acces que le heap"));
+        subjectList.get(5).addQuiz(new Quiz("Choisir l'affirmation correcte:", "les elements de la liste chainee sont de meme type", subjectList.get(5), "Il faut allouer de la memoire dynamique dans le stack pour les tableaux dynamique","l'operateur-> equivaut a &ptr","La taille d'un int depend uniquement de la machine"));
+        //ANG
+        subjectList.get(6).addQuiz(new Quiz("The Earth is ...(hold) by the gravity of the Sun and orbits around it", "held", subjectList.get(6), "being held","holded","being holded"));
+        
+
     }
+
+    private void loadSchedule(){
+        String tiret = "";
+        String pause = "Pause";
+        String csvFile = "/home/enzo/Bureau/test/edt.csv";
+        String line = "";
+        String csvSplitBy = ",";
+        int i = 0, j = 1;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+
+            this.schedule = new Schedule;
+            while ((line = br.readLine()) != null) {
+                String[] cours = line.split(csvSplitBy);
+                Day jour = new Day;
+                Schedule.add(jour);
+                while (cours[0].equals(tiret)){
+                    if(!(cours[0].equals(pause))){
+                        while(this.profList.get(i).getNom().equals(cours[2]) && i<=profList.size()){
+                            i++;
+                        }
+                        while(this.subjectList.get(j).getNom.equals(cours[0]) && j<=subjectList.size()){
+                            j++;
+                        }
+                        if(Cours[1].equals("CM")){
+                            jour.addEvenement(new Cours(CoursType.CM, this.subjectList.get(j), this.profList.get(i)));
+                        }
+                        if(Cours[1].equals("TD")){
+                            jour.addEvenement(new Cours(CoursType.TD, this.subjectList.get(j), this.profList.get(i)));
+                        }
+                        if(Cours[1].equals("TP")){
+                            jour.addEvenement(new Cours(CoursType.TP, this.subjectList.get(j), this.profList.get(i)));
+                        }
+                    }
+                    else{
+                        jour.addEvenement(new Pause());
+                    }
+                }
+                this.schedule.add(jour);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

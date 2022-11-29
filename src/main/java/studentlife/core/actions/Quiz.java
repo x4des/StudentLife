@@ -10,9 +10,12 @@ public class Quiz {
     private int reponseUser;
     private Matiere matiere;
 
-    public Quiz(String question, String reponseCorrecte, Matiere matiere){
+    public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3, String r4){
         this.question = question;
         this.reponses = new ArrayList<String>();
+        this.reponses.add(r2);
+        this.reponses.add(r3);
+        this.reponses.add(r4);
         this.reponseCorrecte = reponseCorrecte;
         this.reponseUser = 0;
         this.matiere = matiere;
@@ -24,13 +27,6 @@ public class Quiz {
 
     public String getReponseCorrecte() {
         return this.reponseCorrecte;
-    }
-
-    //On aura 3 reponses fausse a ajouter
-    public void setUneReponse(String reponse) {
-        if(this.reponses.size() < 3) {
-            this.reponses.add(reponse);
-        };
     }
 
     //retourne les reponses correctes et incorrectes

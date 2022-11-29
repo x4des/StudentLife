@@ -50,8 +50,9 @@ public class Cours implements Evenement {
 
        //modification de la stat fatigue par rapport a la stat faim
         Stat fatigue =user.stats.statsMap.get(STAT_FATIGUE);
+        fatigue.updateStats(faim, '+');
 
-        if (faim.value >= 0 && faim.value <= 20 && fatigue.val >= 0 &&fatigue.val < 9 ) {
+        /*if (faim.value >= 0 && faim.value <= 20 && fatigue.val >= 0 &&fatigue.val < 9 ) {
             fatigue.updateStats(faim, '+');
         }
         if (faim.value > 20 && faim.value <= 40 && fatigue.val >= 9 &&fatigue.val < 27 ){
@@ -66,6 +67,8 @@ public class Cours implements Evenement {
         if (faim.value >= 80 && faim.value <= 100 && && fatigue.val >= 90 && fatigue.val < 100 ){
             fatigue.updateStats(faim,'+');
         }
+        */
+         */
 
         //modif de la stats attention qui est complementaire a la stats fatigue
         Stat attention =user.stats.statsMap.get(STAT_ATTENTION);

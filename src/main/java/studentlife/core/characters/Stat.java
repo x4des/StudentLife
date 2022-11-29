@@ -1,6 +1,6 @@
 package studentlife.core.characters;
 
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 public class Stat {
 
@@ -42,7 +42,7 @@ public class Stat {
             this.value += value;
         }
 
-    public void updateValue(@NotNull Stat stat, char operation){ //augmente ou diminue la valeur d'une stat en fonction d'une autre stat
+    /*public void updateValue(@NotNull Stat stat, char operation){ //augmente ou diminue la valeur d'une stat en fonction d'une autre stat
         int newval = (int)(stat.value*PRCNT);
 
         if (operation == '+'){
@@ -61,7 +61,7 @@ public class Stat {
             }
         }
 
-    }
+    }*/
 
 
 
