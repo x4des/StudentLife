@@ -92,10 +92,10 @@ public class GameController {
 
     private void addNewQuiz(){
         //ISI
-        subjectList.get(0).addQuiz(new Quiz("un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet","un etat initial unique","un etat final unique"));
+        subjectList.get(0).addQuiz(new Quiz("Un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet","un etat initial unique","un etat final unique"));
         subjectList.get(0).addQuiz(new Quiz("Une transition \"puits\" : ", " ne produit rien, se contente de consommer", subjectList.get(0), "ne consomme rien, se contente de produire", "est toujours déclenchable", "possède absolument un arc inhibiteur"));
-        subjectList.get(0).addQuiz(new Quiz("un automate est deterministe si", "Il possède un unique état initial", subjectList.get(0), "Il possède des epsilon-transitions","Il possède une seule epsilon-transition","Il est complet"));
-        subjectList.get(0).addQuiz(new Quiz("un automate est standard si ", "Il est unitaire et possede un unique état initial", subjectList.get(0), "Il est complet et deterministe","Il est fini","Il n'y pas de transition sur vers son etat initial"));
+        subjectList.get(0).addQuiz(new Quiz("Un automate est deterministe si", "Il possède un unique état initial", subjectList.get(0), "Il possède des epsilon-transitions","Il possède une seule epsilon-transition","Il est complet"));
+        subjectList.get(0).addQuiz(new Quiz("Un automate est standard si ", "Il est unitaire et possede un unique état initial", subjectList.get(0), "Il est complet et deterministe","Il est fini","Il n'y pas de transition sur vers son etat initial"));
         //CE
         subjectList.get(1).addQuiz(new Quiz("Une societe anonyme SA cotée sur la bourse doit avoir un minimum de:", "7 associes", subjectList.get(1), "2 associes","Pas de minimum","8 associes"));
         subjectList.get(1).addQuiz(new Quiz("Quel organisme calcule et diffuse l'indice des prix","INSEE", subjectList.get(1), "FISC","INTERPOL","CNOUS"));
