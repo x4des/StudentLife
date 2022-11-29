@@ -104,7 +104,7 @@ public class Quiz {
                 }
 
                 System.out.println("Votre réponse " + reponse);
-                if ((reponse) == reponses.indexOf(reponseCorrecte)) {
+                if ((reponse-1) == reponses.indexOf(reponseCorrecte)) {
                 System.out.println(" est correcte");
                 matiere.getMastery().updateValue(10);
                 } else {

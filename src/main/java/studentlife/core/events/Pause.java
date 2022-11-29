@@ -1,16 +1,29 @@
 package studentlife.core.events;
 
+import studentlife.core.Matiere;
 import studentlife.core.characters.Etudiant;
 
 public class Pause implements Evenement {
 
     private PauseType pauseType;
-
+    private Matiere subject;
     public Pause() {}
+    public Pause(PauseType pause) {
+        pauseType = pause;
+    }
+
+    public Pause(PauseType pause, Matiere subject) {
+        pauseType = pause;
+        this.subject = subject;
+    }
+
+
 
     public void setPauseType(PauseType pauseType) {
        this.pauseType = pauseType;
     }
+
+
 
     @Override
     public void finaliserEvenement(Etudiant utilisateur, boolean valid) {
@@ -20,6 +33,7 @@ public class Pause implements Evenement {
             Stat attention = user.stats.statsMap.get(STAT_ATTENTION);
             case REPAS:
 
+<<<<<<< Updated upstream
                 faim.setValue( faim.value -20);
 
                 //diminution de la stat fatigue par rapport a la value de faim
@@ -44,6 +58,8 @@ public class Pause implements Evenement {
             // augmentation de l'attention qui est proportionelle a la fatigue
                 int plusAttentionRepas = (attention.MAX_STAT )- fatigue.value;
                 attention.setValue(plusAttentionRepas);
+=======
+>>>>>>> Stashed changes
                 break;
 
 
@@ -58,8 +74,18 @@ public class Pause implements Evenement {
 
 
             case REVISION:
-                // RESOLVE PAUSE REVISION
+                faireRevision(utilisateur);
                 break;
         }
     }
+
+
+    private void faireRevision(Etudiant utilisateur) throws RuntimeException{
+            if (subject == null){
+                throw new RuntimeException("Il faut une matière à réviser");
+            }
+            subject.getMastery().updateValue(10);
+
+    }
+
 }

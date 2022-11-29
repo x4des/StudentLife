@@ -78,8 +78,6 @@ public class GameController {
         }
     }
 
-
-
     private void createProfs(){
         profList.add(new Professeur("Rooney", "Wayne")); //0
         profList.add(new Professeur("Darko", "Donnie")); //1
@@ -121,7 +119,15 @@ public class GameController {
 
     }
 
+<<<<<<< Updated upstream
 
+=======
+    public ArrayList<Matiere> getSubjectList() {
+        return subjectList;
+    }
+
+    /*
+>>>>>>> Stashed changes
     private void loadSchedule(){
         String tiret = "";
         String pause = "Pause";
