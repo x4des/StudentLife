@@ -7,10 +7,14 @@ import studentlife.core.actions.Quiz;
 import studentlife.core.characters.Etudiant;
 import studentlife.core.characters.Professeur;
 import studentlife.core.events.Cours;
+import studentlife.core.events.CoursType;
 import studentlife.core.events.Evenement;
 import studentlife.core.events.Pause;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import static studentlife.core.events.CoursType.*;
 
@@ -122,10 +126,8 @@ public class GameController {
     public ArrayList<Matiere> getSubjectList() {
         return subjectList;
     }
-}
-    /*
->>>>>>> Stashed changes
-    private void loadSchedule(){
+
+    private void loadSchedule() {
         String tiret = "";
         String pause = "Pause";
         String csvFile = "/home/enzo/Bureau/test/edt.csv";
@@ -136,41 +138,39 @@ public class GameController {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
 
-            this.schedule = new Schedule;
             while ((line = br.readLine()) != null) {
 
                 Day jour = new Day;
                 Schedule.add(jour);
-                while (line = br.readLine() != null && cours[0].equals(tiret)){
-                        String[] cours = line.split(csvSplitBy);
-                    if(!(cours[0].equals(pause))){
-                        while(this.profList.get(i).getNom().equals(cours[2]) && i<=profList.size()){
+                String[] cours;
+                while (line = br.readLine() != null && cours[0].equals(tiret)) {
+                    cours = line.split(csvSplitBy);
+                    if (!(cours[0].equals(pause))) {
+                        while (this.profList.get(i).getNom().equals(cours[2]) && i <= profList.size()) {
                             i++;
                         }
-                        while(this.subjectList.get(j).getNom.equals(cours[0]) && j<=subjectList.size()){
+                        while (this.subjectList.get(j).getNom().equals(cours[0]) && j <= subjectList.size()) {
                             j++;
                         }
-                        if(Cours[1].equals("CM")){
-                            jour.addEvenement(new Cours(CoursType.CM, this.subjectList.get(j), this.profList.get(i)));
+                        if (cours[1].equals("CM")) {
+                            jour.addEvenement(new Cours(CoursType.CM, this.profList.get(i) ,this.subjectList.get(j)));
                         }
-                        if(Cours[1].equals("TD")){
-                            jour.addEvenement(new Cours(CoursType.TD, this.subjectList.get(j), this.profList.get(i)));
+                        if (cours[1].equals("TD")) {
+                            jour.addEvenement(new Cours(CoursType.TD, this.profList.get(i) ,this.subjectList.get(j)));
                         }
-                        if(Cours[1].equals("TP")){
-                            jour.addEvenement(new Cours(CoursType.TP, this.subjectList.get(j), this.profList.get(i)));
+                        if (cours[1].equals("TP")) {
+                            jour.addEvenement(new Cours(CoursType.TP, this.profList.get(i) ,this.subjectList.get(j)));
                         }
-                    }
-                    else{
+                    } else {
                         jour.addEvenement(new Pause());
                     }
                 }
-                this.schedule.add(jour);
+                this.schedule.addDay(jour);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+}
 
-
-*/
