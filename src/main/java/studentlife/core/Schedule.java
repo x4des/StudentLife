@@ -1,23 +1,49 @@
+package studentlife.core;
+
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
+public class Schedule {
+
+    private static final int MAX_DAYS = 5;
+    private final String[] weekDays;
+
+    private ArrayList<Day> week;
 
 
-//Un EDT est une représentation sur une semaine, donc composé de plusieurs Jour
-public class EDT {
-    private ArrayList<ArrayList<Creneaux>> emploisDuTemps;
 
-    public EDT() {
-        this.emploisDuTemps = new ArrayList<ArrayList<Creneaux>>();
-        for (int i = 0; i < 6; i++)  {
-            this.emploisDuTemps.add(new ArrayList<>());
-        }
+    public Schedule() {
+        this.week = new ArrayList<>();
+        this.weekDays = new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"};
     }
 
-    public ArrayList<ArrayList<Creneaux>> getEmploisDuTemps(){
-        return this.emploisDuTemps;
+    public Schedule(String csvPath) {
+        this.weekDays =new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"};
+        this.loadEDT(csvPath);
     }
+
+    public void addDay(Day day) {
+
+        if(week.size() >= MAX_DAYS)
+            return;
+
+        week.add(day);
+    }
+
+    public String getWeekday(int i){
+        return weekDays[i];
+    }
+
+    public ArrayList<Day> getWeek() {
+        return week;
+    }
+
+    private void loadEDT(String path) {
+
+        this.week = new ArrayList<>();
+        // TO DO
+    }
+
+    /*
     public void lireDoc(){
         String csvFile = "/home/enzo/Bureau/test/edt.csv";
         String line = "";
@@ -48,4 +74,5 @@ public class EDT {
                 this.emploisDuTemps.get(i).get(j).writte();
         }
     }
+    */
 }

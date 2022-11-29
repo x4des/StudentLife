@@ -1,3 +1,5 @@
+package studentlife.core.actions;
+
 import java.util.ArrayList;
 public class Action {
     private String Scenario;

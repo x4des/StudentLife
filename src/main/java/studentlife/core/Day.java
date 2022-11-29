@@ -1,21 +1,19 @@
+package studentlife.core;
+
+import studentlife.core.events.Evenement;
+
 import java.util.ArrayList;
 
 //Un jour sera composé d'evenements mais ne sera représenté pour l'instant que comme: Jour 1, Jour 2...
-public class Jour {
-    private int numeroJour;
+public class Day {
     private ArrayList<Evenement> evenements;
 
-    public Jour(int numeroJour, ArrayList<Evenement> evenements) {
-        this.numeroJour = numeroJour;
+    public Day() {
+        this.evenements = new ArrayList<>();
+    }
+
+    public Day(ArrayList<Evenement> evenements) {
         this.evenements = evenements;
-    }
-
-    public int getNumeroJour() {
-        return numeroJour;
-    }
-
-    public void setNumeroJour(int numeroJour) {
-        this.numeroJour = numeroJour;
     }
 
     public ArrayList<Evenement> getEvenements() {
@@ -25,4 +23,6 @@ public class Jour {
     public void setEvenements(ArrayList<Evenement> evenements) {
         this.evenements = evenements;
     }
+
+    public void addEvenement(Evenement evenement) { evenements.add(evenement); }
 }
