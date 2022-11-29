@@ -1,35 +1,40 @@
-"Introduction aux systèmes d'informations","CM","Rooney"
-"Connaissance de l'entreprise","TD","Rooney"
-"Pause","",""
-"Pause","",""
-"Pause","",""
-"Programmation orientée objet","TD","Rooney"
-"Introduction aux systèmes d'informations","TD","Rooney"
-"Informatique fondamentale","CM","Rooney"
-"Mathématiques pour l'informatique","CM","Rooney"
-"Algorithmique et structure de données","TD","Rooney"
-"Pause,"",""
-"Programmation orientée objet","TP","Rooney"
-"Programmation orientée objet","TD","Rooney"
-"Introduction aux systèmes d'informations","TD","Rooney"
-"Anglais scientifique général","TD","Rooney"
-"Programmation orientée objet","CM","Rooney"
-"Pause,"",""
-"Pause,"",""
-"Algorithmique et structure de données","TD","Rooney"
-"Informatique fondamentale","TD","Rooney"
-"Introduction aux systèmes d'informations","TP","Rooney"
-"Pause,"",""
-"Connaissance de l'entreprise","TD","Rooney"
-"Connaissance de l'entreprise","TD","Rooney"
-"Pause,"",""
-"Pause,"",""
-"Pause,"",""
-"Pause,"",""
-"Pause,"",""
-"Pause,"",""
-"Mathématiques pour l'informatique","TD","Rooney"
-"Pause,"",""
-"Informatique fondamentale","TP","Rooney"
-"Pause,"",""
-"Pause,"",""
+Introduction aux systèmes d'informations,CM,Rooney
+Connaissance de l'entreprise,TD,Rooney
+Pause,
+Pause,
+Pause,
+Programmation orientée objet,TD,Rooney
+Introduction aux systèmes d'informations,TD,Rooney
+-
+Informatique fondamentale,CM,Rooney
+Mathématiques pour l'informatique,CM,Rooney
+Algorithmique et structure de données,TD,Rooney
+Pause,
+Programmation orientée objet,TP,Rooney
+Programmation orientée objet,TD,Rooney
+Introduction aux systèmes d'informations,TD,Rooney
+-
+Anglais scientifique général,TD,Rooney
+Programmation orientée objet,CM,Rooney
+Pause,
+Pause,
+Algorithmique et structure de données,TD,Rooney
+Informatique fondamentale,TD,Rooney
+Introduction aux systèmes d'informations,TP,Rooney
+-
+Pause,
+Connaissance de l'entreprise,TD,Rooney
+Connaissance de l'entreprise,TD,Rooney
+Pause,
+Pause,
+Pause,
+Pause,
+-
+Pause,
+Pause,
+Mathématiques pour l'informatique,TD,Rooney
+Pause,
+Informatique fondamentale,TP,Rooney
+Pause,
+Pause,
+-

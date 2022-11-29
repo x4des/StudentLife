@@ -32,7 +32,8 @@ public class GameController {
         user = new Etudiant(userLastName, userFirstName);
         createProfs();
         createSubjects();
-        createSchedule();
+        //createSchedule();
+        loadSchedule();
         addNewQuiz();
     }
 
@@ -63,7 +64,7 @@ public class GameController {
 
     private void createSubjects() {
 
-        subjectList.add(new Matiere("Introduction aux systemes d'information")); //0
+        subjectList.add(new Matiere("Introduction aux systemes d'informations")); //0
         subjectList.add(new Matiere("Connaissance de l'entreprise")); //1
         subjectList.add(new Matiere("Programmation orientée objet")); //2
         subjectList.add(new Matiere("Informatique fondamentale")); //3
@@ -128,28 +129,34 @@ public class GameController {
     }
 
     private void loadSchedule() {
+        boolean test = true;
+        boolean test1 = true;
         String tiret = "";
         String pause = "Pause";
-        String csvFile = "/home/enzo/Bureau/test/edt.csv";
+        String csvFile = "/media/enzo/Enzo.M 2017/Cours/Licence 2/POO/poo22_384j_c/src/main/java/studentlife/controller/edt.csv";
         String line = "";
         String csvSplitBy = ",";
-        int i = 0, j = 1;
+        int i, j;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
 
-            while ((line = br.readLine()) != null) {
-
-                Day jour = new Day;
-                Schedule.add(jour);
-                String[] cours;
-                while (line = br.readLine() != null && cours[0].equals(tiret)) {
-                    cours = line.split(csvSplitBy);
-                    if (!(cours[0].equals(pause))) {
-                        while (this.profList.get(i).getNom().equals(cours[2]) && i <= profList.size()) {
+            while (test1) {
+                Day jour = new Day();
+                test = true;
+                while (test) {
+                    line = br.readLine();
+                    String[] cours = line.split(csvSplitBy);
+                    if (!(cours[0].equals(tiret)) && !(cours[0].equals(pause))) {
+                        System.out.println(cours[2]);
+                        i = 0;
+                        j = 0;
+                        while (i < profList.size() && (this.profList.get(i).getNom().equals(cours[2])) ) {
+                            System.out.println(this.profList.get(i).getNom());
+                            System.out.println(i);
                             i++;
                         }
-                        while (this.subjectList.get(j).getNom().equals(cours[0]) && j <= subjectList.size()) {
+                        while (j < subjectList.size() && (this.subjectList.get(j).getNom().equals(cours[0]))) {
                             j++;
                         }
                         if (cours[1].equals("CM")) {
@@ -161,8 +168,15 @@ public class GameController {
                         if (cours[1].equals("TP")) {
                             jour.addEvenement(new Cours(CoursType.TP, this.profList.get(i) ,this.subjectList.get(j)));
                         }
-                    } else {
+                    }
+                    if (cours[0].equals(pause)){
                         jour.addEvenement(new Pause());
+                    }
+                    if(cours[0].equals(tiret)){
+                        test = false;
+                    }
+                    if (line == null){
+                        test1 = false;
                     }
                 }
                 this.schedule.addDay(jour);

@@ -11,10 +11,10 @@ public class Personne {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public String getPrenom() {
-        return prenom;
+        return this.prenom;
     }
 }
