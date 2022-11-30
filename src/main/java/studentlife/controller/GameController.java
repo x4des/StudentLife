@@ -136,6 +136,7 @@ public class GameController {
         String csvFile = "/media/enzo/Enzo.M 2017/Cours/Licence 2/POO/poo22_384j_c/src/main/java/studentlife/controller/edt.csv";
         String line = "";
         String csvSplitBy = ",";
+        String c = "";
         int i, j;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
@@ -151,12 +152,17 @@ public class GameController {
                         if (!(cours[0].equals(tiret)) && !(cours[0].equals(pause))) {
                             i = 0;
                             j = 0;
-                            while (i < profList.size() && (this.profList.get(i).getNom().equals(cours[2])) ) {
+                            System.out.println(cours[0]);
+                            while (i < profList.size() && !(this.profList.get(i).getNom().equals(cours[2]))) {
                                 i++;
                             }
-                            while (j < subjectList.size() && (this.subjectList.get(j).getNom().equals(cours[0]))) {
+                            System.out.println(i);
+                            c = cours[0];
+                            while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(c))) {
+                                System.out.println(j);
                                 j++;
                             }
+                            System.out.println(j);
                             if (cours[1].equals("CM")) {
                                 jour.addEvenement(new Cours(CoursType.CM, this.profList.get(i) ,this.subjectList.get(j)));
                             }
@@ -180,6 +186,20 @@ public class GameController {
                     }
                 }
                 this.schedule.addDay(jour);
+            }
+            int k=0;
+            int l=0;
+            while( k!= this.schedule.getWeek().size()){
+                while(l != this.schedule.getWeek().get(k).getEvenements().size()){
+                    if(this.schedule.getWeek().get(k).getEvenements().get(l) instanceof Cours) {
+                        System.out.println(((Cours) this.schedule.getWeek().get(k).getEvenements().get(l)).getMatiere().getNom());
+                    }
+                    else{
+                        System.out.println("Pause");
+                    }
+                    l++;
+                }
+                k++;
             }
 
         } catch (IOException e) {
