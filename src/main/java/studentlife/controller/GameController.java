@@ -133,7 +133,7 @@ public class GameController {
         boolean test1 = true;
         String tiret = "-";
         String pause = "Pause";
-        String csvFile = "/media/enzo/Enzo.M 2017/Cours/Licence 2/POO/poo22_384j_c/src/main/java/studentlife/controller/edt.csv";
+        String csvFile = "D:\\Cours\\Licence 2\\POO\\poo22_384j_c\\src\\main\\java\\studentlife\\controller\\edt.csv";
         String line = "";
         String csvSplitBy = ",";
         String c = "";
@@ -150,6 +150,7 @@ public class GameController {
                     if(line != null){
                         String[] cours = line.split(csvSplitBy);
                         if (!(cours[0].equals(tiret)) && !(cours[0].equals(pause))) {
+
                             i = 0;
                             j = 0;
                             System.out.println(cours[0]);
