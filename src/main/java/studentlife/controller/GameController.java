@@ -149,12 +149,9 @@ public class GameController {
                     if(line != null){
                         String[] cours = line.split(csvSplitBy);
                         if (!(cours[0].equals(tiret)) && !(cours[0].equals(pause))) {
-                            System.out.println(cours[2]);
                             i = 0;
                             j = 0;
                             while (i < profList.size() && (this.profList.get(i).getNom().equals(cours[2])) ) {
-                                System.out.println(this.profList.get(i).getNom());
-                                System.out.println(i);
                                 i++;
                             }
                             while (j < subjectList.size() && (this.subjectList.get(j).getNom().equals(cours[0]))) {
