@@ -1,11 +1,17 @@
 package studentlife;
 
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import studentlife.controller.GameController;
 import studentlife.view.Game;
 import studentlife.view.Input;
 
-public class Main {
+public class Main extends Application {
     public static void main(String[] args) {
 
         Game game = new Game(new GameController());
@@ -51,5 +57,13 @@ public class Main {
         IF.addCours(Type.CM, Type.TD, Type.TP);
         MI.addCours(Type.CM, Type.TD);
          */
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        StackPane root = new StackPane();
+        primaryStage.setTitle("StudentLife Sim");
+        primaryStage.setScene(new Scene(root, 300, 300));
+        primaryStage.show();
     }
 }
