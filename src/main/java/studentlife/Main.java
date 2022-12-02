@@ -2,9 +2,12 @@ package studentlife;
 
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import studentlife.controller.GameController;
@@ -14,10 +17,11 @@ import studentlife.view.Input;
 public class Main extends Application {
     public static void main(String[] args) {
 
-        Game game = new Game(new GameController());
+        /*Game game = new Game(new GameController());*/
 
+        launch();
+        //game.run();
 
-        game.run();
 
          /*
          Etudiant etudiant = new Etudiant("Gosling", "Ryan");
@@ -61,9 +65,19 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        StackPane root = new StackPane();
+        //StackPane root = new StackPane();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 300, 300);
         primaryStage.setTitle("StudentLife Sim");
-        primaryStage.setScene(new Scene(root, 300, 300));
+        primaryStage.setScene(scene);
         primaryStage.show();
+    }
+    Game game = new Game(new GameController());
+    @FXML
+    protected Label StartBtn;
+    @FXML
+    public void onStartButtonClick(ActionEvent actionEvent) {
+        actionEvent.consume();
+        this.game.run();
     }
 }

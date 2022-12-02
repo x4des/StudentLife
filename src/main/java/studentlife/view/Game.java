@@ -5,7 +5,7 @@ import studentlife.core.Day;
 import studentlife.core.Matiere;
 import studentlife.core.events.*;
 
-import java.sql.SQLOutput;
+//import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Game {
