@@ -8,6 +8,7 @@ import studentlife.core.events.*;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
+//La classe dans laquelle on intialise le jeu et met en place le scenario qui le fait tourner
 public class Game {
 
     private final GameController gameController;
@@ -47,8 +48,9 @@ public class Game {
         for (Day day : gameController.getSchedule().getWeek()) {
             i++;
             for (Evenement event : day.getEvenements()) {
-                clearScreen();
                 manageEvent(event);
+                continuerLeJeu();
+
 
 
 
@@ -79,6 +81,22 @@ public class Game {
 
     }
 
+    public void endGame(){
+
+    }
+    public void continuerLeJeu(){
+        Input question = new Input("Voulez-vous continuer le jeu?");
+        question.addAnswer("Oui");//0
+        question.addAnswer("Non");//1
+
+        if(question.resolve().equals("Oui")){
+            clearScreen();
+        }else{
+            finalResults();
+            System.exit(0);
+        }
+    }
+
     public void setPause(){
         Input question = new Input("Que allez vous faire pendant la pause?");
         question.addAnswer("Reviser");//0
@@ -100,6 +118,14 @@ public class Game {
         System.out.println("Les resultats du fin de la journée: "+gameController.getSchedule().getWeekday(i));
         System.out.println("Stats perso: "+ gameController.getUser().getStats().toString());
         gameController.subjectsMastery();
+    }
+
+    public void finalResults(){
+        System.out.println("Vos statistiques à la fin du jeu:");
+        System.out.println("Stats perso: "+ gameController.getUser().getStats().toString());
+        gameController.subjectsMastery();
+        gameController.profsAppreciation();
+
     }
 
     private int selectSubject(String question) {

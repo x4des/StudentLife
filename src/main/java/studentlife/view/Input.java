@@ -3,6 +3,7 @@ package studentlife.view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//La classe qui lit les réponses choisies par l'utilisateur
 public class Input {
 
     private final String question;

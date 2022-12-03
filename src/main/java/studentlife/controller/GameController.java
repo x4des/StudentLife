@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 import static studentlife.core.events.CoursType.*;
 
+//La classe dans laquelle on instancie les classes nécessaires pour que le jeu fonctionne,
+//on affecte les valeurs nécesssaires, comme les matières, la liste des professeurs, les quizz eventuels..
 public class GameController {
     private Etudiant user;
     private final ArrayList<Matiere> subjectList = new ArrayList<>();
@@ -74,6 +76,13 @@ public class GameController {
         System.out.println("Les stats dans les matières:");
         for (Matiere subject : subjectList) {
             System.out.println(subject.toString());
+        }
+    }
+
+    public void profsAppreciation(){
+        System.out.println("Niveau de relation avec les professeurs:");
+        for (Professeur prof : profList) {
+            System.out.println(prof.toString());
         }
     }
 
