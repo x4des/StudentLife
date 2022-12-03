@@ -122,55 +122,8 @@ public class GameController {
     public ArrayList<Matiere> getSubjectList() {
         return subjectList;
     }
+
+
+
 }
-    /*
->>>>>>> Stashed changes
-    private void loadSchedule(){
-        String tiret = "";
-        String pause = "Pause";
-        String csvFile = "/home/enzo/Bureau/test/edt.csv";
-        String line = "";
-        String csvSplitBy = ",";
-        int i = 0, j = 1;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-
-
-            this.schedule = new Schedule;
-            while ((line = br.readLine()) != null) {
-
-                Day jour = new Day;
-                Schedule.add(jour);
-                while (line = br.readLine() != null && cours[0].equals(tiret)){
-                        String[] cours = line.split(csvSplitBy);
-                    if(!(cours[0].equals(pause))){
-                        while(this.profList.get(i).getNom().equals(cours[2]) && i<=profList.size()){
-                            i++;
-                        }
-                        while(this.subjectList.get(j).getNom.equals(cours[0]) && j<=subjectList.size()){
-                            j++;
-                        }
-                        if(Cours[1].equals("CM")){
-                            jour.addEvenement(new Cours(CoursType.CM, this.subjectList.get(j), this.profList.get(i)));
-                        }
-                        if(Cours[1].equals("TD")){
-                            jour.addEvenement(new Cours(CoursType.TD, this.subjectList.get(j), this.profList.get(i)));
-                        }
-                        if(Cours[1].equals("TP")){
-                            jour.addEvenement(new Cours(CoursType.TP, this.subjectList.get(j), this.profList.get(i)));
-                        }
-                    }
-                    else{
-                        jour.addEvenement(new Pause());
-                    }
-                }
-                this.schedule.add(jour);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-*/
