@@ -22,7 +22,7 @@
             </ImageView>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="602.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="216.0" prefWidth="602.0">
+                  <HBox alignment="CENTER" prefHeight="142.0" prefWidth="602.0">
                      <children>
                         <Pane prefHeight="119.0" prefWidth="351.0" />
                         <Label prefHeight="131.0" prefWidth="224.0" text=" Bienvenue" textFill="WHITE">
@@ -32,7 +32,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="602.0">
+                  <HBox alignment="CENTER" prefHeight="148.0" prefWidth="602.0">
                      <children>
                         <Pane prefHeight="100.0" prefWidth="351.0" />
                         <Label fx:id="nomPrenom" prefHeight="11.0" prefWidth="115.0" text="nomPrenom" textFill="WHITE">
