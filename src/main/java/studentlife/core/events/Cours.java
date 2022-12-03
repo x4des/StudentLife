@@ -43,6 +43,15 @@ public class Cours implements Evenement {
         }
     }
 
+    public String getShortNom(){
+        switch (typeCours) {
+            case CM: return "CM";
+            case TD: return "TD";
+            case TP: return "TP";
+            default: return "Cours Inconnu";
+        }
+    }
+
     public void finaliserEvenement(Etudiant user, boolean valid) {
     }
 
