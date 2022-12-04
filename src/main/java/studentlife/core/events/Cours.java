@@ -4,9 +4,12 @@ import studentlife.core.Matiere;
 import studentlife.core.actions.Quiz;
 import studentlife.core.characters.Etudiant;
 import studentlife.core.characters.Professeur;
+import static studentlife.Config.*;
 
 import java.util.ArrayList;
 
+/**
+ * {@literal la classe Cours implemente l'interface Evenement et modifie les stats des objets impliqués}*/
 public class Cours implements Evenement {
     private final CoursType typeCours;
     private Matiere matiere;
@@ -52,41 +55,47 @@ public class Cours implements Evenement {
         }
     }
 
-    public void finaliserEvenement(Etudiant user, boolean valid) {
-    }
-
-    /*
+    /**
+     * @param user les stats de l'utilisateur seront modifiés; la stat faim sera augmenté de 20
+     * cette modification entrenra l'augmentation de la fatigue de 45% de la valeur de la faim et la stat attention
+     * est le complementaire de la stat fatigue.
+     * l'appreciation du professeur envers l'etudiant sera aussi augmenté selon le type de cours où il participe.
+     * Pour finir, la moyenne de la matière concerné sera augmenté.
+     * @param valid booleen qui verifie si l'evenement choisi est bien un Cours, ainsi la procedure pourra modifier les stats
+     * */
     @Override
-    public void finaliserEvenement(Etudiant user, boolean valid){
-       Stat faim = user.stats.statsMap.get(STAT_FAIM);
-       faim.updateStat(STAT_FAIM,20); //faim augmente de 20 apres chaque cours
+    public void finaliserEvenement(Etudiant user, boolean valid) {
 
-       //modification de la stat fatigue par rapport a la stat faim
-        Stat fatigue =user.stats.statsMap.get(STAT_FATIGUE);
-        fatigue.updateStats(faim, '+');
-
-        /*if (faim.value >= 0 && faim.value <= 20 && fatigue.val >= 0 &&fatigue.val < 9 ) {
-            fatigue.updateStats(faim, '+');
+        if(valid) {
+            getMatiere().getListeQuiz().get(0).realiserQuiz();
+            getMatiere().deleteQuiz(0);
+            switch (typeCours) {
+                case CM:
+                    matiere.getMastery().updateValue(5);
+                    user.getStats().updateStat(STAT_FAIM, 20);
+                    user.getStats().updateFatigue(STAT_FATIGUE, true);
+                    user.getStats().updateAttention(STAT_ATTENTION);
+                    break;
+                case TD:
+                case TP:
+                    matiere.getMastery().updateValue(5);
+                    professeur.getAppreciation().updateValue(5);
+                    user.getStats().updateStat(STAT_FAIM, 20);
+                    user.getStats().updateFatigue(STAT_FATIGUE, true);
+                    user.getStats().updateAttention(STAT_ATTENTION);
+                    break;
+            }
+        }else{
+            switch (typeCours) {
+                case CM:
+                    matiere.getMastery().updateValue(-5);
+                    break;
+                case TD:
+                case TP:
+                    matiere.getMastery().updateValue(-5);
+                    professeur.getAppreciation().updateValue(-5);
+                    break;
+            }
         }
-        if (faim.value > 20 && faim.value <= 40 && fatigue.val >= 9 &&fatigue.val < 27 ){
-            fatigue.updateStats(faim,'+');
-        }
-        if (faim.value > 40 && faim.value <= 60 && fatigue.val >= 27 &&fatigue.val < 54){
-            fatigue.updateStats(faim,'+');
-        }
-        if (faim.value >= 60 && faim.value <= 80 && fatigue.val >= 54 &&fatigue.val < 90){
-            fatigue.updateStats(faim,'+');
-        }
-        if (faim.value >= 80 && faim.value <= 100 && && fatigue.val >= 90 && fatigue.val < 100 ){
-            fatigue.updateStats(faim,'+');
-        }
-
-
-
-        //modif de la stats attention qui est complementaire a la stats fatigue
-        Stat attention =user.stats.statsMap.get(STAT_ATTENTION);
-        int minusAttention = (attention.MAX_STAT )- fatigue.value;
-        attention.setValue(minusAttention);
     }
-    */
 }
