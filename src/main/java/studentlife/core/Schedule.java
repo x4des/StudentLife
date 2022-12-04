@@ -2,6 +2,12 @@ package studentlife.core;
 
 import java.util.ArrayList;
 
+/**
+ * {@literal La classe Schedule represente l'emploi du temps de la semaine.
+ Elle est composé d'une liste de jour
+ * @see Day.java
+ * }
+ * */
 public class Schedule {
 
     private static final int MAX_DAYS = 5;
