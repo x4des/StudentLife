@@ -3,9 +3,9 @@ package studentlife.core.characters;
 import java.util.HashMap;
 import java.util.Map;
 
-import static studentlife.Config.STAT_FAIM;
-import static studentlife.Config.STAT_FATIGUE;
+import static studentlife.Config.*;
 
+//gere les stats perso de l'utilisateur, comme la fatigue, faim, attention..
 public class StatsManager {
 
     // Stat Name -- Val
@@ -20,27 +20,44 @@ public class StatsManager {
             return false;
 
         statsMap.get(statName).updateValue(value);
-        return true;
+            return true;
     }
 
-    public boolean updateStat(Stat stat, String operator) {
 
-        if(!statsMap.containsKey(stat))
+
+
+    public boolean updateFatigue(String fatigue, boolean addition) {
+
+
+        if(!statsMap.containsKey(fatigue)) {
             return false;
+        }
 
-        //statsMap.get(stat).updateValue(stat, operator);
+        if(!statsMap.containsKey(STAT_FAIM)) {
+            return false;
+        }
+
+        if(addition){
+            statsMap.get(fatigue).updateValue((int)(statsMap.get(STAT_FAIM).getValue() * statsMap.get(fatigue).getPrcnt()));
+        }else{
+            statsMap.get(fatigue).updateValue((int)(statsMap.get(STAT_FAIM).getValue() * statsMap.get(fatigue).getPrcnt() * -1));
+        }
+
         return true;
     }
 
 
-    public boolean updateFatigue(char operator) {
+    public boolean updateAttention(String attention){
 
+        if(!statsMap.containsKey(attention)) {
+            return false;
+        }
 
         if(!statsMap.containsKey(STAT_FATIGUE)) {
             return false;
         }
 
-        //statsMap.get(STAT_FATIGUE).updateValue(statsMap.get(STAT_FAIM),operator); // operator = '+' ou '-' selon les modifi a faire
+        statsMap.get(attention).updateValue(statsMap.get(attention).getMaxStat() - statsMap.get(STAT_FATIGUE).getValue());
         return true;
     }
 
@@ -55,10 +72,11 @@ public class StatsManager {
 
 
 
+    //ajoute une nouvelle stat
     public void setStat(String statName, int value) {
         statsMap.put(statName, new Stat(statName, value));
     }
-    //adds a new stat
+
 
     @Override
     public String toString() {

@@ -2,6 +2,7 @@ package studentlife.core.events;
 
 import studentlife.core.Matiere;
 import studentlife.core.characters.Etudiant;
+import static studentlife.Config.*;
 
 public class Pause implements Evenement {
 
@@ -28,57 +29,22 @@ public class Pause implements Evenement {
     @Override
     public void finaliserEvenement(Etudiant utilisateur, boolean valid) {
         switch (pauseType) {
-            /*
-            Stat faim = user.stats.statsMap.get(STAT_FAIM);
-            Stat fatigue = user.stats.statsMap.get(STAT_FATIGUE);
-            Stat attention = user.stats.statsMap.get(STAT_ATTENTION);
-
-             */
             case REPAS:
-
-                /*
-                faim.setValue( faim.value -20);
-
-                //diminution de la stat fatigue par rapport a la value de faim
-                fatigue.updateStats(faim, '-');
-                /*
-                if (faim.value >= 0 && faim.value <= 20  &&fatigue.val >= 9 ) {
-                    fatigue.updateStats(faim, '-');
-                }
-                if (faim.value > 20 && faim.value <= 40 &&fatigue.val >= 27 ){
-                    fatigue.updateStats(faim,'-');
-                }
-                if (faim.value > 40 && faim.value <= 60 && fatigue.val >= 54){
-                    fatigue.updateStats(faim,'-');
-                }
-                if (faim.value >= 60 && faim.value <= 80 && fatigue.val >= 90){
-                    fatigue.updateStats(faim,'-');
-                }
-                if (faim.value >= 80 && faim.value <= 100 && fatigue.val >= 100 ){
-                fatigue.updateStats(faim,'-');
-            }
-
-            // augmentation de l'attention qui est proportionelle a la fatigue
-                int plusAttentionRepas = (attention.MAX_STAT )- fatigue.value;
-                attention.setValue(plusAttentionRepas);
-
-                 */
+                utilisateur.getStats().getStat(STAT_FAIM).setValue(0);
+                utilisateur.getStats().getStat(STAT_FATIGUE).setValue((int)utilisateur.getStats().getStat(STAT_FATIGUE).getValue()/2);
+                utilisateur.getStats().updateAttention(STAT_ATTENTION);
                 break;
-
-
 
             case REPOS:
-               /*
-                fatigue.setValue(fatigue.value - 15);
-
-                int plusAttentionRepos = (attention.MAX_STAT )- fatigue.value;
-                attention.setValue(plusAttentionRepos);
-                */
+                //faim reste inchangé car on peut quand même manger un snack pendant une pause repos
+                utilisateur.getStats().getStat(STAT_FATIGUE).updateValue(-10);
+                utilisateur.getStats().updateAttention(STAT_ATTENTION);
                 break;
 
-
-
             case REVISION:
+                //faim reste inchangé car on peut quand même manger un snack pendant une révision
+                utilisateur.getStats().getStat(STAT_FATIGUE).updateValue(10);
+                utilisateur.getStats().updateAttention(STAT_ATTENTION);
                 faireRevision(utilisateur);
                 break;
         }
@@ -90,7 +56,6 @@ public class Pause implements Evenement {
                 throw new RuntimeException("Il faut une matière à réviser");
             }
             subject.getMastery().updateValue(10);
-
     }
 
 }
