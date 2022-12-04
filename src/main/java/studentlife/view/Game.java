@@ -51,6 +51,7 @@ public class Game {
             i++;
             for (Evenement event : day.getEvenements()) {//pour chaque évènement dans la journée
                 manageEvent(event); //gérer les actions possibles liées à un type d'évènement
+                System.out.println(gameController.getUser().getStats().toString());
                 continuerLeJeu(); //donner la possibilité de quitter le jeu avant la fin de simulation
 
 
@@ -81,6 +82,10 @@ public class Game {
         question.addAnswer("Non, je veux faire une pause");//1
         if(question.resolve().equals("Oui")){//si oui
             clearScreen();
+            System.out.println(cours.getNom() + " de " + cours.getMatiere().getNom());
+            System.out.println("\b");
+
+            System.out.println("Petit quiz pour vérifier vos connaissances");
             cours.finaliserEvenement(gameController.getUser(), true);
         }else{
             clearScreen();
@@ -89,15 +94,11 @@ public class Game {
         }
 
 
-        System.out.println("Quiz dans " + cours.getNom() + " " + cours.getMatiere().getNom());
-        cours.getMatiere().getListeQuiz().get(0).realiserQuiz();
-        cours.getMatiere().deleteQuiz(0);
     }
 
     public void managePause(Pause pause) {
         System.out.println("Y a une pause a gérer");
         setPause();
-
 
 
     }

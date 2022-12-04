@@ -58,29 +58,34 @@ public class Cours implements Evenement {
     public void finaliserEvenement(Etudiant user, boolean valid) {
 
         if(valid) {
+            getMatiere().getListeQuiz().get(0).realiserQuiz();
+            getMatiere().deleteQuiz(0);
             switch (typeCours) {
                 case CM:
                     matiere.getMastery().updateValue(5);
                     user.getStats().updateStat(STAT_FAIM, 20);
-                    user.getStats().updateFatigue(STAT_FATIGUE, false);
+                    user.getStats().updateFatigue(STAT_FATIGUE, true);
                     user.getStats().updateAttention(STAT_ATTENTION);
-
+                    break;
                 case TD:
                 case TP:
                     matiere.getMastery().updateValue(5);
                     professeur.getAppreciation().updateValue(5);
                     user.getStats().updateStat(STAT_FAIM, 20);
-                    user.getStats().updateFatigue(STAT_FATIGUE, false);
+                    user.getStats().updateFatigue(STAT_FATIGUE, true);
                     user.getStats().updateAttention(STAT_ATTENTION);
+                    break;
             }
         }else{
             switch (typeCours) {
                 case CM:
                     matiere.getMastery().updateValue(-5);
+                    break;
                 case TD:
                 case TP:
                     matiere.getMastery().updateValue(-5);
                     professeur.getAppreciation().updateValue(-5);
+                    break;
             }
         }
     }

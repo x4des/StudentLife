@@ -57,7 +57,7 @@ public class StatsManager {
             return false;
         }
 
-        statsMap.get(attention).updateValue(statsMap.get(attention).getMaxStat() - statsMap.get(STAT_FATIGUE).getValue());
+        statsMap.get(attention).setValue(statsMap.get(attention).getMaxStat() - statsMap.get(STAT_FATIGUE).getValue());
         return true;
     }
 
