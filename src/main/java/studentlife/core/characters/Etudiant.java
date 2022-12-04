@@ -19,6 +19,8 @@ public class Etudiant extends Personne {
         return "FullName: " + this.getNom() + " " + this.getPrenom() + "\nStats: " + this.getStats();
     }
 
+
+    //initialise le StatsManager avec les 3 stats perso
     private void initStats() {
         stats = new StatsManager();
         stats.setStat(STAT_ATTENTION, 100);
