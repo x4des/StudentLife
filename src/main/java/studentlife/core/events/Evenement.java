@@ -3,8 +3,8 @@ package studentlife.core.events;
 import studentlife.core.characters.Etudiant;
 /**
  * {@literal Un evenement correspond au différentes "taches" fera ou pas dans la journée
- * cette interface sera donc implémenter par les classes Cours et Pause qui eux, modifieront les stats
- * de l'utilsateur selon le choix de l'evenement (aller en cours ou faire une pause)}*/
+ cette interface sera donc implémenter par les classes Cours et Pause qui eux, modifieront les stats
+ de l'utilsateur selon le choix de l'evenement (aller en cours ou faire une pause)}*/
 public interface Evenement {
     /**
      * @param utilisateur les stats de l'etudiant seront changées selon le choix de l'evenemnt

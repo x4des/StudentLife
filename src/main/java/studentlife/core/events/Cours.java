@@ -62,6 +62,7 @@ public class Cours implements Evenement {
      * l'appreciation du professeur envers l'etudiant sera aussi augmenté selon le type de cours où il participe.
      * Pour finir, la moyenne de la matière concerné sera augmenté.
      * @param valid booleen qui verifie si l'evenement choisi est bien un Cours, ainsi la procedure pourra modifier les stats
+     *  @see Evenement.java
      * */
     @Override
     public void finaliserEvenement(Etudiant user, boolean valid) {

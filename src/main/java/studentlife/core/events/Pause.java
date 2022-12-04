@@ -32,6 +32,7 @@ public class Pause implements Evenement {
  * _ lorsque c'est une pause repos, la faim reste la meme, la fatigue diminue et l'attention augmente.
  * _ lorsque c'est une pause revision, la fatigue augmente, l'attention diminue mais la moyenne de la matière revisé augmente de 10.
  * @param valid booleen qui verifie si l'evenement choisi est bien un Cours, ainsi la procedure pourra modifier les stats.
+ * @see Evenement.java
  * */
     @Override
     public void finaliserEvenement(Etudiant utilisateur, boolean valid) {
