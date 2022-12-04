@@ -3,8 +3,10 @@ package studentlife.core;
 import studentlife.core.events.Evenement;
 
 import java.util.ArrayList;
+/**
+ * {@literal La classe jour represente un jour dans la semaine composé d'une liste d'evenements}
+ * */
 
-//Un jour sera composé d'evenements mais ne sera représenté pour l'instant que comme: Jour 1, Jour 2...
 public class Day {
     private ArrayList<Evenement> evenements;
 
