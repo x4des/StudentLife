@@ -7,33 +7,55 @@ import static studentlife.Config.*;
 
 
 /**
- * {@literal la classe Cours implemente l'interface Evenement et modifie les stats des objets impliqués}*/
+ * la classe Cours implemente l'interface Evenement et modifie les stats des objets impliquée
+ * */
 public class Cours implements Evenement {
     private final CoursType typeCours;
     private Matiere matiere;
     private Professeur professeur;
 
+    /**
+     * @param coursType
+     * @param professeur
+     * @param matiere
+     * constructeur de la classe
+     * */
     public Cours(CoursType coursType, Professeur professeur, Matiere matiere) {
         this.typeCours = coursType;
         this.matiere = matiere;
         this.professeur = professeur;
     }
 
+    /**
+     * @return getter qui retourne l'attribut matiere.
+     * */
     public Matiere getMatiere() {
         return matiere;
     }
 
+    /**
+     * @return getter qui permet d'acceder au type de cours (TP, TD ou CM).
+     * */
     public CoursType getTypeCours (){
         return this.typeCours;
     }
 
+    /**
+     * @return getter de l'attribut professeur.
+     * */
     public Professeur getProfesseur(){ return this.professeur; }
+
+    /**
+     * @param prof
+     * setter de l'attribut professeur
+     * */
     public void setProfesseur(Professeur prof){
         this.professeur = prof;
     }
 
-
-
+    /**
+     * @return retourne le nom du type de cours.
+     * */
     public String getNom(){
 
         switch (typeCours) {
@@ -44,6 +66,9 @@ public class Cours implements Evenement {
         }
     }
 
+    /**
+     * @return retourne le nom du tyoe du cours (en abrégés).
+     * */
     public String getShortNom(){
         switch (typeCours) {
             case CM: return "CM";
@@ -60,7 +85,7 @@ public class Cours implements Evenement {
      * l'appreciation du professeur envers l'etudiant sera aussi augmenté selon le type de cours où il participe.
      * Pour finir, la moyenne de la matière concerné sera augmenté.
      * @param valid booleen qui verifie si l'evenement choisi est bien un Cours, ainsi la procedure pourra modifier les stats
-     *  @see Evenement.java
+     * @see Evenement.java
      * */
     @Override
     public void finaliserEvenement(Etudiant user, boolean valid) {
