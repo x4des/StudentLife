@@ -99,8 +99,6 @@ public class Game {
     public void managePause(Pause pause) {
         System.out.println("Y a une pause a gérer");
         setPause();
-
-
     }
 
     public void endGame(){
@@ -124,16 +122,34 @@ public class Game {
         question.addAnswer("Reviser");//0
         question.addAnswer("Manger");//1
         question.addAnswer("Se reposer");//2
-        if (question.resolve().equals("Reviser")){
+        String rep = question.resolve();
+        if (rep.equals("Reviser")){
 
             int subject = selectSubject("Quelle matière voulez vous révisez ?");
             System.out.println("Vous avez choisi: " + gameController.getSubjectList().get(subject).getNom());
 
             Pause revision = new Pause(PauseType.REVISION, gameController.getSubjectList().get(subject));
             revision.finaliserEvenement(gameController.getUser(), true);
+        }
 
+        if (rep.equals("Manger")){
+
+
+            Pause repas = new Pause(PauseType.REPAS);
+            repas.finaliserEvenement(gameController.getUser(), true);
 
         }
+
+        if (rep.equals("Se reposer")){
+
+
+            Pause repos = new Pause(PauseType.REPOS);
+            repos.finaliserEvenement(gameController.getUser(), true);
+
+        }
+
+
+
 
     }
     public void dailyResults( int i){
@@ -151,9 +167,7 @@ public class Game {
     }
 
     private int selectSubject(String question) {
-
         Input request = new Input(question);
-
         for(Matiere subject : gameController.getSubjectList()) {
             request.addAnswer(subject.getNom());
         }
