@@ -6,17 +6,32 @@ import studentlife.core.characters.Etudiant;
 import studentlife.core.characters.Professeur;
 
 import java.util.ArrayList;
-
+/**
+{@literal La classe cours implémente l'interface Evenement
+sur la procédure finaliser evenement qui modifiera les statistiques de l'etudiant
+après avoir choisi d'assisté ua un cours donné
+}
+ */
 public class Cours implements Evenement {
     private final CoursType typeCours;
     private Matiere matiere;
     private Professeur professeur;
 
+    /**
+     * @param coursType c'est un TD, TP ou CM, il permet de distinguer quel genre de cours l'etudiant participe
+     * @param professeur, le chargé de cours qui est une Personne avec une stat qui est son appreciation envers l'etudiant
+     * @param matiere
+     * {@literal Ce constructeur permettra de construire un objet de la classe Cours}
+     * */
     public Cours(CoursType coursType, Professeur professeur, Matiere matiere) {
         this.typeCours = coursType;
         this.matiere = matiere;
         this.professeur = professeur;
     }
+
+
+
+    // les getters et setter des differents attributs de la classe Cours
 
     public Matiere getMatiere() {
         return matiere;
@@ -27,6 +42,7 @@ public class Cours implements Evenement {
     }
 
     public Professeur getProfesseur(){ return this.professeur; }
+
     public void setProfesseur(Professeur prof){
         this.professeur = prof;
     }
@@ -52,6 +68,13 @@ public class Cours implements Evenement {
         }
     }
 
+    /**
+     * @param user les stats de l'utilisateur sont utilisés dans cette procedure afin de les modifiers.
+     * Ici, la faim augmente de 20, la fatigue augmente de 45% de la valeure de faim
+     * et la stat attention est complementaire a la stat fatigue.
+     * @param valid booleen qui est retourner dans la fonction evenement actuel qui verifie si l'evenement choisi
+     * est bien un cours.
+     * */
     public void finaliserEvenement(Etudiant user, boolean valid) {
     }
 
