@@ -1,12 +1,10 @@
 package studentlife.core.events;
 
 import studentlife.core.Matiere;
-import studentlife.core.actions.Quiz;
 import studentlife.core.characters.Etudiant;
 import studentlife.core.characters.Professeur;
 import static studentlife.Config.*;
 
-import java.util.ArrayList;
 
 /**
  * {@literal la classe Cours implemente l'interface Evenement et modifie les stats des objets impliqués}*/
