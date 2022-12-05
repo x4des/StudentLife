@@ -5,7 +5,9 @@ import studentlife.controller.GameController;
 import studentlife.view.Game;
 import studentlife.view.Input;
 
-
+/**
+ * La classe main nous permet d'executer tout le programme
+ * */
 public class Main {
     public static void main(String[] args) {
 

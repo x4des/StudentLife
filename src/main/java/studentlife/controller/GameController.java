@@ -18,18 +18,33 @@ import java.io.FileReader;
 
 import static studentlife.core.events.CoursType.*;
 
-//La classe dans laquelle on instancie les classes nécessaires pour que le jeu fonctionne,
-//on affecte les valeurs nécesssaires, comme les matières, la liste des professeurs, les quizz eventuels..
+/**
+ * La classe GameController est la classe dans laquelle on instancie les classes
+ necessaires pour que le jeu fonctionne.
+ on affecte les valeurs necessaire au bon fonctionnement de la simulation
+ tel que les matières, la liste des profs, des cours, les quiz eventuels etc...
+ * */
 public class GameController {
     private Etudiant user;
     private final ArrayList<Matiere> subjectList = new ArrayList<>();
     private final ArrayList<Professeur> profList = new ArrayList<>();
     private final Schedule schedule;
 
+    /**
+     * le contructeur de la classe GameController
+     (que pour l'attribut schedule).
+     * */
     public GameController() {
         this.schedule = new Schedule();
     }
 
+    /**
+     * @param userLastName
+     * @param userFirstName
+     * on initialise le game en creant une Personne qui est l'etudiant,
+     on aura donc son nom, son prenom, ses professeurs, ses matières, son EDT et ses questions de quiz.
+     Tout cela grace au methodes les creants.
+     * */
     public void initGame(String userLastName, String userFirstName) {
         user = new Etudiant(userLastName, userFirstName);
         createProfs();
@@ -39,14 +54,24 @@ public class GameController {
         addNewQuiz();
     }
 
+    /**
+     * @return  getter qui permet d'acceder au user de la classe
+     * */
     public Etudiant getUser() {
         return user;
     }
 
+    /**
+     * @return getter de schedule
+     * */
     public Schedule getSchedule() {
         return schedule;
     }
 
+    /**
+     * cette methode, créer le premier jour de l'EDT de l'etudiant
+     l'etudiant aura le lundi; un CM et un TD le matin, une pause et 2 TD l'apre midi.
+     * */
     private void createDay1() {
         Day monday = new Day();
 
@@ -59,11 +84,16 @@ public class GameController {
         schedule.addDay(monday);
     }
 
-
+    /**
+     * appel la methode create Day1.
+     * */
     private void createSchedule() {
         createDay1();
     }
 
+    /**
+     * cette methode ajoute une par une, les matieres de l'etudiant dans la liste de matières.
+     * */
     private void createSubjects() {
 
         subjectList.add(new Matiere("Introduction aux systemes d'informations")); //0
@@ -77,6 +107,9 @@ public class GameController {
 
     }
 
+    /**
+     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'etudiant sur celle-ci.
+     * */
     public void subjectsMastery() {
         System.out.println("Les stats dans les matières:");
         for (Matiere subject : subjectList) {
@@ -84,6 +117,9 @@ public class GameController {
         }
     }
 
+    /**
+     * affiche pour chaque prof son nom et le niveau d'appreciation qu'il a envers l'etudiant.
+     * */
     public void profsAppreciation(){
         System.out.println("Niveau de relation avec les professeurs:");
         for (Professeur prof : profList) {
@@ -91,6 +127,9 @@ public class GameController {
         }
     }
 
+    /**
+     * ajoute des professeurs a la liste de professeur (nom et prenom).
+     * */
     private void createProfs() {
         profList.add(new Professeur("Rooney", "Wayne")); //0
         profList.add(new Professeur("Darko", "Donnie")); //1
@@ -101,6 +140,9 @@ public class GameController {
         profList.add(new Professeur("Ventura", "Ace")); //6
     }
 
+    /**
+     * Cette methode ajoute des quiz pour chaque matières
+     * */
     private void addNewQuiz() {
         //ISI
         subjectList.get(0).addQuiz(new Quiz("Un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet", "un etat initial unique", "un etat final unique"));
@@ -133,6 +175,9 @@ public class GameController {
     }
 
 
+    /**
+     * @return getter pour la liste de matière de la classe.
+     * */
     public ArrayList<Matiere> getSubjectList() {
         return subjectList;
     }
