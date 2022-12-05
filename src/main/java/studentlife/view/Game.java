@@ -8,16 +8,27 @@ import studentlife.core.events.*;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
-//La classe dans laquelle on initialise le jeu et met en place le scenario qui le fait tourner
+/**
+ * La classe Game est la classe dans laquelle on initialise le jeu
+ et où on met en place le scenario qui le scenario qui le fait tourner.
+ * */
 public class Game {
 
     private final GameController gameController;
 
-
+    /**
+     * @param gameController
+     * Le constructeur de la classe Game
+     * */
     public Game(GameController gameController) {
         this.gameController = gameController;
     }
 
+    /**
+     * Initialisation de la simulation. On prend les informations souhaitées de l'utilisateur
+     et on affiche toutes les infos quil aura besoin pour commencer la simulation
+     * @see GameController.java
+     * */
     private void initGameView() {
         // Get user details
         Scanner scanner = new Scanner(System.in);
@@ -35,13 +46,19 @@ public class Game {
     }
 
 
-    public static void clearScreen() {//imite la fonction clear de la console
+    /**
+     * Cette methode imite la fonction clear de la console.
+     * */
+    public static void clearScreen() {
         for(int clear = 0; clear < 100; clear++)
         {
             System.out.println("\b") ;
         }
     }
 
+    /**
+     * la methode run() permet de faire une boucle pour la simulation, ainsi, le jeu continue.
+     * */
     public void run() {//boucle-scenario du jeu
         // LANCER LE JEU :)
         int i = -1; //itérateur des jours
@@ -62,8 +79,10 @@ public class Game {
         }
     }
 
-    //détecte le type d'évènement en cours et fait appel à une méthode appropriée
-    //2 types d'évènements possibles; cours ou pause
+    /**
+     * détecte le type d'évènement en cours et fait appel à une méthode appropriée.
+     On a 2 types d'évènements possibles; cours ou pause.
+     * */
     private void manageEvent(Evenement event) {
         if(event instanceof Cours)
             manageCours((Cours) event);
