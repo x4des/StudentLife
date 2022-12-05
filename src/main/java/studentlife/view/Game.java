@@ -3,6 +3,7 @@ package studentlife.view;
 import studentlife.controller.GameController;
 import studentlife.core.Day;
 import studentlife.core.Matiere;
+import studentlife.core.characters.Professeur;
 import studentlife.core.events.*;
 
 import java.sql.SQLOutput;
@@ -29,13 +30,15 @@ public class Game {
      et on affiche toutes les infos quil aura besoin pour commencer la simulation
      * @see GameController.java
      * */
+
     private void initGameView() {
         // Get user details
+        System.out.println("Welcome to the StudentWeek simulator!");
+        System.out.println("Pour commencer le jeu, entrez votre nom et prénom");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Firstname");
+        System.out.println("Nom:");
         String firstName = scanner.nextLine();
-
-        System.out.println("Enter Lastname:");
+        System.out.println("Prénom:");
         String lastName = scanner.nextLine();
 
         gameController.initGame(lastName, firstName);//initialise le jeu avec les informations d'utilisateur
@@ -43,6 +46,21 @@ public class Game {
         //message de bienvenue avec les stats initiales
         System.out.println("Welcome " + gameController.getUser().getNom() + " " + gameController.getUser().getPrenom());
         System.out.println(gameController.getUser().getStats().toString());
+    }
+
+    private void menuPrincipal(){
+        System.out.println("                     Etudiant(e): " + gameController.getUser().toString());
+        Input question = new Input("Menu Principal");
+        question.addAnswer("Poursuivre le jeu");//0
+        question.addAnswer("Statistiques");//1
+        question.addAnswer("Paramètres");
+        question.addAnswer("Quitter le jeu");
+        String rep = question.resolve();
+
+        if (rep.equals("Poursuivre le jeu")){
+            //continuer la boucle ??
+        }
+
     }
 
 
@@ -181,7 +199,7 @@ public class Game {
     public void dailyResults( int i){
         System.out.println("Les resultats du fin de la journée: "+gameController.getSchedule().getWeekday(i));
         System.out.println("Stats perso: "+ gameController.getUser().getStats().toString());
-        gameController.subjectsMastery();
+        subjectsMastery();
     }
 
     /**
@@ -191,8 +209,8 @@ public class Game {
     public void finalResults(){
         System.out.println("Vos statistiques à la fin du jeu:");
         System.out.println("Stats perso: "+ gameController.getUser().getStats().toString());
-        gameController.subjectsMastery();
-        gameController.profsAppreciation();
+        subjectsMastery();
+        profsAppreciation();
 
     }
 
@@ -220,4 +238,26 @@ public class Game {
 
         return n;
     }
+
+
+    /**
+     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'etudiant sur celle-ci.
+     * */
+    public void subjectsMastery() {
+        System.out.println("Les stats dans les matières:");
+        for (Matiere subject : gameController.getSubjectList()) {
+            System.out.println(subject.toString());
+        }
+    }
+
+    /**
+     * affiche pour chaque prof son nom et le niveau d'appreciation qu'il a envers l'etudiant.
+     * */
+    public void profsAppreciation(){
+        System.out.println("Niveau de relation avec les professeurs:");
+        for (Professeur prof : gameController.getProfList()) {
+            System.out.println(prof.toString());
+        }
+    }
+
 }
