@@ -3,6 +3,7 @@ package studentlife.view.console;
 import studentlife.controller.GameController;
 import studentlife.core.Day;
 import studentlife.core.Matiere;
+import studentlife.core.characters.Professeur;
 import studentlife.core.events.*;
 import studentlife.view.Game;
 
@@ -27,13 +28,15 @@ public class ConsoleGame extends Game {
      et on affiche toutes les infos quil aura besoin pour commencer la simulation
      * @see GameController
      * */
+
     private void initGameView() {
         // Get user details
+        System.out.println("Welcome to the StudentWeek simulator!");
+        System.out.println("Pour commencer le jeu, entrez votre nom et prénom");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Firstname");
+        System.out.println("Nom:");
         String firstName = scanner.nextLine();
-
-        System.out.println("Enter Lastname:");
+        System.out.println("Prénom:");
         String lastName = scanner.nextLine();
 
         getController().initGame(lastName, firstName);//initialise le jeu avec les informations d'utilisateur
@@ -41,6 +44,21 @@ public class ConsoleGame extends Game {
         //message de bienvenue avec les stats initiales
         System.out.println("Welcome " + getController().getUser().getNom() + " " + getController().getUser().getPrenom());
         System.out.println(getController().getUser().getStats().toString());
+    }
+
+    private void menuPrincipal(){
+        System.out.println("Etudiant(e): " + getController().getUser().toString());
+        Input question = new Input("Menu Principal");
+        question.addAnswer("Poursuivre le jeu");//0
+        question.addAnswer("Statistiques");//1
+        question.addAnswer("Paramètres");
+        question.addAnswer("Quitter le jeu");
+        String rep = question.resolve();
+
+        if (rep.equals("Poursuivre le jeu")){
+            //continuer la boucle ??
+        }
+
     }
 
 
@@ -54,11 +72,9 @@ public class ConsoleGame extends Game {
         }
     }
 
-
     /**
      * la methode run() permet de faire une boucle pour la simulation, ainsi, le jeu continue.
      * */
-    @Override
     public void run() {//boucle-scenario du jeu
         // LANCER LE JEU :)
         int i = -1; //itérateur des jours
@@ -91,7 +107,7 @@ public class ConsoleGame extends Game {
     /**
      * @param cours le cours dans lequel l'etudiant doit assisté.
      * manageCours demande à l'utilisateur s'il veut y assisté s'il veut ou pas on appel la fonction
-     finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
+    finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
      * @see Cours
      * */
     public void manageCours(Cours cours) {
@@ -181,7 +197,7 @@ public class ConsoleGame extends Game {
     public void dailyResults( int i){
         System.out.println("Les resultats du fin de la journée: "+ getController().getSchedule().getWeekday(i));
         System.out.println("Stats perso: "+ getController().getUser().getStats().toString());
-        getController().subjectsMastery();
+        subjectsMastery();
     }
 
     /**
@@ -191,16 +207,16 @@ public class ConsoleGame extends Game {
     public void finalResults(){
         System.out.println("Vos statistiques à la fin du jeu:");
         System.out.println("Stats perso: "+ getController().getUser().getStats().toString());
-        getController().subjectsMastery();
-        getController().profsAppreciation();
+        subjectsMastery();
+        profsAppreciation();
 
     }
 
     /**
      * @param question
      * @return l'entier retourné est égal à 0 lorsque la matiere
-     n'est pas presente dans la liste de matiere de l'etudiant. Lorsqu'elle
-     est presente l'entier retourné est l'indice de la matiere dans la meme liste.
+    n'est pas presente dans la liste de matiere de l'etudiant. Lorsqu'elle
+    est presente l'entier retourné est l'indice de la matiere dans la meme liste.
      * @see Input
      * Cette methode retrouve la matiere dont on a besoin
      * */
@@ -220,4 +236,26 @@ public class ConsoleGame extends Game {
 
         return n;
     }
+
+
+    /**
+     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'etudiant sur celle-ci.
+     * */
+    public void subjectsMastery() {
+        System.out.println("Les stats dans les matières:");
+        for (Matiere subject : getController().getSubjectList()) {
+            System.out.println(subject.toString());
+        }
+    }
+
+    /**
+     * affiche pour chaque prof son nom et le niveau d'appreciation qu'il a envers l'etudiant.
+     * */
+    public void profsAppreciation(){
+        System.out.println("Niveau de relation avec les professeurs:");
+        for (Professeur prof : getController().getProfList()) {
+            System.out.println(prof.toString());
+        }
+    }
+
 }
