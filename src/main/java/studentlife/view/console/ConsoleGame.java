@@ -19,8 +19,14 @@ public class ConsoleGame extends Game {
      * @param controller
      * Le constructeur de la classe Game
      * */
+
+    private int weekDay;
+    private int jourActuel;
+    private int eventActuel;
     public ConsoleGame(GameController controller) {
         super(controller);
+        weekDay = 0;
+        eventActuel = 0;
     }
 
     /**
@@ -47,7 +53,7 @@ public class ConsoleGame extends Game {
     }
 
     private void menuPrincipal(){
-        System.out.println("Etudiant(e): " + getController().getUser().toString());
+        System.out.println("                     Etudiant(e): " + getController().getUser().toString());
         Input question = new Input("Menu Principal");
         question.addAnswer("Poursuivre le jeu");//0
         question.addAnswer("Statistiques");//1
@@ -56,8 +62,10 @@ public class ConsoleGame extends Game {
         String rep = question.resolve();
 
         if (rep.equals("Poursuivre le jeu")){
-            //continuer la boucle ??
+            boucleDeSimulation();
         }
+
+        //if (rep.equals())
 
     }
 
@@ -72,24 +80,34 @@ public class ConsoleGame extends Game {
         }
     }
 
+
+    public void boucleDeSimulation(){
+
+        for (int i = weekDay; i<getController().getSchedule().getWeek().size(); i++) {//pour chaque jour dans la semaine
+            if (eventActuel >= getController().getSchedule().getWeek().get(i).getEvenements().size()){
+                eventActuel = 0;
+                dailyResults(weekDay);
+                weekDay++;
+            }else {
+                for (int j = eventActuel; j < getController().getSchedule().getWeek().get(i).getEvenements().size(); j++) {//pour chaque évènement dans la journée
+                    manageEvent(getController().getSchedule().getWeek().get(i).getEvenements().get(j)); //gérer les actions possibles liées à un type d'évènement
+
+                }
+
+            }
+
+        }
+    }
+
     /**
      * la methode run() permet de faire une boucle pour la simulation, ainsi, le jeu continue.
      * */
     public void run() {//boucle-scenario du jeu
         // LANCER LE JEU :)
-        int i = -1; //itérateur des jours
         initGameView();//recueil des informations d'utilisateur
+        menuPrincipal();
 
-        for (Day day : getController().getSchedule().getWeek()) {//pour chaque jour dans la semaine
-            i++;
-            for (Evenement event : day.getEvenements()) {//pour chaque évènement dans la journée
-                manageEvent(event); //gérer les actions possibles liées à un type d'évènement
-                System.out.println(getController().getUser().getStats().toString());
-                continuerLeJeu(); //donner la possibilité de quitter le jeu avant la fin de simulation
 
-            }
-            dailyResults(i); //affichage des résultats de la fin de la journée
-        }
     }
 
     /**
@@ -97,10 +115,12 @@ public class ConsoleGame extends Game {
      On a 2 types d'évènements possibles; cours ou pause.
      * */
     private void manageEvent(Evenement event) {
-        if(event instanceof Cours)
+        if(event instanceof Cours) {
             manageCours((Cours) event);
-        else
+        } else {
             managePause((Pause) event);
+            eventActuel++;
+        }
     }
 
 
@@ -108,7 +128,7 @@ public class ConsoleGame extends Game {
      * @param cours le cours dans lequel l'etudiant doit assisté.
      * manageCours demande à l'utilisateur s'il veut y assisté s'il veut ou pas on appel la fonction
     finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
-     * @see Cours
+     * @see Cours.java
      * */
     public void manageCours(Cours cours) {
         System.out.println("Vous avez un " + cours.getShortNom()+ " de " + cours.getMatiere().getNom());
@@ -117,18 +137,31 @@ public class ConsoleGame extends Game {
         Input question = new Input("Voulez-vous y assister?");
         question.addAnswer("Oui");//0
         question.addAnswer("Non, je veux faire une pause");//1
-        if(question.resolve().equals("Oui")){//si oui
+        question.addAnswer("Revenir dans le Menu Principal");//2
+        String res = question.resolve();
+        if(res.equals("Oui")){//si oui
             clearScreen();
             System.out.println(cours.getNom() + " de " + cours.getMatiere().getNom());
             System.out.println("\b");
 
             System.out.println("Petit quiz pour vérifier vos connaissances");
             cours.finaliserEvenement(getController().getUser(), true);
-        }else{
+            eventActuel++;
+        }
+
+        if(res.equals("Non, je veux faire une pause")){
             clearScreen();
             cours.finaliserEvenement(getController().getUser(), false);
             setPause();
+            eventActuel++;
         }
+
+        if (res.equals("Revenir dans le Menu Principal")){
+            menuPrincipal();
+        }
+
+
+
     }
 
     /**
@@ -150,13 +183,21 @@ public class ConsoleGame extends Game {
         Input question = new Input("Voulez-vous continuer le jeu?");
         question.addAnswer("Oui");//0
         question.addAnswer("Non");//1
+        question.addAnswer("Menu Principal");//1
 
         if(question.resolve().equals("Oui")){
             clearScreen();
-        }else{
+        }
+
+        if (question.resolve().equals("Non")){
             finalResults();
             System.exit(0);
         }
+
+        if (question.resolve().equals("Menu Principal")){
+            menuPrincipal();
+        }
+
     }
 
     /**
@@ -195,7 +236,7 @@ public class ConsoleGame extends Game {
      * dailyResults affiche les resultats de la journée dont l'indice est passé en parametre.
      * */
     public void dailyResults( int i){
-        System.out.println("Les resultats du fin de la journée: "+ getController().getSchedule().getWeekday(i));
+        System.out.println("Les resultats du fin de la journée: "+getController().getSchedule().getWeekday(i));
         System.out.println("Stats perso: "+ getController().getUser().getStats().toString());
         subjectsMastery();
     }
@@ -217,7 +258,7 @@ public class ConsoleGame extends Game {
      * @return l'entier retourné est égal à 0 lorsque la matiere
     n'est pas presente dans la liste de matiere de l'etudiant. Lorsqu'elle
     est presente l'entier retourné est l'indice de la matiere dans la meme liste.
-     * @see Input
+     * @see Input.java
      * Cette methode retrouve la matiere dont on a besoin
      * */
     private int selectSubject(String question) {
