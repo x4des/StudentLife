@@ -5,7 +5,7 @@ import studentlife.core.Day;
 import studentlife.core.Matiere;
 import studentlife.core.events.*;
 
-import java.sql.SQLOutput;
+//import java.sql.SQLOutput;
 import java.util.Scanner;
 
 /**
@@ -27,7 +27,7 @@ public class Game {
     /**
      * Initialisation de la simulation. On prend les informations souhaitées de l'utilisateur
      et on affiche toutes les infos quil aura besoin pour commencer la simulation
-     * @see GameController.java
+     * @see GameController
      * */
     private void initGameView() {
         // Get user details
