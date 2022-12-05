@@ -5,7 +5,7 @@ package studentlife.core.characters;
  qui posséde un nom et un prenom
  * */
 //Une personne peut être un élève(utilisateur) ou un professeur
-public class Personne {
+public abstract class Personne {
     private final String nom;
     private final String prenom;
 
