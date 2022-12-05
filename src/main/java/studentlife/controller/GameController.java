@@ -16,6 +16,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static studentlife.core.events.CoursType.CM;
+import static studentlife.core.events.CoursType.TD;
+
 /**
  * La classe GameController est la classe dans laquelle on instancie les classes
  necessaires pour que le jeu fonctionne.
@@ -47,8 +50,8 @@ public class GameController {
         user = new Etudiant(userLastName, userFirstName);
         createProfs();
         createSubjects();
-        //createSchedule();
-        loadSchedule();
+        createSchedule();
+        //loadSchedule();
         addNewQuiz();
     }
 
@@ -66,6 +69,11 @@ public class GameController {
         return schedule;
     }
 
+    public ArrayList<Professeur> getProfList() {
+        return profList;
+    }
+
+
     /**
      * cette methode ajoute une par une, les matieres de l'etudiant dans la liste de matières.
      * */
@@ -78,42 +86,67 @@ public class GameController {
         subjectList.add(new Matiere("Mathématiques pour l'informatique")); //4
         subjectList.add(new Matiere("Algorithmique et structure de données")); //5
         subjectList.add(new Matiere("Anglais scientifique général")); //6
-
-
-    }
-
-    /**
-     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'etudiant sur celle-ci.
-     * */
-    public void subjectsMastery() {
-        System.out.println("Les stats dans les matières:");
-        for (Matiere subject : subjectList) {
-            System.out.println(subject.toString());
-        }
-    }
-
-    /**
-     * affiche pour chaque prof son nom et le niveau d'appreciation qu'il a envers l'etudiant.
-     * */
-    public void profsAppreciation(){
-        System.out.println("Niveau de relation avec les professeurs:");
-        for (Professeur prof : profList) {
-            System.out.println(prof.toString());
-        }
     }
 
     /**
      * ajoute des professeurs a la liste de professeur (nom et prenom).
      * */
     private void createProfs() {
-        profList.add(new Professeur("Rooney", "Wayne")); //0
-        profList.add(new Professeur("Darko", "Donnie")); //1
-        profList.add(new Professeur("Snow", "Jon")); //2
-        profList.add(new Professeur("Austen", "Jane")); //3
-        profList.add(new Professeur("Lovelace", "Ada")); //4
-        profList.add(new Professeur("Corleone", "Vito")); //5
-        profList.add(new Professeur("Ventura", "Ace")); //6
+        profList.add(new Professeur("Rooney", "Wayne")); //0 - ISI
+        profList.add(new Professeur("Darko", "Donnie")); //1 - CdE
+        profList.add(new Professeur("Snow", "Jon")); //2 - POO
+        profList.add(new Professeur("Austen", "Jane")); //3 - ENG
+        profList.add(new Professeur("Lovelace", "Ada")); //4 - ASD
+        profList.add(new Professeur("Corleone", "Vito")); //5 - MI
+        profList.add(new Professeur("Ventura", "Ace")); //6 - InfoF
     }
+
+
+
+    /**
+     * cette methode, créer le premier jour de l'EDT de l'etudiant
+     l'etudiant aura le lundi; un CM et un TD le matin, une pause et 2 TD l'apre midi.
+     * */
+    private void createDay1() {
+        Day monday = new Day();
+
+        monday.addEvenement(new Cours(CM, profList.get(0), subjectList.get(0)));
+        monday.addEvenement(new Cours(TD, profList.get(1), subjectList.get(1)));
+        monday.addEvenement(new Pause());
+        monday.addEvenement(new Cours(TD, profList.get(2), subjectList.get(2)));
+        monday.addEvenement(new Cours(TD, profList.get(0), subjectList.get(0)));
+
+        schedule.addDay(monday);
+    }
+
+    private void createDay2() {
+        Day tuesday = new Day();
+
+        tuesday.addEvenement(new Cours(CM, profList.get(6), subjectList.get(3)));
+        tuesday.addEvenement(new Cours(CM, profList.get(5), subjectList.get(4)));
+        tuesday.addEvenement(new Cours(TD, profList.get(4), subjectList.get(5)));
+        tuesday.addEvenement(new Pause());
+        tuesday.addEvenement(new Cours(TD, profList.get(2), subjectList.get(2)));
+        tuesday.addEvenement(new Cours(TD, profList.get(0), subjectList.get(0)));
+
+        schedule.addDay(tuesday);
+    }
+
+
+    /**
+     * crée l'EDT
+     * */
+    private void createSchedule() {
+        createDay1();
+        createDay2();
+    }
+
+
+
+
+
+
+
 
     /**
      * Cette methode ajoute des quiz pour chaque matières
@@ -196,10 +229,10 @@ public class GameController {
                             }
                             System.out.println(j);
                             if (cours[1].equals("CM")) {
-                                jour.addEvenement(new Cours(CoursType.CM, this.profList.get(i) ,this.subjectList.get(j)));
+                                jour.addEvenement(new Cours(CM, this.profList.get(i) ,this.subjectList.get(j)));
                             }
                             if (cours[1].equals("TD")) {
-                                jour.addEvenement(new Cours(CoursType.TD, this.profList.get(i) ,this.subjectList.get(j)));
+                                jour.addEvenement(new Cours(TD, this.profList.get(i) ,this.subjectList.get(j)));
                             }
                             if (cours[1].equals("TP")) {
                                 jour.addEvenement(new Cours(CoursType.TP, this.profList.get(i) ,this.subjectList.get(j)));
