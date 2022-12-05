@@ -15,9 +15,9 @@ import static studentlife.Config.STAT_MASTERY;
 public class Matiere {
     private final String nomMatiere;
 
-    private Stat mastery;
+    private final Stat mastery;
 
-    private ArrayList<Quiz> listeQuiz;
+    private final ArrayList<Quiz> listeQuiz;
 
     /**
      * @param nomMatiere
@@ -26,7 +26,7 @@ public class Matiere {
     public Matiere(String nomMatiere) {
         this.nomMatiere = nomMatiere;
         this.mastery = new Stat(STAT_MASTERY, 50);
-        this.listeQuiz = new ArrayList<Quiz>();
+        this.listeQuiz = new ArrayList<>();
     }
 
     /**

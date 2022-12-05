@@ -9,7 +9,7 @@ public class Quiz {
     private final String question;
     private final ArrayList<String> reponses; //reponses possibles (sauf la réponse correcte)
     private final String reponseCorrecte;
-    private Matiere matiere; //matière concernée par le quizz
+    private final Matiere matiere; //matière concernée par le quizz
 
     /**
      * @param question une question qui est posée
@@ -22,7 +22,7 @@ public class Quiz {
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3, String r4){
         this.question = question;
-        this.reponses = new ArrayList<String>();
+        this.reponses = new ArrayList<>();
         this.reponses.add(r2);
         this.reponses.add(r3);
         this.reponses.add(r4);
@@ -39,7 +39,7 @@ public class Quiz {
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2){
         this.question = question;
-        this.reponses = new ArrayList<String>();
+        this.reponses = new ArrayList<>();
         this.reponses.add(r2);
         this.reponseCorrecte = reponseCorrecte;
         this.matiere = matiere;
@@ -55,7 +55,7 @@ public class Quiz {
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3){
         this.question = question;
-        this.reponses = new ArrayList<String>();
+        this.reponses = new ArrayList<>();
         this.reponses.add(r2);
         this.reponses.add(r3);
         this.reponseCorrecte = reponseCorrecte;
@@ -96,7 +96,7 @@ public class Quiz {
     /**
      *realise le quizz
      demande la saisie de l'utilisateur et vérifie si sa réponse est bien correcte
-     @exception  gère les exceptions si la saisie d'utilisateur n'est pas conforme au format demandé
+     gère les exceptions si la saisie d'utilisateur n'est pas conforme au format demandé
      * */
     public void realiserQuiz() {
         System.out.println(System.lineSeparator() + this.question);//affichage de la question

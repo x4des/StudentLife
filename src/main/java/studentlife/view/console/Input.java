@@ -1,4 +1,4 @@
-package studentlife.view;
+package studentlife.view.console;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -35,7 +35,7 @@ public class Input {
      * */
     public String resolve() {
 
-        if(answers.size() <= 0)
+        if(answers.size() == 0)
             return null;
 
         // Print the question and the answers:
@@ -58,6 +58,5 @@ public class Input {
 
         return answers.get(res);
     }
-
 
 }

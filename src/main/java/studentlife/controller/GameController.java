@@ -8,16 +8,13 @@ import studentlife.core.characters.Etudiant;
 import studentlife.core.characters.Professeur;
 import studentlife.core.events.Cours;
 import studentlife.core.events.CoursType;
-import studentlife.core.events.Evenement;
 import studentlife.core.events.Pause;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.FileReader;
-
-import static studentlife.core.events.CoursType.*;
 
 /**
  * La classe GameController est la classe dans laquelle on instancie les classes
@@ -40,8 +37,8 @@ public class GameController {
     }
 
     /**
-     * @param userLastName
-     * @param userFirstName
+     * @param userLastName user lastname
+     * @param userFirstName user first name
      * on initialise le game en creant une Personne qui est l'etudiant,
      on aura donc son nom, son prenom, ses professeurs, ses matières, son EDT et ses questions de quiz.
      Tout cela grace au methodes les creants.
@@ -67,29 +64,6 @@ public class GameController {
      * */
     public Schedule getSchedule() {
         return schedule;
-    }
-
-    /**
-     * cette methode, créer le premier jour de l'EDT de l'etudiant
-     l'etudiant aura le lundi; un CM et un TD le matin, une pause et 2 TD l'apre midi.
-     * */
-    private void createDay1() {
-        Day monday = new Day();
-
-        monday.addEvenement(new Cours(CM, profList.get(0), subjectList.get(0)));
-        monday.addEvenement(new Cours(TD, profList.get(1), subjectList.get(1)));
-        monday.addEvenement(new Pause());
-        monday.addEvenement(new Cours(TD, profList.get(2), subjectList.get(2)));
-        monday.addEvenement(new Cours(TD, profList.get(0), subjectList.get(0)));
-
-        schedule.addDay(monday);
-    }
-
-    /**
-     * appel la methode create Day1.
-     * */
-    private void createSchedule() {
-        createDay1();
     }
 
     /**
@@ -184,17 +158,16 @@ public class GameController {
     }
 
     private void loadSchedule() {
-        boolean test = true;
+        boolean test;
         boolean test1 = true;
         String tiret = "-";
         String pause = "Pause";
-        File file = new File("edt.csv");
+        File file = new File("assets/edt.csv");
         String csvFile = file.getAbsolutePath(); //+ //"src/main/java/studentlife/controller/edt.csv";
-        csvFile = csvFile.substring(0,csvFile.length()-7) + "src/main/java/studentlife/controller/edt.csv";
         System.out.println(csvFile);
-        String line = "";
+        String line;
         String csvSplitBy = ",";
-        String c = "";
+        String c;
         int i, j;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
