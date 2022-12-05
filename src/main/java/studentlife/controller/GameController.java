@@ -11,6 +11,7 @@ import studentlife.core.events.CoursType;
 import studentlife.core.events.Evenement;
 import studentlife.core.events.Pause;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -133,7 +134,10 @@ public class GameController {
         boolean test1 = true;
         String tiret = "-";
         String pause = "Pause";
-        String csvFile = "D:\\Cours\\Licence 2\\POO\\poo22_384j_c\\src\\main\\java\\studentlife\\controller\\edt.csv";
+        File file = new File("edt.csv");
+        String csvFile = file.getAbsolutePath(); //+ //"src/main/java/studentlife/controller/edt.csv";
+        csvFile = csvFile.substring(0,csvFile.length()-7) + "src/main/java/studentlife/controller/edt.csv";
+        System.out.println(csvFile);
         String line = "";
         String csvSplitBy = ",";
         String c = "";
