@@ -35,7 +35,8 @@ public class GameController {
         createSubjects();
         //createSchedule();
         loadSchedule();
-        addNewQuiz();
+        //addNewQuiz();
+        loadNewQuiz();
     }
 
     public Etudiant getUser() {
@@ -92,7 +93,7 @@ public class GameController {
         profList.add(new Professeur("Corleone", "Vito")); //5
         profList.add(new Professeur("Ventura", "Ace")); //6
     }
-
+/*
     private void addNewQuiz() {
         //ISI
         subjectList.get(0).addQuiz(new Quiz("Un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet", "un etat initial unique", "un etat final unique"));
@@ -116,15 +117,35 @@ public class GameController {
         subjectList.get(4).addQuiz(new Quiz("Une relation est binaire si elle est:", "Reflexive, antisymmetrique, transitive", subjectList.get(4), "Reflexive, symmetrique, transitive", "Reflexive, asymmetrique, transitive", "Antireflexive, antisymmetrique, transitive"));
         subjectList.get(4).addQuiz(new Quiz("La limite de Ln(x) en -infini: ", "n'existe pas", subjectList.get(4), "0", "-ifnini", "1"));
         //ASD
-        subjectList.get(5).addQuiz(new Quiz("le stack est:", "LIFO", subjectList.get(5), "FIFO", "accessible dynamiquement", "plus lent en acces que le heap"));
+        subjectList.get(5).addQuiz(new Quiz("Le stack est:", "LIFO", subjectList.get(5), "FIFO", "accessible dynamiquement", "plus lent en acces que le heap"));
         subjectList.get(5).addQuiz(new Quiz("Choisir l'affirmation correcte:", "les elements d'une liste chainée sont de même type", subjectList.get(5), "Il faut allouer de la memoire dynamique dans le stack pour les tableaux dynamiques", "l'operateur \"->\" equivaut à &ptr", "La taille d'un int depend uniquement de la machine"));
         //ANG
         subjectList.get(6).addQuiz(new Quiz("The Earth is ...(hold) by the gravity of the Sun and orbits around it", "held", subjectList.get(6), "being held", "holded", "being holded"));
+    }*/
 
+    public void loadNewQuiz(){
+        File file = new File("quiz.csv");
+        String csvFile = file.getAbsolutePath();
+        csvFile = csvFile.substring(0,csvFile.length()-8) + "src/main/java/studentlife/controller/quiz.csv";
+        String line = "";
+        String csvSplitBy = ",";
+        int j = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while((line = br.readLine()) != null){
+                String[] quiz = line.split(csvSplitBy);
+
+                while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(quiz[2]))) {
+                    j++;
+                }
+                subjectList.get(j).addQuiz(new Quiz(quiz[0],quiz[1],subjectList.get(j),quiz[3],quiz[4],quiz[5]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-
-
     public ArrayList<Matiere> getSubjectList() {
         return subjectList;
     }
@@ -135,9 +156,8 @@ public class GameController {
         String tiret = "-";
         String pause = "Pause";
         File file = new File("edt.csv");
-        String csvFile = file.getAbsolutePath(); //+ //"src/main/java/studentlife/controller/edt.csv";
+        String csvFile = file.getAbsolutePath();
         csvFile = csvFile.substring(0,csvFile.length()-7) + "src/main/java/studentlife/controller/edt.csv";
-        System.out.println(csvFile);
         String line = "";
         String csvSplitBy = ",";
         String c = "";
@@ -164,7 +184,6 @@ public class GameController {
                             System.out.println(i);
                             c = cours[0];
                             while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(c))) {
-                                System.out.println(j);
                                 j++;
                             }
                             System.out.println(j);
