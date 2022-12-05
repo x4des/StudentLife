@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="studentlife.controller.FXMLDocController">
    <children>
       <StackPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -40,11 +40,11 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="23.0" prefWidth="145.0" />
+                        <TextField prefHeight="23.0" fx:id="nomField" prefWidth="145.0" />
                         <Pane prefHeight="50.0" prefWidth="52.0" />
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="105.0" text="commencer" textAlignment="CENTER">
+                  <Button fx:id="commencerBtn" mnemonicParsing="false" prefHeight="55.0" onAction="#commencer" prefWidth="105.0" text="commencer" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
