@@ -1,9 +1,11 @@
 package studentlife;
 
-
 import studentlife.controller.GameController;
+import studentlife.view.console.Input;
+
 import studentlife.view.Game;
-import studentlife.view.Input;
+import studentlife.view.console.ConsoleGame;
+import studentlife.view.ui.GUIGame;
 
 /**
  * La classe main nous permet d'executer tout le programme
@@ -11,10 +13,17 @@ import studentlife.view.Input;
 public class Main {
     public static void main(String[] args) {
 
-        Game game = new Game(new GameController());
+        Input input = new Input("Comment voulez vous jouer ?");
+        input.addAnswer("Console");
+        input.addAnswer("Graphical UI");
 
+        Game game;
+
+        if(input.resolve().equals("Console"))
+            game = new ConsoleGame(new GameController());
+        else
+            game = new GUIGame(new GameController());
 
         game.run();
-
     }
 }

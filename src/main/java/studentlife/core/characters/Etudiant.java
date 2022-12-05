@@ -28,11 +28,12 @@ public class Etudiant extends Personne {
      * */
     public StatsManager getStats() { return stats; }
 
+
     // permet l'affichage d'un etudiant
     @Override
     public String toString() {
 
-        return "FullName: " + this.getNom() + " " + this.getPrenom() + "\nStats: " + this.getStats();
+        return this.getNom() + " " + this.getPrenom();
     }
 
 

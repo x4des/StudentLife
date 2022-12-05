@@ -2,18 +2,27 @@ package studentlife.core.actions;
 import studentlife.core.Matiere;
 
 import java.util.*;
-
-//une classe avec la quelle on peut créer et lancer un quizz.
+/**
+ * la classe Quiz est une classe qui permet de créer et lancer un quiz.
+ * */
 public class Quiz {
     private final String question;
     private final ArrayList<String> reponses; //reponses possibles (sauf la réponse correcte)
     private final String reponseCorrecte;
-    private Matiere matiere; //matière concernée par le quizz
+    private final Matiere matiere; //matière concernée par le quizz
 
-    //constructeur d'un quizz avec 4 propositions de réponses
+    /**
+     * @param question une question qui est posée
+     * @param matiere la matiere dont les questions sont concernées
+     * @param reponseCorrecte la reponse correcte à la question posée, fait partie des reponses proposées
+     * @param r2 reponse proposée
+     * @param r3 reponse proposée
+     * @param r4 reponse proposée
+     * constructeur d'un quizz avec 4 propositions de réponses
+     * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3, String r4){
         this.question = question;
-        this.reponses = new ArrayList<String>();
+        this.reponses = new ArrayList<>();
         this.reponses.add(r2);
         this.reponses.add(r3);
         this.reponses.add(r4);
@@ -21,32 +30,51 @@ public class Quiz {
         this.matiere = matiere;
     }
 
-    //constructeur d'un quizz avec 2 propositions de réponses
+    /**
+     * @param question une question qui est posée
+     * @param reponseCorrecte
+     * @param matiere la matiere dont les questions sont concernées
+     * @param r2 reponse proposée
+     * constructeur d'un quizz avec 2 propositions de réponses
+     * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2){
         this.question = question;
-        this.reponses = new ArrayList<String>();
+        this.reponses = new ArrayList<>();
         this.reponses.add(r2);
         this.reponseCorrecte = reponseCorrecte;
         this.matiere = matiere;
     }
 
-    //constructeur d'un quizz avec 3 propositions de réponses
+    /**
+     * @param question une question qui est posée
+     * @param reponseCorrecte
+     * @param matiere
+     * @param r2
+     * @param r3
+     * constructeur d'un quizz avec 3 propositions de réponses
+     * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3){
         this.question = question;
-        this.reponses = new ArrayList<String>();
+        this.reponses = new ArrayList<>();
         this.reponses.add(r2);
         this.reponses.add(r3);
         this.reponseCorrecte = reponseCorrecte;
         this.matiere = matiere;
     }
 
+    /**
+     * @return  getter qui permet d'acceder à l'attribut question de la classe
+     * */
     public String getQuestion() {
         return this.question;
     }
 
 
-    //insère la réponse correcte dans la liste de réponses possibles d'une manière aléatoire
-    //retourne la liste des toutes les réponses possibles
+    /**
+     * @return insère la réponse correcte dans la liste de réponses possibles d'une manière aléatoire
+     retourne la liste des toutes les réponses possibles
+     * */
+
     public ArrayList<String> getReponses() {
 
         try {
@@ -65,10 +93,11 @@ public class Quiz {
         return this.reponses;
     }
 
-
-    //realise le quizz
-    //demande la saisie de l'utilisateur et vérifie si sa réponse est bien correcte
-    //gère les exceptions si la saisie d'utilisateur n'est pas conforme au format demandé
+    /**
+     *realise le quizz
+     demande la saisie de l'utilisateur et vérifie si sa réponse est bien correcte
+     gère les exceptions si la saisie d'utilisateur n'est pas conforme au format demandé
+     * */
     public void realiserQuiz() {
         System.out.println(System.lineSeparator() + this.question);//affichage de la question
         int i = 0;

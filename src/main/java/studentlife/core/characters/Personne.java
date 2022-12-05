@@ -22,14 +22,14 @@ public abstract class Personne {
      * @return le getter retourne l'attribut nom d'un objet Personne
      * */
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     /**
      * @return le getter retourne l'attribut prenom d'un objet Personne
      * */
     public String getPrenom() {
-        return prenom;
+        return this.prenom;
     }
     /**
      * @return retourn un sting permettant d'afficher une personne ( son nom et prenom)
