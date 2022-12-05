@@ -71,9 +71,6 @@ public class Game {
                 System.out.println(gameController.getUser().getStats().toString());
                 continuerLeJeu(); //donner la possibilité de quitter le jeu avant la fin de simulation
 
-
-
-
             }
             dailyResults(i); //affichage des résultats de la fin de la journée
         }
@@ -91,7 +88,12 @@ public class Game {
     }
 
 
-    //
+    /**
+     * @param cours le cours dans lequel l'etudiant doit assisté.
+     * manageCours demande à l'utilisateur s'il veut y assisté s'il veut ou pas on appel la fonction
+     finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
+     * @see Cours.java
+     * */
     public void manageCours(Cours cours) {
         System.out.println("Vous avez un " + cours.getShortNom()+ " de " + cours.getMatiere().getNom());
 
@@ -111,18 +113,23 @@ public class Game {
             cours.finaliserEvenement(gameController.getUser(), false);
             setPause();
         }
-
-
     }
 
+    /**
+     * @param pause l'etudiant a une pause
+     * appel la methode setPause()
+     * */
     public void managePause(Pause pause) {
         System.out.println("Y a une pause a gérer");
         setPause();
     }
 
     public void endGame(){
-
     }
+
+    /**
+     * continuerLeJeu demande a l'utilisateur s'il veut continuer la simu ou pas.
+     * */
     public void continuerLeJeu(){
         Input question = new Input("Voulez-vous continuer le jeu?");
         question.addAnswer("Oui");//0
@@ -136,6 +143,10 @@ public class Game {
         }
     }
 
+    /**
+     * setPause gère les stat de l'utilisateur lorsqu'il decide de prendre une pause.
+     En fonction du type de pause qu'il a choisi de prendre ses stats seront modifiés
+     * */
     public void setPause(){
         Input question = new Input("Que allez vous faire pendant la pause?");
         question.addAnswer("Reviser");//0
@@ -152,31 +163,31 @@ public class Game {
         }
 
         if (rep.equals("Manger")){
-
-
             Pause repas = new Pause(PauseType.REPAS);
             repas.finaliserEvenement(gameController.getUser(), true);
 
         }
 
         if (rep.equals("Se reposer")){
-
-
             Pause repos = new Pause(PauseType.REPOS);
             repos.finaliserEvenement(gameController.getUser(), true);
-
         }
-
-
-
-
     }
+
+    /**
+     * @param i indice qui parcours la lise de jour de la semaine
+     * dailyResults affiche les resultats de la journée dont l'indice est passé en parametre.
+     * */
     public void dailyResults( int i){
         System.out.println("Les resultats du fin de la journée: "+gameController.getSchedule().getWeekday(i));
         System.out.println("Stats perso: "+ gameController.getUser().getStats().toString());
         gameController.subjectsMastery();
     }
 
+    /**
+     * affiche le bilan final de la semaine: les stats pour chaque matieres, les stats personnels
+     ainsi l'appreciation des profs.
+     * */
     public void finalResults(){
         System.out.println("Vos statistiques à la fin du jeu:");
         System.out.println("Stats perso: "+ gameController.getUser().getStats().toString());
@@ -185,6 +196,14 @@ public class Game {
 
     }
 
+    /**
+     * @param question
+     * @return l'entier retourné est égal à 0 lorsque la matiere
+     n'est pas presente dans la liste de matiere de l'etudiant. Lorsqu'elle
+     est presente l'entier retourné est l'indice de la matiere dans la meme liste.
+     * @see Input.java
+     * Cette methode retrouve la matiere dont on a besoin
+     * */
     private int selectSubject(String question) {
         Input request = new Input(question);
         for(Matiere subject : gameController.getSubjectList()) {
