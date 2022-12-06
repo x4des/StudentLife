@@ -13,8 +13,8 @@ import java.util.Scanner;
 
 public class commencerButton extends SWSimButton{
 
-    private final TextField nom;
-    private final TextField prenom;
+    private TextField nom;
+    private TextField prenom;
     private ConsoleGame consoleGame;
 
     public commencerButton(String text, ConsoleGame consoleGame, TextField nom, TextField prenom) {
@@ -38,7 +38,7 @@ public class commencerButton extends SWSimButton{
             public void handle(MouseEvent mouseEvent) {
                 if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
                     setButtonPressedStyle();
-                    WelcomeScene welcomeScene = new WelcomeScene(getPrenom(), getNom());
+                    WelcomeScene welcomeScene = new WelcomeScene(getPrenom(), getNom(), consoleGame);
                     Stage s = (Stage) commencerButton.super.getScene().getWindow();
                     s.setScene(welcomeScene.getScene());
                 }
@@ -68,6 +68,5 @@ public class commencerButton extends SWSimButton{
             }
         });
     }
-
 
 }
