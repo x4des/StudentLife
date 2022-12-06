@@ -13,8 +13,8 @@ import java.util.Scanner;
 
 public class commencerButton extends SWSimButton{
 
-    private TextField nom;
-    private TextField prenom;
+    private final TextField nom;
+    private final TextField prenom;
     private ConsoleGame consoleGame;
 
     public commencerButton(String text, ConsoleGame consoleGame, TextField nom, TextField prenom) {
@@ -67,18 +67,6 @@ public class commencerButton extends SWSimButton{
                 setEffect(null);
             }
         });
-    }
-
-    private void initGameView() {
-        // Get user details
-        String nom = this.nom.getText();
-        String prenom = this.prenom.getText();
-
-        consoleGame.getController().initGame(nom, prenom);//initialise le jeu avec les informations d'utilisateur
-
-        //message de bienvenue avec les stats initiales
-        System.out.println("Welcome " + consoleGame.getController().getUser().getNom() + " " + consoleGame.getController().getUser().getPrenom());
-        System.out.println(consoleGame.getController().getUser().getStats().toString());
     }
 
 
