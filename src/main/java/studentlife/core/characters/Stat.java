@@ -2,9 +2,9 @@ package studentlife.core.characters;
 
 
 /**
- *La classe Stat represente une statistique
- qui possède des seuils, un nom, une valeur qui sera modifier tout au long de la simu
- ainsi qu'un pourcentage de 45%, ce pourcentage enous permet de modifier la stat de la fatigue
+ *La classe Stat représente une statistique
+ qui possède des seuils, un nom, une valeur qui sera modifier tout au long de la simulation
+ ainsi qu'un pourcentage de 45%, ce pourcentage nous permet de modifier la stat de la fatigue
  par rapport a celle de la faim.
  }
  * */
@@ -19,8 +19,8 @@ public class Stat {
     private int value; //valeur
 
     /**
-     * @param name
-     * @param value
+     * @param name nom de la statistique
+     * @param value valeur de la statistique
      * constructeur d'une statistique
      * */
     public Stat(String name, int value) {//constructeur
@@ -65,26 +65,6 @@ public class Stat {
     }
 
 
-    /*public void updateValue(@NotNull Stat stat, char operation){ //augmente ou diminue la valeur d'une stat en fonction d'une autre stat
-        int newval = (int)(stat.value*PRCNT);
-
-        if (operation == '+'){
-            if (this.value + newval > MAX_STAT){
-                this.value = MAX_STAT;
-            }else{
-                this.value += newval;
-            }
-        }
-
-        if (operation == '-'){
-            if (this.value - newval < MIN_STAT){
-                this.value = MIN_STAT;
-            }else{
-                this.value-=newval;
-            }
-        }
-
-    }*/
 
     /**
      * @return getter permet d'acceder à la valeur de la stat
@@ -107,7 +87,7 @@ public class Stat {
     }
 
     /**
-     * @return retourn la valeur du seuil max d'une stat
+     * @return retourne la valeur du seuil max d'une stat
      * */
     public int getMaxStat(){
         return MAX_STAT;
