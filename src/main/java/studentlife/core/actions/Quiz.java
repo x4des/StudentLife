@@ -2,58 +2,83 @@ package studentlife.core.actions;
 import studentlife.core.Matiere;
 
 import java.util.*;
-
+/**
+ * la classe Quiz est une classe qui permet de créer et lancer un quiz.
+ * */
 public class Quiz {
     private final String question;
-    private final ArrayList<String> reponses;
+    private final ArrayList<String> reponses; //reponses possibles (sauf la réponse correcte)
     private final String reponseCorrecte;
-    private int reponseUser;
-    private Matiere matiere;
+    private final Matiere matiere; //matière concernée par le quizz
 
+    /**
+     * @param question une question qui est posée
+     * @param matiere la matiere dont les questions sont concernées
+     * @param reponseCorrecte la reponse correcte à la question posée, fait partie des reponses proposées
+     * @param r2 reponse proposée
+     * @param r3 reponse proposée
+     * @param r4 reponse proposée
+     * constructeur d'un quizz avec 4 propositions de réponses
+     * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3, String r4){
         this.question = question;
-        this.reponses = new ArrayList<String>();
+        this.reponses = new ArrayList<>();
         this.reponses.add(r2);
         this.reponses.add(r3);
         this.reponses.add(r4);
         this.reponseCorrecte = reponseCorrecte;
-        this.reponseUser = 0;
         this.matiere = matiere;
     }
 
+    /**
+     * @param question une question qui est posée
+     * @param reponseCorrecte
+     * @param matiere la matiere dont les questions sont concernées
+     * @param r2 reponse proposée
+     * constructeur d'un quizz avec 2 propositions de réponses
+     * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2){
         this.question = question;
-        this.reponses = new ArrayList<String>();
+        this.reponses = new ArrayList<>();
         this.reponses.add(r2);
         this.reponseCorrecte = reponseCorrecte;
-        this.reponseUser = 0;
         this.matiere = matiere;
     }
 
+    /**
+     * @param question une question qui est posée
+     * @param reponseCorrecte
+     * @param matiere
+     * @param r2
+     * @param r3
+     * constructeur d'un quizz avec 3 propositions de réponses
+     * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3){
         this.question = question;
-        this.reponses = new ArrayList<String>();
+        this.reponses = new ArrayList<>();
         this.reponses.add(r2);
         this.reponses.add(r3);
         this.reponseCorrecte = reponseCorrecte;
-        this.reponseUser = 0;
         this.matiere = matiere;
     }
 
+    /**
+     * @return  getter qui permet d'acceder à l'attribut question de la classe
+     * */
     public String getQuestion() {
         return this.question;
     }
 
-    public String getReponseCorrecte() {
-        return this.reponseCorrecte;
-    }
 
-    //retourne les reponses correctes et incorrectes
+    /**
+     * @return insère la réponse correcte dans la liste de réponses possibles d'une manière aléatoire
+     retourne la liste des toutes les réponses possibles
+     * */
+
     public ArrayList<String> getReponses() {
 
         try {
             if(this.reponses.size() > 0) {
-
                 Random random = new Random();
 
                 int reponseCorrecteIndice = random.nextInt(reponses.size()+1); //un int random entre 0 et taille(reponses)
@@ -65,107 +90,48 @@ public class Quiz {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-
         return this.reponses;
     }
 
-    public void setReponseUser(int reponseUser) {
-        this.reponseUser = reponseUser;
-    }
-
-    public int getReponseUser() {
-        return reponseUser;
-    }
-
-    public Matiere getMatiere(){
-        return this.matiere;
-    }
-
-
-
+    /**
+     *realise le quizz
+     demande la saisie de l'utilisateur et vérifie si sa réponse est bien correcte
+     gère les exceptions si la saisie d'utilisateur n'est pas conforme au format demandé
+     * */
     public void realiserQuiz() {
-        System.out.println(System.lineSeparator() + this.question);
+        System.out.println(System.lineSeparator() + this.question);//affichage de la question
         int i = 0;
-        for (String rep : this.getReponses()) {
+        for (String rep : this.getReponses()) {//affichage des réponses possibles
             i++;
             System.out.println(i + ") " + rep);
         }
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Donnez votre réponse");
+        Scanner scanner = new Scanner(System.in); //scanner qui prendra la saisie de l'utilisateur
+        System.out.println("Donnez l'indice de votre réponse");
         int reponse = 0;
-        boolean stop = false;
+        boolean stop = false; //condition d'arrêt de la boucle
         while (!stop) {
             try {
-                reponse = scanner.nextInt();
-                while (reponse < 1 || reponse > reponses.size()) {
+                reponse = scanner.nextInt(); //scan de la réponse d'utilisateur
+                while (reponse < 1 || reponse > reponses.size()) { //verification que l'indice donné est correct
                     System.out.println("Donnez indice correcte");
                     reponse = scanner.nextInt();
                 }
 
                 System.out.println("Votre réponse " + reponse);
-                if ((reponse-1) == reponses.indexOf(reponseCorrecte)) {
-                System.out.println(" est correcte");
-                matiere.getMastery().updateValue(10);
+                if ((reponse-1) == reponses.indexOf(reponseCorrecte)) { //verification si la réponse d'utilisateur est correcte
+                    System.out.println(" est correcte");
+                    matiere.getMastery().updateValue(10); //changements des stats dans la matière concernée
                 } else {
-                System.out.println(" est fausse" + System.lineSeparator());
-                matiere.getMastery().updateValue(-10);
+                    System.out.println(" est fausse" + System.lineSeparator());
+                    matiere.getMastery().updateValue(-10);
                 }
                 stop = true;
 
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException e) { //si la réponse saisie n'est pas un entier
                 System.out.println("Merci d'entrer un indice");
                 scanner.next();
             }
         }
     }
-
-    /*
-    public void realiserQ(){
-
-        ArrayList<String> lRep = this.getReponses();
-
-        //affichage: qst et reponses possibles
-        System.out.println(this.question + System.lineSeparator());
-        int i = 0;
-        for(String rep: lRep){
-            i++;
-            System.out.println(i + ") " + rep + System.lineSeparator());
-        }
-
-        //entree utilisateur
-        Scanner scanner = new Scanner(System.in);
-        do{
-            try {
-
-                this.reponseUser = scanner.nextInt(); //input : 1
-                System.out.println("Votre reponse: " + this.reponseUser);
-
-                //verifie l'input, recommence si input invalide
-                if(this.reponseUser < 1 || this.reponseUser > 4){
-                    System.out.println("Veuillez entrer: 1, 2, 3 ou 4");
-                    continue;
-                }
-
-                if((this.reponseUser-1) == lRep.indexOf(reponseCorrecte)){
-                    System.out.println(" est correcte");
-
-                    matiere.getMastery().updateValue(10);
-                }else{
-                    System.out.println(" est fausse" + System.lineSeparator());
-                    matiere.getMastery().updateValue(-10);
-                }
-                lRep.add("Quiz DONE");
-
-            }catch (InputMismatchException e){
-                System.out.println("Merci d'entrer un entier [1..4]");
-                scanner.next();
-            }
-        }while (lRep.size() == 4);
-
-
-
-    }
-
-     */
 }
