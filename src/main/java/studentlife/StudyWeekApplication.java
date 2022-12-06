@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import studentlife.controller.GameController;
 import studentlife.view.Game;
+import studentlife.view.ViewManager;
 
 public class StudyWeekApplication extends Application {
     public static void main(String[] args) {
@@ -19,10 +20,8 @@ public class StudyWeekApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //StackPane root = new StackPane();
-        FXMLLoader fxmlLoader = new FXMLLoader(StudyWeekApplication.class.getResource("homeScreenView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 300, 300);
-        primaryStage.setTitle("StudentLife Sim");
-        primaryStage.setScene(scene);
+        ViewManager viewManager = new ViewManager();
+        primaryStage = viewManager.getMainStage();
         primaryStage.show();
     }/*
     Game game = new Game(new GameController());
