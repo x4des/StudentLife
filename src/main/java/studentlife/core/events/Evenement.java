@@ -4,7 +4,9 @@ import studentlife.core.characters.Etudiant;
 /**
  *Un evenement correspond au différentes "taches" fera ou pas dans la journée
  cette interface sera donc implémenter par les classes Cours et Pause qui eux, modifieront les stats
- de l'utilsateur selon le choix de l'evenement (aller en cours ou faire une pause)
+ de l'utilsateur selon le choix de l'evenement (aller en cours ou faire une pause).
+ * @see Pause
+ * @see Cours
  */
 public interface Evenement {
     /**

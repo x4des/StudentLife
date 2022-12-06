@@ -5,6 +5,9 @@ import studentlife.core.events.Evenement;
 import java.util.ArrayList;
 /**
  *La classe jour represente un jour dans la semaine composé d'une liste d'evenements
+ * @see Evenement
+ * @see studentlife.core.events.Cours
+ * @see studentlife.core.events.Pause
  * */
 
 public class Day {

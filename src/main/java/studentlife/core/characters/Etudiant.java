@@ -7,7 +7,7 @@ import static studentlife.Config.*;
  qui possède des stats. Ses stats, seront tout au long de la simulation, modifier
  selon les choix que l'utilisateur. Ses statistiques personnelles sont composés de
  la faim, la fatigue, l'attention.
- * @see Personne.java
+ * @see Personne
  * */
 public class Etudiant extends Personne {
 

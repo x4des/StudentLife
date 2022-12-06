@@ -7,7 +7,7 @@ import static studentlife.Config.*;
 
 /**
  * La classe StatManager represente les statistiques personnels d'un utilisateur
- tele que la faim, la fatigue, l'attention. Elle permet egalement de gérer ses valeurs.
+ comme la faim, la fatigue, l'attention. Elle permet egalement de gérer ses valeurs.
  * */
 
 public class StatsManager {
@@ -23,7 +23,7 @@ public class StatsManager {
      * @return  cette fonction verifie d'abord si les noms des statistiques correspondent
      si non la fonction retourne false, si oui, la valeure de la statManager sera remplacé par value
      dans la fonction updateValue et la fonction retournera true.
-     * @see Stat.java#updateValue()
+     * @see Stat#updateValue(int)
      * */
     public boolean updateStat(String statName, int value) {
 
@@ -103,7 +103,6 @@ public class StatsManager {
      * @param value la valeur que l'on veut affecter à la stat ( nom mis en parametre)
      * ajoute une nouvelle stat au hashmap
      * */
-    //ajoute une nouvelle stat
     public void setStat(String statName, int value) {
         statsMap.put(statName, new Stat(statName, value));
     }

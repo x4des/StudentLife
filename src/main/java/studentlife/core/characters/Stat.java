@@ -92,6 +92,7 @@ public class Stat {
     public int getValue() {
         return value;
     }
+
     /**
      * @return getter qui retroune la valeur du pourcentage afin d'y acceder
      * */

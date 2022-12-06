@@ -10,8 +10,10 @@ import studentlife.view.Game;
 import java.util.Scanner;
 
 /**
- * La classe Game est la classe dans laquelle on initialise le jeu
- et où on met en place le scenario qui le scenario qui le fait tourner.
+ * La classe ConsoleGame est la classe dans laquelle on initialise le jeu
+ et où on créer la console et le scenario de la simu.
+ C'est la sous classe de la super Game
+ *@see Game
  * */
 public class ConsoleGame extends Game {
 
@@ -25,8 +27,7 @@ public class ConsoleGame extends Game {
 
     /**
      * Initialisation de la simulation. On prend les informations souhaitées de l'utilisateur
-     et on affiche toutes les infos quil aura besoin pour commencer la simulation
-     * @see GameController
+     et on affiche toutes les infos quil aura besoin pour commencer la simulation.
      * */
 
     private void initGameView() {
@@ -46,6 +47,9 @@ public class ConsoleGame extends Game {
         System.out.println(getController().getUser().getStats().toString());
     }
 
+    /**
+     * Cette methode creer les affiches du menu principal
+     * */
     private void menuPrincipal(){
         System.out.println("Etudiant(e): " + getController().getUser().toString());
         Input question = new Input("Menu Principal");

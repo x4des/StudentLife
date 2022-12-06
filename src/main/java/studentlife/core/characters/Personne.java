@@ -2,9 +2,11 @@ package studentlife.core.characters;
 
 /**
  * la classe represente une personne
- qui posséde un nom et un prenom
+ qui posséde un nom et un prenom. Cette classe est la super classe d'Etudiant et
+ Professeur.
+ @see Etudiant
+ @see Professeur
  * */
-//Une personne peut être un élève(utilisateur) ou un professeur
 public abstract class Personne {
     private final String nom;
     private final String prenom;
@@ -31,6 +33,7 @@ public abstract class Personne {
     public String getPrenom() {
         return this.prenom;
     }
+
     /**
      * @return retourn un sting permettant d'afficher une personne ( son nom et prenom)
      * */
