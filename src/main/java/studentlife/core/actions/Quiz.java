@@ -1,3 +1,6 @@
+/**
+ * Contient la classe Quiz
+ * */
 package studentlife.core.actions;
 import studentlife.core.Matiere;
 

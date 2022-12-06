@@ -1,3 +1,6 @@
+/**
+ * Contient les classes Matiere, Day, Schedule
+ * */
 package studentlife.core;
 
 import studentlife.core.events.Evenement;

@@ -1,3 +1,7 @@
+/**
+ * Contient les classes des differents personnages de la simu;
+  Etudiant, Personne, Professeur, Stat et StatsManager
+ * */
 package studentlife.core.characters;
 
 import static studentlife.Config.*;

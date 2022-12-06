@@ -1,3 +1,8 @@
+/**
+ * Contient les classes liées a touts evenements. Ainsi, elle continent
+ l'interface Evenement, les classes qui l'implemente; Cours, et Pause et d'autres modules stockant
+ les types de Cours et de Pauses.
+ * */
 package studentlife.core.events;
 
 import studentlife.core.Matiere;

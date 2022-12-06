@@ -1,3 +1,6 @@
+/**
+ * Contient FrameUtils qui permet de creer les elements d'une console graphique.
+ * */
 package studentlife.view.ui.utils;
 
 import javax.swing.*;

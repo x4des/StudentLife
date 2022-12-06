@@ -1,3 +1,7 @@
+/**
+ * Contient la classe qui instancie et affecte des valeurs aux différents objets que la
+ simulation utilise
+ * */
 package studentlife.controller;
 
 import studentlife.core.Day;
