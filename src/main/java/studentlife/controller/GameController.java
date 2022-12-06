@@ -84,7 +84,6 @@ public class GameController {
         csvFile = csvFile.substring(0,csvFile.length()-8) + "src/main/java/studentlife/controller/prof.csv";
         String line = "";
         String csvSplitBy = ",";
-        int j = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
@@ -105,7 +104,6 @@ public class GameController {
         csvFile = csvFile.substring(0,csvFile.length()-11) + "src/main/java/studentlife/controller/matiere.csv";
         String line = "";
         String csvSplitBy = ",";
-        int j = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
@@ -251,20 +249,6 @@ public class GameController {
                 }
                 this.schedule.addDay(jour);
             }
-            /*int k=0;
-            int l=0;
-            while( k!= this.schedule.getWeek().size()){
-                while(l != this.schedule.getWeek().get(k).getEvenements().size()){
-                    if(this.schedule.getWeek().get(k).getEvenements().get(l) instanceof Cours) {
-                        System.out.println(((Cours) this.schedule.getWeek().get(k).getEvenements().get(l)).getMatiere().getNom());
-                    }
-                    else{
-                        System.out.println("Pause");
-                    }
-                    l++;
-                }
-                k++;
-            }*/
 
         } catch (IOException e) {
             e.printStackTrace();
