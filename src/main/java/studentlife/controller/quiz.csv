@@ -4,10 +4,10 @@ Un automate est deterministe si,Il possède un unique état initial,Introduction
 Un automate est standard si,Il est unitaire et possede un unique état initial,Introduction aux systemes d'informations,Il est complet et deterministe,Il est fini,Il n'y pas de transition sur vers son etat initial
 Une societe anonyme SA cotée sur la bourse doit avoir un minimum de:,7 associes,Connaissance de l'entreprise,2 associes,Pas de minimum,8 associes
 Quel organisme calcule et diffuse l'indice des prix,INSEE,Connaissance de l'entreprise,FISC,INTERPOL,CNOUS
-Lequel des suivants est correct,les SCOP et SCIC sont des CAE,Connaissance de l'entreprise,Une SARL est une SA a responsabiite limitee, Une association est une societe a but non lucratif, Une µEntreprise possede au plus 20 employes
+Lequel des suivants est correct,les SCOP et SCIC sont des CAE,Connaissance de l'entreprise,Une SARL est une SA a responsabiite limitee, Une association est une societe a but non lucratif, Une Entreprise possede au plus 20 employes
 Une classe est:,Du code source,Programmation orientée objet,Un objet avec des attributs et des methodes,une interface avec des methodes non abstraites,abstraite quand elle possede un constructeur abstrait
 L'agregation:, est plus forte que l'association,Programmation orientée objet,est moins forte que l'association,est synonyme de l'association,depend de l'association
-En UML quel signe caractere represente un package,~,Programmation orientée objet,+,$,#
+En UML quel signe/caractere represente un package,~,Programmation orientée objet,+,$,#
 Une interface ne fait pas partie du framework collection en Java,Group,Programmation orientée objet,Collection,List,Set
 Lequel n'est pas vrai :,Un ordre est noetherien s'il est bien fonde,Informatique fondamentale,Un ordre est bien fonde si et seulement s'il est noetherien,Un ordre est bien fonde si tout partie non vide admet au moins un element minimal,Un ordre est noetherien s'il ne possede pas de chaine infinie strictement decroissante
 Lequel est vrai,Une fonction continue n'est pas necessairement derivable,Informatique fondamentale,Un isomorphisme d'ordre est un morphisme non bijectif,La double implication n'implique pas toujours qu'il y a l'egalite,Un ordre est strict s'il est reflexif
