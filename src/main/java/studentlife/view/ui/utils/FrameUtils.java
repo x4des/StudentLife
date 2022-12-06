@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class FrameUtils {
 
-    // This method take a JFrame and set its position in the center of the screen depending on the resolution
+    // This method takes a JFrame and sets its position in the center of the screen depending on the resolution
     public static void setFrameCenter(JFrame jf) {
         if (jf == null) return;
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -15,7 +15,7 @@ public class FrameUtils {
         jf.setLocation(x, y);
     }
 
-    // This method take a JFrame and set its size depending on the screen resolution
+    // This method takes a JFrame and sets its size depending on the screen resolution
     public static void setFrameSizeFromScreenResolution(JFrame jf) {
         if (jf == null) return;
         Dimension dim = getDimension();

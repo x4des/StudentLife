@@ -6,8 +6,8 @@ package studentlife.core.characters;
  * */
 //Une personne peut être un élève(utilisateur) ou un professeur
 public abstract class Personne {
-    private final String nom;
-    private final String prenom;
+    private String nom;
+    private String prenom;
 
     /**
      * @param nom
@@ -31,6 +31,15 @@ public abstract class Personne {
     public String getPrenom() {
         return this.prenom;
     }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
     /**
      * @return retourn un sting permettant d'afficher une personne ( son nom et prenom)
      * */

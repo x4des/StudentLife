@@ -9,6 +9,8 @@ import studentlife.view.Game;
 
 import java.util.Scanner;
 
+//pub, protec, priv
+
 /**
  * La classe Game est la classe dans laquelle on initialise le jeu
  et où on met en place le scenario qui le scenario qui le fait tourner.
@@ -21,7 +23,6 @@ public class ConsoleGame extends Game {
      * */
 
     private int weekDay;
-    private int jourActuel;
     private int eventActuel;
     public ConsoleGame(GameController controller) {
         super(controller);
@@ -53,8 +54,9 @@ public class ConsoleGame extends Game {
     }
 
     private void menuPrincipal(){
-        System.out.println("                     Etudiant(e): " + getController().getUser().toString());
-        Input question = new Input("Menu Principal");
+
+        Input question = new Input("Menu Principal        "+ "Etudiant(e): " + getController().getUser().toString()
+        );
         question.addAnswer("Poursuivre le jeu");//0
         question.addAnswer("Statistiques");//1
         question.addAnswer("Paramètres");
@@ -62,10 +64,22 @@ public class ConsoleGame extends Game {
         String rep = question.resolve();
 
         if (rep.equals("Poursuivre le jeu")){
-            boucleDeSimulation();
+            lookForEvent();
         }
 
-        //if (rep.equals())
+        if(rep.equals("Statistiques")) {
+            menuStatistiques();
+        }
+
+        if (rep.equals("Paramètres")){
+            parametres();
+        }
+
+        if (rep.equals("Quitter le jeu")){
+            endGame();
+
+        }
+
 
     }
 
@@ -80,6 +94,86 @@ public class ConsoleGame extends Game {
         }
     }
 
+    public void parametres(){
+        Input question = new Input("Modifier vos informations personnelles");
+        question.addAnswer("Oui");
+        question.addAnswer("Non, revenir dans le Menu Principal");
+        String res = question.resolve();
+
+        if (res.equals("Oui")) {
+            resetInfoPerso();
+            revenirDansLeMenu();
+        }else{
+            menuPrincipal();
+        }
+    }
+
+
+    public void resetInfoPerso(){
+        Input question = new Input("Entrez votre prénom");
+        String res = question.resolve();
+        getController().getUser().setPrenom(res);
+        question = new Input("Entrez votre nom");
+        res = question.resolve();
+        getController().getUser().setNom(res);
+        System.out.println("Informations personnelles changées avec success");
+    }
+
+    public void menuStatistiques(){
+        Input question = new Input("Statistiques");
+        question.addAnswer("Personnelles");
+        question.addAnswer("Matières");
+        question.addAnswer("Professeurs");
+        String res = question.resolve();
+
+        if (res.equals("Personnelles")){
+            System.out.println(getController().getUser().toString());
+            System.out.println(getController().getUser().getStats().toString());
+            revenirDansLeMenu();
+        }
+
+        if (res.equals("Matières")){
+            subjectsMastery();
+            revenirDansLeMenu();
+
+        }
+
+        if (res.equals("Professeurs")){
+            profsAppreciation();
+            revenirDansLeMenu();
+        }
+    }
+
+    public void revenirDansLeMenu(){
+        Input question = new Input("Faites une saisie pour revenir dans le menu principal");
+        question.resolve();
+        menuPrincipal();
+    }
+
+    public void checkValidEvent(){
+            System.out.println("La semaine est terminée");
+            //afficher moyenne
+            revenirDansLeMenu();
+    }
+    public void lookForEvent(){
+        if (weekDay>=getController().getSchedule().getWeek().size()){
+            checkValidEvent();
+        }else {
+            manageEvent(getController().getSchedule().getWeek().get(weekDay).getEvenements().get(eventActuel));
+        }
+
+    }
+
+    public void updateEvent(){
+        eventActuel++;
+
+
+        if (eventActuel >= getController().getSchedule().getWeek().get(weekDay).getEvenements().size()){
+            eventActuel = 0;
+            dailyResults(weekDay);
+            weekDay++;
+        }
+    }
 
     public void boucleDeSimulation(){
 
@@ -119,7 +213,6 @@ public class ConsoleGame extends Game {
             manageCours((Cours) event);
         } else {
             managePause((Pause) event);
-            eventActuel++;
         }
     }
 
@@ -146,14 +239,16 @@ public class ConsoleGame extends Game {
 
             System.out.println("Petit quiz pour vérifier vos connaissances");
             cours.finaliserEvenement(getController().getUser(), true);
-            eventActuel++;
+            updateEvent();
+            lookForEvent();
         }
 
         if(res.equals("Non, je veux faire une pause")){
             clearScreen();
             cours.finaliserEvenement(getController().getUser(), false);
             setPause();
-            eventActuel++;
+            updateEvent();
+            lookForEvent();
         }
 
         if (res.equals("Revenir dans le Menu Principal")){
@@ -171,9 +266,13 @@ public class ConsoleGame extends Game {
     public void managePause(Pause pause) {
         System.out.println("Y a une pause a gérer");
         setPause();
+        updateEvent();
+        lookForEvent();
     }
 
     public void endGame(){
+        finalResults();
+        System.exit(0);
     }
 
     /**
@@ -253,12 +352,14 @@ public class ConsoleGame extends Game {
 
     }
 
+
+
     /**
      * @param question
-     * @return l'entier retourné est égal à 0 lorsque la matiere
-    n'est pas presente dans la liste de matiere de l'etudiant. Lorsqu'elle
-    est presente l'entier retourné est l'indice de la matiere dans la meme liste.
-     * @see Input.java
+     * @return l'entier retourné est égal à 0 lorsque la matière
+    n'est pas présente dans la liste de matière de l'étudiant. Lorsqu'elle
+    est présente l'entier retourné est l'indice de la matière dans la meme liste.
+     * @see Input
      * Cette methode retrouve la matiere dont on a besoin
      * */
     private int selectSubject(String question) {
@@ -280,7 +381,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'etudiant sur celle-ci.
+     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'étudiant sur celle-ci.
      * */
     public void subjectsMastery() {
         System.out.println("Les stats dans les matières:");
@@ -289,8 +390,9 @@ public class ConsoleGame extends Game {
         }
     }
 
+
     /**
-     * affiche pour chaque prof son nom et le niveau d'appreciation qu'il a envers l'etudiant.
+     * affiche pour chaque prof son nom et le niveau d'appréciation qu'il a envers l'étudiant.
      * */
     public void profsAppreciation(){
         System.out.println("Niveau de relation avec les professeurs:");

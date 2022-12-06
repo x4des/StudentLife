@@ -35,8 +35,12 @@ public class Input {
      * */
     public String resolve() {
 
-        if(answers.size() == 0)
-            return null;
+        if(answers.size() == 0) {
+            System.out.println(question);
+            Scanner scanner = new Scanner(System.in);
+            return scanner.nextLine();
+        }
+
 
         // Print the question and the answers:
         System.out.println(question);
