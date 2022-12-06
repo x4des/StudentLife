@@ -20,9 +20,16 @@ public class commencerButton extends SWSimButton{
     public commencerButton(String text, ConsoleGame consoleGame, TextField nom, TextField prenom) {
         super(text);
         this.consoleGame =  consoleGame;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
-
+    public String getNom() {
+        return this.nom.getText();
+    }
+    public String getPrenom() {
+        return this.prenom.getText();
+    }
 
     @Override
     public void initializeListeners(){
@@ -31,7 +38,7 @@ public class commencerButton extends SWSimButton{
             public void handle(MouseEvent mouseEvent) {
                 if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
                     setButtonPressedStyle();
-                    WelcomeScene welcomeScene = new WelcomeScene();
+                    WelcomeScene welcomeScene = new WelcomeScene(getPrenom(), getNom());
                     Stage s = (Stage) commencerButton.super.getScene().getWindow();
                     s.setScene(welcomeScene.getScene());
                 }

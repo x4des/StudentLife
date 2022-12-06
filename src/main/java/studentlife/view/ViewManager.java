@@ -1,6 +1,8 @@
 package studentlife.view;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +15,7 @@ import studentlife.core.WelcomeScene;
 import studentlife.core.commencerButton;
 import studentlife.view.console.ConsoleGame;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class ViewManager {
@@ -33,6 +36,8 @@ public class ViewManager {
         mainStage = new Stage();
         mainStage.setScene(mainScene);
         /*createButtons();*/
+        nom = new TextField();
+        prenom = new TextField();
         createEverything(anchorPane);
         game = new ConsoleGame(new GameController());
     }
@@ -45,6 +50,7 @@ public class ViewManager {
 
         SWSimButton button = new SWSimButton("commencer");
         pane.getChildren().add(button);
+
     }
 
     public void createEverything(AnchorPane anchorPane) {
@@ -81,10 +87,10 @@ public class ViewManager {
 
     public void createHBoxElements(HBox hBox, String str, TextField inputText){
         Label text = createLabel(str);
-        TextField textField = new TextField();
+
         hBox.getChildren().add(text);
-        hBox.getChildren().add(textField);
-        inputText = textField;
+        hBox.getChildren().add(inputText);
+
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(5);
     }
@@ -92,5 +98,37 @@ public class ViewManager {
     public Label createLabel(String str){
         return new Label(str);
     }
+/*
+    public static ArrayList<Node> getAllNodes(Parent root){
+        ArrayList<Node> nodes = new ArrayList<Node>();
+        addAllDescendants(root, nodes);
+        return nodes;
+    }
+    private static void addAllDescendants(Parent parent, ArrayList<Node> nodes){
+        for(Node node : parent.getChildrenUnmodifiable()) {
+            nodes.add(node);
+            if(node instanceof Parent){
+                addAllDescendants((Parent)node, nodes);
+            }
+        }
+    }
+
+    public String getPrenom() {
+
+        ArrayList<Node> nodes = getAllNodes(anchorPane);
+        VBox vbox = (VBox) nodes.get(0);
+        HBox hbox = (HBox) vbox.getChildren().get(0);
+        String text = ((TextField) hbox.getChildren().get(1)).getText();
+        return text;
+    }
+    public String getNom() {
+
+        ArrayList<Node> nodes = getAllNodes(anchorPane);
+        VBox vbox = (VBox) nodes.get(0);
+        HBox hbox = (HBox) vbox.getChildren().get(1);
+        String text = ((TextField) hbox.getChildren().get(1)).getText();
+        return text;
+    }*/
+
 
 }
