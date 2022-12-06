@@ -177,16 +177,13 @@ public class GameController {
 
                             i = 0;
                             j = 0;
-                            System.out.println(cours[0]);
                             while (i < profList.size() && !(this.profList.get(i).getNom().equals(cours[2]))) {
                                 i++;
                             }
-                            System.out.println(i);
                             c = cours[0];
                             while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(c))) {
                                 j++;
                             }
-                            System.out.println(j);
                             if (cours[1].equals("CM")) {
                                 jour.addEvenement(new Cours(CoursType.CM, this.profList.get(i) ,this.subjectList.get(j)));
                             }
@@ -211,7 +208,7 @@ public class GameController {
                 }
                 this.schedule.addDay(jour);
             }
-            int k=0;
+            /*int k=0;
             int l=0;
             while( k!= this.schedule.getWeek().size()){
                 while(l != this.schedule.getWeek().get(k).getEvenements().size()){
@@ -224,7 +221,7 @@ public class GameController {
                     l++;
                 }
                 k++;
-            }
+            }*/
 
         } catch (IOException e) {
             e.printStackTrace();
