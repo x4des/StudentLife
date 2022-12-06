@@ -3,6 +3,7 @@ package studentlife.view;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import studentlife.core.SWSimButton;
 
 public class ViewManager {
 
@@ -17,9 +18,15 @@ public class ViewManager {
         mainScene = new Scene(anchorPane, WIDTH, HEIGHT);
         mainStage = new Stage();
         mainStage.setScene(mainScene);
+        createButtons();
     }
 
     public Stage getMainStage(){
         return mainStage;
+    }
+
+    public void createButtons(){
+        SWSimButton button = new SWSimButton("commencer");
+        anchorPane.getChildren().add(button);
     }
 }
