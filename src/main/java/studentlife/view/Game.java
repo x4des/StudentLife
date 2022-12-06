@@ -12,7 +12,7 @@ public abstract class Game implements Runnable {
         this.gameController = gameController;
     }
 
-    protected GameController getController() {
+    public GameController getController() {
         return gameController;
     }
 

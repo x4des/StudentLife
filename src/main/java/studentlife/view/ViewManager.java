@@ -7,9 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import studentlife.controller.GameController;
 import studentlife.core.SWSimButton;
 import studentlife.core.WelcomeScene;
 import studentlife.core.commencerButton;
+import studentlife.view.console.ConsoleGame;
 
 import java.util.Stack;
 
@@ -20,6 +22,10 @@ public class ViewManager {
     private AnchorPane anchorPane;
     private Scene mainScene;
     private Stage mainStage;
+    private ConsoleGame game;
+    private GameController gameController;
+    private TextField nom;
+    private TextField prenom;
 
     public ViewManager(){
         anchorPane = new AnchorPane();
@@ -28,6 +34,7 @@ public class ViewManager {
         mainStage.setScene(mainScene);
         /*createButtons();*/
         createEverything(anchorPane);
+        game = new ConsoleGame(new GameController());
     }
 
     public Stage getMainStage(){
@@ -59,25 +66,25 @@ public class ViewManager {
         HBox hBoxPrenom = new HBox();
         HBox hBoxNom = new HBox();
 
-        createHBoxElements(hBoxPrenom, "Prenom");
+        createHBoxElements(hBoxPrenom, "Prenom", prenom);
         vBox.getChildren().add(hBoxPrenom);
 
-        createHBoxElements(hBoxNom, "     Nom");
+        createHBoxElements(hBoxNom, "     Nom", nom);
         vBox.getChildren().add(hBoxNom);
 
-        SWSimButton button = new commencerButton("commencer");
+        SWSimButton button = new commencerButton("commencer", game, nom, prenom);
         vBox.getChildren().add(button);
 
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(5);
     }
 
-    public void createHBoxElements(HBox hBox, String str){
-        Label prenom = createLabel(str);
-        TextField textFieldPrenom = new TextField();
-        hBox.getChildren().add(prenom);
-        hBox.getChildren().add(textFieldPrenom);
-
+    public void createHBoxElements(HBox hBox, String str, TextField inputText){
+        Label text = createLabel(str);
+        TextField textField = new TextField();
+        hBox.getChildren().add(text);
+        hBox.getChildren().add(textField);
+        inputText = textField;
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(5);
     }
