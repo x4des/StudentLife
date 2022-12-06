@@ -107,24 +107,24 @@ public class Quiz {
         }
 
         Scanner scanner = new Scanner(System.in); //scanner qui prendra la saisie de l'utilisateur
-        System.out.println("Donnez l'indice de votre réponse");
+        System.out.println(System.lineSeparator() + "Donnez l'indice de votre réponse");
         int reponse = 0;
         boolean stop = false; //condition d'arrêt de la boucle
         while (!stop) {
             try {
                 reponse = scanner.nextInt(); //scan de la réponse d'utilisateur
                 while (reponse < 1 || reponse > reponses.size()) { //verification que l'indice donné est correct
-                    System.out.println("Donnez indice correcte");
+                    System.out.println("Donnez l'indice correcte");
                     reponse = scanner.nextInt();
                 }
 
-                System.out.println("Votre réponse " + reponse);
                 if ((reponse-1) == reponses.indexOf(reponseCorrecte)) { //verification si la réponse d'utilisateur est correcte
-                    System.out.println(" est correcte");
+                    System.out.println("Votre réponse est correcte");
                     matiere.getMastery().updateValue(10); //changements des stats dans la matière concernée
                 } else {
-                    System.out.println(" est fausse" + System.lineSeparator());
+                    System.out.println("Votre réponse est fausse");
                     matiere.getMastery().updateValue(-10);
+                    System.out.println("la réponse correcte est: " + (reponses.indexOf(reponseCorrecte)+1));
                 }
                 stop = true;
 

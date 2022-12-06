@@ -55,7 +55,7 @@ public class Input {
 
         while (res < 0 || res >= answers.size())
         {
-             System.out.println("Please pick an answer: ");
+             System.out.println("Donnez l'indice de votre réponse\"");
              res = scanner.nextInt();
              res--;
         }

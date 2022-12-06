@@ -45,12 +45,8 @@ public class ConsoleGame extends Game {
         String firstName = scanner.nextLine();
         System.out.println("Prénom:");
         String lastName = scanner.nextLine();
-
+        clearScreen();
         getController().initGame(lastName, firstName);//initialise le jeu avec les informations d'utilisateur
-
-        //message de bienvenue avec les stats initiales
-        System.out.println("Welcome " + getController().getUser().getNom() + " " + getController().getUser().getPrenom());
-        System.out.println(getController().getUser().getStats().toString());
     }
 
     private void menuPrincipal(){
@@ -150,6 +146,12 @@ public class ConsoleGame extends Game {
         menuPrincipal();
     }
 
+    public void continuerJeu(){
+        System.out.println();
+        Input question = new Input("Faites une saisie pour continuer le jeu");
+        question.resolve();
+    }
+
     public void checkValidEvent(){
             System.out.println("La semaine est terminée");
             //afficher moyenne
@@ -209,6 +211,7 @@ public class ConsoleGame extends Game {
      On a 2 types d'évènements possibles; cours ou pause.
      * */
     private void manageEvent(Evenement event) {
+        clearScreen();
         if(event instanceof Cours) {
             manageCours((Cours) event);
         } else {
@@ -221,7 +224,7 @@ public class ConsoleGame extends Game {
      * @param cours le cours dans lequel l'etudiant doit assisté.
      * manageCours demande à l'utilisateur s'il veut y assisté s'il veut ou pas on appel la fonction
     finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
-     * @see Cours.java
+     * @see Cours
      * */
     public void manageCours(Cours cours) {
         System.out.println("Vous avez un " + cours.getShortNom()+ " de " + cours.getMatiere().getNom());
@@ -239,6 +242,8 @@ public class ConsoleGame extends Game {
 
             System.out.println("Petit quiz pour vérifier vos connaissances");
             cours.finaliserEvenement(getController().getUser(), true);
+            continuerJeu();
+
             updateEvent();
             lookForEvent();
         }
@@ -275,29 +280,7 @@ public class ConsoleGame extends Game {
         System.exit(0);
     }
 
-    /**
-     * continuerLeJeu demande a l'utilisateur s'il veut continuer la simu ou pas.
-     * */
-    public void continuerLeJeu(){
-        Input question = new Input("Voulez-vous continuer le jeu?");
-        question.addAnswer("Oui");//0
-        question.addAnswer("Non");//1
-        question.addAnswer("Menu Principal");//1
 
-        if(question.resolve().equals("Oui")){
-            clearScreen();
-        }
-
-        if (question.resolve().equals("Non")){
-            finalResults();
-            System.exit(0);
-        }
-
-        if (question.resolve().equals("Menu Principal")){
-            menuPrincipal();
-        }
-
-    }
 
     /**
      * setPause gère les stat de l'utilisateur lorsqu'il decide de prendre une pause.
@@ -309,9 +292,10 @@ public class ConsoleGame extends Game {
         question.addAnswer("Manger");//1
         question.addAnswer("Se reposer");//2
         String rep = question.resolve();
+        clearScreen();
         if (rep.equals("Reviser")){
 
-            int subject = selectSubject("Quelle matière voulez vous révisez ?");
+            int subject = selectSubject("Quelle matière voulez vous réviser?");
             System.out.println("Vous avez choisi: " + getController().getSubjectList().get(subject).getNom());
 
             Pause revision = new Pause(PauseType.REVISION, getController().getSubjectList().get(subject));
