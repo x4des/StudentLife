@@ -22,7 +22,9 @@ public class StudyWeekApplication extends Application {
         //StackPane root = new StackPane();
         ViewManager viewManager = new ViewManager();
         primaryStage = viewManager.getMainStage();
+        primaryStage.setResizable(false);
         primaryStage.show();
+
     }/*
     Game game = new Game(new GameController());
     @FXML

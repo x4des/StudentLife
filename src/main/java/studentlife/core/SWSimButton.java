@@ -1,11 +1,13 @@
 package studentlife.core;
 
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
+import javafx.stage.Window;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,8 +15,9 @@ import java.io.FileNotFoundException;
 public class SWSimButton extends Button {
 
     private final String FONT_PATH = "";
-    //private final String BUTTON_STYLE = "-fx-background-color: transparent; -fx-background-image: url('studentlife/core/resources/brown.png');";
-    //private final String BUTTON_PRESSED_STYLE = "-fx-background-color: transparent; -fx-background-image: url('/studentlife/core/resources/brown_pressed.png');";
+    private final String BUTTON_STYLE = "-fx-background-color: transparent; -fx-background-image: url('studentlife/core/resources/brown.png');";
+    private final String BUTTON_PRESSED_STYLE = "-fx-background-color: transparent; -fx-background-image: url('/studentlife/core/resources/brown_pressed.png');";
+
 
     public SWSimButton(String text){
         setText(text);
@@ -33,24 +36,24 @@ public class SWSimButton extends Button {
         }
     }
 
-/*    private void setButtonStyle(){
-        setStyle(BUTTON_STYLE);
-        setPrefHeight(49);
+    public void setButtonStyle(){
+        //setStyle(BUTTON_STYLE);
+        setPrefHeight(50);
+        setLayoutY(getLayoutY() - 4);
+    }
+
+    public void setButtonPressedStyle(){
+        //setStyle(BUTTON_PRESSED_STYLE);
+        setPrefHeight(45);
         setLayoutY(getLayoutY() + 4);
     }
 
-    private void setButtonPressedStyle(){
-        setStyle(BUTTON_PRESSED_STYLE);
-        setPrefHeight(45);
-        setLayoutY(getLayoutY() + 4);
-    }*/
-
-    private void initializeListeners(){
+    public void initializeListeners(){
         setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-                    /*setButtonPressedStyle();*/
+                    setButtonPressedStyle();
                 }
             }
         });
@@ -59,7 +62,7 @@ public class SWSimButton extends Button {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-                    /*setButtonStyle();*/
+                    setButtonStyle();
                 }
             }
         });
