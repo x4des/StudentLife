@@ -7,14 +7,14 @@ import static studentlife.Config.STAT_APPRECIATION;
  qui a une Stat appreciation. Cette stat est en lien avec l'utilisateur, c'est la relation/L'appreciation entre le professeur
  et l'etudiant. Sa valeur sera modifier selon les choix que l'etudiant fera
  plus l'etudiant ira en cours plus cette valeure augmentera
- *@see Personne.java
+ *@see Personne
  * */
 public class Professeur extends Personne {
 
     private final Stat appreciation;
     /**
-     * @param nom
-     * @param prenom
+     * @param nom nom du professeur
+     * @param prenom prénom du professeur
      * le constructeur de professeur
      * */
     public Professeur(String nom, String prenom){

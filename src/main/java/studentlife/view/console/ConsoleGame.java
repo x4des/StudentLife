@@ -1,7 +1,6 @@
 package studentlife.view.console;
 
 import studentlife.controller.GameController;
-import studentlife.core.Day;
 import studentlife.core.Matiere;
 import studentlife.core.characters.Professeur;
 import studentlife.core.events.*;
@@ -17,13 +16,15 @@ import java.util.Scanner;
  * */
 public class ConsoleGame extends Game {
 
+
+
+    private int weekDay;
+    private int eventActuel;
+
     /**
      * @param controller
      * Le constructeur de la classe Game
      * */
-
-    private int weekDay;
-    private int eventActuel;
     public ConsoleGame(GameController controller) {
         super(controller);
         weekDay = 0;
@@ -177,23 +178,7 @@ public class ConsoleGame extends Game {
         }
     }
 
-    public void boucleDeSimulation(){
 
-        for (int i = weekDay; i<getController().getSchedule().getWeek().size(); i++) {//pour chaque jour dans la semaine
-            if (eventActuel >= getController().getSchedule().getWeek().get(i).getEvenements().size()){
-                eventActuel = 0;
-                dailyResults(weekDay);
-                weekDay++;
-            }else {
-                for (int j = eventActuel; j < getController().getSchedule().getWeek().get(i).getEvenements().size(); j++) {//pour chaque évènement dans la journée
-                    manageEvent(getController().getSchedule().getWeek().get(i).getEvenements().get(j)); //gérer les actions possibles liées à un type d'évènement
-
-                }
-
-            }
-
-        }
-    }
 
     /**
      * la methode run() permet de faire une boucle pour la simulation, ainsi, le jeu continue.
@@ -215,13 +200,13 @@ public class ConsoleGame extends Game {
         if(event instanceof Cours) {
             manageCours((Cours) event);
         } else {
-            managePause((Pause) event);
+            managePause();
         }
     }
 
 
     /**
-     * @param cours le cours dans lequel l'etudiant doit assisté.
+     * @param cours le cours dans lequel l'étudiant doit assisté.
      * manageCours demande à l'utilisateur s'il veut y assisté s'il veut ou pas on appel la fonction
     finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
      * @see Cours
@@ -265,10 +250,10 @@ public class ConsoleGame extends Game {
     }
 
     /**
-     * @param pause l'etudiant a une pause
+     *
      * appel la methode setPause()
      * */
-    public void managePause(Pause pause) {
+    public void managePause() {
         System.out.println("Y a une pause a gérer");
         setPause();
         updateEvent();
@@ -295,7 +280,7 @@ public class ConsoleGame extends Game {
         clearScreen();
         if (rep.equals("Reviser")){
 
-            int subject = selectSubject("Quelle matière voulez vous réviser?");
+            int subject = selectSubject();
             System.out.println("Vous avez choisi: " + getController().getSubjectList().get(subject).getNom());
 
             Pause revision = new Pause(PauseType.REVISION, getController().getSubjectList().get(subject));
@@ -316,17 +301,17 @@ public class ConsoleGame extends Game {
 
     /**
      * @param i indice qui parcours la lise de jour de la semaine
-     * dailyResults affiche les resultats de la journée dont l'indice est passé en parametre.
+     * dailyResults affiche les résultats de la journée dont l'indice est passé en paramètre.
      * */
     public void dailyResults( int i){
-        System.out.println("Les resultats du fin de la journée: "+getController().getSchedule().getWeekday(i));
+        System.out.println("Les résultats du fin de la journée: "+getController().getSchedule().getWeekday(i));
         System.out.println("Stats perso: "+ getController().getUser().getStats().toString());
         subjectsMastery();
     }
 
     /**
-     * affiche le bilan final de la semaine: les stats pour chaque matieres, les stats personnels
-     ainsi l'appreciation des profs.
+     * affiche le bilan final de la semaine: les stats pour chaque matière, les stats personnels
+     ainsi l'appréciation des profs.
      * */
     public void finalResults(){
         System.out.println("Vos statistiques à la fin du jeu:");
@@ -339,15 +324,14 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * @param question
      * @return l'entier retourné est égal à 0 lorsque la matière
     n'est pas présente dans la liste de matière de l'étudiant. Lorsqu'elle
     est présente l'entier retourné est l'indice de la matière dans la meme liste.
      * @see Input
      * Cette methode retrouve la matiere dont on a besoin
      * */
-    private int selectSubject(String question) {
-        Input request = new Input(question);
+    private int selectSubject() {
+        Input request = new Input("Quelle matière voulez vous réviser?");
         for(Matiere subject : getController().getSubjectList()) {
             request.addAnswer(subject.getNom());
         }

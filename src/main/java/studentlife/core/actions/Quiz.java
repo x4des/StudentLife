@@ -7,7 +7,7 @@ import java.util.*;
  * */
 public class Quiz {
     private final String question;
-    private final ArrayList<String> reponses; //reponses possibles (sauf la réponse correcte)
+    private final ArrayList<String> reponses; //réponses possibles (sauf la réponse correcte)
     private final String reponseCorrecte;
     private final Matiere matiere; //matière concernée par le quizz
 
@@ -32,9 +32,9 @@ public class Quiz {
 
     /**
      * @param question une question qui est posée
-     * @param reponseCorrecte
-     * @param matiere la matiere dont les questions sont concernées
-     * @param r2 reponse proposée
+     * @param reponseCorrecte la réponse correcte
+     * @param matiere la matière dont les questions sont concernées
+     * @param r2 réponse proposée
      * constructeur d'un quizz avec 2 propositions de réponses
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2){
@@ -62,12 +62,6 @@ public class Quiz {
         this.matiere = matiere;
     }
 
-    /**
-     * @return  getter qui permet d'acceder à l'attribut question de la classe
-     * */
-    public String getQuestion() {
-        return this.question;
-    }
 
 
     /**
@@ -108,7 +102,7 @@ public class Quiz {
 
         Scanner scanner = new Scanner(System.in); //scanner qui prendra la saisie de l'utilisateur
         System.out.println(System.lineSeparator() + "Donnez l'indice de votre réponse");
-        int reponse = 0;
+        int reponse;
         boolean stop = false; //condition d'arrêt de la boucle
         while (!stop) {
             try {

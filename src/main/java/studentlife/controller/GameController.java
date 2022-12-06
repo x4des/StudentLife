@@ -21,9 +21,9 @@ import static studentlife.core.events.CoursType.TD;
 
 /**
  * La classe GameController est la classe dans laquelle on instancie les classes
- necessaires pour que le jeu fonctionne.
- on affecte les valeurs necessaire au bon fonctionnement de la simulation
- tel que les matières, la liste des profs, des cours, les quiz eventuels etc...
+ nécessaires pour que le jeu fonctionne.
+ on affecte les valeurs nécessaire au bon fonctionnement de la simulation
+ tel que les matières, la liste des profs, des cours, les quiz éventuels etc...
  * */
 public class GameController {
     private Etudiant user;
@@ -32,7 +32,7 @@ public class GameController {
     private final Schedule schedule;
 
     /**
-     * le contructeur de la classe GameController
+     * le constructeur de la classe GameController
      (que pour l'attribut schedule).
      * */
     public GameController() {
@@ -42,9 +42,9 @@ public class GameController {
     /**
      * @param userLastName user lastname
      * @param userFirstName user first name
-     * on initialise le game en creant une Personne qui est l'etudiant,
-     on aura donc son nom, son prenom, ses professeurs, ses matières, son EDT et ses questions de quiz.
-     Tout cela grace au methodes les creants.
+     * on initialise le game en créant une Personne qui est l'étudiant,
+     on aura donc son nom, son prénom, ses professeurs, ses matières, son EDT et ses questions de quiz.
+     Tout cela grace aux méthodes associées.
      * */
     public void initGame(String userLastName, String userFirstName) {
         user = new Etudiant(userLastName, userFirstName);
@@ -56,7 +56,7 @@ public class GameController {
     }
 
     /**
-     * @return  getter qui permet d'acceder au user de la classe
+     * @return  getter qui permet d'accéder au user de la classe
      * */
     public Etudiant getUser() {
         return user;
@@ -75,7 +75,7 @@ public class GameController {
 
 
     /**
-     * cette methode ajoute une par une, les matieres de l'etudiant dans la liste de matières.
+     * cette methode ajoute une par une, les matières de l'étudiant dans la liste de matières.
      * */
     private void createSubjects() {
 
@@ -89,7 +89,7 @@ public class GameController {
     }
 
     /**
-     * ajoute des professeurs a la liste de professeur (nom et prenom).
+     * ajoute des professeurs a la liste de professeur (nom et prénom).
      * */
     private void createProfs() {
         profList.add(new Professeur("Rooney", "Wayne")); //0 - ISI
@@ -104,8 +104,8 @@ public class GameController {
 
 
     /**
-     * cette methode, créer le premier jour de l'EDT de l'etudiant
-     l'etudiant aura le lundi; un CM et un TD le matin, une pause et 2 TD l'apre midi.
+     * cette methode, créer le premier jour de l'EDT de l'étudiant
+     l'étudiant aura le lundi; un CM et un TD le matin, une pause et 2 TD l'après midi.
      * */
     private void createDay1() {
         Day monday = new Day();

@@ -23,7 +23,7 @@ public class StatsManager {
      * @return  cette fonction verifie d'abord si les noms des statistiques correspondent
      si non la fonction retourne false, si oui, la valeure de la statManager sera remplacé par value
      dans la fonction updateValue et la fonction retournera true.
-     * @see Stat.java#updateValue()
+     * @see Stat
      * */
     public boolean updateStat(String statName, int value) {
 
