@@ -32,7 +32,8 @@ public class GameController {
     public void initGame(String userLastName, String userFirstName) {
         user = new Etudiant(userLastName, userFirstName);
         createProfs();
-        createSubjects();
+        //createSubjects();
+        loadSubject();
         //createSchedule();
         loadSchedule();
         //addNewQuiz();
@@ -47,7 +48,7 @@ public class GameController {
         return schedule;
     }
 
-    private void createDay1() {
+    /*private void createDay1() {
         Day monday = new Day();
 
         monday.addEvenement(new Cours(CM, profList.get(0), subjectList.get(0)));
@@ -62,9 +63,9 @@ public class GameController {
 
     private void createSchedule() {
         createDay1();
-    }
+    }*/
 
-    private void createSubjects() {
+    /*private void createSubjects() {
 
         subjectList.add(new Matiere("Introduction aux systemes d'informations")); //0
         subjectList.add(new Matiere("Connaissance de l'entreprise")); //1
@@ -74,6 +75,26 @@ public class GameController {
         subjectList.add(new Matiere("Algorithmique et structure de données")); //5
         subjectList.add(new Matiere("Anglais scientifique général")); //6
 
+
+    }*/
+    public void loadSubject(){
+        File file = new File("matiere.csv");
+        String csvFile = file.getAbsolutePath();
+        csvFile = csvFile.substring(0,csvFile.length()-11) + "src/main/java/studentlife/controller/quiz.csv";
+        String line = "";
+        String csvSplitBy = ",";
+        int j = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while((line = br.readLine()) != null){
+                String[] matiere = line.split(csvSplitBy);
+
+                subjectList.add(new Matiere(matiere[0]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
