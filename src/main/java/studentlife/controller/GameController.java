@@ -31,7 +31,8 @@ public class GameController {
 
     public void initGame(String userLastName, String userFirstName) {
         user = new Etudiant(userLastName, userFirstName);
-        createProfs();
+        //createProfs();
+        loadProf();
         //createSubjects();
         loadSubject();
         //createSchedule();
@@ -77,6 +78,27 @@ public class GameController {
 
 
     }*/
+    public void loadProf(){
+        File file = new File("prof.csv");
+        String csvFile = file.getAbsolutePath();
+        csvFile = csvFile.substring(0,csvFile.length()-8) + "src/main/java/studentlife/controller/prof.csv";
+        String line = "";
+        String csvSplitBy = ",";
+        int j = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while((line = br.readLine()) != null){
+                String[] prof = line.split(csvSplitBy);
+
+                profList.add(new Professeur(prof[0],prof[1]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void loadSubject(){
         File file = new File("matiere.csv");
         String csvFile = file.getAbsolutePath();
@@ -105,7 +127,7 @@ public class GameController {
         }
     }
 
-    private void createProfs() {
+    /*private void createProfs() {
         profList.add(new Professeur("Rooney", "Wayne")); //0
         profList.add(new Professeur("Darko", "Donnie")); //1
         profList.add(new Professeur("Snow", "Jon")); //2
@@ -113,7 +135,7 @@ public class GameController {
         profList.add(new Professeur("Lovelace", "Ada")); //4
         profList.add(new Professeur("Corleone", "Vito")); //5
         profList.add(new Professeur("Ventura", "Ace")); //6
-    }
+    }*/
 /*
     private void addNewQuiz() {
         //ISI
