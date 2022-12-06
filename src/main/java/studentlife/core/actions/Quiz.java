@@ -10,7 +10,7 @@ public class Quiz {
     private int reponseUser;
     private Matiere matiere;
 
-    public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3, String r4){
+    public Quiz(Matiere matiere, String question, String reponseCorrecte, String r2, String r3, String r4){
         this.question = question;
         this.reponses = new ArrayList<String>();
         this.reponses.add(r2);

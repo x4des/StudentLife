@@ -179,10 +179,10 @@ public class GameController {
             while((line = br.readLine()) != null){
                 String[] quiz = line.split(csvSplitBy);
 
-                while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(quiz[2]))) {
+                while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(quiz[0]))) {
                     j++;
                 }
-                subjectList.get(j).addQuiz(new Quiz(quiz[0],quiz[1],subjectList.get(j),quiz[3],quiz[4],quiz[5]));
+                subjectList.get(j).addQuiz(new Quiz(subjectList.get(j),quiz[1],quiz[2],quiz[3],quiz[4],quiz[5]));
             }
         } catch (IOException e) {
             e.printStackTrace();
