@@ -80,7 +80,7 @@ public class GameController {
     public void loadSubject(){
         File file = new File("matiere.csv");
         String csvFile = file.getAbsolutePath();
-        csvFile = csvFile.substring(0,csvFile.length()-11) + "src/main/java/studentlife/controller/quiz.csv";
+        csvFile = csvFile.substring(0,csvFile.length()-11) + "src/main/java/studentlife/controller/matiere.csv";
         String line = "";
         String csvSplitBy = ",";
         int j = 0;
