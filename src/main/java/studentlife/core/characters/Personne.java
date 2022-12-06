@@ -1,19 +1,19 @@
 package studentlife.core.characters;
 
 /**
- * la classe represente une personne
- qui posséde un nom et un prenom. Cette classe est la super classe d'Etudiant et
- Professeur.
+  * une classe abstraite représentant une personne
+ qui possède un nom et un prénom
+ Une personne peut être un étudiant(utilisateur) ou un professeur
  @see Etudiant
  @see Professeur
  * */
 public abstract class Personne {
-    private final String nom;
-    private final String prenom;
+    private String nom;
+    private String prenom;
 
     /**
-     * @param nom
-     * @param prenom
+     * @param nom nom de la personne
+     * @param prenom prénom de la personne
      * le constructeur de la classe Personne
      * */
     public Personne(String nom, String prenom){
@@ -32,6 +32,14 @@ public abstract class Personne {
      * */
     public String getPrenom() {
         return this.prenom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     /**

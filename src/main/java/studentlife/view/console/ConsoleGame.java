@@ -5,13 +5,14 @@
 package studentlife.view.console;
 
 import studentlife.controller.GameController;
-import studentlife.core.Day;
 import studentlife.core.Matiere;
 import studentlife.core.characters.Professeur;
 import studentlife.core.events.*;
 import studentlife.view.Game;
 
 import java.util.Scanner;
+
+//pub, protec, priv
 
 /**
  * La classe ConsoleGame est la classe dans laquelle on initialise le jeu
@@ -21,12 +22,19 @@ import java.util.Scanner;
  * */
 public class ConsoleGame extends Game {
 
+
+
+    private int weekDay;
+    private int eventActuel;
+
     /**
      * @param controller
      * Le constructeur de la classe Game
      * */
     public ConsoleGame(GameController controller) {
         super(controller);
+        weekDay = 0;
+        eventActuel = 0;
     }
 
     /**
@@ -43,20 +51,17 @@ public class ConsoleGame extends Game {
         String firstName = scanner.nextLine();
         System.out.println("Prénom:");
         String lastName = scanner.nextLine();
-
+        clearScreen();
         getController().initGame(lastName, firstName);//initialise le jeu avec les informations d'utilisateur
-
-        //message de bienvenue avec les stats initiales
-        System.out.println("Welcome " + getController().getUser().getNom() + " " + getController().getUser().getPrenom());
-        System.out.println(getController().getUser().getStats().toString());
     }
 
     /**
      * Cette methode creer les affiches du menu principal
      * */
     private void menuPrincipal(){
-        System.out.println("Etudiant(e): " + getController().getUser().toString());
-        Input question = new Input("Menu Principal");
+
+        Input question = new Input("Menu Principal        "+ "Etudiant(e): " + getController().getUser().toString()
+        );
         question.addAnswer("Poursuivre le jeu");//0
         question.addAnswer("Statistiques");//1
         question.addAnswer("Paramètres");
@@ -64,8 +69,22 @@ public class ConsoleGame extends Game {
         String rep = question.resolve();
 
         if (rep.equals("Poursuivre le jeu")){
-            //continuer la boucle ??
+            lookForEvent();
         }
+
+        if(rep.equals("Statistiques")) {
+            menuStatistiques();
+        }
+
+        if (rep.equals("Paramètres")){
+            parametres();
+        }
+
+        if (rep.equals("Quitter le jeu")){
+            endGame();
+
+        }
+
 
     }
 
@@ -80,24 +99,104 @@ public class ConsoleGame extends Game {
         }
     }
 
+    public void parametres(){
+        Input question = new Input("Modifier vos informations personnelles");
+        question.addAnswer("Oui");
+        question.addAnswer("Non, revenir dans le Menu Principal");
+        String res = question.resolve();
+
+        if (res.equals("Oui")) {
+            resetInfoPerso();
+            revenirDansLeMenu();
+        }else{
+            menuPrincipal();
+        }
+    }
+
+
+    public void resetInfoPerso(){
+        Input question = new Input("Entrez votre prénom");
+        String res = question.resolve();
+        getController().getUser().setPrenom(res);
+        question = new Input("Entrez votre nom");
+        res = question.resolve();
+        getController().getUser().setNom(res);
+        System.out.println("Informations personnelles changées avec success");
+    }
+
+    public void menuStatistiques(){
+        Input question = new Input("Statistiques");
+        question.addAnswer("Personnelles");
+        question.addAnswer("Matières");
+        question.addAnswer("Professeurs");
+        String res = question.resolve();
+
+        if (res.equals("Personnelles")){
+            System.out.println(getController().getUser().toString());
+            System.out.println(getController().getUser().getStats().toString());
+            revenirDansLeMenu();
+        }
+
+        if (res.equals("Matières")){
+            subjectsMastery();
+            revenirDansLeMenu();
+
+        }
+
+        if (res.equals("Professeurs")){
+            profsAppreciation();
+            revenirDansLeMenu();
+        }
+    }
+
+    public void revenirDansLeMenu(){
+        Input question = new Input("Faites une saisie pour revenir dans le menu principal");
+        question.resolve();
+        menuPrincipal();
+    }
+
+    public void continuerJeu(){
+        System.out.println();
+        Input question = new Input("Faites une saisie pour continuer le jeu");
+        question.resolve();
+    }
+
+    public void checkValidEvent(){
+            System.out.println("La semaine est terminée");
+            //afficher moyenne
+            revenirDansLeMenu();
+    }
+    public void lookForEvent(){
+        if (weekDay>=getController().getSchedule().getWeek().size()){
+            checkValidEvent();
+        }else {
+            manageEvent(getController().getSchedule().getWeek().get(weekDay).getEvenements().get(eventActuel));
+        }
+
+    }
+
+    public void updateEvent(){
+        eventActuel++;
+
+
+        if (eventActuel >= getController().getSchedule().getWeek().get(weekDay).getEvenements().size()){
+            eventActuel = 0;
+            dailyResults(weekDay);
+            weekDay++;
+        }
+    }
+
+
+
     /**
      * la methode run() permet de faire une boucle pour la simulation, ainsi, le jeu continue.
      * */
     public void run() {//boucle-scenario du jeu
         // LANCER LE JEU :)
-        int i = -1; //itérateur des jours
         initGameView();//recueil des informations d'utilisateur
+        menuPrincipal();
 
-        for (Day day : getController().getSchedule().getWeek()) {//pour chaque jour dans la semaine
-            i++;
-            for (Evenement event : day.getEvenements()) {//pour chaque évènement dans la journée
-                manageEvent(event); //gérer les actions possibles liées à un type d'évènement
-                System.out.println(getController().getUser().getStats().toString());
-                continuerLeJeu(); //donner la possibilité de quitter le jeu avant la fin de simulation
 
-            }
-            dailyResults(i); //affichage des résultats de la fin de la journée
-        }
     }
 
     /**
@@ -105,15 +204,17 @@ public class ConsoleGame extends Game {
      On a 2 types d'évènements possibles; cours ou pause.
      * */
     private void manageEvent(Evenement event) {
-        if(event instanceof Cours)
+        clearScreen();
+        if(event instanceof Cours) {
             manageCours((Cours) event);
-        else
-            managePause((Pause) event);
+        } else {
+            managePause();
+        }
     }
 
 
     /**
-     * @param cours le cours dans lequel l'etudiant doit assisté.
+     * @param cours le cours dans lequel l'étudiant doit assisté.
      * manageCours demande à l'utilisateur s'il veut y assisté s'il veut ou pas on appel la fonction
     finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
      * @see Cours
@@ -125,47 +226,54 @@ public class ConsoleGame extends Game {
         Input question = new Input("Voulez-vous y assister?");
         question.addAnswer("Oui");//0
         question.addAnswer("Non, je veux faire une pause");//1
-        if(question.resolve().equals("Oui")){//si oui
+        question.addAnswer("Revenir dans le Menu Principal");//2
+        String res = question.resolve();
+        if(res.equals("Oui")){//si oui
             clearScreen();
             System.out.println(cours.getNom() + " de " + cours.getMatiere().getNom());
             System.out.println("\b");
 
             System.out.println("Petit quiz pour vérifier vos connaissances");
             cours.finaliserEvenement(getController().getUser(), true);
-        }else{
+            continuerJeu();
+
+            updateEvent();
+            lookForEvent();
+        }
+
+        if(res.equals("Non, je veux faire une pause")){
             clearScreen();
             cours.finaliserEvenement(getController().getUser(), false);
             setPause();
+            updateEvent();
+            lookForEvent();
         }
+
+        if (res.equals("Revenir dans le Menu Principal")){
+            menuPrincipal();
+        }
+
+
+
     }
 
     /**
-     * @param pause l'etudiant a une pause
+     *
      * appel la methode setPause()
      * */
-    public void managePause(Pause pause) {
+    public void managePause() {
         System.out.println("Y a une pause a gérer");
         setPause();
+        updateEvent();
+        lookForEvent();
     }
 
     public void endGame(){
+        finalResults();
+        System.exit(0);
     }
 
-    /**
-     * continuerLeJeu demande a l'utilisateur s'il veut continuer la simu ou pas.
-     * */
-    public void continuerLeJeu(){
-        Input question = new Input("Voulez-vous continuer le jeu?");
-        question.addAnswer("Oui");//0
-        question.addAnswer("Non");//1
 
-        if(question.resolve().equals("Oui")){
-            clearScreen();
-        }else{
-            finalResults();
-            System.exit(0);
-        }
-    }
 
     /**
      * setPause gère les stat de l'utilisateur lorsqu'il decide de prendre une pause.
@@ -177,9 +285,10 @@ public class ConsoleGame extends Game {
         question.addAnswer("Manger");//1
         question.addAnswer("Se reposer");//2
         String rep = question.resolve();
+        clearScreen();
         if (rep.equals("Reviser")){
 
-            int subject = selectSubject("Quelle matière voulez vous révisez ?");
+            int subject = selectSubject();
             System.out.println("Vous avez choisi: " + getController().getSubjectList().get(subject).getNom());
 
             Pause revision = new Pause(PauseType.REVISION, getController().getSubjectList().get(subject));
@@ -200,17 +309,17 @@ public class ConsoleGame extends Game {
 
     /**
      * @param i indice qui parcours la lise de jour de la semaine
-     * dailyResults affiche les resultats de la journée dont l'indice est passé en parametre.
+     * dailyResults affiche les résultats de la journée dont l'indice est passé en paramètre.
      * */
     public void dailyResults( int i){
-        System.out.println("Les resultats du fin de la journée: "+ getController().getSchedule().getWeekday(i));
+        System.out.println("Les résultats du fin de la journée: "+getController().getSchedule().getWeekday(i));
         System.out.println("Stats perso: "+ getController().getUser().getStats().toString());
         subjectsMastery();
     }
 
     /**
-     * affiche le bilan final de la semaine: les stats pour chaque matieres, les stats personnels
-     ainsi l'appreciation des profs.
+     * affiche le bilan final de la semaine: les stats pour chaque matière, les stats personnels
+     ainsi l'appréciation des profs.
      * */
     public void finalResults(){
         System.out.println("Vos statistiques à la fin du jeu:");
@@ -220,16 +329,17 @@ public class ConsoleGame extends Game {
 
     }
 
+
+
     /**
-     * @param question
-     * @return l'entier retourné est égal à 0 lorsque la matiere
-    n'est pas presente dans la liste de matiere de l'etudiant. Lorsqu'elle
-    est presente l'entier retourné est l'indice de la matiere dans la meme liste.
+     * @return l'entier retourné est égal à 0 lorsque la matière
+    n'est pas présente dans la liste de matière de l'étudiant. Lorsqu'elle
+    est présente l'entier retourné est l'indice de la matière dans la meme liste.
      * @see Input
      * Cette methode retrouve la matiere dont on a besoin
      * */
-    private int selectSubject(String question) {
-        Input request = new Input(question);
+    private int selectSubject() {
+        Input request = new Input("Quelle matière voulez vous réviser?");
         for(Matiere subject : getController().getSubjectList()) {
             request.addAnswer(subject.getNom());
         }
@@ -247,7 +357,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'etudiant sur celle-ci.
+     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'étudiant sur celle-ci.
      * */
     public void subjectsMastery() {
         System.out.println("Les stats dans les matières:");
@@ -256,8 +366,9 @@ public class ConsoleGame extends Game {
         }
     }
 
+
     /**
-     * affiche pour chaque prof son nom et le niveau d'appreciation qu'il a envers l'etudiant.
+     * affiche pour chaque prof son nom et le niveau d'appréciation qu'il a envers l'étudiant.
      * */
     public void profsAppreciation(){
         System.out.println("Niveau de relation avec les professeurs:");
