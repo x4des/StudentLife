@@ -18,7 +18,7 @@ Depending on what you are making, it can be a good idea to include screenshots o
 ## Installation
 Nous avons utilisé Maven pour faciliter la compilation et l'exécution du jeu.
 
-Pour compiler et exécuter le projet dans le terminal, d'abord faut se positionner dans le répertoire POO22_384J_C.
+Pour compiler et exécuter le projet dans le terminal, d'abord faut se positionner dans le répertoire POO22_384J_C.  
 Saisir la commande qui installera Maven:
 ```
 mvn install
@@ -28,8 +28,8 @@ Puis utiliser la commande suivante pour lancer le jeu:
 mvn -q exec:java
 ```
 
-Bien sûr il est aussi possible de l'exécuter à l'aide d'un IDE comme IntelliJ ou VSC.
-Pour cela après l'ouverture du projet l'IDE va vous proposer d'installer les dépendances Maven.
+Bien sûr il est aussi possible de l'exécuter à l'aide d'un IDE comme IntelliJ ou VSC.  
+Pour cela après l'ouverture du projet l'IDE va vous proposer d'installer les dépendances Maven.  
 Après les avoir installé(e), vous pouvez lancer le jeu en exécutant la classe Main.
 
 ## Usage
@@ -49,10 +49,10 @@ For people who want to make changes to your project, it's helpful to have some d
 You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
 ## Authors and acknowledgment
-Amerkhanova Aida
-Diop Maty
-Aymen El Ouagouti 
-Enzo Mantzoutsos 
+[Amerkhanova Aida](https://gitlab.univ-nantes.fr/E204135L)  
+[Diop Maty](https://gitlab.univ-nantes.fr/E204018J)  
+[Aymen El Ouagouti](https://gitlab.univ-nantes.fr/E21B584U)  
+[Enzo Mantzoutsos](https://gitlab.univ-nantes.fr/E201789L)  
 
 ## License
 For open source projects, say how it is licensed.
