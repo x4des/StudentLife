@@ -12,6 +12,8 @@ import studentlife.view.Game;
 
 import java.util.Scanner;
 
+import static studentlife.Config.POINTS_REVISION;
+
 //pub, protec, priv
 
 /**
@@ -60,7 +62,7 @@ public class ConsoleGame extends Game {
      * */
     private void menuPrincipal(){
 
-        Input question = new Input("Menu Principal        "+ "Etudiant(e): " + getController().getUser().toString()
+        Input question = new Input("Menu Principal          "+ ">Etudiant(e): " + getController().getUser().toString()
         );
         question.addAnswer("Poursuivre le jeu");//0
         question.addAnswer("Statistiques");//1
@@ -193,9 +195,9 @@ public class ConsoleGame extends Game {
      * */
     public void run() {//boucle-scenario du jeu
         // LANCER LE JEU :)
+        clearScreen();
         initGameView();//recueil des informations d'utilisateur
         menuPrincipal();
-
 
     }
 
@@ -262,10 +264,11 @@ public class ConsoleGame extends Game {
      * appel la methode setPause()
      * */
     private void managePause() {
-        System.out.println("Y a une pause a gérer");
-        setPause();
-        updateEvent();
-        lookForEvent();
+        System.out.println("Actuellement vous n'avez pas de cours.");
+        if (setPause()) {
+            updateEvent();
+            lookForEvent();
+        }
     }
 
     private void endGame(){
@@ -279,11 +282,12 @@ public class ConsoleGame extends Game {
      * setPause gère les stat de l'utilisateur lorsqu'il decide de prendre une pause.
      En fonction du type de pause qu'il a choisi de prendre ses stats seront modifiés
      * */
-    private void setPause(){
+    private boolean setPause(){
         Input question = new Input("Que allez vous faire pendant la pause?");
         question.addAnswer("Reviser");//0
         question.addAnswer("Manger");//1
         question.addAnswer("Se reposer");//2
+        question.addAnswer("Revenir dans le Menu Principal");//3
         String rep = question.resolve();
         clearScreen();
         if (rep.equals("Reviser")){
@@ -293,18 +297,44 @@ public class ConsoleGame extends Game {
 
             Pause revision = new Pause(PauseType.REVISION, getController().getSubjectList().get(subject));
             revision.finaliserEvenement(getController().getUser(), true);
+            System.out.println("Votre maitrise de la matière a augmentée de " +POINTS_REVISION);
+            System.out.println("Maitrise actuelle: "+ getController().getSubjectList().get(subject).toString());
+            continuerJeu();
+            return true;
         }
 
         if (rep.equals("Manger")){
             Pause repas = new Pause(PauseType.REPAS);
             repas.finaliserEvenement(getController().getUser(), true);
+            Input plat = new Input("Entrez le nom du plat que vous désirez manger: ");
+            String choix = plat.resolve();
+            System.out.println("\""+choix+" a soulagé(e) votre faim!");
+            etatActuel();
+            continuerJeu();
+            return true;
 
         }
 
         if (rep.equals("Se reposer")){
             Pause repos = new Pause(PauseType.REPOS);
             repos.finaliserEvenement(getController().getUser(), true);
+            System.out.println("C'est bien de se reposer, tant que ce n'est pas la seule chose que vous faites");
+            System.out.println("Maintenant vous êtes moins fatigué(e) et plus attentif(ve)!\n");
+            etatActuel();
+            continuerJeu();
+            return true;
+
         }
+
+        if(rep.equals("Revenir dans le Menu Principal")){
+            menuPrincipal();
+            return false;
+        }
+        return false;
+    }
+
+    public void etatActuel(){
+        System.out.println("Etat personnel actuel: "+ getController().getUser().getStats().toString());
     }
 
     /**

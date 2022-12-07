@@ -19,4 +19,6 @@ public class Config {
 
     public static final String STAT_MASTERY = "";
 
+    public static final int POINTS_REVISION = 10;
+
 }

@@ -111,7 +111,7 @@ public class Quiz {
             try {
                 reponse = scanner.nextInt(); //scan de la réponse d'utilisateur
                 while (reponse < 1 || reponse > reponses.size()) { //verification que l'indice donné est correct
-                    System.out.println("Donnez l'indice correcte");
+                    System.out.println("Donnez l'indice correct");
                     reponse = scanner.nextInt();
                 }
 

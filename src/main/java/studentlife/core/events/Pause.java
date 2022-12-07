@@ -64,7 +64,7 @@ public class Pause implements Evenement {
 
             case REVISION:
                 //faim reste inchangé car on peut quand même manger un snack pendant une révision
-                utilisateur.getStats().getStat(STAT_FATIGUE).updateValue(10);
+                utilisateur.getStats().getStat(STAT_FATIGUE).updateValue(POINTS_REVISION);
                 utilisateur.getStats().updateAttention(STAT_ATTENTION);
                 faireRevision(utilisateur);
                 break;

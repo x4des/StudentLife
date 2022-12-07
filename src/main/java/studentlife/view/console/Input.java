@@ -49,13 +49,15 @@ public class Input {
             System.out.println(i + 1 + ") " + answers.get(i));
         }
 
+        System.out.println("Donnez l'indice de votre réponse");
         Scanner scanner = new Scanner(System.in);
 
-        int res = -1;
+        int res = scanner.nextInt();
+        res--;
 
         while (res < 0 || res >= answers.size())
         {
-             System.out.println("Donnez l'indice de votre réponse\"");
+             System.out.println("Donnez un indice correct s'il vous plaît");
              res = scanner.nextInt();
              res--;
         }
