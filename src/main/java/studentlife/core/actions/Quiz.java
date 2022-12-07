@@ -2,6 +2,7 @@
  * Contient la classe Quiz
  * */
 package studentlife.core.actions;
+
 import studentlife.core.Matiere;
 
 import java.util.*;
@@ -9,15 +10,23 @@ import java.util.*;
  * la classe Quiz est une classe qui permet de créer et lancer un quiz.
  * */
 public class Quiz {
+
+    /** une question posée à l'étudiant*/
     private final String question;
-    private final ArrayList<String> reponses; //réponses possibles (sauf la réponse correcte)
+
+    /**réponses possibles (sauf la réponse correcte) */
+    private final ArrayList<String> reponses;
+
+    /** la reponse correcte à la question*/
     private final String reponseCorrecte;
-    private final Matiere matiere; //matière concernée par le quizz
+
+    /** matière concernée par le quizz */
+    private final Matiere matiere;
 
     /**
      * @param question une question qui est posée
-     * @param matiere la matiere dont les questions sont concernées
-     * @param reponseCorrecte la reponse correcte à la question posée, fait partie des reponses proposées
+     * @param matiere la matière dont les questions sont concernées
+     * @param reponseCorrecte la response correcte à la question posée, fait partie des reponses proposées
      * @param r2 reponse proposée
      * @param r3 reponse proposée
      * @param r4 reponse proposée
@@ -50,10 +59,10 @@ public class Quiz {
 
     /**
      * @param question une question qui est posée
-     * @param reponseCorrecte
-     * @param matiere
-     * @param r2
-     * @param r3
+     * @param reponseCorrecte la reponse correcte
+     * @param matiere la matière
+     * @param r2 une reponse
+     * @param r3 une reponse
      * constructeur d'un quizz avec 3 propositions de réponses
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3){
@@ -68,8 +77,9 @@ public class Quiz {
 
 
     /**
-     * @return insère la réponse correcte dans la liste de réponses possibles d'une manière aléatoire
-     retourne la liste des toutes les réponses possibles
+     * @return Retourne une liste de chaine de caractère.
+     * Insère la réponse correcte dans la liste de réponses possibles d'une manière aléatoire
+     retourne la liste de toutes les réponses possibles
      * */
 
     public ArrayList<String> getReponses() {

@@ -5,7 +5,7 @@ import studentlife.core.characters.Etudiant;
 import static studentlife.Config.*;
 
 /**
- * la classe Pause implemente l'interface Evenement et modifie les stats des objets impliqués
+ * la classe Pause implémente l'interface Evenement et modifie les stats des objets impliqués
  * @see Evenement
  * */
 public class Pause implements Evenement {
@@ -23,8 +23,8 @@ public class Pause implements Evenement {
     }
 
     /**
-     * @param pause
-     * @param subject
+     * @param pause la pause
+     * @param subject la matière
      * constructeur de la classe Pause.
      * */
     public Pause(PauseType pause, Matiere subject) {
@@ -33,20 +33,20 @@ public class Pause implements Evenement {
     }
 
     /**
-     * @param pauseType
+     * @param pauseType pause repos ou pause repas
      * setter qui change la valeur de pausetype.
      * */
     public void setPauseType(PauseType pauseType) {
-       this.pauseType = pauseType;
+        this.pauseType = pauseType;
     }
 
     /**
-   * @param utilisateur les stats de user seront modifiés en fonction de la pause qu'il a pris ainsi:
-   * _ lorsque c'est une pause repas, la faim diminue, la fatigue aussi et ainsi l'attention augmente.
-   * _ lorsque c'est une pause repos, la faim reste la meme, la fatigue diminue et l'attention augmente.
-   * _ lorsque c'est une pause revision, la fatigue augmente, l'attention diminue mais la moyenne de la matière revisé augmente de 10.
-   * @param valid booleen qui verifie si l'evenement choisi est bien un Cours, ainsi la procedure pourra modifier les stats.
-  * */
+     * @param utilisateur les stats de user seront modifiés en fonction de la pause qu'il a pris ainsi:
+     * _ lorsque c'est une pause repas, la faim diminue, la fatigue aussi et ainsi l'attention augmente.
+     * _ lorsque c'est une pause repos, la faim reste la meme, la fatigue diminue et l'attention augmente.
+     * _ lorsque c'est une pause revision, la fatigue augmente, l'attention diminue mais la moyenne de la matière révisée augmente de 10.
+     * @param valid booléen qui vérifie si l'évènement choisi est bien un Cours, ainsi la procedure pourra modifier les stats.
+     * */
     @Override
     public void finaliserEvenement(Etudiant utilisateur, boolean valid) {
         switch (pauseType) {
@@ -71,17 +71,17 @@ public class Pause implements Evenement {
         }
     }
 
-  /**
-   * @param utilisateur la moyenne de l'utilisateur dans la matiere sera modifié
-   * si la matière est mentionné la moyenne se verra augmenté de 10.
-   * @throws RuntimeException si la matière n'existe pas ou n'est pas mentionée,
-   l'exception fais propagé un message d'erreur.
-   * */
+    /**
+     * @param utilisateur la moyenne de l'utilisateur dans la matière sera modifié
+     * si la matière est mentionnée la moyenne se verra augmenté de 10.
+     * @throws RuntimeException si la matière n'existe pas ou n'est pas mentionée,
+    l'exception fais propager un message d'erreur.
+     * */
     private void faireRevision(Etudiant utilisateur) throws RuntimeException{
-            if (subject == null){
-                throw new RuntimeException("Il faut une matière à réviser");
-            }
-            subject.getMastery().updateValue(10);
+        if (subject == null){
+            throw new RuntimeException("Il faut une matière à réviser");
+        }
+        subject.getMastery().updateValue(10);
     }
 
 }

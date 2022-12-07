@@ -26,13 +26,33 @@ import static studentlife.core.events.CoursType.TD;
 /**
  * La classe GameController est la classe dans laquelle on instancie les classes
  nécessaires pour que le jeu fonctionne.
- on affecte les valeurs nécessaire au bon fonctionnement de la simulation
+ On affecte les valeurs nécessaires au bon fonctionnement de la simulation
  tel que les matières, la liste des profs, des cours, les quiz éventuels etc...
  * */
 public class GameController {
+
+    /**
+     * l'utilisateur
+     * @see Etudiant
+     * */
     private Etudiant user;
+
+    /**
+     * La liste de matière de l'etudiant
+     * @see Matiere
+     * */
     private final ArrayList<Matiere> subjectList = new ArrayList<>();
+
+    /**
+     * la liste de professeur de l'étudiant
+     * @see Professeur
+     * */
     private final ArrayList<Professeur> profList = new ArrayList<>();
+
+    /**
+     * l'emploi du temps
+     * @see Schedule
+     * */
     private final Schedule schedule;
 
     /**
@@ -73,6 +93,9 @@ public class GameController {
         return schedule;
     }
 
+    /**
+     * @return getter de profList.
+     * */
     public ArrayList<Professeur> getProfList() {
         return profList;
     }
@@ -93,7 +116,7 @@ public class GameController {
     }
 
     /**
-     * ajoute des professeurs a la liste de professeur (nom et prénom).
+     * ajoute des professeurs à la liste de professeur (nom et prénom).
      * */
     private void createProfs() {
         profList.add(new Professeur("Rooney", "Wayne")); //0 - ISI
@@ -109,7 +132,7 @@ public class GameController {
 
     /**
      * cette methode, créer le premier jour de l'EDT de l'étudiant
-     l'étudiant aura le lundi; un CM et un TD le matin, une pause et 2 TD l'après midi.
+     l'étudiant aura le lundi ; un CM et un TD le matin, une pause et 2 TD l'après midi.
      * */
     private void createDay1() {
         Day monday = new Day();
@@ -125,8 +148,8 @@ public class GameController {
 
 
     /**
-     * cette methode, créer le deuxieme jour de l'EDT de l'etudiant
-     l'etudiant aura le mardi; deux CM et un TD le matin, une pause et 2 TD l'apres midi.
+     * Cette methode, créer le deuxième jour de l'EDT de l'étudiant.
+     L'étudiant aura le mardi ; deux CM et un TD le matin, une pause et 2 TD l'après midi.
      * */
     private void createDay2() {
         Day tuesday = new Day();
@@ -143,7 +166,7 @@ public class GameController {
 
 
     /**
-     * crée l'EDT avec les jours creer
+     * crée l'EDT avec les jours créés.
      * */
     private void createSchedule() {
         createDay1();
@@ -151,14 +174,8 @@ public class GameController {
     }
 
 
-
-
-
-
-
-
     /**
-     * Cette methode ajoute des quiz pour chaque matières
+     * Cette methode ajoute des quiz pour chaque matière.
      * */
     private void addNewQuiz() {
         //ISI

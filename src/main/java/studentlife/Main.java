@@ -8,7 +8,7 @@ import studentlife.view.console.ConsoleGame;
 import studentlife.view.ui.GUIGame;
 
 /**
- * La classe main nous permet d'executer tout le programme
+ * La classe main nous permet d'exécuter tout le programme
  * */
 public class Main {
     public static void main(String[] args) {

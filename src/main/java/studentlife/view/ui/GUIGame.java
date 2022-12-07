@@ -12,11 +12,12 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * La classe GUIGame est la sous classe de Game qui implemente l'interface Runnable
+ * La classe GUIGame est la sous classe de Game qui implémente l'interface Runnable
  * @see Game
  * */
 public class GUIGame extends Game {
 
+    /**un JFrame */
     private final JFrame mainFrame = new JFrame();
 
     /**

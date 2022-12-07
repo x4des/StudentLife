@@ -34,16 +34,17 @@ public abstract class Personne {
         return this.prenom;
     }
 
+    /** le setter permet de modifier la valeur de l'attribut nom*/
     public void setNom(String nom) {
         this.nom = nom;
     }
-
+    /** le setter permet de modifier la valeur de l'attribut prénom*/
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
     /**
-     * @return retourn un sting permettant d'afficher une personne ( son nom et prenom)
+     * @return retourne un string permettant d'afficher une personne ( son nom et prenom)
      * */
     @Override
     public String toString(){

@@ -38,7 +38,7 @@ public class Input {
 
     /**
      * @return resolve() retourne null s'il n'y a pas de reponse. Sinon, affiche toute les
-     reponses possibles et retourne la reponse choisi par l'utilisateur.
+    reponses possibles et retourne la reponse choisi par l'utilisateur.
      * */
     public String resolve() {
         boolean stop = false;

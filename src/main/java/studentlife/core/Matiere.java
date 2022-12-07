@@ -7,21 +7,25 @@ import java.util.ArrayList;
 
 import static studentlife.Config.STAT_MASTERY;
 /**
- *La classe Matiere represente une matiere qui possède
- une statistique qui est la moyenne que l'etudiant dans cette meme matiere.
- Elle possede egalement une liste de quiz dont les reponses seront
+ *La classe Matière représente une matière qui possède
+ une statistique qui est la moyenne que l'étudiant dans cette meme matière.
+ Elle possède également une liste de quiz dont les réponses seront
  demandées à l'utilisateur.
  * */
 public class Matiere {
+
+    /**nom de la matière*/
     private final String nomMatiere;
 
+    /**la statistique en lien avec la matière = la moyenne*/
     private final Stat mastery;
 
+    /**la liste de quiz en lien avec la matière*/
     private final ArrayList<Quiz> listeQuiz;
 
     /**
      * @param nomMatiere
-     * constructeur de la classe Matiere
+     * constructeur de la classe Matière
      * */
     public Matiere(String nomMatiere) {
         this.nomMatiere = nomMatiere;
@@ -31,7 +35,7 @@ public class Matiere {
 
     /**
      * getter de l'attribut nomMatiere
-     * @return retourne le nom de la matiere
+     * @return retourne le nom de la matière
      * */
     public String getNom(){
         return nomMatiere;
@@ -39,8 +43,8 @@ public class Matiere {
 
 
     /**
-     * @return la stat lié a la matiere = mastery
-     * getter, permet d'acceder a l'attribut mastery de la classe
+     * @return la stat lié a la matière = mastery
+     * getter, permet d'accéder a l'attribut mastery de la classe
      * */
     public Stat getMastery() { return mastery; }
 
@@ -54,14 +58,14 @@ public class Matiere {
 
     /**
      * @param i indice d'un quiz
-     * procedure qui supprime un quiz de la liste dont l'indice est passé en parametre
+     * procedure qui supprime un quiz de la liste dont l'indice est passé en paramètre
      * */
     public void deleteQuiz(int i){
         listeQuiz.remove(i);
     }
 
     /**
-     * @return retourne al liste de quiz liée a la matiere
+     * @return retourne la liste de quiz liée à la matière
      * getter de l'attribut listeQuiz
      * */
     public ArrayList<Quiz> getListeQuiz(){
@@ -70,7 +74,7 @@ public class Matiere {
 
     /**
      * @return  retourne un string qui permettra d'afficher
-     une matiere.
+     une matière.
      * */
     @Override
     public String toString(){

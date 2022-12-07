@@ -6,22 +6,23 @@ import java.util.Map;
 import static studentlife.Config.*;
 
 /**
- * La classe StatManager represente les statistiques personnels d'un utilisateur
- comme la faim, la fatigue, l'attention. Elle permet egalement de gérer ses valeurs.
+ * La classe StatManager représente les statistiques personnels d'un utilisateur
+ comme la faim, la fatigue, l'attention. Elle permet également de gérer ses valeurs.
  * */
 
 public class StatsManager {
 
-    // Stat Name -- Val
+    /**table de hachage qui stocke les valeurs par paires (nom_stat/ Stat)*/
     private final HashMap<String, Stat> statsMap = new HashMap<>();
 
+    /**constructeur de la classe StatsManager*/
     public StatsManager() {}
 
     /**
-     * @param statName
-     * @param value
-     * @return  cette fonction verifie d'abord si les noms des statistiques correspondent
-     si non la fonction retourne false, si oui, la valeure de la statManager sera remplacé par value
+     * @param statName nom de la stat
+     * @param value valeur de la stat
+     * @return Cette fonction vérifie d'abord si les noms des statistiques correspondent.
+     Sinon la fonction retourne false. Si oui, la valeur de la statManager sera remplacé par value
      dans la fonction updateValue et la fonction retournera true.
      * @see Stat#updateValue(int)
      * */
@@ -37,12 +38,12 @@ public class StatsManager {
 
 
     /**
-     * @param fatigue pour cibler la statManager fatigue de l'etudiant
-     * @param addition un booleen qui nous indique si l'operation a faire est
-     une addition ou une soustraction. Si addition == false, le pourcentage devient negatif
-     * @return la fonction retourne un booleen si le nom de la statManager ne concorde pas avec les stats
-     et que la statManager faim n'est pas presente dans le hashmap , c'est false, sinon la valeur de la statManager fatigue
-     est modifié.
+     * @param fatigue pour cibler la statManager fatigue de l'étudiant
+     * @param addition Un booléen qui nous indique si l'opération à faire est
+     une addition ou une soustraction. Si addition == false, le pourcentage devient négatif
+     * @return la fonction retourne un booléen si le nom de la statManager ne concorde pas avec les stats
+     et que la statManager faim n'est pas présente dans le hashmap, c'est false,
+     sinon la valeur de la statManager fatigue est modifiée.
      * */
     public boolean updateFatigue(String fatigue, boolean addition) {
 
@@ -66,9 +67,9 @@ public class StatsManager {
 
     /**
      * @param attention pour modifier la statManager attention de l'utilisateur
-     * @return verifie la presence de la statManager attention et fatigue dans le hashmap,
-     si presente, la valeur de la statManager fatigue sera modifié, celle ci est
-     le complementaire de la valeur de la statManager fatigue
+     * @return vérifie la presence de la statManager attention et fatigue dans le hashmap,
+     si présente, la valeur de la statManager fatigue sera modifiée, celle-ci est
+     le complémentaire de la valeur de la statManager fatigue
      * */
     public boolean updateAttention(String attention){
 
@@ -85,7 +86,7 @@ public class StatsManager {
     }
 
     /**
-     * @param statName le nom d'une statistique quelcquonque
+     * @param statName le nom d'une statistique quelconque
      * @throws IllegalArgumentException si la valeur de statName n'existe pas,
      l'exception envoie un message qui l'explique.
      * */
@@ -108,7 +109,7 @@ public class StatsManager {
     }
 
     /**
-     * retourne un string qui permettra d'afficher un statManager
+     * @return retourne un string qui permettra d'afficher un statManager
      * */
     @Override
     public String toString() {

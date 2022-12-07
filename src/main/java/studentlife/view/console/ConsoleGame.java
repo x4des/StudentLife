@@ -181,9 +181,9 @@ public class ConsoleGame extends Game {
     }
 
     private void checkValidEvent(){
-            System.out.println("La semaine est terminée");
-            //afficher moyenne
-            revenirDansLeMenu();
+        System.out.println("La semaine est terminée");
+        //afficher moyenne
+        revenirDansLeMenu();
     }
     private void lookForEvent(){
         if (weekDay>=getController().getSchedule().getWeek().size()){
