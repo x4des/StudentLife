@@ -13,6 +13,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import studentlife.controller.GameController;
 import studentlife.core.gui.SWSimSubScene;
+import studentlife.core.gui.StudyWeekSimSubscene;
 import studentlife.core.gui.utils.SWSimButton;
 import studentlife.core.gui.WelcomeScene;
 import studentlife.core.gui.utils.StudyWeekSimButton;
@@ -24,6 +25,8 @@ import java.util.Stack;
 
 public class ViewManager {
 
+    private static final int MENU_BUTTON_START_X = 100;
+    private static final int MENU_BUTTON_START_Y = 100;
     private static final int HEIGHT = 600;
     private static final int WIDTH = 600;
     private AnchorPane anchorPane;
@@ -34,6 +37,7 @@ public class ViewManager {
     private TextField nom;
     private TextField prenom;
     public ArrayList<Button> menuButtons;
+    private StudyWeekSimSubscene sceneToHide;
 
     public ViewManager(){
         menuButtons = new ArrayList<Button>();
@@ -43,8 +47,9 @@ public class ViewManager {
         mainStage.setScene(mainScene);
         nom = new TextField();
         prenom = new TextField();
-        createEverything(anchorPane);
-        //game = new ConsoleGame(new GameController());
+        createElements();
+        /*createEverything(anchorPane);
+        //game = new ConsoleGame(new GameController());*/
 
 
     }
@@ -99,23 +104,82 @@ public class ViewManager {
         return new Label(str);
     }
 
+    //V2
+    private void createElements() {
+        createTextFields();
+        createButtons();
+    }
+
     private void createButtons() {
         createCommencerBtn();
-        createMenuButtons();
+        createMenuBtn();
     }
-    private void addMenuButton(StudyWeekSimButton b) {
-        menuButtons.add(b);
+    private void createMenuBtn() {
+        Button menu = new Button("menu");
+        anchorPane.getChildren().add(menu);
+        menu.setLayoutX(200);
+        menu.setLayoutY(200);
 
+        menu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                StudyWeekSimSubscene subscene = new StudyWeekSimSubscene();
+                AnchorPane subAnchorPane = new AnchorPane();
+                createMenuButtons();
+                Label menuTxt = new Label("Menu");
+
+                subAnchorPane.getChildren().add(menuTxt);
+
+                for(Button b : menuButtons){
+                    subAnchorPane.getChildren().add(b);
+                }
+                showSubScene(subscene);
+                //anchorPane.getChildren().add(subscene);
+            }
+        });
+    }
+
+    private void showSubScene(StudyWeekSimSubscene subScene) {
+        if (sceneToHide != null) {
+            sceneToHide.moveSubScene();
+        }
+        subScene.moveSubScene();
+        sceneToHide = subScene;
+    }
+
+    private void addMenuButton(StudyWeekSimButton b) {
+        b.setLayoutX(MENU_BUTTON_START_X);
+        b.setLayoutY((MENU_BUTTON_START_Y + menuButtons.size()* 50));
+
+        menuButtons.add(b);
     }
 
     private void createCommencerBtn() {
         StudyWeekSimButton commencer  = new StudyWeekSimButton("commencer");
+        anchorPane.getChildren().add(commencer);
+        commencer.setLayoutX(150);
+        commencer.setLayoutY(150);
+
         commencer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 game.getController().initGame(nom.getText(), prenom.getText());
             }
         });
+
+    }
+
+    private void createTextFields() {
+        nom = new TextField();
+        prenom = new TextField();
+
+        anchorPane.getChildren().add(nom);
+        nom.setLayoutX(10);
+        nom.setLayoutY(10);
+
+        anchorPane.getChildren().add(prenom);
+        prenom.setLayoutX(10);
+        prenom.setLayoutY(40);
 
     }
 
@@ -128,46 +192,50 @@ public class ViewManager {
 
     private void createContinuerBtn() {
         StudyWeekSimButton continuer = new StudyWeekSimButton("continuer");
-
+        addMenuButton(continuer);
         continuer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
             }
         });
+
     }
 
     private void createParamBtn() {
         StudyWeekSimButton parametres = new StudyWeekSimButton("parametres");
-
+        addMenuButton(parametres);
         parametres.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
             }
         });
+
     }
 
     private void createStatsBtn() {
         StudyWeekSimButton statistiques = new StudyWeekSimButton("statistiques");
-
+        addMenuButton(statistiques);
         statistiques.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
             }
         });
+
     }
 
     private void createQuitBtn() {
         StudyWeekSimButton quitter = new StudyWeekSimButton("quitter");
-
+        addMenuButton(quitter);
         quitter.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
             }
         });
+
     }
 
 }
