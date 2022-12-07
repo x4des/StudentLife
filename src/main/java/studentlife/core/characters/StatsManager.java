@@ -89,6 +89,7 @@ public class StatsManager {
      * @param statName le nom d'une statistique quelconque
      * @throws IllegalArgumentException si la valeur de statName n'existe pas,
      l'exception envoie un message qui l'explique.
+     @return retourne une Stat
      * */
     public Stat getStat(String statName) throws IllegalArgumentException {
 
