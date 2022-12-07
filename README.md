@@ -16,7 +16,21 @@ On some READMEs, you may see small images that convey metadata, such as whether 
 Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Nous avons utilisé Maven pour faciliter la compilation et l'exécution du jeu.
+
+Pour compiler et exécuter le projet dans le terminal, d'abord faut se positionner dans le répertoire POO22_384J_C.
+Saisir la commande qui installera Maven:
+```
+mvn install
+```
+Puis utiliser la commande suivante pour lancer le jeu:
+```
+mvn -q exec:java
+```
+
+Bien sûr il est aussi possible de l'exécuter à l'aide d'un IDE comme IntelliJ ou VSC.
+Pour cela après l'ouverture du projet l'IDE va vous proposer d'installer les dépendances Maven.
+Après les avoir installé(e), vous pouvez lancer le jeu en exécutant la classe Main.
 
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
