@@ -1,10 +1,11 @@
 package studentlife.core.gui;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import studentlife.controller.GameController;
 import studentlife.view.console.ConsoleGame;
@@ -29,7 +30,13 @@ public class WelcomeScene implements Runnable{
         this.prenom = prenom;
 
         Label nomPrenom = new Label("Bonjour et bienvenue " + this.nom + " " + this.prenom);
-        stackPane.getChildren().add(nomPrenom);
+        Button menuBtn = new Button("Menu");
+        MenuPrincipalScene menuPrincipalScene;
+        menuBtn.setOnAction((EventHandler<ActionEvent>) (menuPrincipalScene = new MenuPrincipalScene(game)));
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(nomPrenom, menuBtn);
+
+        stackPane.getChildren().add(vBox);
         anchorPane.getChildren().add(stackPane);
         game = new ConsoleGame(new GameController());
         run();
@@ -46,6 +53,8 @@ public class WelcomeScene implements Runnable{
 
     //TODO: Change game methods behavior to create Scenes instead of printing lines
     private void menuPrincipal(){
+
+        //MenuPrincipalScene menuPrincipalScene = new MenuPrincipalScene(game);
 
         Input question = new Input("Menu Principal        "+ "Etudiant(e): " + game.getController().getUser().toString()
         );

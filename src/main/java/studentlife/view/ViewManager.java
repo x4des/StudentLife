@@ -1,5 +1,7 @@
 package studentlife.view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,8 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import studentlife.controller.GameController;
+import studentlife.core.gui.SWSimSubScene;
 import studentlife.core.gui.utils.SWSimButton;
 import studentlife.core.gui.WelcomeScene;
+import studentlife.core.gui.utils.StudyWeekSimButton;
 import studentlife.core.gui.utils.commencerButton;
 import studentlife.view.console.ConsoleGame;
 
@@ -29,17 +33,20 @@ public class ViewManager {
     private GameController gameController;
     private TextField nom;
     private TextField prenom;
+    public ArrayList<Button> menuButtons;
 
     public ViewManager(){
+        menuButtons = new ArrayList<Button>();
         anchorPane = new AnchorPane();
         mainScene = new Scene(anchorPane, WIDTH, HEIGHT);
         mainStage = new Stage();
         mainStage.setScene(mainScene);
-        /*createButtons();*/
         nom = new TextField();
         prenom = new TextField();
         createEverything(anchorPane);
-        game = new ConsoleGame(new GameController());
+        //game = new ConsoleGame(new GameController());
+
+
     }
 
     public Stage getMainStage(){
@@ -71,8 +78,8 @@ public class ViewManager {
         createHBoxElements(hBoxNom, "     Nom", nom);
         vBox.getChildren().add(hBoxNom);
 
-        SWSimButton button = new commencerButton("commencer", game, nom, prenom);
-        vBox.getChildren().add(button);
+        /*SWSimButton button = new commencerButton("commencer", game, nom, prenom);
+        vBox.getChildren().add(button);*/
 
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(5);
@@ -90,6 +97,77 @@ public class ViewManager {
 
     public Label createLabel(String str){
         return new Label(str);
+    }
+
+    private void createButtons() {
+        createCommencerBtn();
+        createMenuButtons();
+    }
+    private void addMenuButton(StudyWeekSimButton b) {
+        menuButtons.add(b);
+
+    }
+
+    private void createCommencerBtn() {
+        StudyWeekSimButton commencer  = new StudyWeekSimButton("commencer");
+        commencer.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                game.getController().initGame(nom.getText(), prenom.getText());
+            }
+        });
+
+    }
+
+    private void createMenuButtons(){
+        createContinuerBtn();
+        createStatsBtn();
+        createParamBtn();
+        createQuitBtn();
+    }
+
+    private void createContinuerBtn() {
+        StudyWeekSimButton continuer = new StudyWeekSimButton("continuer");
+
+        continuer.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+    }
+
+    private void createParamBtn() {
+        StudyWeekSimButton parametres = new StudyWeekSimButton("parametres");
+
+        parametres.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+    }
+
+    private void createStatsBtn() {
+        StudyWeekSimButton statistiques = new StudyWeekSimButton("statistiques");
+
+        statistiques.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+    }
+
+    private void createQuitBtn() {
+        StudyWeekSimButton quitter = new StudyWeekSimButton("quitter");
+
+        quitter.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
     }
 
 }
