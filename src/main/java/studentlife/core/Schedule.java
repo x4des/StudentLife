@@ -24,6 +24,10 @@ public class Schedule {
         this.weekDays = new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"};
     }
 
+    public String[] getWeekDaysAsList(){
+        return weekDays;
+    }
+
     /**
      * @param day un jour dans la semaine
      * ajoute un jour dans la semaine lorsque l'EDT n'est pas complet (<5 jours)

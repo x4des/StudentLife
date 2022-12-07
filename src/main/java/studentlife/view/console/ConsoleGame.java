@@ -10,6 +10,8 @@ import studentlife.core.characters.Professeur;
 import studentlife.core.events.*;
 import studentlife.view.Game;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static studentlife.Config.POINTS_REVISION;
@@ -64,14 +66,19 @@ public class ConsoleGame extends Game {
 
         Input question = new Input("Menu Principal          "+ ">Etudiant(e): " + getController().getUser().toString()
         );
-        question.addAnswer("Poursuivre le jeu");//0
-        question.addAnswer("Statistiques");//1
+        question.addAnswer("Poursuivre le jeu");
+        question.addAnswer("Consulter l'EDT");
+        question.addAnswer("Statistiques");
         question.addAnswer("Paramètres");
         question.addAnswer("Quitter le jeu");
         String rep = question.resolve();
 
         if (rep.equals("Poursuivre le jeu")){
             lookForEvent();
+        }
+
+        if(rep.equals("Consulter l'EDT")){
+            menuEDT();
         }
 
         if(rep.equals("Statistiques")) {
@@ -101,6 +108,12 @@ public class ConsoleGame extends Game {
         }
     }
 
+
+    private void menuEDT(){
+        Input question = new Input("Ici vous pouvez consulter votre Emploi du Temps\nChoisissez le jour souhaité");
+        //question.addAnswers(getController().getSchedule().getWeekDays());
+        String res = question.resolve();
+    }
     private void parametres(){
         Input question = new Input("Modifier vos informations personnelles");
         question.addAnswer("Oui");
