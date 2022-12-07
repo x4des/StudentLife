@@ -142,7 +142,7 @@ public class GameController {
      * cette methode, créer le premier jour de l'EDT de l'étudiant
      l'étudiant aura le lundi ; un CM et un TD le matin, une pause et 2 TD l'après midi.
      * */
-    /*private void createDay1() {
+    private void createDay1() {
         Day monday = new Day();
 
         monday.addEvenement(new Cours(CM, profList.get(0), subjectList.get(0)));
@@ -178,7 +178,7 @@ public class GameController {
      * */
     private void createSchedule() {
         createDay1();
-        createDay2
+        createDay2();
     }
 
   
