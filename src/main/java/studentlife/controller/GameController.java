@@ -72,11 +72,14 @@ public class GameController {
      * */
     public void initGame(String userLastName, String userFirstName) {
         user = new Etudiant(userLastName, userFirstName);
-        createProfs();
-        createSubjects();
-        createSchedule();
-        //loadSchedule();
-        addNewQuiz();
+        //createProfs();
+        loadProf();
+        //createSubjects();
+        loadSubject();
+        //createSchedule();
+        loadSchedule();
+        //addNewQuiz();
+        loadNewQuiz();
     }
 
     /**
@@ -101,9 +104,13 @@ public class GameController {
     }
 
 
+    
+
     /**
      * cette methode ajoute une par une, les matières de l'étudiant dans la liste de matières.
      * */
+
+    
     private void createSubjects() {
 
         subjectList.add(new Matiere("Introduction aux systemes d'informations")); //0
@@ -128,13 +135,14 @@ public class GameController {
         profList.add(new Professeur("Ventura", "Ace")); //6 - InfoF
     }
 
+    
 
 
     /**
      * cette methode, créer le premier jour de l'EDT de l'étudiant
      l'étudiant aura le lundi ; un CM et un TD le matin, une pause et 2 TD l'après midi.
      * */
-    private void createDay1() {
+    /*private void createDay1() {
         Day monday = new Day();
 
         monday.addEvenement(new Cours(CM, profList.get(0), subjectList.get(0)));
@@ -170,13 +178,60 @@ public class GameController {
      * */
     private void createSchedule() {
         createDay1();
-        createDay2();
+        createDay2
     }
 
+  
 
-    /**
-     * Cette methode ajoute des quiz pour chaque matière.
-     * */
+
+    public void loadProf(){
+        File file = new File("src/main/java/studentlife/controller/prof.csv");
+        String csvFile = file.getPath();
+        String line = "";
+        String csvSplitBy = ",";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while((line = br.readLine()) != null){
+                String[] prof = line.split(csvSplitBy);
+
+                profList.add(new Professeur(prof[0],prof[1]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void loadSubject(){
+        File file = new File("src/main/java/studentlife/controller/matiere.csv");
+        String csvFile = file.getPath();
+        String line = "";
+        String csvSplitBy = ",";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while((line = br.readLine()) != null){
+                String[] matiere = line.split(csvSplitBy);
+
+                subjectList.add(new Matiere(matiere[0]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void subjectsMastery() {
+        System.out.println("Les stats dans les matières:");
+        for (Matiere subject : subjectList) {
+            System.out.println(subject.toString());
+        }
+    }
+
+   
+    
+    /*
     private void addNewQuiz() {
         //ISI
         subjectList.get(0).addQuiz(new Quiz("Un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet", "un etat initial unique", "un etat final unique"));
@@ -200,11 +255,33 @@ public class GameController {
         subjectList.get(4).addQuiz(new Quiz("Une relation est binaire si elle est:", "Reflexive, antisymmetrique, transitive", subjectList.get(4), "Reflexive, symmetrique, transitive", "Reflexive, asymmetrique, transitive", "Antireflexive, antisymmetrique, transitive"));
         subjectList.get(4).addQuiz(new Quiz("La limite de Ln(x) en -infini: ", "n'existe pas", subjectList.get(4), "0", "-ifnini", "1"));
         //ASD
-        subjectList.get(5).addQuiz(new Quiz("le stack est:", "LIFO", subjectList.get(5), "FIFO", "accessible dynamiquement", "plus lent en acces que le heap"));
+        subjectList.get(5).addQuiz(new Quiz("Le stack est:", "LIFO", subjectList.get(5), "FIFO", "accessible dynamiquement", "plus lent en acces que le heap"));
         subjectList.get(5).addQuiz(new Quiz("Choisir l'affirmation correcte:", "les elements d'une liste chainée sont de même type", subjectList.get(5), "Il faut allouer de la memoire dynamique dans le stack pour les tableaux dynamiques", "l'operateur \"->\" equivaut à &ptr", "La taille d'un int depend uniquement de la machine"));
         //ANG
         subjectList.get(6).addQuiz(new Quiz("The Earth is ...(hold) by the gravity of the Sun and orbits around it", "held", subjectList.get(6), "being held", "holded", "being holded"));
+    }*/
 
+
+    public void loadNewQuiz(){
+        File file = new File("src/main/java/studentlife/controller/quiz.csv");
+        String csvFile = file.getPath();
+        String line = "";
+        String csvSplitBy = ",";
+        int j = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while((line = br.readLine()) != null){
+                String[] quiz = line.split(csvSplitBy);
+
+                while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(quiz[0]))) {
+                    j++;
+                }
+                subjectList.get(j).addQuiz(new Quiz(subjectList.get(j),quiz[1],quiz[2],quiz[3],quiz[4],quiz[5]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -222,10 +299,9 @@ public class GameController {
         boolean test1 = true;
         String tiret = "-";
         String pause = "Pause";
-        File file = new File("assets/edt.csv");
-        String csvFile = file.getAbsolutePath(); //+ //"src/main/java/studentlife/controller/edt.csv";
-        System.out.println(csvFile);
-        String line;
+        File file = new File("src/main/java/studentlife/controller/edt.csv");
+        String csvFile = file.getPath();
+        String line = "";
         String csvSplitBy = ",";
         String c;
         int i, j;
@@ -244,17 +320,13 @@ public class GameController {
 
                             i = 0;
                             j = 0;
-                            System.out.println(cours[0]);
                             while (i < profList.size() && !(this.profList.get(i).getNom().equals(cours[2]))) {
                                 i++;
                             }
-                            System.out.println(i);
                             c = cours[0];
                             while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(c))) {
-                                System.out.println(j);
                                 j++;
                             }
-                            System.out.println(j);
                             if (cours[1].equals("CM")) {
                                 jour.addEvenement(new Cours(CM, this.profList.get(i) ,this.subjectList.get(j)));
                             }
@@ -278,20 +350,6 @@ public class GameController {
                     }
                 }
                 this.schedule.addDay(jour);
-            }
-            int k=0;
-            int l=0;
-            while( k!= this.schedule.getWeek().size()){
-                while(l != this.schedule.getWeek().get(k).getEvenements().size()){
-                    if(this.schedule.getWeek().get(k).getEvenements().get(l) instanceof Cours) {
-                        System.out.println(((Cours) this.schedule.getWeek().get(k).getEvenements().get(l)).getMatiere().getNom());
-                    }
-                    else{
-                        System.out.println("Pause");
-                    }
-                    l++;
-                }
-                k++;
             }
 
         } catch (IOException e) {

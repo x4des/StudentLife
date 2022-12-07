@@ -32,7 +32,7 @@ public class Quiz {
      * @param r4 Réponse proposée.
      * Constructeur d'un quizz avec 4 propositions de réponses
      * */
-    public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3, String r4){
+    public Quiz(Matiere matiere, String question, String reponseCorrecte, String r2, String r3, String r4){
         this.question = question;
         this.reponses = new ArrayList<>();
         this.reponses.add(r2);
