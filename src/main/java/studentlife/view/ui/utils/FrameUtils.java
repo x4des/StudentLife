@@ -40,11 +40,11 @@ public class FrameUtils {
 
     /**
      * @return retourne la dimension de l'ecran graphique
-     * La longueur sera d'environ 4/6 de la taille de l'ecran et la largeur 2/3.
+     * La largeur sera d'environ 3/6 de la taille de l'ecran et la hauteur 3/4.
      * */
     public static Dimension getDimension() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        return new Dimension((screenSize.width / 6) * 2, (screenSize.height / 4) * 3);
+        return new Dimension((screenSize.width / 6) * 3, (screenSize.height / 4) * 3);
     }
 
     /**

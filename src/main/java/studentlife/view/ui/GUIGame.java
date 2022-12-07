@@ -33,7 +33,7 @@ public class GUIGame extends Game {
      * */
     @Override
     public void run() {
-
+        //titre de jeu (de la fenêtre)
         mainFrame.setTitle("Student Life Simulator");
         // Set the propriety of default close
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
