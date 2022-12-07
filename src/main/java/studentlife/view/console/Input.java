@@ -31,10 +31,10 @@ public class Input {
         answers.add(answer);
     }
 
-   /* public void addAnswers(Collection<String> reponses){
-        Collections.addAll(answers,reponses);
+    public void addAnswers(ArrayList<String> reponses){
+        answers.addAll(reponses);
     }
-    */
+
 
     /**
      * @return resolve() retourne null s'il n'y a pas de reponse. Sinon, affiche toute les
@@ -83,4 +83,7 @@ public class Input {
 
     }
 
+    public ArrayList<String> getAnswers() {
+        return answers;
+    }
 }

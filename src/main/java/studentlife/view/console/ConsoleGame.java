@@ -111,8 +111,12 @@ public class ConsoleGame extends Game {
 
     private void menuEDT(){
         Input question = new Input("Ici vous pouvez consulter votre Emploi du Temps\nChoisissez le jour souhaité");
-        //question.addAnswers(getController().getSchedule().getWeekDays());
+        question.addAnswers(getController().getSchedule().getWeekDaysAsList());
         String res = question.resolve();
+        int i = question.getAnswers().indexOf(res);
+        System.out.println(res + " vous avez:");
+        System.out.println(getController().getSchedule().getWeek().get(i).toString());
+        revenirDansLeMenu();
     }
     private void parametres(){
         Input question = new Input("Modifier vos informations personnelles");

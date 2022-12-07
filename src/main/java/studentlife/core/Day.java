@@ -3,6 +3,7 @@
  * */
 package studentlife.core;
 
+import studentlife.core.events.Cours;
 import studentlife.core.events.Evenement;
 
 import java.util.ArrayList;
@@ -52,4 +53,17 @@ public class Day {
      * ajoute un evenement a la liste d'evenement
      * */
     public void addEvenement(Evenement evenement) { evenements.add(evenement); }
+
+    @Override
+    public String toString(){
+        String day = "";
+        for (Evenement event : evenements){
+            if (event instanceof Cours){
+                day += event.toString() + "\n";
+            }else{
+                day+= "Pause\n";
+            }
+        }
+        return day;
+    }
 }

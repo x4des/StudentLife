@@ -127,4 +127,10 @@ public class Cours implements Evenement {
             }
         }
     }
+
+
+    @Override
+    public String toString(){
+        return this.getShortNom() + " de "+ this.getMatiere().getNom() + " avec "+ this.professeur.getPrenom() +" "+this.professeur.getNom();
+    }
 }

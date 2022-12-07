@@ -24,8 +24,13 @@ public class Schedule {
         this.weekDays = new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"};
     }
 
-    public String[] getWeekDaysAsList(){
-        return weekDays;
+    public ArrayList<String> getWeekDaysAsList(){
+        ArrayList<String> week = new ArrayList<>();
+        for (String day : weekDays){
+            week.add(day);
+        }
+        return week;
+
     }
 
     /**
