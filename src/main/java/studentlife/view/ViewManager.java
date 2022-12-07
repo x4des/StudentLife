@@ -38,6 +38,7 @@ public class ViewManager {
     private TextField prenom;
     public ArrayList<Button> menuButtons;
     private StudyWeekSimSubscene sceneToHide;
+    private StudyWeekSimSubscene menuSubscene;
 
     public ViewManager(){
         menuButtons = new ArrayList<Button>();
@@ -47,6 +48,7 @@ public class ViewManager {
         mainStage.setScene(mainScene);
         nom = new TextField();
         prenom = new TextField();
+        createSubscenes();
         createElements();
         /*createEverything(anchorPane);
         //game = new ConsoleGame(new GameController());*/
@@ -110,6 +112,17 @@ public class ViewManager {
         createButtons();
     }
 
+    private void createSubscenes() {
+        menuSubscene = new StudyWeekSimSubscene();
+        createMenuSubscene();
+    }
+
+    private void createMenuSubscene() {
+        menuSubscene = new StudyWeekSimSubscene();
+        anchorPane.getChildren().add(menuSubscene);
+        createMenuButtons();
+    }
+
     private void createButtons() {
         createCommencerBtn();
         createMenuBtn();
@@ -125,7 +138,7 @@ public class ViewManager {
             public void handle(ActionEvent actionEvent) {
                 StudyWeekSimSubscene subscene = new StudyWeekSimSubscene();
                 AnchorPane subAnchorPane = new AnchorPane();
-                createMenuButtons();
+
                 Label menuTxt = new Label("Menu");
 
                 subAnchorPane.getChildren().add(menuTxt);
