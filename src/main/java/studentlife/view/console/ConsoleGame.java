@@ -19,8 +19,8 @@ import static studentlife.Config.POINTS_REVISION;
 
 /**
  * La classe ConsoleGame est la classe dans laquelle on initialise le jeu
- et où on crée la console et le scenario de la simu.
- C'est la sous classe de la super Game
+ et où on crée la console et le scenario de la simulation
+ C'est la sous-classe de la classe abstraite Game
  *@see Game
  * */
 public class ConsoleGame extends Game {
