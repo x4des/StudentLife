@@ -1,10 +1,17 @@
+/**
+ * Contient les classes Matiere, Day, Schedule
+ * */
 package studentlife.core;
 
+import studentlife.core.events.Cours;
 import studentlife.core.events.Evenement;
 
 import java.util.ArrayList;
 /**
  *La classe jour represente un jour dans la semaine composé d'une liste d'evenements
+ * @see Evenement
+ * @see studentlife.core.events.Cours
+ * @see studentlife.core.events.Pause
  * */
 
 public class Day {
@@ -46,4 +53,17 @@ public class Day {
      * ajoute un evenement a la liste d'evenement
      * */
     public void addEvenement(Evenement evenement) { evenements.add(evenement); }
+
+    @Override
+    public String toString(){
+        String day = "";
+        for (Evenement event : evenements){
+            if (event instanceof Cours){
+                day += event.toString() + "\n";
+            }else{
+                day+= "Pause\n";
+            }
+        }
+        return day;
+    }
 }

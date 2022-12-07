@@ -1,3 +1,7 @@
+
+/**
+ * Contient la classe GUIGame qui creer une fenetre de jeu.
+ * */
 package studentlife.view.ui;
 
 import studentlife.controller.GameController;
@@ -7,17 +11,29 @@ import studentlife.view.ui.utils.FrameUtils;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * La classe GUIGame est la sous classe de Game qui implemente l'interface Runnable
+ * @see Game
+ * */
 public class GUIGame extends Game {
 
     private final JFrame mainFrame = new JFrame();
 
+    /**
+     * @param controller
+     * constructeur de la sous classe
+     * */
     public GUIGame(GameController controller) {
         super(controller);
     }
 
+    /**
+     * La methode run() de l'interface Runnable.
+     Elle permet de lancer la simulation avec une iterface graphique.
+     * */
     @Override
     public void run() {
-
+        //titre de jeu (de la fenêtre)
         mainFrame.setTitle("Student Life Simulator");
         // Set the propriety of default close
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

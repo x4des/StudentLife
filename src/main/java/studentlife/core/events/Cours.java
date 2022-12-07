@@ -1,3 +1,8 @@
+/**
+ * Contient les classes liées a touts evenements. Ainsi, elle continent
+ l'interface Evenement, les classes qui l'implemente; Cours, et Pause et d'autres modules stockant
+ les types de Cours et de Pauses.
+ * */
 package studentlife.core.events;
 
 import studentlife.core.Matiere;
@@ -8,6 +13,7 @@ import static studentlife.Config.*;
 
 /**
  * la classe Cours implemente l'interface Evenement et modifie les stats des objets impliquée
+ * @see Evenement
  * */
 public class Cours implements Evenement {
     private final CoursType typeCours;
@@ -84,8 +90,7 @@ public class Cours implements Evenement {
      * est le complementaire de la stat fatigue.
      * l'appreciation du professeur envers l'etudiant sera aussi augmenté selon le type de cours où il participe.
      * Pour finir, la moyenne de la matière concerné sera augmenté.
-     * @param valid booleen qui verifie si l'evenement choisi est bien un Cours, ainsi la procedure pourra modifier les stats
-     * @see Evenement.java
+     * @param valid booleen qui verifie si l'evenement choisi est bien un Cours, ainsi la procedure pourra modifier les stats.
      * */
     @Override
     public void finaliserEvenement(Etudiant user, boolean valid) {
@@ -121,5 +126,11 @@ public class Cours implements Evenement {
                     break;
             }
         }
+    }
+
+
+    @Override
+    public String toString(){
+        return this.getShortNom() + " de "+ this.getMatiere().getNom() + " avec "+ this.professeur.getPrenom() +" "+this.professeur.getNom();
     }
 }

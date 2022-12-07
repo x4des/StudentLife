@@ -1,3 +1,6 @@
+/**
+ * Contient la classe Quiz
+ * */
 package studentlife.core.actions;
 import studentlife.core.Matiere;
 
@@ -7,7 +10,7 @@ import java.util.*;
  * */
 public class Quiz {
     private final String question;
-    private final ArrayList<String> reponses; //reponses possibles (sauf la réponse correcte)
+    private final ArrayList<String> reponses; //réponses possibles (sauf la réponse correcte)
     private final String reponseCorrecte;
     private final Matiere matiere; //matière concernée par le quizz
 
@@ -32,9 +35,9 @@ public class Quiz {
 
     /**
      * @param question une question qui est posée
-     * @param reponseCorrecte
-     * @param matiere la matiere dont les questions sont concernées
-     * @param r2 reponse proposée
+     * @param reponseCorrecte la réponse correcte
+     * @param matiere la matière dont les questions sont concernées
+     * @param r2 réponse proposée
      * constructeur d'un quizz avec 2 propositions de réponses
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2){
@@ -62,12 +65,6 @@ public class Quiz {
         this.matiere = matiere;
     }
 
-    /**
-     * @return  getter qui permet d'acceder à l'attribut question de la classe
-     * */
-    public String getQuestion() {
-        return this.question;
-    }
 
 
     /**
@@ -107,24 +104,24 @@ public class Quiz {
         }
 
         Scanner scanner = new Scanner(System.in); //scanner qui prendra la saisie de l'utilisateur
-        System.out.println("Donnez l'indice de votre réponse");
-        int reponse = 0;
+        System.out.println(System.lineSeparator() + "Donnez l'indice de votre réponse");
+        int reponse;
         boolean stop = false; //condition d'arrêt de la boucle
         while (!stop) {
             try {
                 reponse = scanner.nextInt(); //scan de la réponse d'utilisateur
                 while (reponse < 1 || reponse > reponses.size()) { //verification que l'indice donné est correct
-                    System.out.println("Donnez indice correcte");
+                    System.out.println("Donnez l'indice correct");
                     reponse = scanner.nextInt();
                 }
 
-                System.out.println("Votre réponse " + reponse);
                 if ((reponse-1) == reponses.indexOf(reponseCorrecte)) { //verification si la réponse d'utilisateur est correcte
-                    System.out.println(" est correcte");
+                    System.out.println("Votre réponse est correcte");
                     matiere.getMastery().updateValue(10); //changements des stats dans la matière concernée
                 } else {
-                    System.out.println(" est fausse" + System.lineSeparator());
+                    System.out.println("Votre réponse est fausse");
                     matiere.getMastery().updateValue(-10);
+                    System.out.println("la réponse correcte est: " + (reponses.indexOf(reponseCorrecte)+1));
                 }
                 stop = true;
 

@@ -6,6 +6,7 @@ import static studentlife.Config.*;
 
 /**
  * la classe Pause implemente l'interface Evenement et modifie les stats des objets impliqués
+ * @see Evenement
  * */
 public class Pause implements Evenement {
 
@@ -38,13 +39,13 @@ public class Pause implements Evenement {
     public void setPauseType(PauseType pauseType) {
        this.pauseType = pauseType;
     }
-   /**
+
+    /**
    * @param utilisateur les stats de user seront modifiés en fonction de la pause qu'il a pris ainsi:
    * _ lorsque c'est une pause repas, la faim diminue, la fatigue aussi et ainsi l'attention augmente.
    * _ lorsque c'est une pause repos, la faim reste la meme, la fatigue diminue et l'attention augmente.
    * _ lorsque c'est une pause revision, la fatigue augmente, l'attention diminue mais la moyenne de la matière revisé augmente de 10.
    * @param valid booleen qui verifie si l'evenement choisi est bien un Cours, ainsi la procedure pourra modifier les stats.
-   * @see Evenement.java
   * */
     @Override
     public void finaliserEvenement(Etudiant utilisateur, boolean valid) {
@@ -63,7 +64,7 @@ public class Pause implements Evenement {
 
             case REVISION:
                 //faim reste inchangé car on peut quand même manger un snack pendant une révision
-                utilisateur.getStats().getStat(STAT_FATIGUE).updateValue(10);
+                utilisateur.getStats().getStat(STAT_FATIGUE).updateValue(POINTS_REVISION);
                 utilisateur.getStats().updateAttention(STAT_ATTENTION);
                 faireRevision(utilisateur);
                 break;
@@ -74,7 +75,7 @@ public class Pause implements Evenement {
    * @param utilisateur la moyenne de l'utilisateur dans la matiere sera modifié
    * si la matière est mentionné la moyenne se verra augmenté de 10.
    * @throws RuntimeException si la matière n'existe pas ou n'est pas mentionée,
-   * l'exception fais propagé un message d'erreur.
+   l'exception fais propagé un message d'erreur.
    * */
     private void faireRevision(Etudiant utilisateur) throws RuntimeException{
             if (subject == null){

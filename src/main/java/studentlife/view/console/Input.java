@@ -1,6 +1,8 @@
 package studentlife.view.console;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -29,34 +31,59 @@ public class Input {
         answers.add(answer);
     }
 
+    public void addAnswers(ArrayList<String> reponses){
+        answers.addAll(reponses);
+    }
+
+
     /**
      * @return resolve() retourne null s'il n'y a pas de reponse. Sinon, affiche toute les
      reponses possibles et retourne la reponse choisi par l'utilisateur.
      * */
     public String resolve() {
+        boolean stop = false;
 
-        if(answers.size() == 0)
-            return null;
+        if (answers.size() == 0) {
+            System.out.println(question);
+            Scanner scanner = new Scanner(System.in);
+            return scanner.nextLine();
+        }
 
         // Print the question and the answers:
         System.out.println(question);
 
-        for(int i = 0; i < answers.size(); i++) {
+        for (int i = 0; i < answers.size(); i++) {
             System.out.println(i + 1 + ") " + answers.get(i));
         }
 
+
+        System.out.println("Donnez l'indice de votre réponse");
         Scanner scanner = new Scanner(System.in);
+        int res=-1;
+        while (!stop) {
+            try {
 
-        int res = -1;
+                res = scanner.nextInt();
+                res--;
 
-        while (res < 0 || res >= answers.size())
-        {
-             System.out.println("Please pick an answer: ");
-             res = scanner.nextInt();
-             res--;
+                while (res < 0 || res >= answers.size()) {
+                    System.out.println("Donnez un indice correct s'il vous plaît");
+                    res = scanner.nextInt();
+                    res--;
+                }
+
+                stop = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Merci d'entrer un indice");
+                scanner.next();
+            }
+
         }
-
         return answers.get(res);
+
     }
 
+    public ArrayList<String> getAnswers() {
+        return answers;
+    }
 }

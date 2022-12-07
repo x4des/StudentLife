@@ -1,3 +1,7 @@
+/**
+ * Contient le Main ainsi que la classe Config
+ *  * Contient egalement les dossier controller, core et view
+ * */
 package studentlife;
 
 /**
@@ -14,5 +18,7 @@ public class Config {
     public static final String STAT_APPRECIATION = "appreciation";
 
     public static final String STAT_MASTERY = "";
+
+    public static final int POINTS_REVISION = 10;
 
 }

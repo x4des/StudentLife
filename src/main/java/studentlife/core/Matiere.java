@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import static studentlife.Config.STAT_MASTERY;
 /**
  *La classe Matiere represente une matiere qui possède
- une statistique qui est la moyenne que l'etudiant a dans cette meme matiere.
+ une statistique qui est la moyenne que l'etudiant dans cette meme matiere.
  Elle possede egalement une liste de quiz dont les reponses seront
  demandées à l'utilisateur.
  * */
