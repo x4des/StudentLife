@@ -6,7 +6,7 @@ import studentlife.controller.GameController;
 /**
  * La classe abstraite Game implémente la classe Runnable qui elle possède
  une methode (public void run()).
- La Game ne l'implémentera pas directement mais via sa sous classe GUIGame.
+ La Game ne l'implémentera pas directement, mais via sa sous classe GUIGame.
  Elle est aussi à super classe de ConsoleGame
  * @see studentlife.view.ui.GUIGame
  * @see studentlife.view.console.ConsoleGame

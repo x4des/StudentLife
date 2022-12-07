@@ -216,6 +216,7 @@ public class GameController {
         return subjectList;
     }
 
+    /**Crée l'EDT en chargeant les éléments de l'emploi du temps avec le fichier edt.csv*/
     private void loadSchedule() {
         boolean test;
         boolean test1 = true;

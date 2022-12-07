@@ -39,13 +39,8 @@ public class FrameUtils {
     }
 
     /**
-<<<<<<< HEAD
      * @return retourne la dimension de l'écran graphique
-     * La longueur sera d'environ 4/6 de la taille de l'écran et la largeur 2/3.
-=======
-     * @return retourne la dimension de l'ecran graphique
-     * La largeur sera d'environ 3/6 de la taille de l'ecran et la hauteur 3/4.
->>>>>>> 1f3c61658d6c572a758e386059c08dcffdc3cde5
+     * La largeur sera d'environ 3/6 de la taille de l'écran et la hauteur 3/4.
      * */
     public static Dimension getDimension() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

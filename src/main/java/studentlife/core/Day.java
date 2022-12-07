@@ -1,5 +1,5 @@
 /**
- * Contient les classes Matiere, Day, Schedule
+ * Contient les classes Matière, Day, Schedule
  * */
 package studentlife.core;
 
@@ -8,7 +8,7 @@ import studentlife.core.events.Evenement;
 
 import java.util.ArrayList;
 /**
- *La classe jour represente un jour dans la semaine composé d'une liste d'evenements
+ *La classe jour représente un jour dans la semaine composé d'une liste d'évènements
  * @see Evenement
  * @see studentlife.core.events.Cours
  * @see studentlife.core.events.Pause
@@ -18,7 +18,7 @@ public class Day {
     private ArrayList<Evenement> evenements;
 
     /**
-     * constructeur de la classe Day, jour sans evenements
+     * constructeur de la classe Day, jour sans évènements
      * */
     public Day() {
         this.evenements = new ArrayList<>();
@@ -26,31 +26,31 @@ public class Day {
 
     /**
      * @param evenements
-     * constructeur d'un jour avec plusieurs evenements
+     * constructeur d'un jour avec plusieurs évènements
      * */
     public Day(ArrayList<Evenement> evenements) {
         this.evenements = evenements;
     }
 
     /**
-     * @return retourne un evenement
-     * getter qui permet d'acceder aux evenements
+     * @return retourne un évènement
+     * getter qui permet d'accéder aux évènements
      * */
     public ArrayList<Evenement> getEvenements() {
         return evenements;
     }
 
     /**
-     * @param evenements
-     * setter modifie la valeur de la liste d'evenements
+     * @param evenements la liste d'évènements
+     * setter modifie la valeur de la liste d'évènements
      * */
     public void setEvenements(ArrayList<Evenement> evenements) {
         this.evenements = evenements;
     }
 
     /**
-     * @param evenement
-     * ajoute un evenement a la liste d'evenement
+     * @param evenement un évènement
+     * ajoute un évènement a la liste d'évènement
      * */
     public void addEvenement(Evenement evenement) { evenements.add(evenement); }
 

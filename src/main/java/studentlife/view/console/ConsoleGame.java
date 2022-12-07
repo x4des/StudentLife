@@ -1,5 +1,5 @@
 /**
- * Contient la classe permettant le demarrage de la console,
+ * Contient la classe permettant le démarrage de la console,
  ConsoleGame et la classe qui permet d'interagir avec l'utilisateur Input
  * */
 package studentlife.view.console;
@@ -16,19 +16,20 @@ import java.util.Scanner;
 
 import static studentlife.Config.POINTS_REVISION;
 
-//pub, protec, priv
 
 /**
  * La classe ConsoleGame est la classe dans laquelle on initialise le jeu
- et où on créer la console et le scenario de la simu.
+ et où on crée la console et le scenario de la simu.
  C'est la sous classe de la super Game
  *@see Game
  * */
 public class ConsoleGame extends Game {
 
 
-
+    /** nombre de jours dans la semaine*/
     private int weekDay;
+
+    /** nombre d'évènements accumulés*/
     private int eventActuel;
 
     /**
@@ -60,7 +61,7 @@ public class ConsoleGame extends Game {
     }
 
     /**
-     * Cette methode creer les affiches du menu principal
+     * Cette methode crée les affiches du menu principal
      * */
     private void menuPrincipal(){
 
@@ -108,7 +109,10 @@ public class ConsoleGame extends Game {
         }
     }
 
-
+    /** Cette methode crée et affiche les elements du menu lorsque
+     l'utilisateur a choisi de consulter son emploi du temps.
+     L'utilisateur pourra consulter son EDT un jour après l'autre.
+     */
     private void menuEDT(){
         Input question = new Input("Ici vous pouvez consulter votre Emploi du Temps\nChoisissez le jour souhaité");
         question.addAnswers(getController().getSchedule().getWeekDaysAsList());
@@ -118,6 +122,9 @@ public class ConsoleGame extends Game {
         System.out.println(getController().getSchedule().getWeek().get(i).toString());
         revenirDansLeMenu();
     }
+
+    /** Cette méthode permet, dans le paramètre, de demander à l'utilisateur s'il veut modifier
+     ses infos personnelles, c'est-à-dire, son nom et prénom */
     private void parametres(){
         Input question = new Input("Modifier vos informations personnelles");
         question.addAnswer("Oui");
@@ -132,7 +139,8 @@ public class ConsoleGame extends Game {
         }
     }
 
-
+    /** Cette méthode permet de modifier les infos perso de l'utilisateur
+     lorsque celui-ci veut les modifier*/
     private void resetInfoPerso(){
         Input question = new Input("Entrez votre prénom");
         String res = question.resolve();
@@ -143,6 +151,8 @@ public class ConsoleGame extends Game {
         System.out.println("Informations personnelles changées avec success");
     }
 
+    /**Cette méthode permet, lorsque l'utilisateur est dans menu/statistiques,
+     de choisir quelles données il veut consulter parmi eux.*/
     private void menuStatistiques(){
         Input question = new Input("Statistiques");
         question.addAnswer("Personnelles");
@@ -168,23 +178,32 @@ public class ConsoleGame extends Game {
         }
     }
 
+    /**Cette méthode permet de faire revenir la simu vers le menu principal après
+     que l'utilisateur a fait une saisie quelconque.*/
     private void revenirDansLeMenu(){
         Input question = new Input("Faites une saisie pour revenir dans le menu principal");
         question.resolve();
         menuPrincipal();
     }
 
+    /**Cette méthode fait continuer le jeu après une saisie quelconque de l'utilisateur
+     */
     private void continuerJeu(){
         System.out.println();
         Input question = new Input("Faites une saisie pour continuer le jeu");
         question.resolve();
     }
 
+    /** Cette méthode, lorsque l'EDT est terminé, averti l'utilisateur et fais revenir
+     la simu vers le menu principal.*/
     private void checkValidEvent(){
         System.out.println("La semaine est terminée");
         //afficher moyenne
         revenirDansLeMenu();
     }
+
+    /** Cette méthode vérifie si l'on est arrivé au dernier jour de la semaine.
+     Si oui, la semaine est terminée (appel de la méthode checkValiEvent()). Si non, on passe à l'évènement suivant.*/
     private void lookForEvent(){
         if (weekDay>=getController().getSchedule().getWeek().size()){
             checkValidEvent();
@@ -194,6 +213,7 @@ public class ConsoleGame extends Game {
 
     }
 
+    /** Incrémente la valeur du nombre d'évènements que l'utilisateur à participer*/
     private void updateEvent(){
         eventActuel++;
 
@@ -219,8 +239,8 @@ public class ConsoleGame extends Game {
     }
 
     /**
-     * détecte le type d'évènement en cours et fait appel à une méthode appropriée.
-     On a 2 types d'évènements possibles; cours ou pause.
+     * Détecte le type d'évènement en cours et fait appel à une méthode appropriée.
+     On a 2 types d'évènements possibles ; cours ou pause.
      * */
     private void manageEvent(Evenement event) {
         clearScreen();
@@ -233,8 +253,8 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * @param cours le cours dans lequel l'étudiant doit assisté.
-     * manageCours demande à l'utilisateur s'il veut y assisté s'il veut ou pas on appel la fonction
+     * @param cours Le cours dans lequelle l'étudiant doit assister.
+     * manageCours demande à l'utilisateur s'il veut y assister s'il désire ou pas on appelle la fonction
     finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
      * @see Cours
      * */
@@ -277,8 +297,7 @@ public class ConsoleGame extends Game {
     }
 
     /**
-     *
-     * appel la methode setPause()
+     * Lorsque l'étudiant à une pause dans son EDT.
      * */
     private void managePause() {
         System.out.println("Actuellement vous n'avez pas de cours.");
@@ -288,6 +307,7 @@ public class ConsoleGame extends Game {
         }
     }
 
+    /**fin du jeu, affichage du bilan de la semaine.*/
     private void endGame(){
         finalResults();
         System.exit(0);
@@ -350,12 +370,13 @@ public class ConsoleGame extends Game {
         return false;
     }
 
+    /** Etat personnel de l'utilisateur*/
     public void etatActuel(){
         System.out.println("Etat personnel actuel: "+ getController().getUser().getStats().toString());
     }
 
     /**
-     * @param i indice qui parcours la lise de jour de la semaine
+     * @param i indice qui parcourt la lise de jour de la semaine
      * dailyResults affiche les résultats de la journée dont l'indice est passé en paramètre.
      * */
     private void dailyResults( int i){
@@ -365,7 +386,7 @@ public class ConsoleGame extends Game {
     }
 
     /**
-     * affiche le bilan final de la semaine: les stats pour chaque matière, les stats personnels
+     * affiche le bilan final de la semaine : les stats pour chaque matière, les stats personnels
      ainsi l'appréciation des profs.
      * */
     private void finalResults(){
@@ -379,7 +400,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * @return l'entier retourné est égal à 0 lorsque la matière
+     * @return L'entier retourné est égal à 0 lorsque la matière
     n'est pas présente dans la liste de matière de l'étudiant. Lorsqu'elle
     est présente l'entier retourné est l'indice de la matière dans la meme liste.
      * @see Input

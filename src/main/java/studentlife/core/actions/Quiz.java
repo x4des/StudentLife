@@ -27,10 +27,10 @@ public class Quiz {
      * @param question une question qui est posée
      * @param matiere la matière dont les questions sont concernées
      * @param reponseCorrecte la response correcte à la question posée, fait partie des reponses proposées
-     * @param r2 reponse proposée
-     * @param r3 reponse proposée
-     * @param r4 reponse proposée
-     * constructeur d'un quizz avec 4 propositions de réponses
+     * @param r2 réponse proposée
+     * @param r3 réponse proposée
+     * @param r4 Réponse proposée.
+     * Constructeur d'un quizz avec 4 propositions de réponses
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3, String r4){
         this.question = question;
@@ -46,8 +46,8 @@ public class Quiz {
      * @param question une question qui est posée
      * @param reponseCorrecte la réponse correcte
      * @param matiere la matière dont les questions sont concernées
-     * @param r2 réponse proposée
-     * constructeur d'un quizz avec 2 propositions de réponses
+     * @param r2 Réponse proposée.
+     * Constructeur d'un quizz avec 2 propositions de réponses
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2){
         this.question = question;
@@ -81,7 +81,6 @@ public class Quiz {
      * Insère la réponse correcte dans la liste de réponses possibles d'une manière aléatoire
      retourne la liste de toutes les réponses possibles
      * */
-
     public ArrayList<String> getReponses() {
 
         try {

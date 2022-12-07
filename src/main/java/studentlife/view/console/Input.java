@@ -6,17 +6,19 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * La classe Input lit les réponses choisies par l'utilisateur
+ * La classe Input lit les réponses choisies par l'utilisateur.
  * */
 
 public class Input {
 
+    /**une question*/
     private final String question;
 
+    /**une liste de réponses*/
     private final ArrayList<String> answers = new ArrayList<>();
 
     /**
-     * @param question un question qui est posée a l'utilisateur
+     * @param question une question qui est posée a l'utilisateur
      * constructeur de la classe Input
      * */
     public Input(String question) {
@@ -24,21 +26,22 @@ public class Input {
     }
 
     /**
-     * @param answer la reponse eventuelle a une question.
+     * @param answer La réponse éventuelle a une question.
      * addAnswer ajoute une reponse dans la liste de reponse.
      * */
     public void addAnswer(String answer) {
         answers.add(answer);
     }
 
+    /**ajoute une réponse dans la liste de réponse*/
     public void addAnswers(ArrayList<String> reponses){
         answers.addAll(reponses);
     }
 
 
     /**
-     * @return resolve() retourne null s'il n'y a pas de reponse. Sinon, affiche toute les
-    reponses possibles et retourne la reponse choisi par l'utilisateur.
+     * @return Retourne null s'il n'y a pas de reponse. Sinon, affiche toutes les
+    réponses possibles et retourne la reponse choisi par l'utilisateur.
      * */
     public String resolve() {
         boolean stop = false;
@@ -83,6 +86,7 @@ public class Input {
 
     }
 
+    /**@return retourne la liste de réponses*/
     public ArrayList<String> getAnswers() {
         return answers;
     }
