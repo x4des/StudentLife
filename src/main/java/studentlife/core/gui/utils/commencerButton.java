@@ -1,4 +1,4 @@
-package studentlife.core;
+package studentlife.core.gui.utils;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
@@ -7,6 +7,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import studentlife.controller.GameController;
+import studentlife.core.gui.WelcomeScene;
 import studentlife.view.console.ConsoleGame;
 
 import java.util.Scanner;

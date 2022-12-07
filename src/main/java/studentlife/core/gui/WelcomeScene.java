@@ -1,4 +1,4 @@
-package studentlife.core;
+package studentlife.core.gui;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;

@@ -1,4 +1,4 @@
-package studentlife.core;
+package studentlife.core.gui.utils;
 
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

@@ -25,13 +25,5 @@ public class StudyWeekApplication extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
 
-    }/*
-    Game game = new Game(new GameController());
-    @FXML
-    protected Label StartBtn;
-    @FXML
-    public void onStartButtonClick(ActionEvent actionEvent) {
-        actionEvent.consume();
-        this.game.run();
-    }*/
+    }
 }

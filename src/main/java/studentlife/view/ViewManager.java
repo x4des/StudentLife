@@ -10,9 +10,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import studentlife.controller.GameController;
-import studentlife.core.SWSimButton;
-import studentlife.core.WelcomeScene;
-import studentlife.core.commencerButton;
+import studentlife.core.gui.utils.SWSimButton;
+import studentlife.core.gui.WelcomeScene;
+import studentlife.core.gui.utils.commencerButton;
 import studentlife.view.console.ConsoleGame;
 
 import java.util.ArrayList;
@@ -44,13 +44,6 @@ public class ViewManager {
 
     public Stage getMainStage(){
         return mainStage;
-    }
-
-    public void createButtons(Pane pane){
-
-        SWSimButton button = new SWSimButton("commencer");
-        pane.getChildren().add(button);
-
     }
 
     public void createEverything(AnchorPane anchorPane) {
@@ -98,37 +91,5 @@ public class ViewManager {
     public Label createLabel(String str){
         return new Label(str);
     }
-/*
-    public static ArrayList<Node> getAllNodes(Parent root){
-        ArrayList<Node> nodes = new ArrayList<Node>();
-        addAllDescendants(root, nodes);
-        return nodes;
-    }
-    private static void addAllDescendants(Parent parent, ArrayList<Node> nodes){
-        for(Node node : parent.getChildrenUnmodifiable()) {
-            nodes.add(node);
-            if(node instanceof Parent){
-                addAllDescendants((Parent)node, nodes);
-            }
-        }
-    }
-
-    public String getPrenom() {
-
-        ArrayList<Node> nodes = getAllNodes(anchorPane);
-        VBox vbox = (VBox) nodes.get(0);
-        HBox hbox = (HBox) vbox.getChildren().get(0);
-        String text = ((TextField) hbox.getChildren().get(1)).getText();
-        return text;
-    }
-    public String getNom() {
-
-        ArrayList<Node> nodes = getAllNodes(anchorPane);
-        VBox vbox = (VBox) nodes.get(0);
-        HBox hbox = (HBox) vbox.getChildren().get(1);
-        String text = ((TextField) hbox.getChildren().get(1)).getText();
-        return text;
-    }*/
-
 
 }
