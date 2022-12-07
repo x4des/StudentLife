@@ -79,9 +79,8 @@ public class GameController {
 
     }*/
     public void loadProf(){
-        File file = new File("prof.csv");
-        String csvFile = file.getAbsolutePath();
-        csvFile = csvFile.substring(0,csvFile.length()-8) + "src/main/java/studentlife/controller/prof.csv";
+        File file = new File("src/main/java/studentlife/controller/prof.csv");
+        String csvFile = file.getPath();
         String line = "";
         String csvSplitBy = ",";
 
@@ -99,9 +98,8 @@ public class GameController {
     }
 
     public void loadSubject(){
-        File file = new File("matiere.csv");
-        String csvFile = file.getAbsolutePath();
-        csvFile = csvFile.substring(0,csvFile.length()-11) + "src/main/java/studentlife/controller/matiere.csv";
+        File file = new File("src/main/java/studentlife/controller/matiere.csv");
+        String csvFile = file.getPath();
         String line = "";
         String csvSplitBy = ",";
 
@@ -165,9 +163,8 @@ public class GameController {
     }*/
 
     public void loadNewQuiz(){
-        File file = new File("quiz.csv");
-        String csvFile = file.getAbsolutePath();
-        csvFile = csvFile.substring(0,csvFile.length()-8) + "src/main/java/studentlife/controller/quiz.csv";
+        File file = new File("src/main/java/studentlife/controller/quiz.csv");
+        String csvFile = file.getPath();
         String line = "";
         String csvSplitBy = ",";
         int j = 0;
@@ -196,9 +193,8 @@ public class GameController {
         boolean test1 = true;
         String tiret = "-";
         String pause = "Pause";
-        File file = new File("edt.csv");
-        String csvFile = file.getAbsolutePath();
-        csvFile = csvFile.substring(0,csvFile.length()-7) + "src/main/java/studentlife/controller/edt.csv";
+        File file = new File("src/main/java/studentlife/controller/edt.csv");
+        String csvFile = file.getPath();
         String line = "";
         String csvSplitBy = ",";
         String c = "";
