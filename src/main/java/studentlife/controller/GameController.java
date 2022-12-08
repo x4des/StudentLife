@@ -1,7 +1,3 @@
-/**
- * Contient la classe qui instancie et affecte des valeurs aux différents objets que la
- simulation utilise
- * */
 package studentlife.controller;
 
 import studentlife.core.Day;
@@ -151,7 +147,7 @@ public class GameController {
 
     /**
      * Procédure qui permet de "charger" les quiz depuis
-     * le fichier quiz.csv, nous pouvons donc ajoutez autant
+     * le fichier quiz.csv, nous pouvons donc ajouter autant
      * de quiz que voulus.
      */
     public void loadNewQuiz(){

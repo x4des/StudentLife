@@ -1,4 +1,3 @@
-/** Ce package contient la classe Game, ConsoleGame et Input*/
 package studentlife.view;
 
 import studentlife.controller.GameController;
