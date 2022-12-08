@@ -6,7 +6,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * La classe Input lit les réponses choisies par l'utilisateur.
+ * La classe Input permet la création de questions et réponses possibles
+ * et permet de gérer la réponse fournie par l'utilisateur.
  * */
 
 public class Input {

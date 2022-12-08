@@ -44,7 +44,7 @@ public class ConsoleGame extends Game {
 
     /**
      * Initialisation de la simulation. On prend les informations souhaitées de l'utilisateur
-     et on affiche toutes les infos quil aura besoin pour commencer la simulation.
+     et on affiche toute informations dont il aura besoin pour commencer la simulation.
      * */
 
     private void initGameView() {
@@ -61,7 +61,8 @@ public class ConsoleGame extends Game {
     }
 
     /**
-     * Cette methode crée les affiches du menu principal
+     * Cette methode crée les éléments du menu principal
+     * et gère le choix de l'utilisateur
      * */
     private void menuPrincipal(){
 
@@ -123,7 +124,7 @@ public class ConsoleGame extends Game {
         revenirDansLeMenu();
     }
 
-    /** Cette méthode permet, dans le paramètre, de demander à l'utilisateur s'il veut modifier
+    /** Cette méthode permet, dans le menu paramètres, de demander à l'utilisateur s'il veut modifier
      ses infos personnelles, c'est-à-dire, son nom et prénom */
     private void parametres(){
         Input question = new Input("Modifier vos informations personnelles");
@@ -178,8 +179,8 @@ public class ConsoleGame extends Game {
         }
     }
 
-    /**Cette méthode permet de faire revenir la simu vers le menu principal après
-     que l'utilisateur a fait une saisie quelconque.*/
+    /**Cette méthode permet de faire revenir la simulation vers le menu principal après
+     que l'utilisateur ait fait une saisie quelconque.*/
     private void revenirDansLeMenu(){
         Input question = new Input("Faites une saisie pour revenir dans le menu principal");
         question.resolve();
@@ -194,8 +195,8 @@ public class ConsoleGame extends Game {
         question.resolve();
     }
 
-    /** Cette méthode, lorsque l'EDT est terminé, averti l'utilisateur et fais revenir
-     la simu vers le menu principal.*/
+    /** Cette méthode, lorsque l'EDT est terminé, avertit l'utilisateur et fait revenir
+     la simulation vers le menu principal.*/
     private void checkValidEvent(){
         System.out.println("La semaine est terminée");
         //afficher moyenne
@@ -228,7 +229,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * la methode run() permet de faire une boucle pour la simulation, ainsi, le jeu continue.
+     * la methode run() permet de lancer le jeu.
      * */
     public void run() {//boucle-scenario du jeu
         // LANCER LE JEU :)
