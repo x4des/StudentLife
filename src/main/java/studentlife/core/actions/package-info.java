@@ -1,5 +1,5 @@
 /**
- * Contient les classes Matière, Day, Schedule.
- * Ces classes permettent de créer l'emploi du temps de l'étudiant dans la simu.
+ * Ce package contient les actions supplémentaires possibles,
+ * notamment la classe Quiz qui permet de créer et exécuter des quizzes.
  * */
 package studentlife.core.actions;

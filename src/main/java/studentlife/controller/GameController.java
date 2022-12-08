@@ -7,7 +7,6 @@ import studentlife.core.actions.Quiz;
 import studentlife.core.characters.Etudiant;
 import studentlife.core.characters.Professeur;
 import studentlife.core.events.Cours;
-import studentlife.core.events.CoursType;
 import studentlife.core.events.Pause;
 
 import java.io.BufferedReader;
@@ -50,6 +49,7 @@ public class GameController {
      * */
     private final Schedule schedule;
 
+
     /**
      * le constructeur de la classe GameController
      (que pour l'attribut schedule).
@@ -59,11 +59,11 @@ public class GameController {
     }
 
     /**
+     * On initialise le jeu en créant une Personne qui est l'étudiant.
+     * On aura donc son nom, son prénom, ses professeurs, ses matières, son EDT et ses questions de quiz.
+     * Tout cela grace aux méthodes associées.
      * @param userLastName user lastname
      * @param userFirstName user first name
-     * on initialise le game en créant une Personne qui est l'étudiant,
-     on aura donc son nom, son prénom, ses professeurs, ses matières, son EDT et ses questions de quiz.
-     Tout cela grace aux méthodes associées.
      * */
     public void initGame(String userLastName, String userFirstName) {
         user = new Etudiant(userLastName, userFirstName);
@@ -77,38 +77,54 @@ public class GameController {
         loadNewQuiz(); //instancie les quizz
     }
 
+
     /**
-     * @return  getter qui permet d'accéder au user de la classe
+     * Ce getter permet d'accéder à l'utilisateur
+     * @return  étudiant/utilisateur
      * */
     public Etudiant getUser() {
         return user;
     }
 
+
     /**
-     * @return getter de schedule
+     * Ce getter permet d'avoir l'EDT
+     * @return EDT
      * */
     public Schedule getSchedule() {
         return schedule;
     }
 
+
     /**
-     * @return getter de profList.
+     * Ce getter permet d'avoir une liste des professeurs
+     * @return liste de professeurs
      * */
     public ArrayList<Professeur> getProfList() {
         return profList;
     }
 
+
     /**
-     * Procédure qui permet de "charger" les professeurs depuis
+     * Ce getter permet d'avoir une liste de matières
+     * @return liste de matières
+     * */
+    public ArrayList<Matiere> getSubjectList() {
+        return subjectList;
+    }
+
+
+    /**
+     * Méthode qui permet de "charger" les professeurs depuis
      * le fichier prof.csv
      */
     private void loadProf(){
         File file = new File("assets/prof.csv"); //Créer un objet File qui contiendra l'emplacement du fichier voulu.
-        String csvFile = file.getPath(); //Récupere le chemin d'accès complet au fichier prof.csv
+        String csvFile = file.getPath(); //Récupère le chemin d'accès complet au fichier prof.csv
         String line = "";
         String csvSplitBy = ",";    //Variable qui contient le "séparateur" du fichier csv.
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) { // Essaie d'acceder au fichier et renvois une erreur
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) { // Essaie d'accéder au fichier et renvois une erreur
                                                                                 // si le chemin est faut.
             while((line = br.readLine()) != null){  //Boucle pour parcourir chaque ligne du fichier.
                 String[] prof = line.split(csvSplitBy); //On récupère le contenu de la ligne divisé à chaque caractère
@@ -121,22 +137,23 @@ public class GameController {
 
     }
 
+
     /**
-     * Procédure qui permet de "charger" les matières depuis
+     * Méthode qui permet de "charger" les matières depuis
      * le fichier matiere.csv
      */
     private void loadSubject(){
         File file = new File("assets/matiere.csv"); //Créer un objet File qui contiendra l'emplacement du fichier voulu.
-        String csvFile = file.getPath();    //Récupere le chemin d'accès complet au fichier prof.csv
+        String csvFile = file.getPath();    //Récupère le chemin d'accès complet au fichier prof.csv
         String line = "";
         String csvSplitBy = ",";    //Variable qui contient le "séparateur" du fichier csv.
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) { // Essaie d'acceder au fichier et renvois une erreur
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) { // Essaie d'accéder au fichier et renvois une erreur
                                                                                 // si le chemin est faut.
             while((line = br.readLine()) != null){  //Boucle pour parcourir chaque ligne du fichier.
                 String[] matiere = line.split(csvSplitBy);  //On récupère le contenu de la ligne divisé à chaque caractère
                                                             //précisé plus haut dans csvSpliBy.
-                subjectList.add(new Matiere(matiere[0]));   //On créé une nouvelle matiere avec les informations récupérer dans le fichier.
+                subjectList.add(new Matiere(matiere[0]));   //On créé une nouvelle matière avec les informations récupérer dans le fichier.
             }
         } catch (IOException e) {   //Si le fichier n'est pas trouvé l'exception est propagée.
             e.printStackTrace();
@@ -144,62 +161,56 @@ public class GameController {
 
     }
 
+
     /**
-     * Procédure qui permet de "charger" les quiz depuis
+     * Méthode qui permet de "charger" les quiz depuis
      * le fichier quiz.csv, nous pouvons donc ajouter autant
      * de quiz que voulus.
      */
     private void loadNewQuiz(){
         File file = new File("assets/quiz.csv"); //Créer un objet File qui contiendra l'emplacement du fichier voulu.
-        String csvFile = file.getPath();    //Récupere le chemin d'accès complet au fichier prof.csv
+        String csvFile = file.getPath();    //Récupère le chemin d'accès complet au fichier prof.csv
         String line = "";
         String csvSplitBy = ",";    //Variable qui contient le "séparateur" du fichier csv.
         int j = 0;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) { // Essaie d'acceder au fichier et renvois une erreur
-                                                                                // si le chemin est faut.
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) { // Essaie d'accéder au fichier et renvoie une erreur
+                                                                                // si le chemin est faux.
             while((line = br.readLine()) != null){  //Boucle pour parcourir chaque ligne du fichier.
                 String[] quiz = line.split(csvSplitBy);     //On récupère le contenu de la ligne divisé à chaque caractère
                                                             //précisé plus haut dans csvSpliBy.
-                while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(quiz[0]))) { //On récupère dans j l'indice de la matiere
-                    j++;                                                                                //corespondant au quiz lu précédement.
+                while (j < subjectList.size() && !(this.subjectList.get(j).getNom().equals(quiz[0]))) { //On récupère dans j l'indice de la matière
+                    j++;                                                                                //correspondant au quiz lu précédemment.
                 }
                 subjectList.get(j).addQuiz(new Quiz(subjectList.get(j),quiz[1],quiz[2],quiz[3],quiz[4],quiz[5])); //On créé un nouveau quiz avec les informations récupérer dans le fichier.
             }
-        } catch (IOException e) { //Si le fichier n'est pas trouvé l'excption est propagée.
+        } catch (IOException e) { //Si le fichier n'est pas trouvé l'exception est propagée.
             e.printStackTrace();
         }
 
     }
 
 
-    /**
-     * @return getter pour la liste de matière de la classe.
-     * */
-    public ArrayList<Matiere> getSubjectList() {
-        return subjectList;
-    }
-
-    /**Crée l'EDT en chargeant les éléments de l'emploi du temps avec le fichier edt.csv*/
+    /** Méthode qui permet de créer l'EDT en chargeant les éléments de l'emploi du temps avec le fichier edt.csv*/
     private void loadSchedule() {
         boolean test;
         boolean test1 = true;
         String tiret = "-"; //Variable contenant le séparateur de Jour.
         String pause = "Pause";
         File file = new File("assets/edt.csv"); //Créer un objet File qui contiendra l'emplacement du fichier voulu.
-        String csvFile = file.getPath();    //Récupere le chemin d'accès complet au fichier prof.csv
+        String csvFile = file.getPath();    //Récupère le chemin d'accès complet au fichier prof.csv
         String line = "";
         String csvSplitBy = ",";    //Variable qui contient le "séparateur" du fichier csv.
         String c;
         int i, j;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) { // Essaie d'acceder au fichier et renvois une erreur
-                                                                                // si le chemin est faut.
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) { // Essaie d'accéder au fichier et renvoie une erreur
+                                                                                // si le chemin est faux.
 
-            while (test1) { //Boucle qui parcour toute la semaine.
+            while (test1) { //Boucle qui parcours toute la semaine.
                 Day jour = new Day(); //Création d'un nouveau jour.
                 test = true;
-                while (test) {  //Boucle qui parcour une journnée.
+                while (test) {  //Boucle qui parcours une journée.
                     line = br.readLine(); //Lecture d'une ligne du fichier.
                     if(line != null){ //Vérifie si l'on est pas arrivé à la fin du fichier.
                         String[] cours = line.split(csvSplitBy);    //Divise la ligne avec le "séparateur" donné dans csvSplitBy.
@@ -240,7 +251,7 @@ public class GameController {
                 this.schedule.addDay(jour); //Ajoute le jour à l'emplois du temps.
             }
 
-        } catch (IOException e) {   //Si le fichier n'est pas trouvé l'excption est propagée.
+        } catch (IOException e) {   //Si le fichier n'est pas trouvé l'exception est propagée.
             e.printStackTrace();
         }
     }

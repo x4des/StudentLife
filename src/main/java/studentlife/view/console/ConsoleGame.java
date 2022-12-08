@@ -257,7 +257,7 @@ public class ConsoleGame extends Game {
      * @see Cours
      * */
     private void manageCours(Cours cours) {
-        System.out.println("Vous avez un " + cours.getShortNom()+ " de " + cours.getMatiere().getNom());
+        System.out.println("Vous avez un " + cours.getShortType()+ " de " + cours.getMatiere().getNom());
 
         //Creation de la possibilité de choisir si l'utilisateur veut ou non assister au cours
         Input question = new Input("Voulez-vous y assister?");
@@ -267,7 +267,7 @@ public class ConsoleGame extends Game {
         String res = question.resolve();
         if(res.equals("Oui")){//si oui
             clearScreen();
-            System.out.println(cours.getNom() + " de " + cours.getMatiere().getNom());
+            System.out.println(cours.getType() + " de " + cours.getMatiere().getNom());
             System.out.println("\b");
 
             System.out.println("Petit quiz pour vérifier vos connaissances");

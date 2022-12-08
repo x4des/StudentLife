@@ -7,31 +7,32 @@ import java.util.ArrayList;
 
 import static studentlife.Config.STAT_MASTERY;
 /**
- *La classe Matière représente une matière qui possède
- une statistique qui est la moyenne que l'étudiant dans cette meme matière.
- Elle possède également une liste de quiz dont les réponses seront
- demandées à l'utilisateur.
+ *La classe Matière représente une matière qui possède un nom,
+ une statistique qui est la maitrise de la matière par l'étudiant.
+ Elle possède également une liste de quiz.
  * */
 public class Matiere {
 
     /**nom de la matière*/
     private final String nomMatiere;
 
-    /**la statistique en lien avec la matière = la moyenne*/
+    /**la statistique en lien avec la matière = la maitrise*/
     private final Stat mastery;
 
-    /**la liste de quiz en lien avec la matière*/
+    /**la liste de quiz de la matière*/
     private final ArrayList<Quiz> listeQuiz;
 
+
     /**
-     * @param nomMatiere Le nom de la matière.
      * Constructeur de la classe Matière.
+     * @param nomMatiere Le nom de la matière.
      * */
     public Matiere(String nomMatiere) {
         this.nomMatiere = nomMatiere;
-        this.mastery = new Stat(STAT_MASTERY, 50);
+        this.mastery = new Stat(STAT_MASTERY, 50); //maitrise initiale est neutre
         this.listeQuiz = new ArrayList<>();
     }
+
 
     /**
      * getter de l'attribut nomMatiere
@@ -43,38 +44,42 @@ public class Matiere {
 
 
     /**
+     * Getter, permet d'accéder à l'attribut mastery de la classe
      * @return la stat lié a la matière = mastery
-     * getter, permet d'accéder a l'attribut mastery de la classe
      * */
     public Stat getMastery() { return mastery; }
 
+
     /**
+     * ajoute un quiz à la liste de quiz
      * @param quiz un quiz
-     * ajoute un quiz a la liste de quiz
      * */
     public void addQuiz(Quiz quiz) {
         this.listeQuiz.add(quiz);
     }
 
+
     /**
+     * Méthode qui supprime un quiz de la liste dont l'indice est passé en paramètre
      * @param i indice d'un quiz
-     * procedure qui supprime un quiz de la liste dont l'indice est passé en paramètre
      * */
     public void deleteQuiz(int i){
         listeQuiz.remove(i);
     }
 
+
     /**
-     * @return retourne la liste de quiz liée à la matière
-     * getter de l'attribut listeQuiz
+     * Getter de l'attribut listeQuiz
+     * @return retourne la liste de quiz de la matière
      * */
     public ArrayList<Quiz> getListeQuiz(){
         return this.listeQuiz;
     }
 
+
     /**
-     * @return  retourne un string qui permettra d'afficher
-     une matière.
+     * Méthode qui retourne les informations concernant la Matiere
+     * @return nom de la matière et sa maitrise
      * */
     @Override
     public String toString(){

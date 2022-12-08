@@ -1,8 +1,8 @@
 package studentlife;
 
 /**
- * La classe config stocke toute les variables représentant les statistiques personnels
- ces variables statiques nous permet plus de lisibilité.
+ * La classe config stocke toutes les variables représentant les statistiques personnels.
+ Ces variables statiques nous permettent plus de lisibilité.
  * */
 public class Config {
 
@@ -22,7 +22,7 @@ public class Config {
     public static final String STAT_MASTERY = "";
 
 
-    /**Le construteur de la classe Config.
+    /**Le constructeur de la classe Config.
     */
     public Config(){}
 

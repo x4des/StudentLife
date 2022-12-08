@@ -12,9 +12,7 @@ import studentlife.view.ui.GUIGame;
  * */
 public class Main {
 
-    /**Le main.
-     * @param args un fichier
-     * */
+
     public static void main(String[] args) {
 
         Input input = new Input("Comment voulez vous jouer ?");
