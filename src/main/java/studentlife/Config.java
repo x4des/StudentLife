@@ -1,7 +1,3 @@
-/**
- * Contient le Main ainsi que la classe Config
- *  * Contient également les dossiers controller, core et view
- * */
 package studentlife;
 
 /**

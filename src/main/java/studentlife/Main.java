@@ -8,7 +8,7 @@ import studentlife.view.ui.GUIGame;
 
 /**
  * La classe Main nous permet d'exécuter tout le programme
- * L'utilisateur a la possibilité de choisir l'affichage du jeu souhaité
+ * L'utilisateur a la possibilité de choisir l'affichage du jeu souhaité.
  * */
 public class Main {
     public static void main(String[] args) {
