@@ -9,57 +9,60 @@ package studentlife.core.characters;
  * */
 public class Stat {
 
-    /**le seuil max*/
+    /** le seuil max */
     public static final int MAX_STAT = 100;
 
-    /**le seuil min*/
+    /** le seuil min */
     public static final int MIN_STAT = 0;
 
     /** pourcentage de modif de la valeur des stats */
     public static final double PRCNT = 0.45;
 
-    /**nom de la stat*/
+    /** nom de la stat */
     private final String name;
 
-    /**la valeur de la stat*/
+    /** la valeur de la stat */
     private int value;
 
+
     /**
+     * constructeur d'une statistique
      * @param name nom de la statistique
      * @param value valeur de la statistique
-     * constructeur d'une statistique
      * */
     public Stat(String name, int value) {
         this.name = name;
         setValue(value);
     }
 
+
     /**
-     * @param value cette value est la valeur que l'on veut affecter à la valeur de la stat actuel
-     * cette procedure change la valeur de la stat actuel, si celle-ci dépasse un seuil,
-     elle est remplacée par ce même seuil pour ne pas avoir de dépassement.
+     * cette méthode affecte une valeur à la Stat, si celle-ci dépasse un seuil,
+     * elle est remplacée par ce même seuil pour ne pas avoir de dépassement.
+     * @param value cette value est la valeur que l'on veut affecter à la valeur de la Stat concernée
      * */
     public void setValue(int value) {
 
-        if(value < MIN_STAT) {
+        if(value < MIN_STAT) { //si < 0
             this.value = MIN_STAT;
             return;
         }
 
-        if(value > MAX_STAT) {
+        if(value > MAX_STAT) { //si >100
             this.value = MAX_STAT;
             return;
         }
 
-        this.value = value;
+        this.value = value; //sinon affectation normale
     }
 
+
     /**
+     *  Cette méthode vérifie si après avoir modifié la valeur de la stat avec la valeur de value,
+     *  que celle-ci ne dépasse pas les seuils, si oui, la valeur de la stat sera remplacée par un seuil.
+     *  Sinon on ajoutera la valeur souhaitée à la valeur actuelle de la Stat.
+     *  Value peut être positive ou négative.
      * @param value c'est la valeur que l'on "rajoutera" à la valeur de la stat actuelle.
-     * cette procedure vérifie si après avoir modifié la valeur de la stat avec la valeur de value,
-     que celle-ci ne dépasse pas les seuils, si oui, la valeur de la stat sera remplacée par un seuil
-     sinon on y "ajoutera" value (le paramètre).
-     Value peut être positive ou négative.
      * */
     public void updateValue(int value) {
         if (this.value + value < MIN_STAT) {
@@ -67,35 +70,41 @@ public class Stat {
         } else if (this.value + value > MAX_STAT) {
             this.value = MAX_STAT;
         } else {
-            this.value += value;
+            this.value += value; //si les seuils ne sont pas dépasses -> ajout normal
         }
     }
 
 
-
     /**
-     * @return getter qui permet d'accéder à la valeur de la stat
+     * getter qui permet d'avoir la valeur de la Stat
+     * @return la valeur de la Stat
      * */
     public int getValue() {
         return value;
     }
 
+
     /**
-     * @return getter qui retourne la valeur du pourcentage afin d'y accéder
+     * getter qui retourne la valeur du pourcentage qui sera utilisé ensuite pour manipuler le StatManager
+     * @return pourcentage défini
      * */
     public double getPrcnt(){
         return PRCNT;
     }
 
+
     /**
-     * @return getter qui permet d'accéder a l'attribut nom de la stat
+     * getter qui permet d'avoir a l'attribut nom de la stat
+     * @return le nom de la Stat
      * */
     public String getName() {
         return this.name;
     }
 
+
     /**
-     * @return retourne la valeur du seuil max d'une stat
+     * getter qui permet d'avoir le seuil maximal d'une Stat
+     * @return la valeur du seuil maximal d'une Stat
      * */
     public int getMaxStat(){
         return MAX_STAT;

@@ -1,5 +1,5 @@
 /**
- * Contient la classe qui instancie et affecte des valeurs aux différents objets que la
+ * Contient la classe-Contrôleur qui instancie et affecte des valeurs aux différents objets que la
  simulation utilise
  * */
 package studentlife.controller;
@@ -38,13 +38,13 @@ public class GameController {
     private Etudiant user;
 
     /**
-     * La liste de matière de l'etudiant
+     * La liste de matières de l'étudiant
      * @see Matiere
      * */
     private final ArrayList<Matiere> subjectList = new ArrayList<>();
 
     /**
-     * la liste de professeur de l'étudiant
+     * la liste de professeurs de l'étudiant
      * @see Professeur
      * */
     private final ArrayList<Professeur> profList = new ArrayList<>();
@@ -73,13 +73,13 @@ public class GameController {
     public void initGame(String userLastName, String userFirstName) {
         user = new Etudiant(userLastName, userFirstName);
 
-        loadProf();
+        loadProf(); //instancie les profs
 
-        loadSubject();
+        loadSubject(); //instancie les matières
 
-        loadSchedule();
+        loadSchedule(); //instancie l'EDT
 
-        loadNewQuiz();
+        loadNewQuiz(); //instancie les quizz
     }
 
     /**
@@ -103,7 +103,7 @@ public class GameController {
         return profList;
     }
 
-    public void loadProf(){
+    private void loadProf(){
         File file = new File("assets/prof.csv");
         String csvFile = file.getPath();
         String line = "";
@@ -122,7 +122,7 @@ public class GameController {
 
     }
 
-    public void loadSubject(){
+    private void loadSubject(){
         File file = new File("assets/matiere.csv");
         String csvFile = file.getPath();
         String line = "";
@@ -142,7 +142,7 @@ public class GameController {
     }
 
 
-    public void loadNewQuiz(){
+    private void loadNewQuiz(){
         File file = new File("assets/quiz.csv");
         String csvFile = file.getPath();
         String line = "";
