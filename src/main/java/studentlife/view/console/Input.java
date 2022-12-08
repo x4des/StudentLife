@@ -34,7 +34,9 @@ public class Input {
         answers.add(answer);
     }
 
-    /**ajoute une réponse dans la liste de réponse*/
+    /**ajoute une réponse dans la liste de réponse
+     * @param reponses La liste de réponses.
+     * */
     public void addAnswers(ArrayList<String> reponses){
         answers.addAll(reponses);
     }

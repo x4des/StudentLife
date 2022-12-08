@@ -8,7 +8,11 @@ package studentlife.core.characters;
  @see Professeur
  * */
 public abstract class Personne {
+
+    /**nom de l'utilisateur*/
     private String nom;
+
+    /**prénom de l'utilisateur*/
     private String prenom;
 
     /**

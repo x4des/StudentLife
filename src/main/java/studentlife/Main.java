@@ -11,6 +11,10 @@ import studentlife.view.ui.GUIGame;
  * L'utilisateur a la possibilité de choisir l'affichage du jeu souhaité.
  * */
 public class Main {
+
+    /**Le main.
+     * @param args un fichier
+     * */
     public static void main(String[] args) {
 
         Input input = new Input("Comment voulez vous jouer ?");

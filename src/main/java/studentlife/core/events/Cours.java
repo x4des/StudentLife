@@ -11,14 +11,20 @@ import static studentlife.Config.*;
  * @see Evenement
  * */
 public class Cours implements Evenement {
+
+    /**td, tp ou cm*/
     private final CoursType typeCours;
+
+    /**la matière*/
     private Matiere matiere;
+
+    /**le chargé de cours*/
     private Professeur professeur;
 
     /**
-     * @param coursType
-     * @param professeur
-     * @param matiere
+     * @param coursType td, tp ou cm
+     * @param professeur le chargé du cours
+     * @param matiere La matière concernée.
      * constructeur de la classe
      * */
     public Cours(CoursType coursType, Professeur professeur, Matiere matiere) {
@@ -47,7 +53,7 @@ public class Cours implements Evenement {
     public Professeur getProfesseur(){ return this.professeur; }
 
     /**
-     * @param prof
+     * @param prof le professeur
      * setter de l'attribut professeur
      * */
     public void setProfesseur(Professeur prof){
@@ -68,7 +74,7 @@ public class Cours implements Evenement {
     }
 
     /**
-     * @return retourne le nom du tyoe du cours (en abrégés).
+     * @return retourne le nom du type du cours (en abrégés).
      * */
     public String getShortNom(){
         switch (typeCours) {

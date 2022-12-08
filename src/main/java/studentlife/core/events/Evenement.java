@@ -10,9 +10,9 @@ import studentlife.core.characters.Etudiant;
  */
 public interface Evenement {
     /**
-     * @param utilisateur L'étudiant. Ici on aura besoin de ses stats
-     * @param valid  un booléen qui vérifie que le choix de l'utilisateur est bien celui du meme évènement
-     * modifie les stats de l'étudiant selon ses choix d'évènements.
+     * @param utilisateur L'étudiant. Ici on aura besoin de ses stats.
+     * @param valid  Un booléen qui vérifie que le choix de l'utilisateur est bien celui du meme évènement.
+     * Modifie les stats de l'étudiant selon ses choix d'évènements.
      * */
     public void finaliserEvenement(Etudiant utilisateur, boolean valid);
 }

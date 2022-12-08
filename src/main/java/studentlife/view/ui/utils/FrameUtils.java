@@ -10,7 +10,7 @@ import java.awt.*;
 public class FrameUtils {
 
     /**
-     * @param jf
+     * @param jf un jframe
      * Cette methode prend un JFrame en paramètre
      * et defini une position au centre de l'écran selon la résolution.
      * */
@@ -24,7 +24,7 @@ public class FrameUtils {
     }
 
     /**
-     * @param jf
+     * @param jf un jframe
      * Cette methode prend un JFrame en paramètre et
      définit sa taille en fonction de la résolution de l'écran.
      * */

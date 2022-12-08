@@ -17,7 +17,7 @@ public class GUIGame extends Game {
     private final JFrame mainFrame = new JFrame();
 
     /**
-     * @param controller
+     * @param controller Le controller.
      * constructeur de la sous classe
      * */
     public GUIGame(GameController controller) {

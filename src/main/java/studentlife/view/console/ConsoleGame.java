@@ -29,7 +29,7 @@ public class ConsoleGame extends Game {
     private int eventActuel;
 
     /**
-     * @param controller
+     * @param controller Le controller.
      * Le constructeur de la classe Game
      * */
     public ConsoleGame(GameController controller) {
@@ -236,6 +236,7 @@ public class ConsoleGame extends Game {
     }
 
     /**
+     * @param event Un évènement.
      * Détecte le type d'évènement en cours et fait appel à une méthode appropriée.
      On a 2 types d'évènements possibles ; cours ou pause.
      * */
@@ -313,8 +314,9 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * setPause gère les stat de l'utilisateur lorsqu'il decide de prendre une pause.
-     En fonction du type de pause qu'il a choisi de prendre ses stats seront modifiés
+     * setPause gère les stat de l'utilisateur lorsqu'il décide de prendre une pause.
+     En fonction du type de pause qu'il a choisi de prendre ses stats seront modifiés.
+     @return retourne un booléen qui indique si une pause à été géré ou non.
      * */
     private boolean setPause(){
         Input question = new Input("Que allez vous faire pendant la pause?");
@@ -373,7 +375,7 @@ public class ConsoleGame extends Game {
     }
 
     /**
-     * @param i indice qui parcourt la lise de jour de la semaine
+     * @param i indice qui parcourt la liste de jour de la semaine
      * dailyResults affiche les résultats de la journée dont l'indice est passé en paramètre.
      * */
     private void dailyResults( int i){

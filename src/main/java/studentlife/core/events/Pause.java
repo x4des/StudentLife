@@ -10,12 +10,17 @@ import static studentlife.Config.*;
  * */
 public class Pause implements Evenement {
 
+    /**Une pause repos ou ne pause repas.*/
     private PauseType pauseType;
+
+    /**Une matière*/
     private Matiere subject;
+
+    /**Constructeur de classe Pause.*/
     public Pause() {}
 
     /**
-     * @param pause
+     * @param pause pause repos ou pause repas
      * constructeur de la classe Pause
      * */
     public Pause(PauseType pause) {

@@ -10,9 +10,13 @@ import java.util.ArrayList;
  * */
 public class Schedule {
 
+    /**Var static qui indique le nombre max de jour d'école dans la semaine.*/
     private static final int MAX_DAYS = 5;
+
+    /**liste des noms des jours dans la semaine.*/
     private final String[] weekDays;
 
+    /**la semaine*/
     private final ArrayList<Day> week;
 
 

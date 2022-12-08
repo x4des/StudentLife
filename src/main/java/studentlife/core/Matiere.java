@@ -24,8 +24,8 @@ public class Matiere {
     private final ArrayList<Quiz> listeQuiz;
 
     /**
-     * @param nomMatiere
-     * constructeur de la classe Matière
+     * @param nomMatiere Le nom de la matière.
+     * Constructeur de la classe Matière.
      * */
     public Matiere(String nomMatiere) {
         this.nomMatiere = nomMatiere;
@@ -49,7 +49,7 @@ public class Matiere {
     public Stat getMastery() { return mastery; }
 
     /**
-     * @param quiz
+     * @param quiz un quiz
      * ajoute un quiz a la liste de quiz
      * */
     public void addQuiz(Quiz quiz) {

@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * */
 
 public class Day {
+
+    /**la liste d'évènements*/
     private ArrayList<Evenement> evenements;
 
     /**
