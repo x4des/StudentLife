@@ -30,7 +30,7 @@ public class GUIGame extends Game {
 
     /**
      * La methode run() de l'interface Runnable.
-     Elle permet de lancer la simulation avec une iterface graphique.
+     Elle permet de lancer la simulation avec une interface graphique.
      * */
     @Override
     public void run() {
