@@ -6,10 +6,9 @@ import java.util.Map;
 import static studentlife.Config.*;
 
 /**
- * La classe StatManager représente les statistiques personnels d'un utilisateur
+ * La classe StatManager représente les statistiques personnels d'un utilisateur;
  comme la faim, la fatigue, l'attention. Elle permet également de gérer ses valeurs.
  * */
-
 public class StatsManager {
 
     /**table de hachage qui stocke les valeurs par paires (nom_stat/ Stat)*/
@@ -18,58 +17,60 @@ public class StatsManager {
     /**constructeur de la classe StatsManager*/
     public StatsManager() {}
 
+
     /**
+     * Cette méthode ajoute ou soustrait une valeur à la valeur actuelle d'une Stat.
+     * On vérifie d'abord si la Stat est bien présente dans la HashMap
      * @param statName nom de la stat
-     * @param value valeur de la stat
-     * @return Cette fonction vérifie d'abord si les noms des statistiques correspondent.
-     Sinon la fonction retourne false. Si oui, la valeur de la statManager sera remplacé par value
-     dans la fonction updateValue et la fonction retournera true.
+     * @param value valeur qu'on veut ajouter
+     * @return true si la Stat était présente dans la Hashmap, false sinon
      * @see Stat#updateValue(int)
      * */
     public boolean updateStat(String statName, int value) {
-
-        if(!statsMap.containsKey(statName))
+        if(!statsMap.containsKey(statName)) { //si n'est pas présente
             return false;
+        }
 
         statsMap.get(statName).updateValue(value);
             return true;
     }
 
 
-
     /**
-     * @param fatigue pour cibler la statManager fatigue de l'étudiant
+     * Méthode qui modifie la valeur la fatigue de l'étudiant.
+     * Dans notre jeu à chaque fois que la faim augmente, la fatigue augmente de 0.45*faim.
+     * Même logique dans les cas où la fatigue diminue.
+     * @param fatigue pour cibler la fatigue dans le StatManager de l'étudiant
      * @param addition Un booléen qui nous indique si l'opération à faire est
-     une addition ou une soustraction. Si addition == false, le pourcentage devient négatif
-     * @return la fonction retourne un booléen si le nom de la statManager ne concorde pas avec les stats
-     et que la statManager faim n'est pas présente dans le hashmap, c'est false,
-     sinon la valeur de la statManager fatigue est modifiée.
+     une addition ou une soustraction.
+     * @return true si la Stat était présente dans la Hashmap, false sinon
      * */
     public boolean updateFatigue(String fatigue, boolean addition) {
 
-
-        if(!statsMap.containsKey(fatigue)) {
+        if(!statsMap.containsKey(fatigue)) { //si n'est pas présente
             return false;
         }
 
-        if(!statsMap.containsKey(STAT_FAIM)) {
+        if(!statsMap.containsKey(STAT_FAIM)) { //si n'est pas présente
             return false;
         }
 
         if(addition){
             statsMap.get(fatigue).updateValue((int)(statsMap.get(STAT_FAIM).getValue() * statsMap.get(fatigue).getPrcnt()));
         }else{
-            statsMap.get(fatigue).updateValue((int)(statsMap.get(STAT_FAIM).getValue() * statsMap.get(fatigue).getPrcnt() * -1));
+            statsMap.get(fatigue).updateValue((int)(statsMap.get(STAT_FAIM).getValue() * statsMap.get(fatigue).getPrcnt() * -1)); // *-1 car soustraction
         }
 
         return true;
     }
 
+
     /**
-     * @param attention pour modifier la statManager attention de l'utilisateur
-     * @return vérifie la presence de la statManager attention et fatigue dans le hashmap,
-     si présente, la valeur de la statManager fatigue sera modifiée, celle-ci est
-     le complémentaire de la valeur de la statManager fatigue
+     * Méthode qui modifie la valeur l'attention de l'étudiant.
+     * Dans notre jeu l'attention est proportionnelle avec la fatigue. = seuil max - fatigue
+     * Si la fatigue augmente, alors l'attention diminue.
+     * @param attention pour cibler l'attention dans le StatManager de l'étudiant
+     * @return true si la Stat était présente dans la Hashmap, false sinon
      * */
     public boolean updateAttention(String attention){
 
@@ -85,7 +86,9 @@ public class StatsManager {
         return true;
     }
 
+
     /**
+     * ce getter permet d'avoir une Stat
      * @param statName le nom d'une statistique quelconque
      * @throws IllegalArgumentException si la valeur de statName n'existe pas,
      l'exception envoie un message qui l'explique.
@@ -101,27 +104,28 @@ public class StatsManager {
 
 
     /**
-     * @param statName le nom de la statManager que l'on veut ajouter
-     * @param value la valeur que l'on veut affecter à la stat ( nom mis en parametre)
-     * ajoute une nouvelle stat au hashmap
+     * ajoute une nouvelle Stat dans la HashMap
+     * @param statName le nom de la Stat que l'on veut ajouter
+     * @param value la valeur que l'on veut affecter à la stat
      * */
     public void setStat(String statName, int value) {
         statsMap.put(statName, new Stat(statName, value));
     }
 
     /**
-     * @return retourne un string qui permettra d'afficher un statManager
+     * Retourne les informations concernant chaque Stat de StatManager
+     * @return retourne un String qui permettra d'afficher les informations de StatManager
      * */
     @Override
     public String toString() {
 
-        StringBuilder temp = new StringBuilder();
+        StringBuilder temp = new StringBuilder(); //un constructeur d'une chaine de caractères
 
-        for(Map.Entry<String, Stat> entry : statsMap.entrySet()) {
-            String key = entry.getKey();
-            int value = entry.getValue().getValue();
+        for(Map.Entry<String, Stat> entry : statsMap.entrySet()) { //pour chaque stat
+            String key = entry.getKey(); //nom de la stat
+            int value = entry.getValue().getValue(); //on accède à Value (Stat) puis à Value( valeur de Stat )
 
-            temp.append(key).append("=").append(value).append(" ");
+            temp.append(key).append("=").append(value).append(" "); //on construit la chaine
         }
 
         return temp.toString();
