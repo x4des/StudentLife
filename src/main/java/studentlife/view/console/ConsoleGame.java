@@ -210,7 +210,7 @@ public class ConsoleGame extends Game {
 
     }
 
-    /** Incrémente la valeur du nombre d'évènements que l'utilisateur à participer*/
+    /** Incrémente la valeur du nombre d'évènements auquel l'utilisateur à participer*/
     private void updateEvent(){
         eventActuel++;
 
@@ -225,7 +225,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * la methode run() permet de lancer le jeu.
+     * La methode run() permet de lancer le jeu.
      * */
     public void run() {//boucle-scenario du jeu
         // LANCER LE JEU :)
