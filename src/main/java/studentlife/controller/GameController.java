@@ -103,6 +103,10 @@ public class GameController {
         return profList;
     }
 
+    /**
+     * Procédure qui permet de "charger" les professeurs depuis
+     * le fichier prof.csv
+     */
     public void loadProf(){
         File file = new File("assets/prof.csv");
         String csvFile = file.getPath();
@@ -122,6 +126,10 @@ public class GameController {
 
     }
 
+    /**
+     * Procédure qui permet de "charger" les matières depuis
+     * le fichier matiere.csv
+     */
     public void loadSubject(){
         File file = new File("assets/matiere.csv");
         String csvFile = file.getPath();
@@ -141,7 +149,11 @@ public class GameController {
 
     }
 
-
+    /**
+     * Procédure qui permet de "charger" les quiz depuis
+     * le fichier quiz.csv, nous pouvons donc ajoutez autant
+     * de quiz que voulus.
+     */
     public void loadNewQuiz(){
         File file = new File("assets/quiz.csv");
         String csvFile = file.getPath();
