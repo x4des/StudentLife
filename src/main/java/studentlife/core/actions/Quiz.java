@@ -100,9 +100,9 @@ public class Quiz {
     }
 
     /**
-     *realise le quizz
-     demande la saisie de l'utilisateur et vérifie si sa réponse est bien correcte
-     gère les exceptions si la saisie d'utilisateur n'est pas conforme au format demandé
+     *realise le quiz
+     demande une saisie de l'utilisateur et vérifie si sa réponse est bien correcte
+     puis gère les exceptions si la saisie d'utilisateur n'est pas conforme au format demandé
      * */
     public void realiserQuiz() {
         System.out.println(System.lineSeparator() + this.question);//affichage de la question

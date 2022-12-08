@@ -7,10 +7,9 @@ package studentlife.core.characters;
 import static studentlife.Config.*;
 /**
  *  La classe Etudiant représente un etudiant/utilisateur qui est une personne.
- Cette classe descend de la classe Personne
- qui possède des stats. Ses stats, seront tout au long de la simulation, modifier
- selon les choix que l'utilisateur. Ses statistiques personnelles sont composés de
- la faim, la fatigue, l'attention.
+ Cette classe est une sous-classe de la classe Personne qui possède des statistiques.
+ Ces stats, seront tout au long de la simulation, modifiées selon les choix que l'utilisateur.
+ Les statistiques personnelles sont composés de la faim, la fatigue, l'attention.
  * @see Personne
  * */
 public class Etudiant extends Personne {

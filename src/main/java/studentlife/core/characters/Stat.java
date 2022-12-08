@@ -3,7 +3,7 @@ package studentlife.core.characters;
 
 /**
  *La classe Stat représente une statistique
- qui possède des seuils, un nom, une valeur qui sera modifier tout au long de la simulation
+ qui possède des seuils, un nom, une valeur qui sera modifiée tout au long de la simulation
  ainsi qu'un pourcentage de 45%, ce pourcentage nous permet de modifier la stat de la fatigue
  par rapport à celle de la faim.
  * */
@@ -55,10 +55,11 @@ public class Stat {
     }
 
     /**
-     * @param value c'est la valeur que l'on rajoutera à la valeur de la stat actuel
-     * cette procedure vérifie si apres avoir incrementer la valeur de la stat avec la valeur de value,
-     celle-ci ne dépasse pas les seuils, si oui, la valeur de la stat sera remplacé par un seuil
-     sinon sera incrémenté par value (le paramètre).
+     * @param value c'est la valeur que l'on "rajoutera" à la valeur de la stat actuelle.
+     * cette procedure vérifie si après avoir modifié la valeur de la stat avec la valeur de value,
+     que celle-ci ne dépasse pas les seuils, si oui, la valeur de la stat sera remplacée par un seuil
+     sinon on y "ajoutera" value (le paramètre).
+     Value peut être positive ou négative.
      * */
     public void updateValue(int value) {
         if (this.value + value < MIN_STAT) {
