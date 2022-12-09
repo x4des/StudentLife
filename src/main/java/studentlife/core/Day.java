@@ -68,7 +68,7 @@ public class Day {
             if (event instanceof Cours){ //si c'est un cours on affiche sa information
                 day += event.toString() + "\n";
             }else{
-                day+= "Pause\n"; //sinon pause
+                day += "Pause\n"; //sinon pause
             }
         }
         return day;
