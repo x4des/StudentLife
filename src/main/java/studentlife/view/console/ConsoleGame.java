@@ -15,36 +15,35 @@ import static studentlife.Config.POINTS_REVISION;
 
 /**
  * La classe ConsoleGame est la classe dans laquelle on initialise le jeu
- et où on crée la console et le scenario de la simulation
+ et où on crée la console et le scenario de la simulation.
  C'est la sous-classe de la classe abstraite Game
  *@see Game
  * */
 public class ConsoleGame extends Game {
 
-
-    /** nombre de jours dans la semaine*/
+    /** le jour de la semaine en cours*/
     private int weekDay;
 
-    /** nombre d'évènements accumulés*/
+    /** l'évènement actuel */
     private int eventActuel;
 
+
     /**
-     * @param controller Le controller.
      * Le constructeur de la classe Game
+     * @param controller Le contrôleur qui est le coeur de cette simulation
      * */
     public ConsoleGame(GameController controller) {
-        super(controller);
-        weekDay = 0;
-        eventActuel = 0;
+        super(controller); //affectation via le constructeur de la super-classe
+        weekDay = 0; // on se positionne en début de la semaine
+        eventActuel = 0; // en commençant avec le premier évènement du jour
     }
 
-    /**
-     * Initialisation de la simulation. On prend les informations souhaitées de l'utilisateur
-     et on affiche toute informations dont il aura besoin pour commencer la simulation.
-     * */
 
+    /**
+     * Initialisation de la simulation. On prend les informations de l'utilisateur
+     * nécessaires pour commencer le jeu
+     * */
     private void initGameView() {
-        // Get user details
         System.out.println("Welcome to the StudentWeek simulator!");
         System.out.println("Pour commencer le jeu, entrez votre nom et prénom");
         Scanner scanner = new Scanner(System.in);
@@ -52,18 +51,19 @@ public class ConsoleGame extends Game {
         String firstName = scanner.nextLine();
         System.out.println("Prénom:");
         String lastName = scanner.nextLine();
-        clearScreen();
+        clearScreen(); //on clear l'affichage dans la console
         getController().initGame(lastName, firstName);//initialise le jeu avec les informations d'utilisateur
     }
+
 
     /**
      * Cette methode crée les éléments du menu principal
      * et gère le choix de l'utilisateur
      * */
     private void menuPrincipal(){
-
-        Input question = new Input("Menu Principal          "+ ">Etudiant(e): " + getController().getUser().toString()
-        );
+        clearScreen();
+        Input question = new Input("Menu Principal          "+ ">Etudiant(e): " + getController().getUser().toString());
+        //les rubriques possibles
         question.addAnswer("Poursuivre le jeu");
         question.addAnswer("Consulter l'EDT");
         question.addAnswer("Statistiques");
@@ -71,28 +71,29 @@ public class ConsoleGame extends Game {
         question.addAnswer("Quitter le jeu");
         String rep = question.resolve();
 
-        if (rep.equals("Poursuivre le jeu")){
+        if (rep.equals("Poursuivre le jeu")){ //nous remet dans la simulation
             lookForEvent();
+            return;
         }
 
         if(rep.equals("Consulter l'EDT")){
             menuEDT();
+            return;
         }
 
         if(rep.equals("Statistiques")) {
             menuStatistiques();
+            return;
         }
 
         if (rep.equals("Paramètres")){
             parametres();
+            return;
         }
 
         if (rep.equals("Quitter le jeu")){
             endGame();
-
         }
-
-
     }
 
 
@@ -106,21 +107,23 @@ public class ConsoleGame extends Game {
         }
     }
 
+
     /** Cette methode crée et affiche les elements du menu lorsque
      l'utilisateur a choisi de consulter son emploi du temps.
-     L'utilisateur pourra consulter son EDT un jour après l'autre.
+     L'utilisateur pourra consulter son EDT en choisissant le jour souhaité
      */
     private void menuEDT(){
         Input question = new Input("Ici vous pouvez consulter votre Emploi du Temps\nChoisissez le jour souhaité");
-        question.addAnswers(getController().getSchedule().getWeekDaysAsList());
-        String res = question.resolve();
-        int i = question.getAnswers().indexOf(res);
+        question.addAnswers(getController().getSchedule().getWeekDaysAsList()); //on ajoute les noms des jours
+        String res = question.resolve(); //prend le jour choisi par l'utilisateur
+        int i = question.getAnswers().indexOf(res);//on a besoin de l'indice de la réponse pour retrouver le jour
         System.out.println(res + " vous avez:");
-        System.out.println(getController().getSchedule().getWeek().get(i).toString());
+        System.out.println(getController().getSchedule().getWeek().get(i).toString()); //affiche la list d'évènements
         revenirDansLeMenu();
     }
 
-    /** Cette méthode permet, dans le menu paramètres, de demander à l'utilisateur s'il veut modifier
+
+    /** Cette méthode permet, dans la rubrique paramètres, de demander à l'utilisateur s'il veut modifier
      ses infos personnelles, c'est-à-dire, son nom et prénom */
     private void parametres(){
         Input question = new Input("Modifier vos informations personnelles");
@@ -136,20 +139,21 @@ public class ConsoleGame extends Game {
         }
     }
 
-    /** Cette méthode permet de modifier les infos perso de l'utilisateur
-     lorsque celui-ci veut les modifier*/
+
+    /** Cette méthode permet de modifier les informations personnelles de l'utilisateur*/
     private void resetInfoPerso(){
-        Input question = new Input("Entrez votre prénom");
+        Input question = new Input("Entrez votre nouveau prénom");
         String res = question.resolve();
         getController().getUser().setPrenom(res);
-        question = new Input("Entrez votre nom");
+        question = new Input("Entrez votre nouveau nom");
         res = question.resolve();
         getController().getUser().setNom(res);
         System.out.println("Informations personnelles changées avec success");
     }
 
-    /**Cette méthode permet, lorsque l'utilisateur est dans menu/statistiques,
-     de choisir quelles données il veut consulter parmi eux.*/
+
+    /**Cette méthode permet, lorsque l'utilisateur est dans la rubrique statistiques,
+     de choisir quelles données il veut consulter.*/
     private void menuStatistiques(){
         Input question = new Input("Statistiques");
         question.addAnswer("Personnelles");
@@ -158,15 +162,16 @@ public class ConsoleGame extends Game {
         String res = question.resolve();
 
         if (res.equals("Personnelles")){
-            System.out.println(getController().getUser().toString());
-            System.out.println(getController().getUser().getStats().toString());
+            System.out.println(getController().getUser().toString()); //nom/prénom
+            System.out.println(getController().getUser().getStats().toString()); //Stats perso
             revenirDansLeMenu();
+            return;
         }
 
         if (res.equals("Matières")){
             subjectsMastery();
             revenirDansLeMenu();
-
+            return;
         }
 
         if (res.equals("Professeurs")){
@@ -175,15 +180,21 @@ public class ConsoleGame extends Game {
         }
     }
 
-    /**Cette méthode permet de faire revenir la simulation vers le menu principal après
-     que l'utilisateur ait fait une saisie quelconque.*/
+
+    /**
+     * Cette méthode permet de revenir dans le menu principal à partir de n'importe quelle rubrique.
+     */
     private void revenirDansLeMenu(){
-        Input question = new Input("Faites une saisie pour revenir dans le menu principal");
-        question.resolve();
+        Input question = new Input("\nFaites une saisie pour revenir dans le menu principal");
+        question.resolve(); //saisie quelconque d'utilisateur
         menuPrincipal();
     }
 
-    /**Cette méthode fait continuer le jeu après une saisie quelconque de l'utilisateur
+
+     /**
+     * Cette méthode permet de mettre la simulation en "pause" le temps que l'utilisateur
+     * lit les informations présentes dans la console.
+     * Elle attend une saisie quelconque d'utilisateur pour reprendre la simulation.
      */
     private void continuerJeu(){
         System.out.println();
@@ -191,54 +202,45 @@ public class ConsoleGame extends Game {
         question.resolve();
     }
 
-    /** Cette méthode, lorsque l'EDT est terminé, avertit l'utilisateur et fait revenir
-     la simulation vers le menu principal.*/
-    private void checkValidEvent(){
-        System.out.println("La semaine est terminée");
-        //afficher moyenne
-        revenirDansLeMenu();
-    }
 
-    /** Cette méthode vérifie si l'on est arrivé au dernier jour de la semaine.
-     Si oui, la semaine est terminée (appel de la méthode checkValiEvent()). Si non, on passe à l'évènement suivant.*/
+    /** Cette méthode vérifie si on est arrivé au dernier jour de la semaine.
+     * Si oui, la semaine est terminée, donc la simulation aussi.
+     * Si non, on passe à l'évènement suivant.
+     */
     private void lookForEvent(){
         if (weekDay>=getController().getSchedule().getWeek().size()){
-            checkValidEvent();
+            endOfWeek();
         }else {
             manageEvent(getController().getSchedule().getWeek().get(weekDay).getEvenements().get(eventActuel));
         }
 
     }
 
-    /** Incrémente la valeur du nombre d'évènements auquel l'utilisateur à participer*/
+    /** Cette méthode, lorsque l'EDT est terminé, avertit l'utilisateur et fait revenir
+     la simulation vers le menu principal.*/
+    private void endOfWeek(){
+        System.out.println("La semaine est terminée\nVous pouvez consulter vos résultats dans le menu principal");
+        revenirDansLeMenu();
+    }
+
+
+    /** Incrémente le numéro de l'évènement en cours
+     * et vérifie si on a atteint la fin de la journée
+     */
     private void updateEvent(){
         eventActuel++;
-
-
         if (eventActuel >= getController().getSchedule().getWeek().get(weekDay).getEvenements().size()){
             eventActuel = 0;
             dailyResults(weekDay);
-            weekDay++;
+            weekDay++; //on passe au suivant jour si on a atteint la fin de la journée
         }
     }
 
 
-
     /**
-     * La methode run() permet de lancer le jeu.
-     * */
-    public void run() {//boucle-scenario du jeu
-        // LANCER LE JEU :)
-        clearScreen();
-        initGameView();//recueil des informations d'utilisateur
-        menuPrincipal();
-
-    }
-
-    /**
+     * Détecte le type d'évènement en cours et fait appel à une méthode qui va le gérer.
+     * On a 2 types d'évènements possibles: cours ou pause.
      * @param event Un évènement.
-     * Détecte le type d'évènement en cours et fait appel à une méthode appropriée.
-     On a 2 types d'évènements possibles ; cours ou pause.
      * */
     private void manageEvent(Evenement event) {
         clearScreen();
@@ -251,9 +253,10 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * @param cours Le cours dans lequelle l'étudiant doit assister.
-     * manageCours demande à l'utilisateur s'il veut y assister s'il désire ou pas on appelle la fonction
-    finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
+     * Cette méthode demande à l'utilisateur s'il veut assister à un cours.
+     * Si non, l'utilisateur a le choix de faire une pause ou revenir dans le menu
+     * finaliserEvenement changera des stats selon son choix.
+     * @param cours Le cours auquel l'étudiant doit assister.
      * @see Cours
      * */
     private void manageCours(Cours cours) {
@@ -265,7 +268,7 @@ public class ConsoleGame extends Game {
         question.addAnswer("Non, je veux faire une pause");//1
         question.addAnswer("Revenir dans le Menu Principal");//2
         String res = question.resolve();
-        if(res.equals("Oui")){//si oui
+        if(res.equals("Oui")){
             clearScreen();
             System.out.println(cours.getType() + " de " + cours.getMatiere().getNom());
             System.out.println("\b");
@@ -276,21 +279,21 @@ public class ConsoleGame extends Game {
 
             updateEvent();
             lookForEvent();
+            return;
         }
 
         if(res.equals("Non, je veux faire une pause")){
             clearScreen();
             cours.finaliserEvenement(getController().getUser(), false);
-            setPause();
+            setPause(); //on lance une pause
             updateEvent();
             lookForEvent();
+            return;
         }
 
         if (res.equals("Revenir dans le Menu Principal")){
             menuPrincipal();
         }
-
-
 
     }
 
@@ -444,4 +447,14 @@ public class ConsoleGame extends Game {
         }
     }
 
+    /**
+     * La methode run() permet de lancer le jeu.
+     * */
+    public void run() {//boucle-scenario du jeu
+        // LANCER LE JEU :)
+        clearScreen();
+        initGameView();//recueil des informations d'utilisateur
+        menuPrincipal();
+
+    }
 }
