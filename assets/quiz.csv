@@ -1,20 +1,19 @@
-Un automate normalise a forcement", "deux etats: initial et final unique chacun", subjectList.get(0), "la propriete qu'il soit complet", "un etat initial unique", "un etat final unique"));
-Une transition \"puits\" : ", " ne produit rien, se contente de consommer", subjectList.get(0), "ne consomme rien, se contente de produire", "est toujours déclenchable", possède absolument un arc inhibiteur
-Un automate est deterministe si,Il possède un unique état initial", subjectList.get(0), "Il possède des epsilon-transitions", "Il possède une seule epsilon-transition,Il est complet
-Un automate est standard si,Il est unitaire et possede un unique état initial,subjectList.get(0), Il est complet et deterministe", "Il est fini", "Il n'y pas de transition sur vers son etat initial"));
-Une societe anonyme SA cotée sur la bourse doit avoir un minimum de:,7 associes,subjectList.get(1), "2 associes", "Pas de minimum", "8 associes"));
-Quel organisme calcule et diffuse l'indice des prix", "INSEE", subjectList.get(1), "FISC", "INTERPOL", "CNOUS"));
-Lequel des suivants est correct", "les SCOP et SCIC sont des CAE", subjectList.get(1), "Une SARL est une SA a responsabiite limitee", "Une association est une societe a but non lucratif", "Une µEntreprise possede au plus 20 employes"));
-Une classe est:", "Du code source ", subjectList.get(2), "Un objet avec des attributs et des methodes", "une interface avec des methodes non abstraites", "abstraite quand elle possede un constructeur abstrait"));
-L'agregation:", "est plus forte que l'association", subjectList.get(2), "est moins forte que l'association", "est synonyme de l'association", "depend de l'association"));
-en UML, quel signe caractere represente un package", "~", subjectList.get(2), "+", "$", "#"));
-Une interface ne fait pas partie du framework collection en Java", "Group, subjectList.get(2),Collection,List,Set
-Lequel n'est pas vrai:", "Un ordre est noetherien s'il est bien fonde", subjectList.get(3), "Un ordre est bien fonde si et seulement s'il est noetherien, Un ordre est bien fonde si tout partie non vide admet au moins un element minimal", "Un ordre est noetherien s'il ne possede pas de chaine infinie strictement decroissante"));
-Lequel est vrai", "Une fonction continue n'est pas necessairement derivable", subjectList.get(3), "Un isomorphisme d'ordre est un morphisme non bijectif", La double implication n'implique pas toujours qu'il y a l'egalite", "Un ordre est strict s'il est reflexif"));
-Un ensemble ordonne est dit inductif si", "toute chaine admet un majorant", subjectList.get(3), "Tout ensemble ordonne inductif possede un majorant", "son application est bijective", "son application n'est pas surjective"));
-Une relation est binaire si elle est:", "Reflexive, antisymmetrique, transitive", subjectList.get(4), "Reflexive, symmetrique, transitive", "Reflexive, asymmetrique, transitive", "Antireflexive, antisymmetrique, transitive"));
-La limite de Ln(x) en -infini: ", "n'existe pas", subjectList.get(4), "0", "-ifnini", "1"));
-
-le stack est :,LIFO,subjectList.get(5),FIFO,accessible dynamiquement,plus lent en acces que le heap
-Choisir l'affirmation correcte:, "les elements d'une liste chainée sont de même type", subjectList.get(5), "Il faut allouer de la memoire dynamique dans le stack pour les tableaux dynamiques", "l'operateur \"->\" equivaut à &ptr", "La taille d'un int depend uniquement de la machine"));
-The Earth is ...(hold) by the gravity of the Sun and orbits around it", "held", subjectList.get(6), "being held", "holded", "being holded"));
+Introduction aux systemes d'informations,Un automate normalise a forcement,deux etats: initial et final unique chacun,la propriete qu'il soit complet,un etat initial unique,un etat final unique
+Introduction aux systemes d'informations,Une transition \"puits\" :,ne produit rien et se contente de consommer,ne consomme rien et se contente de produire,est toujours déclenchable, possède absolument un arc inhibiteur
+Introduction aux systemes d'informations,Un automate est deterministe si,Il possède un unique état initial,Il possède des epsilon-transitions,Il possède une seule epsilon-transition,Il est complet
+Introduction aux systemes d'informations,Un automate est standard si,Il est unitaire et possede un unique état initial,Il est complet et deterministe,Il est fini,Il n'y pas de transition sur vers son etat initial
+Connaissance de l'entreprise,Une societe anonyme SA cotée sur la bourse doit avoir un minimum de:,7 associes,2 associes,Pas de minimum,8 associes
+Connaissance de l'entreprise,Quel organisme calcule et diffuse l'indice des prix,INSEE,FISC,INTERPOL,CNOUS
+Connaissance de l'entreprise,Lequel des suivants est correct,les SCOP et SCIC sont des CAE,Une SARL est une SA a responsabiite limitee, Une association est une societe a but non lucratif, Une Entreprise possede au plus 20 employes
+Programmation orientée objet,Une classe est:,Du code source,Un objet avec des attributs et des methodes,une interface avec des methodes non abstraites,abstraite quand elle possede un constructeur abstrait
+Programmation orientée objet,L'agregation:, est plus forte que l'association,est moins forte que l'association,est synonyme de l'association,depend de l'association
+Programmation orientée objet,En UML quel signe/caractere represente un package,~,+,$,#
+Programmation orientée objet,Une interface ne fait pas partie du framework collection en Java,Group,Collection,List,Set
+Informatique fondamentale,Lequel n'est pas vrai :,Un ordre est noetherien s'il est bien fonde,Un ordre est bien fonde si et seulement s'il est noetherien,Un ordre est bien fonde si tout partie non vide admet au moins un element minimal,Un ordre est noetherien s'il ne possede pas de chaine infinie strictement decroissante
+Informatique fondamentale,Lequel est vrai,Une fonction continue n'est pas necessairement derivable,Un isomorphisme d'ordre est un morphisme non bijectif,La double implication n'implique pas toujours qu'il y a l'egalite,Un ordre est strict s'il est reflexif
+Informatique fondamentale,Un ensemble ordonne est dit inductif si,toute chaine admet un majorant,Tout ensemble ordonne inductif possede un majorant,son application est bijective,son application n'est pas surjective
+Mathématiques pour l'informatique,Une relation est binaire si elle est :,Reflexive/Antisymmetrique/Transitive,Reflexive/Symmetrique/Transitive,Reflexive/Asymmetrique/Transitive,Antireflexive/Antisymmetrique/Transitive
+Mathématiques pour l'informatique,La limite de Ln(x) en -infini :,n'existe pas,0,-infini,1
+Algorithmique et structure de données,Le stack est :,LIFO,FIFO,accessible dynamiquement,plus lent en acces que le heap
+Algorithmique et structure de données,Choisir l'affirmation correcte :,les elements d'une liste chainée sont de même type,Il faut allouer de la memoire dynamique dans le stack pour les tableaux dynamiques,L'operateur \->\ equivaut à &ptr,La taille d'un int depend uniquement de la machine
+Anglais scientifique général,The Earth is ...(hold) by the gravity of the Sun and orbits around it,held,being held,holded,being holded

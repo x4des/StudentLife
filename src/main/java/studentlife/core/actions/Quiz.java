@@ -1,31 +1,39 @@
-/**
- * Contient la classe Quiz
- * */
+
 package studentlife.core.actions;
+
 import studentlife.core.Matiere;
 
 import java.util.*;
+
 /**
- * la classe Quiz est une classe qui permet de créer et lancer un quiz.
+ * La classe Quiz est une classe qui permet de créer et lancer un quiz.
  * */
 public class Quiz {
+
+    /** une question posée à l'étudiant*/
     private final String question;
-    private final ArrayList<String> reponses; //réponses possibles (sauf la réponse correcte)
+
+    /**réponses possibles (sauf la réponse correcte) */
+    private final ArrayList<String> reponses;
+
+    /** la réponse correcte à la question*/
     private final String reponseCorrecte;
-    private final Matiere matiere; //matière concernée par le quizz
+
+    /** matière concernée par le quizz */
+    private final Matiere matiere;
 
     /**
+     * Constructeur d'un quizz avec 4 propositions de réponses
      * @param question une question qui est posée
-     * @param matiere la matiere dont les questions sont concernées
-     * @param reponseCorrecte la reponse correcte à la question posée, fait partie des reponses proposées
-     * @param r2 reponse proposée
-     * @param r3 reponse proposée
-     * @param r4 reponse proposée
-     * constructeur d'un quizz avec 4 propositions de réponses
+     * @param matiere la matière dont les questions sont concernées
+     * @param reponseCorrecte la response correcte à la question posée
+     * @param r2 réponse proposée
+     * @param r3 réponse proposée
+     * @param r4 Réponse proposée.
      * */
-    public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3, String r4){
+    public Quiz(Matiere matiere, String question, String reponseCorrecte, String r2, String r3, String r4){
         this.question = question;
-        this.reponses = new ArrayList<>();
+        this.reponses = new ArrayList<>(); //création d'une liste de réponses
         this.reponses.add(r2);
         this.reponses.add(r3);
         this.reponses.add(r4);
@@ -34,11 +42,11 @@ public class Quiz {
     }
 
     /**
+     * Constructeur d'un quizz avec 2 propositions de réponses
      * @param question une question qui est posée
      * @param reponseCorrecte la réponse correcte
      * @param matiere la matière dont les questions sont concernées
-     * @param r2 réponse proposée
-     * constructeur d'un quizz avec 2 propositions de réponses
+     * @param r2 Réponse proposée.
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2){
         this.question = question;
@@ -49,12 +57,12 @@ public class Quiz {
     }
 
     /**
-     * @param question une question qui est posée
-     * @param reponseCorrecte
-     * @param matiere
-     * @param r2
-     * @param r3
      * constructeur d'un quizz avec 3 propositions de réponses
+     * @param question une question qui est posée
+     * @param reponseCorrecte la réponse correcte
+     * @param matiere la matière
+     * @param r2 une réponse
+     * @param r3 une réponse
      * */
     public Quiz(String question, String reponseCorrecte, Matiere matiere, String r2, String r3){
         this.question = question;
@@ -68,21 +76,20 @@ public class Quiz {
 
 
     /**
-     * @return insère la réponse correcte dans la liste de réponses possibles d'une manière aléatoire
-     retourne la liste des toutes les réponses possibles
+     * Insère la réponse correcte dans la liste de réponses possibles d'une manière aléatoire.
+     * Retourne la liste de toutes les réponses possibles.
+     * @return Retourne une liste de chaine de caractère.
      * */
-
     public ArrayList<String> getReponses() {
-
         try {
             if(this.reponses.size() > 0) {
-                Random random = new Random();
+                Random random = new Random(); //permet d'avoir une valeur random
 
-                int reponseCorrecteIndice = random.nextInt(reponses.size()+1); //un int random entre 0 et taille(reponses)
-                this.reponses.add(reponseCorrecteIndice, reponseCorrecte);
+                int reponseCorrecteIndice = random.nextInt(reponses.size()+1); //un int random entre 0 et taille(réponses)
+                this.reponses.add(reponseCorrecteIndice, reponseCorrecte); //insertion da la réponse à la position souhaitée
 
             }else {
-                throw new Exception("Il n'y a pas de reponses affectées à la question");
+                throw new Exception("Il n'y a pas de réponses affectées à la question");
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -91,9 +98,9 @@ public class Quiz {
     }
 
     /**
-     *realise le quizz
-     demande la saisie de l'utilisateur et vérifie si sa réponse est bien correcte
-     gère les exceptions si la saisie d'utilisateur n'est pas conforme au format demandé
+     *Realise le quiz.
+     Demande une saisie de l'utilisateur et vérifie si sa réponse est bien correcte.
+     Puis gère les exceptions si la saisie d'utilisateur n'est pas conforme au format demandé.
      * */
     public void realiserQuiz() {
         System.out.println(System.lineSeparator() + this.question);//affichage de la question

@@ -1,6 +1,6 @@
 package studentlife.core.events;
 
 /**
- * les differents type de pause
+ * les différents types de Pause
  * */
 public enum PauseType { REPOS, REPAS, REVISION };

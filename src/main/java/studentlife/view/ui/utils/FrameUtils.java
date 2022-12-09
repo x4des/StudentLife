@@ -1,21 +1,18 @@
-/**
- * Contient FrameUtils qui permet de creer les elements d'une console graphique.
- * */
 package studentlife.view.ui.utils;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * La classe FrameUtils nous permet d'implementer les methodes de creer
- toute les composantes de l'interface graphique
+ * La classe FrameUtils nous permet d'implémenter les méthodes et de créer
+ toutes les composantes de l'interface graphique
  * */
 public class FrameUtils {
 
     /**
-     * @param jf
-     * Cette methode prend un JFrame en parametre
-     * et defini une position au centre de l'ecran selon la resoltion.
+     * @param jf un jframe
+     * Cette methode prend un JFrame en paramètre
+     * et defini une position au centre de l'écran selon la résolution.
      * */
     public static void setFrameCenter(JFrame jf) {
         if (jf == null) return;
@@ -27,9 +24,9 @@ public class FrameUtils {
     }
 
     /**
-     * @param jf
-     * Cette methode prend un JFrame en parametre et
-     defini sa taille en fonction de la resolution de l'ecran.
+     * @param jf un jframe
+     * Cette methode prend un JFrame en paramètre et
+     définit sa taille en fonction de la résolution de l'écran.
      * */
     public static void setFrameSizeFromScreenResolution(JFrame jf) {
         if (jf == null) return;
@@ -39,8 +36,8 @@ public class FrameUtils {
     }
 
     /**
-     * @return retourne la dimension de l'ecran graphique
-     * La largeur sera d'environ 3/6 de la taille de l'ecran et la hauteur 3/4.
+     * @return retourne la résolution de l'écran actuel
+     * La largeur sera de 3/6 de la taille de l'écran et la hauteur de 3/4.
      * */
     public static Dimension getDimension() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -61,11 +58,11 @@ public class FrameUtils {
     }
 
     /**
-     * @param icon nouveau fond d'ecran
-     * @param resizedWidth
-     * @param resizedHeight
-     * @return cette methode retourne comme resizeIcon() un nouvel cadre pour la simu
-     cependant les valeurs misent en parametre sont des pourcentages qui permettreront de
+     * @param icon nouveau fond d'écran
+     * @param resizedWidth nouvelle largeur
+     * @param resizedHeight nouvelle longueur
+     * @return cette methode retourne comme resizeIcon() un nouveau cadre pour la simulation
+     cependant les valeurs misent en paramètre sont des pourcentages qui permettront
      d'augmenter ou diminuer la dimension.
      * */
     public static ImageIcon resizeIconPercentage(ImageIcon icon, double resizedWidth, double resizedHeight) {
@@ -77,9 +74,9 @@ public class FrameUtils {
     }
 
     /**
-     * @param path chemin d'un fichier où est l'image
+     * @param path chemin du fichier où l'image se trouve
      * @param size dimensions
-     * @return Cette methode retourne un JButton qui est un bouton créer à partir
+     * @return Cette methode crée un bouton JButton et le retourne
      * */
     public static JButton createButton(String path, double size) {
 
@@ -94,6 +91,11 @@ public class FrameUtils {
         return button;
     }
 
+    /**
+     * @param jf un JFrame
+     * @param name chemin du fichier
+     * Défini un cadre par une image.
+     * */
     public static void setFrameImgBg(JFrame jf, String name) {
 
         jf.setContentPane(new JPanel() {

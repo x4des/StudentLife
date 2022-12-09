@@ -3,56 +3,66 @@ package studentlife.core.characters;
 
 /**
  *La classe Stat représente une statistique
- qui possède des seuils, un nom, une valeur qui sera modifier tout au long de la simulation
+ qui possède des seuils, un nom, une valeur qui sera modifiée tout au long de la simulation
  ainsi qu'un pourcentage de 45%, ce pourcentage nous permet de modifier la stat de la fatigue
- par rapport a celle de la faim.
- }
+ par rapport à celle de la faim.
  * */
 public class Stat {
 
-    public static final int MAX_STAT = 100; //le seuil max
-    public static final int MIN_STAT = 0; //le seuil min
+    /** le seuil max */
+    public static final int MAX_STAT = 100;
 
-    public static final double PRCNT = 0.45; //pourcentage de modif de la valeur des stats
+    /** le seuil min */
+    public static final int MIN_STAT = 0;
 
-    private final String name; //nom de la stat
-    private int value; //valeur
+    /** pourcentage de modif de la valeur des stats */
+    public static final double PRCNT = 0.45;
+
+    /** nom de la stat */
+    private final String name;
+
+    /** la valeur de la stat */
+    private int value;
+
 
     /**
+     * constructeur d'une statistique
      * @param name nom de la statistique
      * @param value valeur de la statistique
-     * constructeur d'une statistique
      * */
-    public Stat(String name, int value) {//constructeur
+    public Stat(String name, int value) {
         this.name = name;
         setValue(value);
     }
 
+
     /**
-     * @param value cette value est la valeur que l'on veut affecter à la valeur de la stat actuel
-     * cette procedure change la valeur de la stat actuel, si celle si depasse un seuil,
-     elle est remplacé par ce meme seuil pour ne pas avoir de depassement.
+     * cette méthode affecte une valeur à la Stat, si celle-ci dépasse un seuil,
+     * elle est remplacée par ce même seuil pour ne pas avoir de dépassement.
+     * @param value cette value est la valeur que l'on veut affecter à la valeur de la Stat concernée
      * */
     public void setValue(int value) {
 
-        if(value < MIN_STAT) {
+        if(value < MIN_STAT) { //si < 0
             this.value = MIN_STAT;
             return;
         }
 
-        if(value > MAX_STAT) {
+        if(value > MAX_STAT) { //si >100
             this.value = MAX_STAT;
             return;
         }
 
-        this.value = value;
+        this.value = value; //sinon affectation normale
     }
 
+
     /**
-     * @param value c'est la valeure que l'on rajoutera à la valeur de la stat actuel
-     * cette procedure verifie si apres avoir incrementer la valeur de la stat avec la valeur de value,
-     celle-ci ne depasse pas les euils, si oui, la valeur de la stat sera remplacé par un seuil
-     sinon sera incremente par value (le parametre)
+     *  Cette méthode vérifie si après avoir modifié la valeur de la stat avec la valeur de value,
+     *  que celle-ci ne dépasse pas les seuils, si oui, la valeur de la stat sera remplacée par un seuil.
+     *  Sinon on ajoutera la valeur souhaitée à la valeur actuelle de la Stat.
+     *  Value peut être positive ou négative.
+     * @param value c'est la valeur que l'on "rajoutera" à la valeur de la stat actuelle.
      * */
     public void updateValue(int value) {
         if (this.value + value < MIN_STAT) {
@@ -60,35 +70,41 @@ public class Stat {
         } else if (this.value + value > MAX_STAT) {
             this.value = MAX_STAT;
         } else {
-            this.value += value;
+            this.value += value; //si les seuils ne sont pas dépassés → ajout normal
         }
     }
 
 
-
     /**
-     * @return getter permet d'acceder à la valeur de la stat
+     * getter qui permet d'avoir la valeur de la Stat
+     * @return la valeur de la Stat
      * */
     public int getValue() {
         return value;
     }
 
+
     /**
-     * @return getter qui retroune la valeur du pourcentage afin d'y acceder
+     * getter qui retourne la valeur du pourcentage qui sera utilisé ensuite pour manipuler le StatManager
+     * @return pourcentage défini
      * */
     public double getPrcnt(){
         return PRCNT;
     }
 
+
     /**
-     * @return getter qui permet d'acceder a l'attribut nom de la stat
+     * getter qui permet d'avoir a l'attribut nom de la stat
+     * @return le nom de la Stat
      * */
     public String getName() {
         return this.name;
     }
 
+
     /**
-     * @return retourne la valeur du seuil max d'une stat
+     * getter qui permet d'avoir le seuil maximal d'une Stat
+     * @return la valeur du seuil maximal d'une Stat
      * */
     public int getMaxStat(){
         return MAX_STAT;

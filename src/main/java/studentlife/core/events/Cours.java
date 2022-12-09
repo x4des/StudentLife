@@ -1,8 +1,3 @@
-/**
- * Contient les classes liées a touts evenements. Ainsi, elle continent
- l'interface Evenement, les classes qui l'implemente; Cours, et Pause et d'autres modules stockant
- les types de Cours et de Pauses.
- * */
 package studentlife.core.events;
 
 import studentlife.core.Matiere;
@@ -12,19 +7,28 @@ import static studentlife.Config.*;
 
 
 /**
- * la classe Cours implemente l'interface Evenement et modifie les stats des objets impliquée
+ * La classe Cours implémente l'interface Evenement et modifie les stats des attributs impliqués.
+ * Elle possède un type de Cours (TD/TP/CM), une matière à laquelle il est lié et un Professeur qui l'enseigne.
+ *
  * @see Evenement
  * */
 public class Cours implements Evenement {
+
+    /**td, tp ou cm*/
     private final CoursType typeCours;
+
+    /**la matière*/
     private Matiere matiere;
+
+    /**le chargé de cours*/
     private Professeur professeur;
 
+
     /**
-     * @param coursType
-     * @param professeur
-     * @param matiere
-     * constructeur de la classe
+     * Constructeur d'un Cours
+     * @param coursType td, tp ou cm
+     * @param professeur le chargé du cours
+     * @param matiere la matière concernée
      * */
     public Cours(CoursType coursType, Professeur professeur, Matiere matiere) {
         this.typeCours = coursType;
@@ -32,37 +36,46 @@ public class Cours implements Evenement {
         this.professeur = professeur;
     }
 
+
     /**
-     * @return getter qui retourne l'attribut matiere.
+     * Getter qui permet d'avoir accès à la Matière du Cours
+     * @return la Matière concernée
      * */
     public Matiere getMatiere() {
         return matiere;
     }
 
+
     /**
-     * @return getter qui permet d'acceder au type de cours (TP, TD ou CM).
+     * Getter qui permet d'avoir accès au type de Cours
+     * @return TD/TP/CM (type de cours)
      * */
     public CoursType getTypeCours (){
         return this.typeCours;
     }
 
+
     /**
-     * @return getter de l'attribut professeur.
+     * Getter qui permet d'avoir le chargé du Cours
+     * @return le Professeur
      * */
     public Professeur getProfesseur(){ return this.professeur; }
 
+
     /**
-     * @param prof
-     * setter de l'attribut professeur
+     * setter de l'attribut Professeur
+     * @param prof le Professeur
      * */
     public void setProfesseur(Professeur prof){
         this.professeur = prof;
     }
 
+
     /**
-     * @return retourne le nom du type de cours.
+     * Getter qui permet d'avoir le type de Cours
+     * @return retourne le nom du type de cours
      * */
-    public String getNom(){
+    public String getType(){
 
         switch (typeCours) {
             case CM: return "Cours Magistral";
@@ -72,10 +85,12 @@ public class Cours implements Evenement {
         }
     }
 
+
     /**
-     * @return retourne le nom du tyoe du cours (en abrégés).
+     * Getter qui permet d'avoir le type de Cours (en abrégé)
+     * @return type du cours (en abrégé)
      * */
-    public String getShortNom(){
+    public String getShortType(){
         switch (typeCours) {
             case CM: return "CM";
             case TD: return "TD";
@@ -84,21 +99,22 @@ public class Cours implements Evenement {
         }
     }
 
+
     /**
-     * @param user les stats de l'utilisateur seront modifiés; la stat faim sera augmenté de 20
-     * cette modification entrenra l'augmentation de la fatigue de 45% de la valeur de la faim et la stat attention
-     * est le complementaire de la stat fatigue.
-     * l'appreciation du professeur envers l'etudiant sera aussi augmenté selon le type de cours où il participe.
-     * Pour finir, la moyenne de la matière concerné sera augmenté.
-     * @param valid booleen qui verifie si l'evenement choisi est bien un Cours, ainsi la procedure pourra modifier les stats.
+     * Méthode qui permet de modifier les Stats nécessaires à la fin d'un Evenement (ici Cours).
+     * Si valid = true -> faim+=20, fatigue+=0.45*faim, attention=SEUIL_MAX-faim.
+     * Si valid = false → on ne change pas les stats personnelles.
+     * Puis des changements dans les stats des matières et professeurs(en fonction de type de cours).
+     * @param user l'étudiant qui assiste à un cours
+     * @param valid qui vérifie si l'étudiant a assisté à un Cours ou non.
      * */
     @Override
     public void finaliserEvenement(Etudiant user, boolean valid) {
 
-        if(valid) {
-            getMatiere().getListeQuiz().get(0).realiserQuiz();
-            getMatiere().deleteQuiz(0);
-            switch (typeCours) {
+        if(valid) { //s'il a assisté à un cours
+            getMatiere().getListeQuiz().get(0).realiserQuiz(); //on lance un quizz
+            getMatiere().deleteQuiz(0); //on le supprime pour ne pas se soucier des indices
+            switch (typeCours) { //changements différents en fonction de type de cours
                 case CM:
                     matiere.getMastery().updateValue(5);
                     user.getStats().updateStat(STAT_FAIM, 20);
@@ -108,13 +124,13 @@ public class Cours implements Evenement {
                 case TD:
                 case TP:
                     matiere.getMastery().updateValue(5);
-                    professeur.getAppreciation().updateValue(5);
+                    professeur.getAppreciation().updateValue(5); //appréciation du prof est changée si ce n'est pas un cm
                     user.getStats().updateStat(STAT_FAIM, 20);
                     user.getStats().updateFatigue(STAT_FATIGUE, true);
                     user.getStats().updateAttention(STAT_ATTENTION);
                     break;
             }
-        }else{
+        }else{ //s'il n'a pas assisté à un cours
             switch (typeCours) {
                 case CM:
                     matiere.getMastery().updateValue(-5);
@@ -129,8 +145,12 @@ public class Cours implements Evenement {
     }
 
 
+    /**
+     * Méthode qui permet d'avoir le nom du Cours et le professeur qui l'enseigne
+     * @return informations concernant le cours
+     * */
     @Override
     public String toString(){
-        return this.getShortNom() + " de "+ this.getMatiere().getNom() + " avec "+ this.professeur.getPrenom() +" "+this.professeur.getNom();
+        return this.getShortType() + " de "+ this.getMatiere().getNom() + " avec "+ this.professeur.getPrenom() +" "+this.professeur.getNom();
     }
 }

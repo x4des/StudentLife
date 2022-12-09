@@ -1,17 +1,20 @@
 package studentlife.core.events;
 
 import studentlife.core.characters.Etudiant;
+
 /**
- *Un evenement correspond au différentes "taches" fera ou pas dans la journée
- cette interface sera donc implémenter par les classes Cours et Pause qui eux, modifieront les stats
- de l'utilsateur selon le choix de l'evenement (aller en cours ou faire une pause).
+ *Un évènement correspond aux différentes situations auxquelles l'étudiant va assister ou non.
+ Cette interface sera donc implémentée par les classes Cours et Pause qui eux, modifieront les Stats
+ de l'utilisateur selon le choix de l'événement (aller en cours ou faire une pause).
  * @see Pause
  * @see Cours
  */
 public interface Evenement {
+
     /**
-     * @param utilisateur les stats de l'etudiant seront changées selon le choix de l'evenemnt
-     * @param valid  un booleen qui verifie que le choix de l'utlisateur est bien celui du meme evenement
+     * Méthode qui modifie les stats de l'étudiant selon son choix d'évènement.
+     * @param utilisateur L'étudiant. Ici on aura besoin de ses stats.
+     * @param valid  Un booléen qui vérifie si l'étudiant a choisi d'assister à un Evenement proposé
      * */
     public void finaliserEvenement(Etudiant utilisateur, boolean valid);
 }

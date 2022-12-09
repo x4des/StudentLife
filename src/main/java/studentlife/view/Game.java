@@ -3,28 +3,28 @@ package studentlife.view;
 import studentlife.controller.GameController;
 
 /**
- * La classe abstraite Game implemente la classe Runnable qui elle possede
+ * La classe abstraite Game implémente la classe Runnable qui elle possède
  une methode (public void run()).
- La Game de l'implementera pas direcetement mais via sa sous classe GUIGame.
- Elle est aussi a super classe de CosoleGame
+ La Game ne l'implémentera pas directement, mais via sa sous classe GUIGame ou ConsoleGame.
  * @see studentlife.view.ui.GUIGame
  * @see studentlife.view.console.ConsoleGame
- Cette classe nous permet de demarrer la simulation.
  * */
 public abstract class Game implements Runnable {
 
+    /**le gameController*/
     private final GameController gameController;
 
     /**
-     * @param gameController
      * constructeur de la classe Game
+     * @param gameController un gameController
      * */
     public Game(GameController gameController) {
         this.gameController = gameController;
     }
 
     /**
-     * getter qui permet d'acceder à l'attribut gameController de l'objet
+     * Getter qui permet d'accéder à l'attribut gameController
+     * @return retourne un GameController
      * */
     protected GameController getController() {
         return gameController;
