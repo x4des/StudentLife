@@ -311,7 +311,6 @@ public class ConsoleGame extends Game {
 
     /**fin du jeu, affichage du bilan de la semaine.*/
     private void endGame(){
-        finalResults();
         System.exit(0);
     }
 
