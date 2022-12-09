@@ -8,7 +8,7 @@ import static studentlife.Config.*;
 
 /**
  * La classe Cours implémente l'interface Evenement et modifie les stats des attributs impliqués.
- * Elle possède un type de Cours (TD/TP/CM), une matière à laquelle elle est lié et un Professeur qui l'enseigne.
+ * Elle possède un type de Cours (TD/TP/CM), une matière à laquelle il est lié et un Professeur qui l'enseigne.
  *
  * @see Evenement
  * */
@@ -103,7 +103,7 @@ public class Cours implements Evenement {
     /**
      * Méthode qui permet de modifier les Stats nécessaires à la fin d'un Evenement (ici Cours).
      * Si valid = true -> faim+=20, fatigue+=0.45*faim, attention=SEUIL_MAX-faim.
-     * Si valid = false -> on ne change pas les stats personnelles.
+     * Si valid = false → on ne change pas les stats personnelles.
      * Puis des changements dans les stats des matières et professeurs(en fonction de type de cours).
      * @param user l'étudiant qui assiste à un cours
      * @param valid qui vérifie si l'étudiant a assisté à un Cours ou non.
@@ -124,7 +124,7 @@ public class Cours implements Evenement {
                 case TD:
                 case TP:
                     matiere.getMastery().updateValue(5);
-                    professeur.getAppreciation().updateValue(5); //appréciation du prof est changée si c'est pas un cm
+                    professeur.getAppreciation().updateValue(5); //appréciation du prof est changée si ce n'est pas un cm
                     user.getStats().updateStat(STAT_FAIM, 20);
                     user.getStats().updateFatigue(STAT_FATIGUE, true);
                     user.getStats().updateAttention(STAT_ATTENTION);
