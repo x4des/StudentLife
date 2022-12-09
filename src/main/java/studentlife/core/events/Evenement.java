@@ -16,5 +16,5 @@ public interface Evenement {
      * @param utilisateur L'étudiant. Ici on aura besoin de ses stats.
      * @param valid  Un booléen qui vérifie si l'étudiant a choisi d'assister à un Evenement proposé
      * */
-    public void finaliserEvenement(Etudiant utilisateur, boolean valid);
+    void finaliserEvenement(Etudiant utilisateur, boolean valid);
 }

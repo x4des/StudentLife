@@ -1,6 +1,7 @@
 package studentlife.core;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *La classe Schedule représente l'emploi du temps de la semaine.
@@ -34,9 +35,7 @@ public class Schedule {
      * */
     public ArrayList<String> getWeekDaysAsList(){
         ArrayList<String> week = new ArrayList<>();
-        for (String day : weekDays){
-            week.add(day);
-        }
+        Collections.addAll(week, weekDays);
         return week;
 
     }

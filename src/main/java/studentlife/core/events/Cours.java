@@ -7,7 +7,7 @@ import static studentlife.Config.*;
 
 
 /**
- * La classe Cours implémente l'interface Evenement et modifie les stats des attributs impliqués.
+ * La classe Cours implémente l'interface Evenement et modifie-les stats des attributs impliqués.
  * Elle possède un type de Cours (TD/TP/CM), une matière à laquelle il est lié et un Professeur qui l'enseigne.
  *
  * @see Evenement
@@ -18,7 +18,7 @@ public class Cours implements Evenement {
     private final CoursType typeCours;
 
     /**la matière*/
-    private Matiere matiere;
+    private final Matiere matiere;
 
     /**le chargé de cours*/
     private Professeur professeur;

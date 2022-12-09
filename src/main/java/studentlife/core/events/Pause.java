@@ -64,13 +64,13 @@ public class Pause implements Evenement {
         switch (pauseType) {
             case REPAS:
                 utilisateur.getStats().getStat(STAT_FAIM).setValue(0);
-                utilisateur.getStats().getStat(STAT_FATIGUE).setValue((int)(utilisateur.getStats().getStat(STAT_FATIGUE).getValue()/4)*3); //diminue de 1/3
+                utilisateur.getStats().getStat(STAT_FATIGUE).setValue((utilisateur.getStats().getStat(STAT_FATIGUE).getValue()/4) *3); //diminue de 1/3
                 utilisateur.getStats().updateAttention(STAT_ATTENTION);
                 break;
 
             case REPOS:
                 //faim reste inchangée car on peut quand même manger un snack pendant une pause repos
-                utilisateur.getStats().getStat(STAT_FATIGUE).setValue((int)utilisateur.getStats().getStat(STAT_FATIGUE).getValue()/2); //fatigue/2
+                utilisateur.getStats().getStat(STAT_FATIGUE).setValue(utilisateur.getStats().getStat(STAT_FATIGUE).getValue() /2); //fatigue/2
                 utilisateur.getStats().updateAttention(STAT_ATTENTION);
                 break;
 

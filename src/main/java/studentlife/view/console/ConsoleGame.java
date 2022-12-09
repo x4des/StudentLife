@@ -3,12 +3,12 @@ package studentlife.view.console;
 import studentlife.controller.GameController;
 import studentlife.core.Matiere;
 import studentlife.core.characters.Professeur;
-import studentlife.core.events.*;
+import studentlife.core.events.Cours;
+import studentlife.core.events.Evenement;
+import studentlife.core.events.Pause;
+import studentlife.core.events.PauseType;
 import studentlife.view.Game;
 
-import javax.sound.midi.Soundbank;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import static studentlife.Config.POINTS_REVISION;

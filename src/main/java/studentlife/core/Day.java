@@ -52,7 +52,7 @@ public class Day {
 
 
     /**
-     * ajoute un évènement a la liste d'évènements
+     * ajoute un évènement à la liste d'évènements
      * @param evenement un évènement
      * */
     public void addEvenement(Evenement evenement) { evenements.add(evenement); }
@@ -63,14 +63,14 @@ public class Day {
      * */
     @Override
     public String toString(){
-        String day = "";
+        StringBuilder day = new StringBuilder();
         for (Evenement event : evenements){ //pour chaque event dans la liste
             if (event instanceof Cours){ //si c'est un cours on affiche sa information
-                day += event.toString() + "\n";
+                day.append(event).append("\n");
             }else{
-                day += "Pause\n"; //sinon pause
+                day.append("Pause\n"); //sinon pause
             }
         }
-        return day;
+        return day.toString();
     }
 }
