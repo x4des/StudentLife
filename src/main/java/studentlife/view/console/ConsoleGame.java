@@ -40,7 +40,7 @@ public class ConsoleGame extends Game {
 
     /**
      * Initialisation de la simulation. On prend les informations souhaitées de l'utilisateur
-     et on affiche toute informations dont il aura besoin pour commencer la simulation.
+     et on affiche toutes informations dont il aura besoin pour commencer la simulation.
      * */
 
     private void initGameView() {
@@ -57,7 +57,7 @@ public class ConsoleGame extends Game {
     }
 
     /**
-     * Cette methode crée les éléments du menu principal
+     * Cette methode créé les éléments du menu principal
      * et gère le choix de l'utilisateur
      * */
     private void menuPrincipal(){
@@ -106,7 +106,7 @@ public class ConsoleGame extends Game {
         }
     }
 
-    /** Cette methode crée et affiche les elements du menu lorsque
+    /** Cette methode créé et affiche les elements du menu lorsque
      l'utilisateur a choisi de consulter son emploi du temps.
      L'utilisateur pourra consulter son EDT un jour après l'autre.
      */
@@ -251,7 +251,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * @param cours Le cours dans lequelle l'étudiant doit assister.
+     * @param cours Le cours dans auquel l'étudiant doit assister.
      * manageCours demande à l'utilisateur s'il veut y assister s'il désire ou pas on appelle la fonction
     finaliserEvenement qui changera les stats selon son choix (si oui, un quiz lui sera donné).
      * @see Cours
@@ -316,7 +316,7 @@ public class ConsoleGame extends Game {
     /**
      * setPause gère les stat de l'utilisateur lorsqu'il décide de prendre une pause.
      En fonction du type de pause qu'il a choisi de prendre ses stats seront modifiés.
-     @return retourne un booléen qui indique si une pause à été géré ou non.
+     @return retourne un booléen qui indique si une pause a été géré ou non.
      * */
     private boolean setPause(){
         Input question = new Input("Que allez vous faire pendant la pause?");
@@ -424,7 +424,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'étudiant sur celle-ci.
+     * affiche pour chaque matière son nom ainsi que la moyenne que l'étudiant a dans celle-ci.
      * */
     private void subjectsMastery() {
         System.out.println("Les stats dans les matières:");
