@@ -70,7 +70,7 @@ public class Stat {
         } else if (this.value + value > MAX_STAT) {
             this.value = MAX_STAT;
         } else {
-            this.value += value; //si les seuils ne sont pas dépasses -> ajout normal
+            this.value += value; //si les seuils ne sont pas dépassés → ajout normal
         }
     }
 
