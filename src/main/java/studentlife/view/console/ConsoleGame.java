@@ -297,8 +297,9 @@ public class ConsoleGame extends Game {
 
     }
 
+
     /**
-     * Lorsque l'étudiant à une pause dans son EDT.
+     * Gère la pause dans EDT
      * */
     private void managePause() {
         System.out.println("Actuellement vous n'avez pas de cours.");
@@ -315,11 +316,10 @@ public class ConsoleGame extends Game {
     }
 
 
-
     /**
-     * setPause gère les stat de l'utilisateur lorsqu'il décide de prendre une pause.
-     En fonction du type de pause qu'il a choisi de prendre ses stats seront modifiés.
-     @return retourne un booléen qui indique si une pause a été géré ou non.
+     * Donne à l'utilisateur la possiblité de choisir le type d pause qu'il veut faire.
+     Les Stats sont modifiées (ou non) en fonction de ce choix.
+     @return retourne un booléen qui indique si l'étudiant a bien choisi de faire une pause.
      * */
     private boolean setPause(){
         Input question = new Input("Que allez vous faire pendant la pause?");
@@ -331,7 +331,7 @@ public class ConsoleGame extends Game {
         clearScreen();
         if (rep.equals("Reviser")){
 
-            int subject = selectSubject();
+            int subject = selectSubject(); //choix de la matière de révision
             System.out.println("Vous avez choisi: " + getController().getSubjectList().get(subject).getNom());
 
             Pause revision = new Pause(PauseType.REVISION, getController().getSubjectList().get(subject));
@@ -351,7 +351,6 @@ public class ConsoleGame extends Game {
             etatActuel();
             continuerJeu();
             return true;
-
         }
 
         if (rep.equals("Se reposer")){
@@ -362,7 +361,6 @@ public class ConsoleGame extends Game {
             etatActuel();
             continuerJeu();
             return true;
-
         }
 
         if(rep.equals("Revenir dans le Menu Principal")){
@@ -372,51 +370,38 @@ public class ConsoleGame extends Game {
         return false;
     }
 
+
     /** Etat personnel de l'utilisateur*/
     public void etatActuel(){
         System.out.println("Etat personnel actuel: "+ getController().getUser().getStats().toString());
     }
 
+
     /**
-     * @param i indice qui parcourt la liste de jour de la semaine
-     * dailyResults affiche les résultats de la journée dont l'indice est passé en paramètre.
+     * affiche les résultats de la journée dont l'indice est passé en paramètre.
+     * @param i indice qui représente le jour de la semaine
      * */
     private void dailyResults( int i){
-        System.out.println("Les résultats du fin de la journée: "+getController().getSchedule().getWeekday(i));
-        System.out.println("Stats perso: "+ getController().getUser().getStats().toString());
-        subjectsMastery();
-    }
-
-    /**
-     * affiche le bilan final de la semaine : les stats pour chaque matière, les stats personnels
-     ainsi l'appréciation des profs.
-     * */
-    private void finalResults(){
-        System.out.println("Vos statistiques à la fin du jeu:");
-        System.out.println("Stats perso: "+ getController().getUser().getStats().toString());
-        subjectsMastery();
-        profsAppreciation();
-
+        System.out.println("La journée est terminée!\nVous pouvez consulter vos résultats actuels dans le Menu Principal");
+        revenirDansLeMenu();
     }
 
 
-
     /**
-     * @return L'entier retourné est égal à 0 lorsque la matière
-    n'est pas présente dans la liste de matière de l'étudiant. Lorsqu'elle
-    est présente l'entier retourné est l'indice de la matière dans la meme liste.
+     * Cette méthode donne la possibilité de choisir la matière qu'on veut réviser
+     * @return l'indice de la matière dans la liste des matières
      * @see Input
-     * Cette methode retrouve la matiere dont on a besoin
      * */
     private int selectSubject() {
         Input request = new Input("Quelle matière voulez vous réviser?");
         for(Matiere subject : getController().getSubjectList()) {
-            request.addAnswer(subject.getNom());
+            request.addAnswer(subject.getNom()); //les réponses possibles sont la liste des matières
         }
         String res = request.resolve();
 
         int n = 0;
 
+        //on cherche l'indice de la matière
         for(int i = 0; i < getController().getSubjectList().size(); i++) {
             if(getController().getSubjectList().get(i).getNom().equals(res))
                 n = i;
@@ -427,7 +412,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * affiche pour chaque matière son nom ainsi que la moyenne que l'étudiant a dans celle-ci.
+     * affiche pour chaque matière son nom ainsi que la maitrise que l'étudiant a dans celle-ci.
      * */
     private void subjectsMastery() {
         System.out.println("Les stats dans les matières:");
@@ -438,7 +423,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * affiche pour chaque prof son nom et le niveau d'appréciation qu'il a envers l'étudiant.
+     * affiche pour chaque professeur son nom et le niveau d'appréciation qu'il a envers l'étudiant.
      * */
     private void profsAppreciation(){
         System.out.println("Niveau de relation avec les professeurs:");
@@ -447,13 +432,13 @@ public class ConsoleGame extends Game {
         }
     }
 
+
     /**
-     * La methode run() permet de lancer le jeu.
+     * Peermet de lancer le jeu.
      * */
-    public void run() {//boucle-scenario du jeu
-        // LANCER LE JEU :)
+    public void run() {
         clearScreen();
-        initGameView();//recueil des informations d'utilisateur
+        initGameView();
         menuPrincipal();
 
     }
