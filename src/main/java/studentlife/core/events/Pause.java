@@ -5,7 +5,7 @@ import studentlife.core.characters.Etudiant;
 import static studentlife.Config.*;
 
 /**
- * la classe Pause implémente l'interface Evenement et modifie les stats des attributs impliqués.
+ * La classe Pause implémente l'interface Evenement et modifie les stats des attributs impliqués.
  * Elle possède un type de Pause (repos/révision/repas) et une matière si le type est "révision"
  * @see Evenement
  * */
@@ -69,13 +69,13 @@ public class Pause implements Evenement {
                 break;
 
             case REPOS:
-                //faim reste inchangé car on peut quand même manger un snack pendant une pause repos
+                //faim reste inchangée car on peut quand même manger un snack pendant une pause repos
                 utilisateur.getStats().getStat(STAT_FATIGUE).setValue((int)utilisateur.getStats().getStat(STAT_FATIGUE).getValue()/2); //fatigue/2
                 utilisateur.getStats().updateAttention(STAT_ATTENTION);
                 break;
 
             case REVISION:
-                //faim reste inchangé car on peut quand même manger un snack pendant une révision
+                //faim reste inchangée car on peut quand même manger un snack pendant une révision
                 utilisateur.getStats().getStat(STAT_FATIGUE).updateValue(10);
                 utilisateur.getStats().updateAttention(STAT_ATTENTION);
                 faireRevision();
