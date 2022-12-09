@@ -6,6 +6,7 @@ import studentlife.core.characters.Professeur;
 import studentlife.core.events.*;
 import studentlife.view.Game;
 
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -62,7 +63,8 @@ public class ConsoleGame extends Game {
      * */
     private void menuPrincipal(){
         clearScreen();
-        Input question = new Input("Menu Principal          "+ ">Etudiant(e): " + getController().getUser().toString());
+        Input question = new Input("Menu Principal          "+ ">Etudiant(e): " +
+                getController().getUser().toString() + "    >Jour: "+ getController().getSchedule().getWeekDaysAsList().get(weekDay));
         //les rubriques possibles
         question.addAnswer("Poursuivre le jeu");
         question.addAnswer("Consulter l'EDT");
@@ -231,8 +233,8 @@ public class ConsoleGame extends Game {
         eventActuel++;
         if (eventActuel >= getController().getSchedule().getWeek().get(weekDay).getEvenements().size()){
             eventActuel = 0;
-            dailyResults(weekDay);
             weekDay++; //on passe au suivant jour si on a atteint la fin de la journée
+            dailyResults();
         }
     }
 
@@ -244,11 +246,17 @@ public class ConsoleGame extends Game {
      * */
     private void manageEvent(Evenement event) {
         clearScreen();
+        heure();
         if(event instanceof Cours) {
             manageCours((Cours) event);
         } else {
             managePause();
         }
+    }
+
+    private void heure(){
+        int heure = eventActuel + 8; //supposant que chaque jour commencé à 8h
+        System.out.println("Il est " + heure +"h");
     }
 
 
@@ -377,12 +385,23 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * affiche les résultats de la journée dont l'indice est passé en paramètre.
-     * @param i indice qui représente le jour de la semaine
+     Gère la fin de la journée
      * */
-    private void dailyResults( int i){
-        System.out.println("La journée est terminée!\nVous pouvez consulter vos résultats actuels dans le Menu Principal");
-        revenirDansLeMenu();
+    private void dailyResults(){
+        System.out.println("La journée est terminée!");
+        Input question = new Input("Voulez vous revenir dans le Menu pour consulter vos résultats ou passer à la journée suivante?");
+        question.addAnswer("Consulter les résultats");//0
+        question.addAnswer("Commencer la nouvelle journée");//1
+        String rep = question.resolve();
+        if (rep.equals("Consulter les résultats")) {
+            menuPrincipal();
+            return;
+        }
+
+        if (rep.equals("Commencer la nouvelle journée")){
+            lookForEvent();
+        }
+
     }
 
 
