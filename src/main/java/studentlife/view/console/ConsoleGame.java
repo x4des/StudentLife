@@ -63,7 +63,7 @@ public class ConsoleGame extends Game {
      * */
     private void menuPrincipal(){
         clearScreen();
-        if (weekDay>4){
+        if (weekDay>4){ // pour que le menu ne crash pas à la fin de la semaine
             System.out.println("                   >Etudiant(e): " + getController().getUser().toString());
         }else {
             System.out.println("                   >Etudiant(e): " + getController().getUser().toString() + "    >Jour: " + getController().getSchedule().getWeekDaysAsList().get(weekDay));
@@ -262,6 +262,9 @@ public class ConsoleGame extends Game {
         }
     }
 
+    /**
+     * Calcule l'heure actuelle
+     */
     private void heure(){
         int heure = eventActuel + 8; //supposant que chaque jour commencé à 8h
         System.out.println("Il est " + heure +"h");

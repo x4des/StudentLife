@@ -21,13 +21,11 @@ public class Config {
     /** pour la stat mastery*/
     public static final String STAT_MASTERY = "";
 
+    /** stat revision -> valeur*/
+    public static final int POINTS_REVISION = 10;
 
     /**Le constructeur de la classe Config.
     */
     public Config(){}
-
-    /** stat revision -> valeur*/
-    public static final int POINTS_REVISION = 10;
-
 
 }
