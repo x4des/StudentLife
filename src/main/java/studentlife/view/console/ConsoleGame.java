@@ -63,8 +63,12 @@ public class ConsoleGame extends Game {
      * */
     private void menuPrincipal(){
         clearScreen();
-        Input question = new Input("Menu Principal          "+ ">Etudiant(e): " +
-                getController().getUser().toString() + "    >Jour: "+ getController().getSchedule().getWeekDaysAsList().get(weekDay));
+        if (weekDay>4){
+            System.out.println("                   >Etudiant(e): " + getController().getUser().toString());
+        }else {
+            System.out.println("                   >Etudiant(e): " + getController().getUser().toString() + "    >Jour: " + getController().getSchedule().getWeekDaysAsList().get(weekDay));
+        }
+        Input question = new Input("Menu Principal");
         //les rubriques possibles
         question.addAnswer("Poursuivre le jeu");
         question.addAnswer("Consulter l'EDT");
@@ -234,6 +238,10 @@ public class ConsoleGame extends Game {
         if (eventActuel >= getController().getSchedule().getWeek().get(weekDay).getEvenements().size()){
             eventActuel = 0;
             weekDay++; //on passe au suivant jour si on a atteint la fin de la journée
+            if (weekDay>=getController().getSchedule().getWeek().size()) {
+                endOfWeek();
+                return;
+            }
             dailyResults();
         }
     }
