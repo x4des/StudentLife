@@ -6,7 +6,7 @@ import java.util.Map;
 import static studentlife.Config.*;
 
 /**
- * La classe StatManager représente les statistiques personnels d'un utilisateur;
+ * La classe StatManager représente les statistiques personnels d'un utilisateur
  comme la faim, la fatigue, l'attention. Elle permet également de gérer ses valeurs.
  * */
 public class StatsManager {

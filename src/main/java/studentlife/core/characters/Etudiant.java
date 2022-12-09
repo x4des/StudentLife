@@ -28,7 +28,7 @@ public class Etudiant extends Personne {
     }
 
 
-    /** initialise le StatsManager avec les 3 stats personnelles: fatigue, faim et attention */
+    /** initialise le StatsManager avec les 3 stats personnelles : fatigue, faim et attention */
     private void initStats() {
         stats = new StatsManager();
         stats.setStat(STAT_ATTENTION, 100);

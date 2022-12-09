@@ -3,7 +3,7 @@ package studentlife.core.events;
 import studentlife.core.characters.Etudiant;
 
 /**
- *Un évènement correspond aux différentes situations aux quelles l'étudiant va assister ou non.
+ *Un évènement correspond aux différentes situations auxquelles l'étudiant va assister ou non.
  Cette interface sera donc implémentée par les classes Cours et Pause qui eux, modifieront les Stats
  de l'utilisateur selon le choix de l'événement (aller en cours ou faire une pause).
  * @see Pause

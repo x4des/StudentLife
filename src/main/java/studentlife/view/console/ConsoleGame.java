@@ -57,7 +57,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * Cette methode crée les éléments du menu principal
+     * Cette methode créé les éléments du menu principal
      * et gère le choix de l'utilisateur
      * */
     private void menuPrincipal(){
@@ -319,7 +319,7 @@ public class ConsoleGame extends Game {
     /**
      * setPause gère les stat de l'utilisateur lorsqu'il décide de prendre une pause.
      En fonction du type de pause qu'il a choisi de prendre ses stats seront modifiés.
-     @return retourne un booléen qui indique si une pause à été géré ou non.
+     @return retourne un booléen qui indique si une pause a été géré ou non.
      * */
     private boolean setPause(){
         Input question = new Input("Que allez vous faire pendant la pause?");
@@ -427,7 +427,7 @@ public class ConsoleGame extends Game {
 
 
     /**
-     * affiche pour chaque matière son nom ainsi que la moyenne qu'a l'étudiant sur celle-ci.
+     * affiche pour chaque matière son nom ainsi que la moyenne que l'étudiant a dans celle-ci.
      * */
     private void subjectsMastery() {
         System.out.println("Les stats dans les matières:");

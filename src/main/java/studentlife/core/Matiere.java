@@ -45,7 +45,7 @@ public class Matiere {
 
     /**
      * Getter, permet d'accéder à l'attribut mastery de la classe
-     * @return la stat lié a la matière = mastery
+     * @return la stat lié à la matière = mastery
      * */
     public Stat getMastery() { return mastery; }
 
