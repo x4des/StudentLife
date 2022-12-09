@@ -2,16 +2,12 @@ Introduction aux systemes d'informations,Un automate normalise a forcement,deux 
 Introduction aux systemes d'informations,Une transition \"puits\" :,ne produit rien et se contente de consommer,ne consomme rien et se contente de produire,est toujours déclenchable, possède absolument un arc inhibiteur
 Introduction aux systemes d'informations,Un automate est deterministe si,Il possède un unique état initial,Il possède des epsilon-transitions,Il possède une seule epsilon-transition,Il est complet
 Introduction aux systemes d'informations,Un automate est standard si,Il est unitaire et possede un unique état initial,Il est complet et deterministe,Il est fini,Il n'y pas de transition sur vers son etat initial
-Introduction aux systemes d'informations,Quelle est la formule de la matrice d'incidence d'un RdP?,U= U^+ - U^-,U= U^- + U^-,U= U^+ - U^+,U=U^- - U^+
-Introduction aux systemes d'informations,Qu'est-ce qu'un mot reconnu?,un chemin grace auxquelles on atteint l'etat final,l'etat,initial,tous les chemins possibles du RdP,le chemin vide
 Connaissance de l'entreprise,Une societe anonyme SA cotée sur la bourse doit avoir un minimum de:,7 associes,2 associes,Pas de minimum,8 associes
 Connaissance de l'entreprise,Quel organisme calcule et diffuse l'indice des prix,INSEE,FISC,INTERPOL,CNOUS
 Connaissance de l'entreprise,Lequel des suivants est correct,les SCOP et SCIC sont des CAE,Une SARL est une SA a responsabiite limitee, Une association est une societe a but non lucratif, Une Entreprise possede au plus 20 employes
-Connaissance de l'entreprise,qu'est-ce que la Valeur ajoutée?,la production vendu - la consommation intermediaires,la somme des produits vendus,le benefice d'une entreprise à un instant donné, le produit interieur brut d'un pays
 Programmation orientée objet,Une classe est:,Du code source,Un objet avec des attributs et des methodes,une interface avec des methodes non abstraites,abstraite quand elle possede un constructeur abstrait
-Programmation orientée objet,L'agregation:, est plus forte que l'association,est moins forte que l'association,est synonyme de l'association,depend de l'association
+Programmation orientée objet,L'agregation:,est plus forte que l'association,est moins forte que l'association,est synonyme de l'association,depend de l'association
 Programmation orientée objet,En UML quel signe/caractere represente un package,~,+,$,#
-Programmation orientée objet,Comment est detruit un objet,automatiquement par le garbage collector, il faut les desalloué, ils faut les déréférencer en leur affectat la valeur de null
 Programmation orientée objet,Une interface ne fait pas partie du framework collection en Java,Group,Collection,List,Set
 Informatique fondamentale,Lequel n'est pas vrai :,Un ordre est noetherien s'il est bien fonde,Un ordre est bien fonde si et seulement s'il est noetherien,Un ordre est bien fonde si tout partie non vide admet au moins un element minimal,Un ordre est noetherien s'il ne possede pas de chaine infinie strictement decroissante
 Informatique fondamentale,Lequel est vrai,Une fonction continue n'est pas necessairement derivable,Un isomorphisme d'ordre est un morphisme non bijectif,La double implication n'implique pas toujours qu'il y a l'egalite,Un ordre est strict s'il est reflexif
